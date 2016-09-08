@@ -1,0 +1,171 @@
+grammar org.xtext.example.adaptdsl.AdaptDsl with org.eclipse.xtext.common.Terminals
+
+generate adaptDsl "http://www.xtext.org/example/adaptdsl/AdaptDsl"
+
+Model:
+	'flow' FlowName '{'
+		adaptationRules += adaptionRule+
+	'};'
+;
+
+FlowName:
+	flow = ID
+;
+
+adaptionRule:
+ 	'rule' RuleName '{' 
+ 	// optional priority level, default is 0, higher level => higher priority
+ 	('LEVEL' Level ';')?
+	'IF''('Conditions')' 
+	// then optional
+	'THEN''(' 
+		actions += Action*
+	')'';''}'
+;
+
+RuleName:
+	rule = ID
+;
+
+Level:
+	INT
+;
+
+Conditions:
+	// bindungskraft
+	Condition ( AndOr Condition)*
+;
+
+Condition:
+	(Fact Operator Value) |  (Fact'('')')
+;
+
+AndOr:
+	'AND' | 'OR' | '&&' | '||'
+;
+
+Fact:
+	ID
+;
+
+Operator:
+	'>' | '<' | '==' | '!=' | '>=' | '<=' | '==='
+;
+
+Value:
+	INT | STRING
+;
+
+Actions:
+	Action*
+;
+
+Action:
+	TaskChangeOperation | NavigationChangeOperation | LayoutChangeOperation | EditFactOperation
+;
+
+TaskChangeOperation: 
+	AddViewComponentOperation | DeleteViewComponentOperation
+;
+
+AddViewComponentOperation:
+	'addViewComponent''(' ViewComponent',' TargetContainer ')'';'
+;
+
+DeleteViewComponentOperation:
+	'deleteViewComponent''(' ViewComponent ')'';'
+;
+
+ViewComponent:
+	ID
+;
+
+TargetContainer:
+	ID
+;
+
+NavigationChangeOperation:
+	AddNavLinkOperation | DeleteNavLinkOperation | RedirectNavLinkOperation | ClearNavOperation
+;
+
+AddNavLinkOperation:
+	// add a navigation link to <ViewComponent> with link description <Text>
+	'addNavLink''('ViewComponent','Text')'';'
+;
+
+DeleteNavLinkOperation:
+	// delete link to <ViewComponent> from navigation
+	'deleteNavLink''('ViewComponent')'';'
+;
+
+RedirectNavLinkOperation:
+	// redirect to <ViewComponent>
+	'redirectNavLink''('ViewComponent')'';'
+;
+
+ClearNavOperation:
+	// clear all navigation links
+	'clearNavigation''('')'';'
+;
+
+Text:
+	STRING
+;
+
+LayoutChangeOperation:
+	ChangeFontOperation | ChangeFontSizeOperation | ChangeTableCssClassOperation | AdaptCssClassOperation
+;
+
+ChangeFontSizeOperation:
+	// Change primary and secondary font size
+	'changeFontSize''('FontSize','FontSize')'';'
+;
+
+ChangeColorSchemeOperation:
+	// define color schemes and attributes for color schemes
+	'changeColorScheme''('Color','Color')'';'
+;
+
+ChangeFontOperation:
+	// change to font <Text>
+	'changeFont''('Text')'';'
+;
+
+ChangeTableCssClassOperation:
+	// Define table css classes by <Text>
+	'changeTableCss''('Text')'';'
+;
+
+AdaptCssClassOperation:
+	// basically JQuery changes the attribute of the given css class to attribute value
+	'adaptCssClass''('CssClass','Attribute','AttributeValue')'';'
+;
+
+CssClass:
+	STRING
+;
+
+Attribute:
+	STRING
+;
+
+AttributeValue:
+	STRING
+;
+
+Color:
+	STRING
+;
+
+FontSize:
+	INT
+;
+
+EditFactOperation:
+	// set FactProperty to Value
+	FactProperty '=' Value';'
+;
+
+FactProperty:
+	ID
+;

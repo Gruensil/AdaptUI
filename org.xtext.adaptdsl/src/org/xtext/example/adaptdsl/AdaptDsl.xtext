@@ -16,11 +16,10 @@ adaptionRule:
  	'rule' RuleName '{' 
  	// optional priority level, default is 0, higher level => higher priority
  	('LEVEL' Level ';')?
-	'IF''('Conditions')' 
-	// then optional
-	'THEN''(' 
+	'IF''('Conditions')'
+	('THEN')?'{' 
 		actions += Action*
-	')'';''}'
+	'}'';''}'
 ;
 
 RuleName:
@@ -61,7 +60,7 @@ Actions:
 ;
 
 Action:
-	TaskChangeOperation | NavigationChangeOperation | LayoutChangeOperation | EditFactOperation
+	TaskChangeOperation | NavigationChangeOperation | LayoutChangeOperation | EditFactOperation | RessourceChangeOperation
 ;
 
 TaskChangeOperation: 
@@ -168,4 +167,16 @@ EditFactOperation:
 
 FactProperty:
 	ID
+;
+
+RessourceChangeOperation:
+	ChangeImageSource | ChangeStringSource
+;
+
+ChangeImageSource:
+	'changeImageSource''('STRING')'
+;
+
+ChangeStringSource:
+	'changeStringSource''('STRING')'
 ;
