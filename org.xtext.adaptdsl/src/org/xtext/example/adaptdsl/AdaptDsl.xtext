@@ -2,77 +2,127 @@ grammar org.xtext.example.adaptdsl.AdaptDsl with org.eclipse.xtext.common.Termin
 
 generate adaptDsl "http://www.xtext.org/example/adaptdsl/AdaptDsl"
 
+
 Model:
-	'flow' FlowName '{'
-		adaptationRules += adaptionRule+
+	(services = Services)?
+	'flow' flowName = STRING '{'
+		adaptationRules += AdaptionRule+
 	'};'
 ;
 
-FlowName:
-	flow = ID
+Services returns ServiceList:
+	this=Service (next=Services)?
 ;
 
-adaptionRule:
- 	'rule' RuleName '{' 
- 	// optional priority level, default is 0, higher level => higher priority
- 	('LEVEL' Level ';')?
-	'IF''('Conditions')'
-	('THEN')?'{' 
-		actions += Action*
-	'}'';''}'
+Service returns Service:
+	'service' type=ID 'from' loc=STRING 'as' id=STRING '{'
+		functions = Functions
+	'};'
 ;
 
-RuleName:
-	rule = ID
+Functions returns FunctionList:
+	this=Function (next=Functions)?
 ;
 
-Level:
-	INT
+Function returns Function:
+	'function' name=ID 'as' id=STRING ';'
 ;
 
-Conditions:
-	// bindungskraft
-	Condition ( AndOr Condition)*
+AdaptionRule:
+ 	'rule' name=ID '{' 
+ 	'LEVEL' level=INT ';'
+ 	'FACT' factType=ID factName=ID ';'
+	'IF''(' expr = ConditionalOR ')' 
+	'THEN''(' 
+		actionCollection = Actions 
+	')'';''}'
+;
+    
+ConditionalOR returns ConditionalOrExpression:
+    left = ConditionalAND ('||' right=ConditionalOR)?;
+    
+ConditionalAND returns ConditionalAndExpression:
+    left = ConditionalPrimary ( '&&' right=ConditionalAND)?;
+    
+ConditionalPrimary returns ConditionalPrimary:
+    cond = StringCondition
+    |	cond = NumberCondition
+    |	cond = BooleanCondition
 ;
 
-Condition:
-	(Fact Operator Value) |  (Fact'('')')
+BooleanCondition returns BooleanCondition:
+	( fact=Fact op=BoolOperators val=BOOL)
+	|( fact=Fact)	
 ;
 
-AndOr:
-	'AND' | 'OR' | '&&' | '||'
+NumberCondition returns NumberCondition:
+	( fact=Fact op=NumberOperators val=INT)
 ;
+
+StringCondition returns StringCondition:
+	( fact=Fact op=StringOperators val=STRING)
+;
+
 
 Fact:
-	ID
+	ID('()')?('.'ID('()')?)*
 ;
 
-Operator:
+FactProperty:
+	ID('()')?('.'ID('()')?)*'.'ID
+;
+
+NumberOperators:
 	'>' | '<' | '==' | '!=' | '>=' | '<=' | '==='
 ;
 
-Value:
-	INT | STRING
+StringOperators:
+	'==' | '!=' | '==='
 ;
 
-Actions:
-	Action*
+BoolOperators:
+	'==' | '!=' 
 ;
 
-Action:
-	TaskChangeOperation | NavigationChangeOperation | LayoutChangeOperation | EditFactOperation | RessourceChangeOperation
+Type:
+	"number" | "string" | "boolean"
 ;
 
-TaskChangeOperation: 
-	AddViewComponentOperation | DeleteViewComponentOperation
+Actions returns Actions:
+	action = Action (next=Actions)?
 ;
 
-AddViewComponentOperation:
-	'addViewComponent''(' ViewComponent',' TargetContainer ')'';'
+Action returns ActionCategory:
+	actionCategory = ServiceOperation | actionCategory = TaskChangeOperation | actionCategory = NavigationChangeOperation | actionCategory = LayoutChangeOperation
 ;
 
-DeleteViewComponentOperation:
-	'deleteViewComponent''(' ViewComponent ')'';'
+ServiceOperation returns ParentOperation:
+	operation = ServiceFunctionCallOperation | operation = EditFactOperation | operation = SetDisplayPropertyOperation
+;
+
+ServiceFunctionCallOperation returns ServiceFunctionCallOperation:
+	'functionCall''('service=ID','function=ID','val=ID')'';'
+;
+
+EditFactOperation returns EditFactOperation:
+	// set FactProperty to Value
+	'editFact''('prop=FactProperty(','val=Value)?')'';'
+;
+
+SetDisplayPropertyOperation returns SetDisplayPropertyOperation:
+	'setDisplayProperty''('property=STRING','val=STRING')'';'
+;
+
+TaskChangeOperation returns ParentOperation: 
+	operation = AddViewComponentOperation | operation = DeleteViewComponentOperation
+;
+
+AddViewComponentOperation returns AddViewComponentOperation:
+	'addViewComponent''('viewComp=ViewComponent',' target=TargetContainer ')'';'
+;
+
+DeleteViewComponentOperation returns DeleteViewComponentOperation:
+	'deleteViewComponent''(' viewComp=ViewComponent ')'';'
 ;
 
 ViewComponent:
@@ -83,26 +133,26 @@ TargetContainer:
 	ID
 ;
 
-NavigationChangeOperation:
-	AddNavLinkOperation | DeleteNavLinkOperation | RedirectNavLinkOperation | ClearNavOperation
+NavigationChangeOperation returns ParentOperation:
+	operation = AddNavLinkOperation | operation = DeleteNavLinkOperation | operation = RedirectNavLinkOperation | operation = ClearNavOperation
 ;
 
-AddNavLinkOperation:
+AddNavLinkOperation returns AddNavLinkOperation:
 	// add a navigation link to <ViewComponent> with link description <Text>
-	'addNavLink''('ViewComponent','Text')'';'
+	'addNavLink''('viewComp=ViewComponent','text=Text')'';'
 ;
 
-DeleteNavLinkOperation:
+DeleteNavLinkOperation returns DeleteNavLinkOperation:
 	// delete link to <ViewComponent> from navigation
-	'deleteNavLink''('ViewComponent')'';'
+	'deleteNavLink''('viewComp=ViewComponent')'';'
 ;
 
-RedirectNavLinkOperation:
+RedirectNavLinkOperation returns RedirectNavLinkOperation:
 	// redirect to <ViewComponent>
-	'redirectNavLink''('ViewComponent')'';'
+	'redirectNavLink''('viewComp=ViewComponent')'';'
 ;
 
-ClearNavOperation:
+ClearNavOperation returns ClearNavOperation:
 	// clear all navigation links
 	'clearNavigation''('')'';'
 ;
@@ -111,33 +161,33 @@ Text:
 	STRING
 ;
 
-LayoutChangeOperation:
-	ChangeFontOperation | ChangeFontSizeOperation | ChangeTableCssClassOperation | AdaptCssClassOperation
+LayoutChangeOperation returns ParentOperation:
+	operation = ChangeFontOperation | operation = ChangeFontSizeOperation | operation = ChangeTableCssClassOperation | operation = AdaptCssClassOperation | operation = ChangeColorSchemeOperation
 ;
 
-ChangeFontSizeOperation:
+ChangeFontSizeOperation returns ChangeFontSizeOperation:
 	// Change primary and secondary font size
-	'changeFontSize''('FontSize','FontSize')'';'
+	'changeFontSize''('sizePrimary=FontSize','sizeSecondary=FontSize')'';'
 ;
 
-ChangeColorSchemeOperation:
+ChangeColorSchemeOperation returns ChangeColorSchemeOperation:
 	// define color schemes and attributes for color schemes
-	'changeColorScheme''('Color','Color')'';'
+	'changeColorScheme''('colorPrimary = Color','colorSecondary = Color')'';'
 ;
 
-ChangeFontOperation:
+ChangeFontOperation returns ChangeFontOperation:
 	// change to font <Text>
-	'changeFont''('Text')'';'
+	'changeFont''('text=Text')'';'
 ;
 
-ChangeTableCssClassOperation:
+ChangeTableCssClassOperation returns ChangeTableCssClassOperation:
 	// Define table css classes by <Text>
-	'changeTableCss''('Text')'';'
+	'changeTableCss''('text=Text')'';'
 ;
 
-AdaptCssClassOperation:
+AdaptCssClassOperation returns AdaptCssClassOperation:
 	// basically JQuery changes the attribute of the given css class to attribute value
-	'adaptCssClass''('CssClass','Attribute','AttributeValue')'';'
+	'adaptCssClass''('cssClass=CssClass','cssAttribute=Attribute','cssAttributeValue=AttributeValue')'';'
 ;
 
 CssClass:
@@ -160,23 +210,9 @@ FontSize:
 	INT
 ;
 
-EditFactOperation:
-	// set FactProperty to Value
-	FactProperty '=' Value';'
+Value:
+	INT | STRING | BOOL
 ;
 
-FactProperty:
-	ID
-;
 
-RessourceChangeOperation:
-	ChangeImageSource | ChangeStringSource
-;
-
-ChangeImageSource:
-	'changeImageSource''('STRING')'
-;
-
-ChangeStringSource:
-	'changeStringSource''('STRING')'
-;
+terminal BOOL: 'true'|'false';

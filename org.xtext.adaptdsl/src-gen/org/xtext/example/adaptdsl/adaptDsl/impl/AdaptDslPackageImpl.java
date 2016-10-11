@@ -10,12 +10,37 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
+import org.xtext.example.adaptdsl.adaptDsl.Actions;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslFactory;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.Greeting;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Function;
+import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
-import org.xtext.example.adaptdsl.adaptDsl.RuleName;
-import org.xtext.example.adaptdsl.adaptDsl.adaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Service;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
+import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
+import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +62,28 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass greetingEClass = null;
+  private EClass serviceListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass serviceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -51,7 +97,161 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleNameEClass = null;
+  private EClass conditionalOrExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalAndExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalPrimaryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numberConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionCategoryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parentOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass serviceFunctionCallOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass editFactOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass setDisplayPropertyOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addViewComponentOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deleteViewComponentOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addNavLinkOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deleteNavLinkOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass redirectNavLinkOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass clearNavOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass changeFontSizeOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass changeColorSchemeOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass changeFontOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass changeTableCssClassOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass adaptCssClassOperationEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -131,7 +331,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_AdaptationRules()
+  public EReference getModel_Services()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -141,9 +341,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGreeting()
+  public EAttribute getModel_FlowName()
   {
-    return greetingEClass;
+    return (EAttribute)modelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -151,9 +351,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGreeting_Name()
+  public EReference getModel_AdaptationRules()
   {
-    return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -161,7 +361,147 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getadaptionRule()
+  public EClass getServiceList()
+  {
+    return serviceListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getServiceList_This()
+  {
+    return (EReference)serviceListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getServiceList_Next()
+  {
+    return (EReference)serviceListEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getService()
+  {
+    return serviceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getService_Type()
+  {
+    return (EAttribute)serviceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getService_Loc()
+  {
+    return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getService_Id()
+  {
+    return (EAttribute)serviceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getService_Functions()
+  {
+    return (EReference)serviceEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionList()
+  {
+    return functionListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionList_This()
+  {
+    return (EReference)functionListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionList_Next()
+  {
+    return (EReference)functionListEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunction()
+  {
+    return functionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunction_Name()
+  {
+    return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunction_Id()
+  {
+    return (EAttribute)functionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAdaptionRule()
   {
     return adaptionRuleEClass;
   }
@@ -171,9 +511,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleName()
+  public EAttribute getAdaptionRule_Name()
   {
-    return ruleNameEClass;
+    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -181,9 +521,689 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRuleName_Rule()
+  public EAttribute getAdaptionRule_Level()
   {
-    return (EAttribute)ruleNameEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdaptionRule_FactType()
+  {
+    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdaptionRule_FactName()
+  {
+    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdaptionRule_Expr()
+  {
+    return (EReference)adaptionRuleEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdaptionRule_ActionCollection()
+  {
+    return (EReference)adaptionRuleEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionalOrExpression()
+  {
+    return conditionalOrExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalOrExpression_Left()
+  {
+    return (EReference)conditionalOrExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalOrExpression_Right()
+  {
+    return (EReference)conditionalOrExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionalAndExpression()
+  {
+    return conditionalAndExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalAndExpression_Left()
+  {
+    return (EReference)conditionalAndExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalAndExpression_Right()
+  {
+    return (EReference)conditionalAndExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionalPrimary()
+  {
+    return conditionalPrimaryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConditionalPrimary_Cond()
+  {
+    return (EReference)conditionalPrimaryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBooleanCondition()
+  {
+    return booleanConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBooleanCondition_Fact()
+  {
+    return (EAttribute)booleanConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBooleanCondition_Op()
+  {
+    return (EAttribute)booleanConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBooleanCondition_Val()
+  {
+    return (EAttribute)booleanConditionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNumberCondition()
+  {
+    return numberConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumberCondition_Fact()
+  {
+    return (EAttribute)numberConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumberCondition_Op()
+  {
+    return (EAttribute)numberConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumberCondition_Val()
+  {
+    return (EAttribute)numberConditionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStringCondition()
+  {
+    return stringConditionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringCondition_Fact()
+  {
+    return (EAttribute)stringConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringCondition_Op()
+  {
+    return (EAttribute)stringConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringCondition_Val()
+  {
+    return (EAttribute)stringConditionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActions()
+  {
+    return actionsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActions_Action()
+  {
+    return (EReference)actionsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActions_Next()
+  {
+    return (EReference)actionsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActionCategory()
+  {
+    return actionCategoryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActionCategory_ActionCategory()
+  {
+    return (EReference)actionCategoryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParentOperation()
+  {
+    return parentOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParentOperation_Operation()
+  {
+    return (EReference)parentOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getServiceFunctionCallOperation()
+  {
+    return serviceFunctionCallOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getServiceFunctionCallOperation_Service()
+  {
+    return (EAttribute)serviceFunctionCallOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getServiceFunctionCallOperation_Function()
+  {
+    return (EAttribute)serviceFunctionCallOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getServiceFunctionCallOperation_Val()
+  {
+    return (EAttribute)serviceFunctionCallOperationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEditFactOperation()
+  {
+    return editFactOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEditFactOperation_Prop()
+  {
+    return (EAttribute)editFactOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEditFactOperation_Val()
+  {
+    return (EAttribute)editFactOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSetDisplayPropertyOperation()
+  {
+    return setDisplayPropertyOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSetDisplayPropertyOperation_Property()
+  {
+    return (EAttribute)setDisplayPropertyOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSetDisplayPropertyOperation_Val()
+  {
+    return (EAttribute)setDisplayPropertyOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAddViewComponentOperation()
+  {
+    return addViewComponentOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddViewComponentOperation_ViewComp()
+  {
+    return (EAttribute)addViewComponentOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddViewComponentOperation_Target()
+  {
+    return (EAttribute)addViewComponentOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeleteViewComponentOperation()
+  {
+    return deleteViewComponentOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeleteViewComponentOperation_ViewComp()
+  {
+    return (EAttribute)deleteViewComponentOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAddNavLinkOperation()
+  {
+    return addNavLinkOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddNavLinkOperation_ViewComp()
+  {
+    return (EAttribute)addNavLinkOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddNavLinkOperation_Text()
+  {
+    return (EAttribute)addNavLinkOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeleteNavLinkOperation()
+  {
+    return deleteNavLinkOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeleteNavLinkOperation_ViewComp()
+  {
+    return (EAttribute)deleteNavLinkOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRedirectNavLinkOperation()
+  {
+    return redirectNavLinkOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRedirectNavLinkOperation_ViewComp()
+  {
+    return (EAttribute)redirectNavLinkOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getClearNavOperation()
+  {
+    return clearNavOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChangeFontSizeOperation()
+  {
+    return changeFontSizeOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeFontSizeOperation_SizePrimary()
+  {
+    return (EAttribute)changeFontSizeOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeFontSizeOperation_SizeSecondary()
+  {
+    return (EAttribute)changeFontSizeOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChangeColorSchemeOperation()
+  {
+    return changeColorSchemeOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeColorSchemeOperation_ColorPrimary()
+  {
+    return (EAttribute)changeColorSchemeOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeColorSchemeOperation_ColorSecondary()
+  {
+    return (EAttribute)changeColorSchemeOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChangeFontOperation()
+  {
+    return changeFontOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeFontOperation_Text()
+  {
+    return (EAttribute)changeFontOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChangeTableCssClassOperation()
+  {
+    return changeTableCssClassOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChangeTableCssClassOperation_Text()
+  {
+    return (EAttribute)changeTableCssClassOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAdaptCssClassOperation()
+  {
+    return adaptCssClassOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdaptCssClassOperation_CssClass()
+  {
+    return (EAttribute)adaptCssClassOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdaptCssClassOperation_CssAttribute()
+  {
+    return (EAttribute)adaptCssClassOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdaptCssClassOperation_CssAttributeValue()
+  {
+    return (EAttribute)adaptCssClassOperationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -217,15 +1237,122 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
+    createEReference(modelEClass, MODEL__SERVICES);
+    createEAttribute(modelEClass, MODEL__FLOW_NAME);
     createEReference(modelEClass, MODEL__ADAPTATION_RULES);
 
-    greetingEClass = createEClass(GREETING);
-    createEAttribute(greetingEClass, GREETING__NAME);
+    serviceListEClass = createEClass(SERVICE_LIST);
+    createEReference(serviceListEClass, SERVICE_LIST__THIS);
+    createEReference(serviceListEClass, SERVICE_LIST__NEXT);
+
+    serviceEClass = createEClass(SERVICE);
+    createEAttribute(serviceEClass, SERVICE__TYPE);
+    createEAttribute(serviceEClass, SERVICE__LOC);
+    createEAttribute(serviceEClass, SERVICE__ID);
+    createEReference(serviceEClass, SERVICE__FUNCTIONS);
+
+    functionListEClass = createEClass(FUNCTION_LIST);
+    createEReference(functionListEClass, FUNCTION_LIST__THIS);
+    createEReference(functionListEClass, FUNCTION_LIST__NEXT);
+
+    functionEClass = createEClass(FUNCTION);
+    createEAttribute(functionEClass, FUNCTION__NAME);
+    createEAttribute(functionEClass, FUNCTION__ID);
 
     adaptionRuleEClass = createEClass(ADAPTION_RULE);
+    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__NAME);
+    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__LEVEL);
+    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__FACT_TYPE);
+    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__FACT_NAME);
+    createEReference(adaptionRuleEClass, ADAPTION_RULE__EXPR);
+    createEReference(adaptionRuleEClass, ADAPTION_RULE__ACTION_COLLECTION);
 
-    ruleNameEClass = createEClass(RULE_NAME);
-    createEAttribute(ruleNameEClass, RULE_NAME__RULE);
+    conditionalOrExpressionEClass = createEClass(CONDITIONAL_OR_EXPRESSION);
+    createEReference(conditionalOrExpressionEClass, CONDITIONAL_OR_EXPRESSION__LEFT);
+    createEReference(conditionalOrExpressionEClass, CONDITIONAL_OR_EXPRESSION__RIGHT);
+
+    conditionalAndExpressionEClass = createEClass(CONDITIONAL_AND_EXPRESSION);
+    createEReference(conditionalAndExpressionEClass, CONDITIONAL_AND_EXPRESSION__LEFT);
+    createEReference(conditionalAndExpressionEClass, CONDITIONAL_AND_EXPRESSION__RIGHT);
+
+    conditionalPrimaryEClass = createEClass(CONDITIONAL_PRIMARY);
+    createEReference(conditionalPrimaryEClass, CONDITIONAL_PRIMARY__COND);
+
+    booleanConditionEClass = createEClass(BOOLEAN_CONDITION);
+    createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__FACT);
+    createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__OP);
+    createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__VAL);
+
+    numberConditionEClass = createEClass(NUMBER_CONDITION);
+    createEAttribute(numberConditionEClass, NUMBER_CONDITION__FACT);
+    createEAttribute(numberConditionEClass, NUMBER_CONDITION__OP);
+    createEAttribute(numberConditionEClass, NUMBER_CONDITION__VAL);
+
+    stringConditionEClass = createEClass(STRING_CONDITION);
+    createEAttribute(stringConditionEClass, STRING_CONDITION__FACT);
+    createEAttribute(stringConditionEClass, STRING_CONDITION__OP);
+    createEAttribute(stringConditionEClass, STRING_CONDITION__VAL);
+
+    actionsEClass = createEClass(ACTIONS);
+    createEReference(actionsEClass, ACTIONS__ACTION);
+    createEReference(actionsEClass, ACTIONS__NEXT);
+
+    actionCategoryEClass = createEClass(ACTION_CATEGORY);
+    createEReference(actionCategoryEClass, ACTION_CATEGORY__ACTION_CATEGORY);
+
+    parentOperationEClass = createEClass(PARENT_OPERATION);
+    createEReference(parentOperationEClass, PARENT_OPERATION__OPERATION);
+
+    serviceFunctionCallOperationEClass = createEClass(SERVICE_FUNCTION_CALL_OPERATION);
+    createEAttribute(serviceFunctionCallOperationEClass, SERVICE_FUNCTION_CALL_OPERATION__SERVICE);
+    createEAttribute(serviceFunctionCallOperationEClass, SERVICE_FUNCTION_CALL_OPERATION__FUNCTION);
+    createEAttribute(serviceFunctionCallOperationEClass, SERVICE_FUNCTION_CALL_OPERATION__VAL);
+
+    editFactOperationEClass = createEClass(EDIT_FACT_OPERATION);
+    createEAttribute(editFactOperationEClass, EDIT_FACT_OPERATION__PROP);
+    createEAttribute(editFactOperationEClass, EDIT_FACT_OPERATION__VAL);
+
+    setDisplayPropertyOperationEClass = createEClass(SET_DISPLAY_PROPERTY_OPERATION);
+    createEAttribute(setDisplayPropertyOperationEClass, SET_DISPLAY_PROPERTY_OPERATION__PROPERTY);
+    createEAttribute(setDisplayPropertyOperationEClass, SET_DISPLAY_PROPERTY_OPERATION__VAL);
+
+    addViewComponentOperationEClass = createEClass(ADD_VIEW_COMPONENT_OPERATION);
+    createEAttribute(addViewComponentOperationEClass, ADD_VIEW_COMPONENT_OPERATION__VIEW_COMP);
+    createEAttribute(addViewComponentOperationEClass, ADD_VIEW_COMPONENT_OPERATION__TARGET);
+
+    deleteViewComponentOperationEClass = createEClass(DELETE_VIEW_COMPONENT_OPERATION);
+    createEAttribute(deleteViewComponentOperationEClass, DELETE_VIEW_COMPONENT_OPERATION__VIEW_COMP);
+
+    addNavLinkOperationEClass = createEClass(ADD_NAV_LINK_OPERATION);
+    createEAttribute(addNavLinkOperationEClass, ADD_NAV_LINK_OPERATION__VIEW_COMP);
+    createEAttribute(addNavLinkOperationEClass, ADD_NAV_LINK_OPERATION__TEXT);
+
+    deleteNavLinkOperationEClass = createEClass(DELETE_NAV_LINK_OPERATION);
+    createEAttribute(deleteNavLinkOperationEClass, DELETE_NAV_LINK_OPERATION__VIEW_COMP);
+
+    redirectNavLinkOperationEClass = createEClass(REDIRECT_NAV_LINK_OPERATION);
+    createEAttribute(redirectNavLinkOperationEClass, REDIRECT_NAV_LINK_OPERATION__VIEW_COMP);
+
+    clearNavOperationEClass = createEClass(CLEAR_NAV_OPERATION);
+
+    changeFontSizeOperationEClass = createEClass(CHANGE_FONT_SIZE_OPERATION);
+    createEAttribute(changeFontSizeOperationEClass, CHANGE_FONT_SIZE_OPERATION__SIZE_PRIMARY);
+    createEAttribute(changeFontSizeOperationEClass, CHANGE_FONT_SIZE_OPERATION__SIZE_SECONDARY);
+
+    changeColorSchemeOperationEClass = createEClass(CHANGE_COLOR_SCHEME_OPERATION);
+    createEAttribute(changeColorSchemeOperationEClass, CHANGE_COLOR_SCHEME_OPERATION__COLOR_PRIMARY);
+    createEAttribute(changeColorSchemeOperationEClass, CHANGE_COLOR_SCHEME_OPERATION__COLOR_SECONDARY);
+
+    changeFontOperationEClass = createEClass(CHANGE_FONT_OPERATION);
+    createEAttribute(changeFontOperationEClass, CHANGE_FONT_OPERATION__TEXT);
+
+    changeTableCssClassOperationEClass = createEClass(CHANGE_TABLE_CSS_CLASS_OPERATION);
+    createEAttribute(changeTableCssClassOperationEClass, CHANGE_TABLE_CSS_CLASS_OPERATION__TEXT);
+
+    adaptCssClassOperationEClass = createEClass(ADAPT_CSS_CLASS_OPERATION);
+    createEAttribute(adaptCssClassOperationEClass, ADAPT_CSS_CLASS_OPERATION__CSS_CLASS);
+    createEAttribute(adaptCssClassOperationEClass, ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE);
+    createEAttribute(adaptCssClassOperationEClass, ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE_VALUE);
   }
 
   /**
@@ -257,19 +1384,125 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    ruleNameEClass.getESuperTypes().add(this.getadaptionRule());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_AdaptationRules(), this.getadaptionRule(), null, "adaptationRules", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Services(), this.getServiceList(), null, "services", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModel_FlowName(), ecorePackage.getEString(), "flowName", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_AdaptationRules(), this.getAdaptionRule(), null, "adaptationRules", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(serviceListEClass, ServiceList.class, "ServiceList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getServiceList_This(), this.getService(), null, "this", null, 0, 1, ServiceList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getServiceList_Next(), this.getServiceList(), null, "next", null, 0, 1, ServiceList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(adaptionRuleEClass, adaptionRule.class, "adaptionRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getService_Type(), ecorePackage.getEString(), "type", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getService_Loc(), ecorePackage.getEString(), "loc", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getService_Id(), ecorePackage.getEString(), "id", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getService_Functions(), this.getFunctionList(), null, "functions", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleNameEClass, RuleName.class, "RuleName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleName_Rule(), ecorePackage.getEString(), "rule", null, 0, 1, RuleName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(functionListEClass, FunctionList.class, "FunctionList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionList_This(), this.getFunction(), null, "this", null, 0, 1, FunctionList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionList_Next(), this.getFunctionList(), null, "next", null, 0, 1, FunctionList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunction_Id(), ecorePackage.getEString(), "id", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(adaptionRuleEClass, AdaptionRule.class, "AdaptionRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAdaptionRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptionRule_Level(), ecorePackage.getEInt(), "level", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptionRule_FactType(), ecorePackage.getEString(), "factType", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptionRule_FactName(), ecorePackage.getEString(), "factName", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdaptionRule_Expr(), this.getConditionalOrExpression(), null, "expr", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdaptionRule_ActionCollection(), this.getActions(), null, "actionCollection", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalOrExpressionEClass, ConditionalOrExpression.class, "ConditionalOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalOrExpression_Left(), this.getConditionalAndExpression(), null, "left", null, 0, 1, ConditionalOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionalOrExpression_Right(), this.getConditionalOrExpression(), null, "right", null, 0, 1, ConditionalOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalAndExpressionEClass, ConditionalAndExpression.class, "ConditionalAndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalAndExpression_Left(), this.getConditionalPrimary(), null, "left", null, 0, 1, ConditionalAndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditionalAndExpression_Right(), this.getConditionalAndExpression(), null, "right", null, 0, 1, ConditionalAndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalPrimaryEClass, ConditionalPrimary.class, "ConditionalPrimary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditionalPrimary_Cond(), ecorePackage.getEObject(), null, "cond", null, 0, 1, ConditionalPrimary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(booleanConditionEClass, BooleanCondition.class, "BooleanCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBooleanCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBooleanCondition_Val(), ecorePackage.getEString(), "val", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numberConditionEClass, NumberCondition.class, "NumberCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumberCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNumberCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNumberCondition_Val(), ecorePackage.getEInt(), "val", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringConditionEClass, StringCondition.class, "StringCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringCondition_Val(), ecorePackage.getEString(), "val", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionsEClass, Actions.class, "Actions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActions_Action(), this.getActionCategory(), null, "action", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActions_Next(), this.getActions(), null, "next", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(actionCategoryEClass, ActionCategory.class, "ActionCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActionCategory_ActionCategory(), this.getParentOperation(), null, "actionCategory", null, 0, 1, ActionCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parentOperationEClass, ParentOperation.class, "ParentOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParentOperation_Operation(), ecorePackage.getEObject(), null, "operation", null, 0, 1, ParentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(serviceFunctionCallOperationEClass, ServiceFunctionCallOperation.class, "ServiceFunctionCallOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getServiceFunctionCallOperation_Service(), ecorePackage.getEString(), "service", null, 0, 1, ServiceFunctionCallOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getServiceFunctionCallOperation_Function(), ecorePackage.getEString(), "function", null, 0, 1, ServiceFunctionCallOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getServiceFunctionCallOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, ServiceFunctionCallOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(editFactOperationEClass, EditFactOperation.class, "EditFactOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEditFactOperation_Prop(), ecorePackage.getEString(), "prop", null, 0, 1, EditFactOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEditFactOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, EditFactOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(setDisplayPropertyOperationEClass, SetDisplayPropertyOperation.class, "SetDisplayPropertyOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSetDisplayPropertyOperation_Property(), ecorePackage.getEString(), "property", null, 0, 1, SetDisplayPropertyOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSetDisplayPropertyOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, SetDisplayPropertyOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addViewComponentOperationEClass, AddViewComponentOperation.class, "AddViewComponentOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddViewComponentOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, AddViewComponentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAddViewComponentOperation_Target(), ecorePackage.getEString(), "target", null, 0, 1, AddViewComponentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deleteViewComponentOperationEClass, DeleteViewComponentOperation.class, "DeleteViewComponentOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeleteViewComponentOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, DeleteViewComponentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addNavLinkOperationEClass, AddNavLinkOperation.class, "AddNavLinkOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddNavLinkOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, AddNavLinkOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAddNavLinkOperation_Text(), ecorePackage.getEString(), "text", null, 0, 1, AddNavLinkOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deleteNavLinkOperationEClass, DeleteNavLinkOperation.class, "DeleteNavLinkOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeleteNavLinkOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, DeleteNavLinkOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(redirectNavLinkOperationEClass, RedirectNavLinkOperation.class, "RedirectNavLinkOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRedirectNavLinkOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, RedirectNavLinkOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(clearNavOperationEClass, ClearNavOperation.class, "ClearNavOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(changeFontSizeOperationEClass, ChangeFontSizeOperation.class, "ChangeFontSizeOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getChangeFontSizeOperation_SizePrimary(), ecorePackage.getEString(), "sizePrimary", null, 0, 1, ChangeFontSizeOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getChangeFontSizeOperation_SizeSecondary(), ecorePackage.getEString(), "sizeSecondary", null, 0, 1, ChangeFontSizeOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(changeColorSchemeOperationEClass, ChangeColorSchemeOperation.class, "ChangeColorSchemeOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getChangeColorSchemeOperation_ColorPrimary(), ecorePackage.getEString(), "colorPrimary", null, 0, 1, ChangeColorSchemeOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getChangeColorSchemeOperation_ColorSecondary(), ecorePackage.getEString(), "colorSecondary", null, 0, 1, ChangeColorSchemeOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(changeFontOperationEClass, ChangeFontOperation.class, "ChangeFontOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getChangeFontOperation_Text(), ecorePackage.getEString(), "text", null, 0, 1, ChangeFontOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(changeTableCssClassOperationEClass, ChangeTableCssClassOperation.class, "ChangeTableCssClassOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getChangeTableCssClassOperation_Text(), ecorePackage.getEString(), "text", null, 0, 1, ChangeTableCssClassOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(adaptCssClassOperationEClass, AdaptCssClassOperation.class, "AdaptCssClassOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAdaptCssClassOperation_CssClass(), ecorePackage.getEString(), "cssClass", null, 0, 1, AdaptCssClassOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptCssClassOperation_CssAttribute(), ecorePackage.getEString(), "cssAttribute", null, 0, 1, AdaptCssClassOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptCssClassOperation_CssAttributeValue(), ecorePackage.getEString(), "cssAttributeValue", null, 0, 1, AdaptCssClassOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

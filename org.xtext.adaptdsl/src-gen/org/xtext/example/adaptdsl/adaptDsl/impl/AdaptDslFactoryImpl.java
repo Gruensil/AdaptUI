@@ -66,9 +66,34 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
     switch (eClass.getClassifierID())
     {
       case AdaptDslPackage.MODEL: return createModel();
-      case AdaptDslPackage.GREETING: return createGreeting();
-      case AdaptDslPackage.ADAPTION_RULE: return createadaptionRule();
-      case AdaptDslPackage.RULE_NAME: return createRuleName();
+      case AdaptDslPackage.SERVICE_LIST: return createServiceList();
+      case AdaptDslPackage.SERVICE: return createService();
+      case AdaptDslPackage.FUNCTION_LIST: return createFunctionList();
+      case AdaptDslPackage.FUNCTION: return createFunction();
+      case AdaptDslPackage.ADAPTION_RULE: return createAdaptionRule();
+      case AdaptDslPackage.CONDITIONAL_OR_EXPRESSION: return createConditionalOrExpression();
+      case AdaptDslPackage.CONDITIONAL_AND_EXPRESSION: return createConditionalAndExpression();
+      case AdaptDslPackage.CONDITIONAL_PRIMARY: return createConditionalPrimary();
+      case AdaptDslPackage.BOOLEAN_CONDITION: return createBooleanCondition();
+      case AdaptDslPackage.NUMBER_CONDITION: return createNumberCondition();
+      case AdaptDslPackage.STRING_CONDITION: return createStringCondition();
+      case AdaptDslPackage.ACTIONS: return createActions();
+      case AdaptDslPackage.ACTION_CATEGORY: return createActionCategory();
+      case AdaptDslPackage.PARENT_OPERATION: return createParentOperation();
+      case AdaptDslPackage.SERVICE_FUNCTION_CALL_OPERATION: return createServiceFunctionCallOperation();
+      case AdaptDslPackage.EDIT_FACT_OPERATION: return createEditFactOperation();
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION: return createSetDisplayPropertyOperation();
+      case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION: return createAddViewComponentOperation();
+      case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION: return createDeleteViewComponentOperation();
+      case AdaptDslPackage.ADD_NAV_LINK_OPERATION: return createAddNavLinkOperation();
+      case AdaptDslPackage.DELETE_NAV_LINK_OPERATION: return createDeleteNavLinkOperation();
+      case AdaptDslPackage.REDIRECT_NAV_LINK_OPERATION: return createRedirectNavLinkOperation();
+      case AdaptDslPackage.CLEAR_NAV_OPERATION: return createClearNavOperation();
+      case AdaptDslPackage.CHANGE_FONT_SIZE_OPERATION: return createChangeFontSizeOperation();
+      case AdaptDslPackage.CHANGE_COLOR_SCHEME_OPERATION: return createChangeColorSchemeOperation();
+      case AdaptDslPackage.CHANGE_FONT_OPERATION: return createChangeFontOperation();
+      case AdaptDslPackage.CHANGE_TABLE_CSS_CLASS_OPERATION: return createChangeTableCssClassOperation();
+      case AdaptDslPackage.ADAPT_CSS_CLASS_OPERATION: return createAdaptCssClassOperation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -90,10 +115,10 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Greeting createGreeting()
+  public ServiceList createServiceList()
   {
-    GreetingImpl greeting = new GreetingImpl();
-    return greeting;
+    ServiceListImpl serviceList = new ServiceListImpl();
+    return serviceList;
   }
 
   /**
@@ -101,9 +126,42 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public adaptionRule createadaptionRule()
+  public Service createService()
   {
-    adaptionRuleImpl adaptionRule = new adaptionRuleImpl();
+    ServiceImpl service = new ServiceImpl();
+    return service;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionList createFunctionList()
+  {
+    FunctionListImpl functionList = new FunctionListImpl();
+    return functionList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Function createFunction()
+  {
+    FunctionImpl function = new FunctionImpl();
+    return function;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdaptionRule createAdaptionRule()
+  {
+    AdaptionRuleImpl adaptionRule = new AdaptionRuleImpl();
     return adaptionRule;
   }
 
@@ -112,10 +170,252 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RuleName createRuleName()
+  public ConditionalOrExpression createConditionalOrExpression()
   {
-    RuleNameImpl ruleName = new RuleNameImpl();
-    return ruleName;
+    ConditionalOrExpressionImpl conditionalOrExpression = new ConditionalOrExpressionImpl();
+    return conditionalOrExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionalAndExpression createConditionalAndExpression()
+  {
+    ConditionalAndExpressionImpl conditionalAndExpression = new ConditionalAndExpressionImpl();
+    return conditionalAndExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionalPrimary createConditionalPrimary()
+  {
+    ConditionalPrimaryImpl conditionalPrimary = new ConditionalPrimaryImpl();
+    return conditionalPrimary;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanCondition createBooleanCondition()
+  {
+    BooleanConditionImpl booleanCondition = new BooleanConditionImpl();
+    return booleanCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NumberCondition createNumberCondition()
+  {
+    NumberConditionImpl numberCondition = new NumberConditionImpl();
+    return numberCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringCondition createStringCondition()
+  {
+    StringConditionImpl stringCondition = new StringConditionImpl();
+    return stringCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Actions createActions()
+  {
+    ActionsImpl actions = new ActionsImpl();
+    return actions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionCategory createActionCategory()
+  {
+    ActionCategoryImpl actionCategory = new ActionCategoryImpl();
+    return actionCategory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParentOperation createParentOperation()
+  {
+    ParentOperationImpl parentOperation = new ParentOperationImpl();
+    return parentOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ServiceFunctionCallOperation createServiceFunctionCallOperation()
+  {
+    ServiceFunctionCallOperationImpl serviceFunctionCallOperation = new ServiceFunctionCallOperationImpl();
+    return serviceFunctionCallOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EditFactOperation createEditFactOperation()
+  {
+    EditFactOperationImpl editFactOperation = new EditFactOperationImpl();
+    return editFactOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SetDisplayPropertyOperation createSetDisplayPropertyOperation()
+  {
+    SetDisplayPropertyOperationImpl setDisplayPropertyOperation = new SetDisplayPropertyOperationImpl();
+    return setDisplayPropertyOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AddViewComponentOperation createAddViewComponentOperation()
+  {
+    AddViewComponentOperationImpl addViewComponentOperation = new AddViewComponentOperationImpl();
+    return addViewComponentOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeleteViewComponentOperation createDeleteViewComponentOperation()
+  {
+    DeleteViewComponentOperationImpl deleteViewComponentOperation = new DeleteViewComponentOperationImpl();
+    return deleteViewComponentOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AddNavLinkOperation createAddNavLinkOperation()
+  {
+    AddNavLinkOperationImpl addNavLinkOperation = new AddNavLinkOperationImpl();
+    return addNavLinkOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeleteNavLinkOperation createDeleteNavLinkOperation()
+  {
+    DeleteNavLinkOperationImpl deleteNavLinkOperation = new DeleteNavLinkOperationImpl();
+    return deleteNavLinkOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RedirectNavLinkOperation createRedirectNavLinkOperation()
+  {
+    RedirectNavLinkOperationImpl redirectNavLinkOperation = new RedirectNavLinkOperationImpl();
+    return redirectNavLinkOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ClearNavOperation createClearNavOperation()
+  {
+    ClearNavOperationImpl clearNavOperation = new ClearNavOperationImpl();
+    return clearNavOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChangeFontSizeOperation createChangeFontSizeOperation()
+  {
+    ChangeFontSizeOperationImpl changeFontSizeOperation = new ChangeFontSizeOperationImpl();
+    return changeFontSizeOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChangeColorSchemeOperation createChangeColorSchemeOperation()
+  {
+    ChangeColorSchemeOperationImpl changeColorSchemeOperation = new ChangeColorSchemeOperationImpl();
+    return changeColorSchemeOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChangeFontOperation createChangeFontOperation()
+  {
+    ChangeFontOperationImpl changeFontOperation = new ChangeFontOperationImpl();
+    return changeFontOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChangeTableCssClassOperation createChangeTableCssClassOperation()
+  {
+    ChangeTableCssClassOperationImpl changeTableCssClassOperation = new ChangeTableCssClassOperationImpl();
+    return changeTableCssClassOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdaptCssClassOperation createAdaptCssClassOperation()
+  {
+    AdaptCssClassOperationImpl adaptCssClassOperation = new AdaptCssClassOperationImpl();
+    return adaptCssClassOperation;
   }
 
   /**

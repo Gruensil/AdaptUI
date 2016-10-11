@@ -14,10 +14,35 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
+import org.xtext.example.adaptdsl.adaptDsl.Actions;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.Greeting;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Function;
+import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
-import org.xtext.example.adaptdsl.adaptDsl.RuleName;
+import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Service;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
+import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
+import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -34,14 +59,104 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AdaptDslPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case AdaptDslPackage.GREETING:
-				sequence_Greeting(context, (Greeting) semanticObject); 
+			case AdaptDslPackage.ACTION_CATEGORY:
+				sequence_Action(context, (ActionCategory) semanticObject); 
+				return; 
+			case AdaptDslPackage.ACTIONS:
+				sequence_Actions(context, (Actions) semanticObject); 
+				return; 
+			case AdaptDslPackage.ADAPT_CSS_CLASS_OPERATION:
+				sequence_AdaptCssClassOperation(context, (AdaptCssClassOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.ADAPTION_RULE:
+				sequence_AdaptionRule(context, (AdaptionRule) semanticObject); 
+				return; 
+			case AdaptDslPackage.ADD_NAV_LINK_OPERATION:
+				sequence_AddNavLinkOperation(context, (AddNavLinkOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION:
+				sequence_AddViewComponentOperation(context, (AddViewComponentOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.BOOLEAN_CONDITION:
+				sequence_BooleanCondition(context, (BooleanCondition) semanticObject); 
+				return; 
+			case AdaptDslPackage.CHANGE_COLOR_SCHEME_OPERATION:
+				sequence_ChangeColorSchemeOperation(context, (ChangeColorSchemeOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.CHANGE_FONT_OPERATION:
+				sequence_ChangeFontOperation(context, (ChangeFontOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.CHANGE_FONT_SIZE_OPERATION:
+				sequence_ChangeFontSizeOperation(context, (ChangeFontSizeOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.CHANGE_TABLE_CSS_CLASS_OPERATION:
+				sequence_ChangeTableCssClassOperation(context, (ChangeTableCssClassOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.CONDITIONAL_AND_EXPRESSION:
+				sequence_ConditionalAND(context, (ConditionalAndExpression) semanticObject); 
+				return; 
+			case AdaptDslPackage.CONDITIONAL_OR_EXPRESSION:
+				sequence_ConditionalOR(context, (ConditionalOrExpression) semanticObject); 
+				return; 
+			case AdaptDslPackage.CONDITIONAL_PRIMARY:
+				sequence_ConditionalPrimary(context, (ConditionalPrimary) semanticObject); 
+				return; 
+			case AdaptDslPackage.DELETE_NAV_LINK_OPERATION:
+				sequence_DeleteNavLinkOperation(context, (DeleteNavLinkOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION:
+				sequence_DeleteViewComponentOperation(context, (DeleteViewComponentOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.EDIT_FACT_OPERATION:
+				sequence_EditFactOperation(context, (EditFactOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.FUNCTION:
+				sequence_Function(context, (Function) semanticObject); 
+				return; 
+			case AdaptDslPackage.FUNCTION_LIST:
+				sequence_Functions(context, (FunctionList) semanticObject); 
 				return; 
 			case AdaptDslPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case AdaptDslPackage.RULE_NAME:
-				sequence_RuleName(context, (RuleName) semanticObject); 
+			case AdaptDslPackage.NUMBER_CONDITION:
+				sequence_NumberCondition(context, (NumberCondition) semanticObject); 
+				return; 
+			case AdaptDslPackage.PARENT_OPERATION:
+				if (rule == grammarAccess.getLayoutChangeOperationRule()) {
+					sequence_LayoutChangeOperation(context, (ParentOperation) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getNavigationChangeOperationRule()) {
+					sequence_NavigationChangeOperation(context, (ParentOperation) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getServiceOperationRule()) {
+					sequence_ServiceOperation(context, (ParentOperation) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getTaskChangeOperationRule()) {
+					sequence_TaskChangeOperation(context, (ParentOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case AdaptDslPackage.REDIRECT_NAV_LINK_OPERATION:
+				sequence_RedirectNavLinkOperation(context, (RedirectNavLinkOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.SERVICE:
+				sequence_Service(context, (Service) semanticObject); 
+				return; 
+			case AdaptDslPackage.SERVICE_FUNCTION_CALL_OPERATION:
+				sequence_ServiceFunctionCallOperation(context, (ServiceFunctionCallOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.SERVICE_LIST:
+				sequence_Services(context, (ServiceList) semanticObject); 
+				return; 
+			case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION:
+				sequence_SetDisplayPropertyOperation(context, (SetDisplayPropertyOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.STRING_CONDITION:
+				sequence_StringCondition(context, (StringCondition) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -50,19 +165,361 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     Greeting returns Greeting
+	 *     Action returns ActionCategory
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (
+	 *         actionCategory=ServiceOperation | 
+	 *         actionCategory=TaskChangeOperation | 
+	 *         actionCategory=NavigationChangeOperation | 
+	 *         actionCategory=LayoutChangeOperation
+	 *     )
 	 */
-	protected void sequence_Greeting(ISerializationContext context, Greeting semanticObject) {
+	protected void sequence_Action(ISerializationContext context, ActionCategory semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Actions returns Actions
+	 *
+	 * Constraint:
+	 *     (action=Action next=Actions?)
+	 */
+	protected void sequence_Actions(ISerializationContext context, Actions semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AdaptCssClassOperation returns AdaptCssClassOperation
+	 *
+	 * Constraint:
+	 *     (cssClass=CssClass cssAttribute=Attribute cssAttributeValue=AttributeValue)
+	 */
+	protected void sequence_AdaptCssClassOperation(ISerializationContext context, AdaptCssClassOperation semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.GREETING__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.GREETING__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_CLASS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_CLASS));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPT_CSS_CLASS_OPERATION__CSS_ATTRIBUTE_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAdaptCssClassOperationAccess().getCssClassCssClassParserRuleCall_2_0(), semanticObject.getCssClass());
+		feeder.accept(grammarAccess.getAdaptCssClassOperationAccess().getCssAttributeAttributeParserRuleCall_4_0(), semanticObject.getCssAttribute());
+		feeder.accept(grammarAccess.getAdaptCssClassOperationAccess().getCssAttributeValueAttributeValueParserRuleCall_6_0(), semanticObject.getCssAttributeValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AdaptionRule returns AdaptionRule
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         level=INT 
+	 *         factType=ID 
+	 *         factName=ID 
+	 *         expr=ConditionalOR 
+	 *         actionCollection=Actions
+	 *     )
+	 */
+	protected void sequence_AdaptionRule(ISerializationContext context, AdaptionRule semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__LEVEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__LEVEL));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_TYPE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__EXPR));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__ACTION_COLLECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__ACTION_COLLECTION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getLevelINTTerminalRuleCall_4_0(), semanticObject.getLevel());
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getFactTypeIDTerminalRuleCall_7_0(), semanticObject.getFactType());
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getFactNameIDTerminalRuleCall_8_0(), semanticObject.getFactName());
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getExprConditionalORParserRuleCall_12_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getAdaptionRuleAccess().getActionCollectionActionsParserRuleCall_16_0(), semanticObject.getActionCollection());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AddNavLinkOperation returns AddNavLinkOperation
+	 *
+	 * Constraint:
+	 *     (viewComp=ViewComponent text=Text)
+	 */
+	protected void sequence_AddNavLinkOperation(ISerializationContext context, AddNavLinkOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_NAV_LINK_OPERATION__VIEW_COMP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_NAV_LINK_OPERATION__VIEW_COMP));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_NAV_LINK_OPERATION__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_NAV_LINK_OPERATION__TEXT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAddNavLinkOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.accept(grammarAccess.getAddNavLinkOperationAccess().getTextTextParserRuleCall_4_0(), semanticObject.getText());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AddViewComponentOperation returns AddViewComponentOperation
+	 *
+	 * Constraint:
+	 *     (viewComp=ViewComponent target=TargetContainer)
+	 */
+	protected void sequence_AddViewComponentOperation(ISerializationContext context, AddViewComponentOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_OPERATION__VIEW_COMP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_OPERATION__VIEW_COMP));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_OPERATION__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_OPERATION__TARGET));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAddViewComponentOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.accept(grammarAccess.getAddViewComponentOperationAccess().getTargetTargetContainerParserRuleCall_4_0(), semanticObject.getTarget());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BooleanCondition returns BooleanCondition
+	 *
+	 * Constraint:
+	 *     ((fact=Fact op=BoolOperators val=BOOL) | fact=Fact)
+	 */
+	protected void sequence_BooleanCondition(ISerializationContext context, BooleanCondition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ChangeColorSchemeOperation returns ChangeColorSchemeOperation
+	 *
+	 * Constraint:
+	 *     (colorPrimary=Color colorSecondary=Color)
+	 */
+	protected void sequence_ChangeColorSchemeOperation(ISerializationContext context, ChangeColorSchemeOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_COLOR_SCHEME_OPERATION__COLOR_PRIMARY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_COLOR_SCHEME_OPERATION__COLOR_PRIMARY));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_COLOR_SCHEME_OPERATION__COLOR_SECONDARY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_COLOR_SCHEME_OPERATION__COLOR_SECONDARY));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getChangeColorSchemeOperationAccess().getColorPrimaryColorParserRuleCall_2_0(), semanticObject.getColorPrimary());
+		feeder.accept(grammarAccess.getChangeColorSchemeOperationAccess().getColorSecondaryColorParserRuleCall_4_0(), semanticObject.getColorSecondary());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ChangeFontOperation returns ChangeFontOperation
+	 *
+	 * Constraint:
+	 *     text=Text
+	 */
+	protected void sequence_ChangeFontOperation(ISerializationContext context, ChangeFontOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_OPERATION__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_OPERATION__TEXT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getChangeFontOperationAccess().getTextTextParserRuleCall_2_0(), semanticObject.getText());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ChangeFontSizeOperation returns ChangeFontSizeOperation
+	 *
+	 * Constraint:
+	 *     (sizePrimary=FontSize sizeSecondary=FontSize)
+	 */
+	protected void sequence_ChangeFontSizeOperation(ISerializationContext context, ChangeFontSizeOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_SIZE_OPERATION__SIZE_PRIMARY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_SIZE_OPERATION__SIZE_PRIMARY));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_SIZE_OPERATION__SIZE_SECONDARY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_FONT_SIZE_OPERATION__SIZE_SECONDARY));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getChangeFontSizeOperationAccess().getSizePrimaryFontSizeParserRuleCall_2_0(), semanticObject.getSizePrimary());
+		feeder.accept(grammarAccess.getChangeFontSizeOperationAccess().getSizeSecondaryFontSizeParserRuleCall_4_0(), semanticObject.getSizeSecondary());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ChangeTableCssClassOperation returns ChangeTableCssClassOperation
+	 *
+	 * Constraint:
+	 *     text=Text
+	 */
+	protected void sequence_ChangeTableCssClassOperation(ISerializationContext context, ChangeTableCssClassOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.CHANGE_TABLE_CSS_CLASS_OPERATION__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.CHANGE_TABLE_CSS_CLASS_OPERATION__TEXT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getChangeTableCssClassOperationAccess().getTextTextParserRuleCall_2_0(), semanticObject.getText());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConditionalAND returns ConditionalAndExpression
+	 *
+	 * Constraint:
+	 *     (left=ConditionalPrimary right=ConditionalAND?)
+	 */
+	protected void sequence_ConditionalAND(ISerializationContext context, ConditionalAndExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConditionalOR returns ConditionalOrExpression
+	 *
+	 * Constraint:
+	 *     (left=ConditionalAND right=ConditionalOR?)
+	 */
+	protected void sequence_ConditionalOR(ISerializationContext context, ConditionalOrExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ConditionalPrimary returns ConditionalPrimary
+	 *
+	 * Constraint:
+	 *     (cond=StringCondition | cond=NumberCondition | cond=BooleanCondition)
+	 */
+	protected void sequence_ConditionalPrimary(ISerializationContext context, ConditionalPrimary semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DeleteNavLinkOperation returns DeleteNavLinkOperation
+	 *
+	 * Constraint:
+	 *     viewComp=ViewComponent
+	 */
+	protected void sequence_DeleteNavLinkOperation(ISerializationContext context, DeleteNavLinkOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.DELETE_NAV_LINK_OPERATION__VIEW_COMP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.DELETE_NAV_LINK_OPERATION__VIEW_COMP));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDeleteNavLinkOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DeleteViewComponentOperation returns DeleteViewComponentOperation
+	 *
+	 * Constraint:
+	 *     viewComp=ViewComponent
+	 */
+	protected void sequence_DeleteViewComponentOperation(ISerializationContext context, DeleteViewComponentOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.DELETE_VIEW_COMPONENT_OPERATION__VIEW_COMP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.DELETE_VIEW_COMPONENT_OPERATION__VIEW_COMP));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDeleteViewComponentOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EditFactOperation returns EditFactOperation
+	 *
+	 * Constraint:
+	 *     (prop=FactProperty val=Value?)
+	 */
+	protected void sequence_EditFactOperation(ISerializationContext context, EditFactOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Function returns Function
+	 *
+	 * Constraint:
+	 *     (name=ID id=STRING)
+	 */
+	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FUNCTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FUNCTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FUNCTION__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FUNCTION__ID));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFunctionAccess().getIdSTRINGTerminalRuleCall_3_0(), semanticObject.getId());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Functions returns FunctionList
+	 *
+	 * Constraint:
+	 *     (this=Function next=Functions?)
+	 */
+	protected void sequence_Functions(ISerializationContext context, FunctionList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LayoutChangeOperation returns ParentOperation
+	 *
+	 * Constraint:
+	 *     (
+	 *         operation=ChangeFontOperation | 
+	 *         operation=ChangeFontSizeOperation | 
+	 *         operation=ChangeTableCssClassOperation | 
+	 *         operation=AdaptCssClassOperation | 
+	 *         operation=ChangeColorSchemeOperation
+	 *     )
+	 */
+	protected void sequence_LayoutChangeOperation(ISerializationContext context, ParentOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -71,7 +528,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     adaptationRules+=adaptionRule+
+	 *     (services=Services? flowName=STRING adaptationRules+=AdaptionRule+)
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -80,20 +537,187 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     adaptionRule returns RuleName
-	 *     RuleName returns RuleName
+	 *     NavigationChangeOperation returns ParentOperation
 	 *
 	 * Constraint:
-	 *     rule=ID
+	 *     (operation=AddNavLinkOperation | operation=DeleteNavLinkOperation | operation=RedirectNavLinkOperation | operation=ClearNavOperation)
 	 */
-	protected void sequence_RuleName(ISerializationContext context, RuleName semanticObject) {
+	protected void sequence_NavigationChangeOperation(ISerializationContext context, ParentOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     NumberCondition returns NumberCondition
+	 *
+	 * Constraint:
+	 *     (fact=Fact op=NumberOperators val=INT)
+	 */
+	protected void sequence_NumberCondition(ISerializationContext context, NumberCondition semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.RULE_NAME__RULE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.RULE_NAME__RULE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__FACT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__FACT));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__OP));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.NUMBER_CONDITION__VAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRuleNameAccess().getRuleIDTerminalRuleCall_0(), semanticObject.getRule());
+		feeder.accept(grammarAccess.getNumberConditionAccess().getFactFactParserRuleCall_0_0(), semanticObject.getFact());
+		feeder.accept(grammarAccess.getNumberConditionAccess().getOpNumberOperatorsParserRuleCall_1_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getNumberConditionAccess().getValINTTerminalRuleCall_2_0(), semanticObject.getVal());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RedirectNavLinkOperation returns RedirectNavLinkOperation
+	 *
+	 * Constraint:
+	 *     viewComp=ViewComponent
+	 */
+	protected void sequence_RedirectNavLinkOperation(ISerializationContext context, RedirectNavLinkOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.REDIRECT_NAV_LINK_OPERATION__VIEW_COMP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.REDIRECT_NAV_LINK_OPERATION__VIEW_COMP));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRedirectNavLinkOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ServiceFunctionCallOperation returns ServiceFunctionCallOperation
+	 *
+	 * Constraint:
+	 *     (service=ID function=ID val=ID)
+	 */
+	protected void sequence_ServiceFunctionCallOperation(ISerializationContext context, ServiceFunctionCallOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__SERVICE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__SERVICE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__FUNCTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__FUNCTION));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE_FUNCTION_CALL_OPERATION__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getServiceIDTerminalRuleCall_2_0(), semanticObject.getService());
+		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getFunctionIDTerminalRuleCall_4_0(), semanticObject.getFunction());
+		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getValIDTerminalRuleCall_6_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ServiceOperation returns ParentOperation
+	 *
+	 * Constraint:
+	 *     (operation=ServiceFunctionCallOperation | operation=EditFactOperation | operation=SetDisplayPropertyOperation)
+	 */
+	protected void sequence_ServiceOperation(ISerializationContext context, ParentOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Service returns Service
+	 *
+	 * Constraint:
+	 *     (type=ID loc=STRING id=STRING functions=Functions)
+	 */
+	protected void sequence_Service(ISerializationContext context, Service semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE__TYPE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE__LOC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE__LOC));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE__ID));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SERVICE__FUNCTIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SERVICE__FUNCTIONS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getServiceAccess().getTypeIDTerminalRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getServiceAccess().getLocSTRINGTerminalRuleCall_3_0(), semanticObject.getLoc());
+		feeder.accept(grammarAccess.getServiceAccess().getIdSTRINGTerminalRuleCall_5_0(), semanticObject.getId());
+		feeder.accept(grammarAccess.getServiceAccess().getFunctionsFunctionsParserRuleCall_7_0(), semanticObject.getFunctions());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Services returns ServiceList
+	 *
+	 * Constraint:
+	 *     (this=Service next=Services?)
+	 */
+	protected void sequence_Services(ISerializationContext context, ServiceList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SetDisplayPropertyOperation returns SetDisplayPropertyOperation
+	 *
+	 * Constraint:
+	 *     (property=STRING val=STRING)
+	 */
+	protected void sequence_SetDisplayPropertyOperation(ISerializationContext context, SetDisplayPropertyOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSetDisplayPropertyOperationAccess().getPropertySTRINGTerminalRuleCall_2_0(), semanticObject.getProperty());
+		feeder.accept(grammarAccess.getSetDisplayPropertyOperationAccess().getValSTRINGTerminalRuleCall_4_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     StringCondition returns StringCondition
+	 *
+	 * Constraint:
+	 *     (fact=Fact op=StringOperators val=STRING)
+	 */
+	protected void sequence_StringCondition(ISerializationContext context, StringCondition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__FACT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__FACT));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__OP));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.STRING_CONDITION__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringConditionAccess().getFactFactParserRuleCall_0_0(), semanticObject.getFact());
+		feeder.accept(grammarAccess.getStringConditionAccess().getOpStringOperatorsParserRuleCall_1_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getStringConditionAccess().getValSTRINGTerminalRuleCall_2_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TaskChangeOperation returns ParentOperation
+	 *
+	 * Constraint:
+	 *     (operation=AddViewComponentOperation | operation=DeleteViewComponentOperation)
+	 */
+	protected void sequence_TaskChangeOperation(ISerializationContext context, ParentOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

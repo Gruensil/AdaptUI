@@ -80,25 +80,199 @@ public class AdaptDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AdaptDslPackage.GREETING:
+      case AdaptDslPackage.SERVICE_LIST:
       {
-        Greeting greeting = (Greeting)theEObject;
-        T result = caseGreeting(greeting);
+        ServiceList serviceList = (ServiceList)theEObject;
+        T result = caseServiceList(serviceList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.SERVICE:
+      {
+        Service service = (Service)theEObject;
+        T result = caseService(service);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.FUNCTION_LIST:
+      {
+        FunctionList functionList = (FunctionList)theEObject;
+        T result = caseFunctionList(functionList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.FUNCTION:
+      {
+        Function function = (Function)theEObject;
+        T result = caseFunction(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
       case AdaptDslPackage.ADAPTION_RULE:
       {
-        adaptionRule adaptionRule = (adaptionRule)theEObject;
-        T result = caseadaptionRule(adaptionRule);
+        AdaptionRule adaptionRule = (AdaptionRule)theEObject;
+        T result = caseAdaptionRule(adaptionRule);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AdaptDslPackage.RULE_NAME:
+      case AdaptDslPackage.CONDITIONAL_OR_EXPRESSION:
       {
-        RuleName ruleName = (RuleName)theEObject;
-        T result = caseRuleName(ruleName);
-        if (result == null) result = caseadaptionRule(ruleName);
+        ConditionalOrExpression conditionalOrExpression = (ConditionalOrExpression)theEObject;
+        T result = caseConditionalOrExpression(conditionalOrExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CONDITIONAL_AND_EXPRESSION:
+      {
+        ConditionalAndExpression conditionalAndExpression = (ConditionalAndExpression)theEObject;
+        T result = caseConditionalAndExpression(conditionalAndExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CONDITIONAL_PRIMARY:
+      {
+        ConditionalPrimary conditionalPrimary = (ConditionalPrimary)theEObject;
+        T result = caseConditionalPrimary(conditionalPrimary);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.BOOLEAN_CONDITION:
+      {
+        BooleanCondition booleanCondition = (BooleanCondition)theEObject;
+        T result = caseBooleanCondition(booleanCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.NUMBER_CONDITION:
+      {
+        NumberCondition numberCondition = (NumberCondition)theEObject;
+        T result = caseNumberCondition(numberCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.STRING_CONDITION:
+      {
+        StringCondition stringCondition = (StringCondition)theEObject;
+        T result = caseStringCondition(stringCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ACTIONS:
+      {
+        Actions actions = (Actions)theEObject;
+        T result = caseActions(actions);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ACTION_CATEGORY:
+      {
+        ActionCategory actionCategory = (ActionCategory)theEObject;
+        T result = caseActionCategory(actionCategory);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.PARENT_OPERATION:
+      {
+        ParentOperation parentOperation = (ParentOperation)theEObject;
+        T result = caseParentOperation(parentOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.SERVICE_FUNCTION_CALL_OPERATION:
+      {
+        ServiceFunctionCallOperation serviceFunctionCallOperation = (ServiceFunctionCallOperation)theEObject;
+        T result = caseServiceFunctionCallOperation(serviceFunctionCallOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.EDIT_FACT_OPERATION:
+      {
+        EditFactOperation editFactOperation = (EditFactOperation)theEObject;
+        T result = caseEditFactOperation(editFactOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION:
+      {
+        SetDisplayPropertyOperation setDisplayPropertyOperation = (SetDisplayPropertyOperation)theEObject;
+        T result = caseSetDisplayPropertyOperation(setDisplayPropertyOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION:
+      {
+        AddViewComponentOperation addViewComponentOperation = (AddViewComponentOperation)theEObject;
+        T result = caseAddViewComponentOperation(addViewComponentOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION:
+      {
+        DeleteViewComponentOperation deleteViewComponentOperation = (DeleteViewComponentOperation)theEObject;
+        T result = caseDeleteViewComponentOperation(deleteViewComponentOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ADD_NAV_LINK_OPERATION:
+      {
+        AddNavLinkOperation addNavLinkOperation = (AddNavLinkOperation)theEObject;
+        T result = caseAddNavLinkOperation(addNavLinkOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.DELETE_NAV_LINK_OPERATION:
+      {
+        DeleteNavLinkOperation deleteNavLinkOperation = (DeleteNavLinkOperation)theEObject;
+        T result = caseDeleteNavLinkOperation(deleteNavLinkOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.REDIRECT_NAV_LINK_OPERATION:
+      {
+        RedirectNavLinkOperation redirectNavLinkOperation = (RedirectNavLinkOperation)theEObject;
+        T result = caseRedirectNavLinkOperation(redirectNavLinkOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CLEAR_NAV_OPERATION:
+      {
+        ClearNavOperation clearNavOperation = (ClearNavOperation)theEObject;
+        T result = caseClearNavOperation(clearNavOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CHANGE_FONT_SIZE_OPERATION:
+      {
+        ChangeFontSizeOperation changeFontSizeOperation = (ChangeFontSizeOperation)theEObject;
+        T result = caseChangeFontSizeOperation(changeFontSizeOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CHANGE_COLOR_SCHEME_OPERATION:
+      {
+        ChangeColorSchemeOperation changeColorSchemeOperation = (ChangeColorSchemeOperation)theEObject;
+        T result = caseChangeColorSchemeOperation(changeColorSchemeOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CHANGE_FONT_OPERATION:
+      {
+        ChangeFontOperation changeFontOperation = (ChangeFontOperation)theEObject;
+        T result = caseChangeFontOperation(changeFontOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CHANGE_TABLE_CSS_CLASS_OPERATION:
+      {
+        ChangeTableCssClassOperation changeTableCssClassOperation = (ChangeTableCssClassOperation)theEObject;
+        T result = caseChangeTableCssClassOperation(changeTableCssClassOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ADAPT_CSS_CLASS_OPERATION:
+      {
+        AdaptCssClassOperation adaptCssClassOperation = (AdaptCssClassOperation)theEObject;
+        T result = caseAdaptCssClassOperation(adaptCssClassOperation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -123,49 +297,449 @@ public class AdaptDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Service List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Greeting</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Service List</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGreeting(Greeting object)
+  public T caseServiceList(ServiceList object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>adaption Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Service</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>adaption Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Service</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseadaptionRule(adaptionRule object)
+  public T caseService(Service object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Name</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Function List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Name</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Function List</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRuleName(RuleName object)
+  public T caseFunctionList(FunctionList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunction(Function object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Adaption Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Adaption Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdaptionRule(AdaptionRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditional Or Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditional Or Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionalOrExpression(ConditionalOrExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditional And Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditional And Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionalAndExpression(ConditionalAndExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditional Primary</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditional Primary</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionalPrimary(ConditionalPrimary object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanCondition(BooleanCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumberCondition(NumberCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringCondition(StringCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Actions</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Actions</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActions(Actions object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Category</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Category</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionCategory(ActionCategory object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parent Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parent Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParentOperation(ParentOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Service Function Call Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Service Function Call Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseServiceFunctionCallOperation(ServiceFunctionCallOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Edit Fact Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Edit Fact Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEditFactOperation(EditFactOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Set Display Property Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Set Display Property Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSetDisplayPropertyOperation(SetDisplayPropertyOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Add View Component Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Add View Component Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAddViewComponentOperation(AddViewComponentOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Delete View Component Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Delete View Component Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeleteViewComponentOperation(DeleteViewComponentOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Add Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Add Nav Link Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAddNavLinkOperation(AddNavLinkOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Delete Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Delete Nav Link Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeleteNavLinkOperation(DeleteNavLinkOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Redirect Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Redirect Nav Link Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRedirectNavLinkOperation(RedirectNavLinkOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Clear Nav Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Clear Nav Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClearNavOperation(ClearNavOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Change Font Size Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Change Font Size Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChangeFontSizeOperation(ChangeFontSizeOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Change Color Scheme Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Change Color Scheme Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChangeColorSchemeOperation(ChangeColorSchemeOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Change Font Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Change Font Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChangeFontOperation(ChangeFontOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Change Table Css Class Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Change Table Css Class Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChangeTableCssClassOperation(ChangeTableCssClassOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Adapt Css Class Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Adapt Css Class Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdaptCssClassOperation(AdaptCssClassOperation object)
   {
     return null;
   }

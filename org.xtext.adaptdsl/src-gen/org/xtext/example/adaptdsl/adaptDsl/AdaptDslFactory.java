@@ -33,31 +33,256 @@ public interface AdaptDslFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Service List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Service List</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  ServiceList createServiceList();
 
   /**
-   * Returns a new object of class '<em>adaption Rule</em>'.
+   * Returns a new object of class '<em>Service</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>adaption Rule</em>'.
+   * @return a new object of class '<em>Service</em>'.
    * @generated
    */
-  adaptionRule createadaptionRule();
+  Service createService();
 
   /**
-   * Returns a new object of class '<em>Rule Name</em>'.
+   * Returns a new object of class '<em>Function List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Name</em>'.
+   * @return a new object of class '<em>Function List</em>'.
    * @generated
    */
-  RuleName createRuleName();
+  FunctionList createFunctionList();
+
+  /**
+   * Returns a new object of class '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function</em>'.
+   * @generated
+   */
+  Function createFunction();
+
+  /**
+   * Returns a new object of class '<em>Adaption Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Adaption Rule</em>'.
+   * @generated
+   */
+  AdaptionRule createAdaptionRule();
+
+  /**
+   * Returns a new object of class '<em>Conditional Or Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Or Expression</em>'.
+   * @generated
+   */
+  ConditionalOrExpression createConditionalOrExpression();
+
+  /**
+   * Returns a new object of class '<em>Conditional And Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional And Expression</em>'.
+   * @generated
+   */
+  ConditionalAndExpression createConditionalAndExpression();
+
+  /**
+   * Returns a new object of class '<em>Conditional Primary</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Primary</em>'.
+   * @generated
+   */
+  ConditionalPrimary createConditionalPrimary();
+
+  /**
+   * Returns a new object of class '<em>Boolean Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Condition</em>'.
+   * @generated
+   */
+  BooleanCondition createBooleanCondition();
+
+  /**
+   * Returns a new object of class '<em>Number Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Condition</em>'.
+   * @generated
+   */
+  NumberCondition createNumberCondition();
+
+  /**
+   * Returns a new object of class '<em>String Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Condition</em>'.
+   * @generated
+   */
+  StringCondition createStringCondition();
+
+  /**
+   * Returns a new object of class '<em>Actions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Actions</em>'.
+   * @generated
+   */
+  Actions createActions();
+
+  /**
+   * Returns a new object of class '<em>Action Category</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Category</em>'.
+   * @generated
+   */
+  ActionCategory createActionCategory();
+
+  /**
+   * Returns a new object of class '<em>Parent Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parent Operation</em>'.
+   * @generated
+   */
+  ParentOperation createParentOperation();
+
+  /**
+   * Returns a new object of class '<em>Service Function Call Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Service Function Call Operation</em>'.
+   * @generated
+   */
+  ServiceFunctionCallOperation createServiceFunctionCallOperation();
+
+  /**
+   * Returns a new object of class '<em>Edit Fact Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Edit Fact Operation</em>'.
+   * @generated
+   */
+  EditFactOperation createEditFactOperation();
+
+  /**
+   * Returns a new object of class '<em>Set Display Property Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Set Display Property Operation</em>'.
+   * @generated
+   */
+  SetDisplayPropertyOperation createSetDisplayPropertyOperation();
+
+  /**
+   * Returns a new object of class '<em>Add View Component Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Add View Component Operation</em>'.
+   * @generated
+   */
+  AddViewComponentOperation createAddViewComponentOperation();
+
+  /**
+   * Returns a new object of class '<em>Delete View Component Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Delete View Component Operation</em>'.
+   * @generated
+   */
+  DeleteViewComponentOperation createDeleteViewComponentOperation();
+
+  /**
+   * Returns a new object of class '<em>Add Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Add Nav Link Operation</em>'.
+   * @generated
+   */
+  AddNavLinkOperation createAddNavLinkOperation();
+
+  /**
+   * Returns a new object of class '<em>Delete Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Delete Nav Link Operation</em>'.
+   * @generated
+   */
+  DeleteNavLinkOperation createDeleteNavLinkOperation();
+
+  /**
+   * Returns a new object of class '<em>Redirect Nav Link Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Redirect Nav Link Operation</em>'.
+   * @generated
+   */
+  RedirectNavLinkOperation createRedirectNavLinkOperation();
+
+  /**
+   * Returns a new object of class '<em>Clear Nav Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Clear Nav Operation</em>'.
+   * @generated
+   */
+  ClearNavOperation createClearNavOperation();
+
+  /**
+   * Returns a new object of class '<em>Change Font Size Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Change Font Size Operation</em>'.
+   * @generated
+   */
+  ChangeFontSizeOperation createChangeFontSizeOperation();
+
+  /**
+   * Returns a new object of class '<em>Change Color Scheme Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Change Color Scheme Operation</em>'.
+   * @generated
+   */
+  ChangeColorSchemeOperation createChangeColorSchemeOperation();
+
+  /**
+   * Returns a new object of class '<em>Change Font Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Change Font Operation</em>'.
+   * @generated
+   */
+  ChangeFontOperation createChangeFontOperation();
+
+  /**
+   * Returns a new object of class '<em>Change Table Css Class Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Change Table Css Class Operation</em>'.
+   * @generated
+   */
+  ChangeTableCssClassOperation createChangeTableCssClassOperation();
+
+  /**
+   * Returns a new object of class '<em>Adapt Css Class Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Adapt Css Class Operation</em>'.
+   * @generated
+   */
+  AdaptCssClassOperation createAdaptCssClassOperation();
 
   /**
    * Returns the package supported by this factory.

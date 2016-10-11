@@ -7,6 +7,38 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.xtext.example.adaptdsl.adaptDsl.Model
+import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression
+import org.xtext.example.adaptdsl.adaptDsl.impl.ConditionalOrExpressionImpl
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression
+import org.xtext.example.adaptdsl.adaptDsl.StringCondition
+import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition
+import org.xtext.example.adaptdsl.adaptDsl.NumberCondition
+import org.xtext.example.adaptdsl.adaptDsl.Actions
+import org.xtext.example.adaptdsl.adaptDsl.ActionCategory
+import org.xtext.example.adaptdsl.adaptDsl.ParentOperation
+import org.xtext.example.adaptdsl.adaptDsl.impl.ServiceFunctionCallOperationImpl
+import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation
+import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation
+import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation
+import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation
+import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation
+import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation
+import org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation
+import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation
+import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation
+import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation
+import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl
+import org.xtext.example.adaptdsl.adaptDsl.ServiceList
+import org.xtext.example.adaptdsl.adaptDsl.Service
+import org.xtext.example.adaptdsl.adaptDsl.FunctionList
+import org.xtext.example.adaptdsl.adaptDsl.Function
 
 /**
  * Generates code from your model files on save.
@@ -14,12 +46,190 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class AdaptDslGenerator extends AbstractGenerator {
-
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+	    for (e : resource.allContents.toIterable.filter(Model)) {
+	        fsa.generateFile(
+	            "adaptDSL" + ".xml",
+	            e.compile)
+	    }
+	}
+	
+	def compile(Model model) '''
+	<?xml version="1.0" encoding="ASCII"?>
+	<adaptModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		«IF model.services != null»
+			<services>
+				«model.services.compile»
+			</services>
+		«ENDIF»
+		<flow name="«model.flowName»">
+			«FOR rule: model.adaptationRules»
+				«rule.compile»
+			«ENDFOR»
+		</flow>
+	</adaptModel>
+	'''
+	
+	def compile(ServiceList slist)'''
+		«IF slist.this != null»
+			«slist.this.compile»
+		«ENDIF»
+		«IF slist.next != null»
+			«slist.next.compile»
+		«ENDIF»
+	'''
+
+	def compile(Service svc)'''
+		<service id="«svc.id»" type="«svc.type»" location="«svc.loc»">
+			«svc.functions.compile»
+		</service>
+	'''
+
+	def compile(FunctionList flist)'''
+		«IF flist.this != null»
+			«flist.this.compile»
+		«ENDIF»
+		«IF flist.next != null»
+			«flist.next.compile»
+		«ENDIF»
+	'''
+	
+	def compile(Function func)'''
+		<function id="«func.id»" name="«func.name»" />
+	'''
+	
+	def compile(AdaptionRule rule) '''
+	<adaptionRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»">
+		<conditions>
+			«rule.expr.compile»
+		</conditions>
+		<actions>
+			«rule.actionCollection.compile»
+		</actions>
+	</adaptionRule>
+	'''
+	
+	def compile(Actions act)'''
+		«act.action.compile»
+		«IF act.next != null»
+			«act.next.compile»
+		«ENDIF»
+	'''
+
+	def compile(ActionCategory cat)'''«cat.actionCategory.compile»'''
+	
+	def compile(ParentOperation pop){
+		var op = pop.operation
+		switch (op) {
+			ServiceFunctionCallOperation: {
+				'''<functionCall service="«(op as ServiceFunctionCallOperation).service»" function="«(op as ServiceFunctionCallOperation).function»" value="«(op as ServiceFunctionCallOperation).^val»"/>'''
+			}
+			EditFactOperation: {
+				'''<editFactOperation set="«(op as EditFactOperation).prop»" «IF (op as EditFactOperation).^val != null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
+			}
+			SetDisplayPropertyOperation: {
+				'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«(op as SetDisplayPropertyOperation).^val»"/>'''
+			}
+			AddViewComponentOperation: {
+				'''<addViewComponentOperation viewComponent="«(op as AddViewComponentOperation).viewComp»" target="«(op as AddViewComponentOperation).target»"/>'''
+			}
+			DeleteViewComponentOperation: {
+				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"'''
+			}
+			AddNavLinkOperationImpl: {
+				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey="«(op as AddNavLinkOperation).text»"/>'''
+			}
+			DeleteNavLinkOperation: {
+				'''<deleteNavLinkOperation viewContainer="«(op as DeleteNavLinkOperation).viewComp»" />'''
+			}
+			RedirectNavLinkOperation: {
+				'''<redirectNavLinkOperation viewContainer="«(op as RedirectNavLinkOperation).viewComp»" />'''
+			}
+			ClearNavOperation: {
+				'''<clearNavOperation/>'''
+			}
+			ChangeFontOperation: {
+				
+			}
+			ChangeFontSizeOperation: {
+				
+			}
+			ChangeTableCssClassOperation: {
+				
+			}
+			AdaptCssClassOperation: {
+				'''<editCssClassOperation cssClass="«(op as AdaptCssClassOperation).cssClass»" cssAttribute="«(op as AdaptCssClassOperation).cssAttribute»" value="«(op as AdaptCssClassOperation).cssAttributeValue»"/>'''
+			}
+			ChangeColorSchemeOperation: {
+				
+			}
+			default: {
+				println("ERROR: unknown operation")
+				'''//ERROR: unknown operation'''
+			}
+		}
+	}
+	
+	def compile(ConditionalOrExpression expr) '''
+		«IF expr.left != null»
+			«/*Binding Group*/IF expr.left.left != null && expr.left.right != null»
+				<conditionGroup>
+					«expr.left.compile»
+				</conditionGroup>
+			«ENDIF»
+			«/*OR*/IF expr.left.left != null && expr.left.right == null»
+				«expr.left.left.compile»
+			«ENDIF»
+		«ENDIF»
+		«IF expr.right != null»
+			«expr.right.compile»
+		«ENDIF»
+	'''
+	
+	def compile(ConditionalAndExpression expr)'''
+		«IF expr.left != null»
+			«expr.left.compile»
+		«ENDIF»
+		«IF expr.right != null»
+			«expr.right.compile»
+		«ENDIF»
+	'''
+
+	def compile(ConditionalPrimary expr)'''
+		«IF expr.cond instanceof BooleanCondition»
+			«(expr.cond as BooleanCondition).compile»
+		«ENDIF»
+		«IF expr.cond instanceof NumberCondition»
+			«(expr.cond as NumberCondition).compile»
+		«ENDIF»
+		«IF expr.cond instanceof StringCondition»
+			«(expr.cond as StringCondition).compile»
+		«ENDIF»'''
+
+	def compile(BooleanCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val != null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
+	
+	def compile(StringCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val != null»value="«cond.^val.replace("'","")»"«ENDIF» type="string"/>'''
+	
+	def compile(NumberCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» value="«cond.^val»" type="number"/>'''
+
+//
+	def getOperator(String op){
+		switch (op) {
+			case "<=": {
+				return "lte";
+			}
+			case ">=": {
+				return "gte";
+			}
+			case "<": {
+				return "lt";
+			}
+			case ">": {
+				return "gt";
+			}
+			default: {
+				return op;
+			}
+		}
 	}
 }

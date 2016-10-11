@@ -26,34 +26,9 @@ public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getActionsRule())
-			return getActionsToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getConditionsRule())
-			return getConditionsToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * Actions:
-	 * 	Action*
-	 * ;
-	 */
-	protected String getActionsToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * Conditions:
-	 * 	Condition ( AndOr Condition)*
-	 * ;
-	 */
-	protected String getConditionsToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ">";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

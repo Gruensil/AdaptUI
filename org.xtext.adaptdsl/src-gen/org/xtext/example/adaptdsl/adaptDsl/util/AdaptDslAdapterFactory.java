@@ -81,19 +81,144 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseGreeting(Greeting object)
+      public Adapter caseServiceList(ServiceList object)
       {
-        return createGreetingAdapter();
+        return createServiceListAdapter();
       }
       @Override
-      public Adapter caseadaptionRule(adaptionRule object)
+      public Adapter caseService(Service object)
       {
-        return createadaptionRuleAdapter();
+        return createServiceAdapter();
       }
       @Override
-      public Adapter caseRuleName(RuleName object)
+      public Adapter caseFunctionList(FunctionList object)
       {
-        return createRuleNameAdapter();
+        return createFunctionListAdapter();
+      }
+      @Override
+      public Adapter caseFunction(Function object)
+      {
+        return createFunctionAdapter();
+      }
+      @Override
+      public Adapter caseAdaptionRule(AdaptionRule object)
+      {
+        return createAdaptionRuleAdapter();
+      }
+      @Override
+      public Adapter caseConditionalOrExpression(ConditionalOrExpression object)
+      {
+        return createConditionalOrExpressionAdapter();
+      }
+      @Override
+      public Adapter caseConditionalAndExpression(ConditionalAndExpression object)
+      {
+        return createConditionalAndExpressionAdapter();
+      }
+      @Override
+      public Adapter caseConditionalPrimary(ConditionalPrimary object)
+      {
+        return createConditionalPrimaryAdapter();
+      }
+      @Override
+      public Adapter caseBooleanCondition(BooleanCondition object)
+      {
+        return createBooleanConditionAdapter();
+      }
+      @Override
+      public Adapter caseNumberCondition(NumberCondition object)
+      {
+        return createNumberConditionAdapter();
+      }
+      @Override
+      public Adapter caseStringCondition(StringCondition object)
+      {
+        return createStringConditionAdapter();
+      }
+      @Override
+      public Adapter caseActions(Actions object)
+      {
+        return createActionsAdapter();
+      }
+      @Override
+      public Adapter caseActionCategory(ActionCategory object)
+      {
+        return createActionCategoryAdapter();
+      }
+      @Override
+      public Adapter caseParentOperation(ParentOperation object)
+      {
+        return createParentOperationAdapter();
+      }
+      @Override
+      public Adapter caseServiceFunctionCallOperation(ServiceFunctionCallOperation object)
+      {
+        return createServiceFunctionCallOperationAdapter();
+      }
+      @Override
+      public Adapter caseEditFactOperation(EditFactOperation object)
+      {
+        return createEditFactOperationAdapter();
+      }
+      @Override
+      public Adapter caseSetDisplayPropertyOperation(SetDisplayPropertyOperation object)
+      {
+        return createSetDisplayPropertyOperationAdapter();
+      }
+      @Override
+      public Adapter caseAddViewComponentOperation(AddViewComponentOperation object)
+      {
+        return createAddViewComponentOperationAdapter();
+      }
+      @Override
+      public Adapter caseDeleteViewComponentOperation(DeleteViewComponentOperation object)
+      {
+        return createDeleteViewComponentOperationAdapter();
+      }
+      @Override
+      public Adapter caseAddNavLinkOperation(AddNavLinkOperation object)
+      {
+        return createAddNavLinkOperationAdapter();
+      }
+      @Override
+      public Adapter caseDeleteNavLinkOperation(DeleteNavLinkOperation object)
+      {
+        return createDeleteNavLinkOperationAdapter();
+      }
+      @Override
+      public Adapter caseRedirectNavLinkOperation(RedirectNavLinkOperation object)
+      {
+        return createRedirectNavLinkOperationAdapter();
+      }
+      @Override
+      public Adapter caseClearNavOperation(ClearNavOperation object)
+      {
+        return createClearNavOperationAdapter();
+      }
+      @Override
+      public Adapter caseChangeFontSizeOperation(ChangeFontSizeOperation object)
+      {
+        return createChangeFontSizeOperationAdapter();
+      }
+      @Override
+      public Adapter caseChangeColorSchemeOperation(ChangeColorSchemeOperation object)
+      {
+        return createChangeColorSchemeOperationAdapter();
+      }
+      @Override
+      public Adapter caseChangeFontOperation(ChangeFontOperation object)
+      {
+        return createChangeFontOperationAdapter();
+      }
+      @Override
+      public Adapter caseChangeTableCssClassOperation(ChangeTableCssClassOperation object)
+      {
+        return createChangeTableCssClassOperationAdapter();
+      }
+      @Override
+      public Adapter caseAdaptCssClassOperation(AdaptCssClassOperation object)
+      {
+        return createAdaptCssClassOperationAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -133,46 +258,421 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.Greeting <em>Greeting</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ServiceList <em>Service List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.adaptdsl.adaptDsl.Greeting
+   * @see org.xtext.example.adaptdsl.adaptDsl.ServiceList
    * @generated
    */
-  public Adapter createGreetingAdapter()
+  public Adapter createServiceListAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.adaptionRule <em>adaption Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.Service <em>Service</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.adaptdsl.adaptDsl.adaptionRule
+   * @see org.xtext.example.adaptdsl.adaptDsl.Service
    * @generated
    */
-  public Adapter createadaptionRuleAdapter()
+  public Adapter createServiceAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.RuleName <em>Rule Name</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.FunctionList <em>Function List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.adaptdsl.adaptDsl.RuleName
+   * @see org.xtext.example.adaptdsl.adaptDsl.FunctionList
    * @generated
    */
-  public Adapter createRuleNameAdapter()
+  public Adapter createFunctionListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.Function <em>Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Function
+   * @generated
+   */
+  public Adapter createFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule <em>Adaption Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptionRule
+   * @generated
+   */
+  public Adapter createAdaptionRuleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression <em>Conditional Or Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression
+   * @generated
+   */
+  public Adapter createConditionalOrExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression <em>Conditional And Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression
+   * @generated
+   */
+  public Adapter createConditionalAndExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary <em>Conditional Primary</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary
+   * @generated
+   */
+  public Adapter createConditionalPrimaryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.BooleanCondition <em>Boolean Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.BooleanCondition
+   * @generated
+   */
+  public Adapter createBooleanConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.NumberCondition <em>Number Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.NumberCondition
+   * @generated
+   */
+  public Adapter createNumberConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.StringCondition <em>String Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.StringCondition
+   * @generated
+   */
+  public Adapter createStringConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.Actions <em>Actions</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Actions
+   * @generated
+   */
+  public Adapter createActionsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ActionCategory <em>Action Category</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ActionCategory
+   * @generated
+   */
+  public Adapter createActionCategoryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ParentOperation <em>Parent Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ParentOperation
+   * @generated
+   */
+  public Adapter createParentOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation <em>Service Function Call Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation
+   * @generated
+   */
+  public Adapter createServiceFunctionCallOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.EditFactOperation <em>Edit Fact Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.EditFactOperation
+   * @generated
+   */
+  public Adapter createEditFactOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation <em>Set Display Property Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation
+   * @generated
+   */
+  public Adapter createSetDisplayPropertyOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation <em>Add View Component Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation
+   * @generated
+   */
+  public Adapter createAddViewComponentOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation <em>Delete View Component Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation
+   * @generated
+   */
+  public Adapter createDeleteViewComponentOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation <em>Add Nav Link Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation
+   * @generated
+   */
+  public Adapter createAddNavLinkOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation <em>Delete Nav Link Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation
+   * @generated
+   */
+  public Adapter createDeleteNavLinkOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation <em>Redirect Nav Link Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation
+   * @generated
+   */
+  public Adapter createRedirectNavLinkOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation <em>Clear Nav Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation
+   * @generated
+   */
+  public Adapter createClearNavOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation <em>Change Font Size Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation
+   * @generated
+   */
+  public Adapter createChangeFontSizeOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation <em>Change Color Scheme Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation
+   * @generated
+   */
+  public Adapter createChangeColorSchemeOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation <em>Change Font Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation
+   * @generated
+   */
+  public Adapter createChangeFontOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation <em>Change Table Css Class Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation
+   * @generated
+   */
+  public Adapter createChangeTableCssClassOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation <em>Adapt Css Class Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation
+   * @generated
+   */
+  public Adapter createAdaptCssClassOperationAdapter()
   {
     return null;
   }

@@ -3,10 +3,48 @@
  */
 package org.xtext.example.adaptdsl.generator;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
+import org.xtext.example.adaptdsl.adaptDsl.Actions;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
+import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Function;
+import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
+import org.xtext.example.adaptdsl.adaptDsl.Model;
+import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
+import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Service;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
+import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
+import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
+import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +55,604 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class AdaptDslGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<Model> _filter = Iterables.<Model>filter(_iterable, Model.class);
+    for (final Model e : _filter) {
+      CharSequence _compile = this.compile(e);
+      fsa.generateFile(
+        ("adaptDSL" + ".xml"), _compile);
+    }
+  }
+  
+  public CharSequence compile(final Model model) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?xml version=\"1.0\" encoding=\"ASCII\"?>");
+    _builder.newLine();
+    _builder.append("<adaptModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
+    _builder.newLine();
+    {
+      ServiceList _services = model.getServices();
+      boolean _notEquals = (!Objects.equal(_services, null));
+      if (_notEquals) {
+        _builder.append("\t");
+        _builder.append("<services>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        ServiceList _services_1 = model.getServices();
+        CharSequence _compile = this.compile(_services_1);
+        _builder.append(_compile, "\t\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("</services>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("<flow name=\"");
+    String _flowName = model.getFlowName();
+    _builder.append(_flowName, "\t");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<AdaptionRule> _adaptationRules = model.getAdaptationRules();
+      for(final AdaptionRule rule : _adaptationRules) {
+        _builder.append("\t\t");
+        CharSequence _compile_1 = this.compile(rule);
+        _builder.append(_compile_1, "\t\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("</flow>");
+    _builder.newLine();
+    _builder.append("</adaptModel>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final ServiceList slist) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Service _this = slist.getThis();
+      boolean _notEquals = (!Objects.equal(_this, null));
+      if (_notEquals) {
+        Service _this_1 = slist.getThis();
+        CharSequence _compile = this.compile(_this_1);
+        _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      ServiceList _next = slist.getNext();
+      boolean _notEquals_1 = (!Objects.equal(_next, null));
+      if (_notEquals_1) {
+        ServiceList _next_1 = slist.getNext();
+        Object _compile_1 = this.compile(_next_1);
+        _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final Service svc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<service id=\"");
+    String _id = svc.getId();
+    _builder.append(_id, "");
+    _builder.append("\" type=\"");
+    String _type = svc.getType();
+    _builder.append(_type, "");
+    _builder.append("\" location=\"");
+    String _loc = svc.getLoc();
+    _builder.append(_loc, "");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    FunctionList _functions = svc.getFunctions();
+    CharSequence _compile = this.compile(_functions);
+    _builder.append(_compile, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</service>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final FunctionList flist) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Function _this = flist.getThis();
+      boolean _notEquals = (!Objects.equal(_this, null));
+      if (_notEquals) {
+        Function _this_1 = flist.getThis();
+        CharSequence _compile = this.compile(_this_1);
+        _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      FunctionList _next = flist.getNext();
+      boolean _notEquals_1 = (!Objects.equal(_next, null));
+      if (_notEquals_1) {
+        FunctionList _next_1 = flist.getNext();
+        Object _compile_1 = this.compile(_next_1);
+        _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final Function func) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<function id=\"");
+    String _id = func.getId();
+    _builder.append(_id, "");
+    _builder.append("\" name=\"");
+    String _name = func.getName();
+    _builder.append(_name, "");
+    _builder.append("\" />");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence compile(final AdaptionRule rule) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<adaptionRule name=\"");
+    String _name = rule.getName();
+    _builder.append(_name, "");
+    _builder.append("\" priority=\"");
+    int _level = rule.getLevel();
+    _builder.append(_level, "");
+    _builder.append("\" factType=\"");
+    String _factType = rule.getFactType();
+    _builder.append(_factType, "");
+    _builder.append("\" factName=\"");
+    String _factName = rule.getFactName();
+    _builder.append(_factName, "");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("<conditions>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    ConditionalOrExpression _expr = rule.getExpr();
+    CharSequence _compile = this.compile(_expr);
+    _builder.append(_compile, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("</conditions>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<actions>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    Actions _actionCollection = rule.getActionCollection();
+    CharSequence _compile_1 = this.compile(_actionCollection);
+    _builder.append(_compile_1, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("</actions>");
+    _builder.newLine();
+    _builder.append("</adaptionRule>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final Actions act) {
+    StringConcatenation _builder = new StringConcatenation();
+    ActionCategory _action = act.getAction();
+    CharSequence _compile = this.compile(_action);
+    _builder.append(_compile, "");
+    _builder.newLineIfNotEmpty();
+    {
+      Actions _next = act.getNext();
+      boolean _notEquals = (!Objects.equal(_next, null));
+      if (_notEquals) {
+        Actions _next_1 = act.getNext();
+        Object _compile_1 = this.compile(_next_1);
+        _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final ActionCategory cat) {
+    StringConcatenation _builder = new StringConcatenation();
+    ParentOperation _actionCategory = cat.getActionCategory();
+    CharSequence _compile = this.compile(_actionCategory);
+    _builder.append(_compile, "");
+    return _builder;
+  }
+  
+  public CharSequence compile(final ParentOperation pop) {
+    CharSequence _xblockexpression = null;
+    {
+      EObject op = pop.getOperation();
+      CharSequence _switchResult = null;
+      boolean _matched = false;
+      if (op instanceof ServiceFunctionCallOperation) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("<functionCall service=\"");
+        String _service = ((ServiceFunctionCallOperation) op).getService();
+        _builder.append(_service, "");
+        _builder.append("\" function=\"");
+        String _function = ((ServiceFunctionCallOperation) op).getFunction();
+        _builder.append(_function, "");
+        _builder.append("\" value=\"");
+        String _val = ((ServiceFunctionCallOperation) op).getVal();
+        _builder.append(_val, "");
+        _builder.append("\"/>");
+        _switchResult = _builder;
+      }
+      if (!_matched) {
+        if (op instanceof EditFactOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<editFactOperation set=\"");
+          String _prop = ((EditFactOperation) op).getProp();
+          _builder.append(_prop, "");
+          _builder.append("\" ");
+          {
+            String _val = ((EditFactOperation) op).getVal();
+            boolean _notEquals = (!Objects.equal(_val, null));
+            if (_notEquals) {
+              _builder.append("value=\"");
+              String _val_1 = ((EditFactOperation) op).getVal();
+              _builder.append(_val_1, "");
+              _builder.append("\"");
+            }
+          }
+          _builder.append("/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof SetDisplayPropertyOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<setDisplayProperty property=\"");
+          String _property = ((SetDisplayPropertyOperation) op).getProperty();
+          _builder.append(_property, "");
+          _builder.append("\" value=\"");
+          String _val = ((SetDisplayPropertyOperation) op).getVal();
+          _builder.append(_val, "");
+          _builder.append("\"/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof AddViewComponentOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<addViewComponentOperation viewComponent=\"");
+          String _viewComp = ((AddViewComponentOperation) op).getViewComp();
+          _builder.append(_viewComp, "");
+          _builder.append("\" target=\"");
+          String _target = ((AddViewComponentOperation) op).getTarget();
+          _builder.append(_target, "");
+          _builder.append("\"/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof DeleteViewComponentOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<deleteViewComponentOperation viewComponent=\"");
+          String _viewComp = ((DeleteViewComponentOperation) op).getViewComp();
+          _builder.append(_viewComp, "");
+          _builder.append("\"");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof AddNavLinkOperationImpl) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<addNavLinkOperation viewContainer=\"");
+          String _viewComp = ((AddNavLinkOperation) op).getViewComp();
+          _builder.append(_viewComp, "");
+          _builder.append("\" langKey=\"");
+          String _text = ((AddNavLinkOperation) op).getText();
+          _builder.append(_text, "");
+          _builder.append("\"/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof DeleteNavLinkOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<deleteNavLinkOperation viewContainer=\"");
+          String _viewComp = ((DeleteNavLinkOperation) op).getViewComp();
+          _builder.append(_viewComp, "");
+          _builder.append("\" />");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof RedirectNavLinkOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<redirectNavLinkOperation viewContainer=\"");
+          String _viewComp = ((RedirectNavLinkOperation) op).getViewComp();
+          _builder.append(_viewComp, "");
+          _builder.append("\" />");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof ClearNavOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<clearNavOperation/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof ChangeFontOperation) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof ChangeFontSizeOperation) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof ChangeTableCssClassOperation) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof AdaptCssClassOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<editCssClassOperation cssClass=\"");
+          String _cssClass = ((AdaptCssClassOperation) op).getCssClass();
+          _builder.append(_cssClass, "");
+          _builder.append("\" cssAttribute=\"");
+          String _cssAttribute = ((AdaptCssClassOperation) op).getCssAttribute();
+          _builder.append(_cssAttribute, "");
+          _builder.append("\" value=\"");
+          String _cssAttributeValue = ((AdaptCssClassOperation) op).getCssAttributeValue();
+          _builder.append(_cssAttributeValue, "");
+          _builder.append("\"/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof ChangeColorSchemeOperation) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      if (!_matched) {
+        CharSequence _xblockexpression_1 = null;
+        {
+          InputOutput.<String>println("ERROR: unknown operation");
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("//ERROR: unknown operation");
+          _xblockexpression_1 = _builder;
+        }
+        _switchResult = _xblockexpression_1;
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public CharSequence compile(final ConditionalOrExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      ConditionalAndExpression _left = expr.getLeft();
+      boolean _notEquals = (!Objects.equal(_left, null));
+      if (_notEquals) {
+        {
+          if (((!Objects.equal(expr.getLeft().getLeft(), null)) && (!Objects.equal(expr.getLeft().getRight(), null)))) {
+            _builder.append("<conditionGroup>");
+            _builder.newLine();
+            _builder.append("\t");
+            ConditionalAndExpression _left_1 = expr.getLeft();
+            CharSequence _compile = this.compile(_left_1);
+            _builder.append(_compile, "\t");
+            _builder.newLineIfNotEmpty();
+            _builder.append("</conditionGroup>");
+            _builder.newLine();
+          }
+        }
+        {
+          if (((!Objects.equal(expr.getLeft().getLeft(), null)) && Objects.equal(expr.getLeft().getRight(), null))) {
+            ConditionalAndExpression _left_2 = expr.getLeft();
+            ConditionalPrimary _left_3 = _left_2.getLeft();
+            CharSequence _compile_1 = this.compile(_left_3);
+            _builder.append(_compile_1, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      ConditionalOrExpression _right = expr.getRight();
+      boolean _notEquals_1 = (!Objects.equal(_right, null));
+      if (_notEquals_1) {
+        ConditionalOrExpression _right_1 = expr.getRight();
+        Object _compile_2 = this.compile(_right_1);
+        _builder.append(_compile_2, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final ConditionalAndExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      ConditionalPrimary _left = expr.getLeft();
+      boolean _notEquals = (!Objects.equal(_left, null));
+      if (_notEquals) {
+        ConditionalPrimary _left_1 = expr.getLeft();
+        CharSequence _compile = this.compile(_left_1);
+        _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      ConditionalAndExpression _right = expr.getRight();
+      boolean _notEquals_1 = (!Objects.equal(_right, null));
+      if (_notEquals_1) {
+        ConditionalAndExpression _right_1 = expr.getRight();
+        Object _compile_1 = this.compile(_right_1);
+        _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final ConditionalPrimary expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EObject _cond = expr.getCond();
+      if ((_cond instanceof BooleanCondition)) {
+        EObject _cond_1 = expr.getCond();
+        CharSequence _compile = this.compile(((BooleanCondition) _cond_1));
+        _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EObject _cond_2 = expr.getCond();
+      if ((_cond_2 instanceof NumberCondition)) {
+        EObject _cond_3 = expr.getCond();
+        CharSequence _compile_1 = this.compile(((NumberCondition) _cond_3));
+        _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EObject _cond_4 = expr.getCond();
+      if ((_cond_4 instanceof StringCondition)) {
+        EObject _cond_5 = expr.getCond();
+        CharSequence _compile_2 = this.compile(((StringCondition) _cond_5));
+        _builder.append(_compile_2, "");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final BooleanCondition cond) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<condition fact=\"");
+    String _fact = cond.getFact();
+    _builder.append(_fact, "");
+    _builder.append("\" ");
+    {
+      String _op = cond.getOp();
+      boolean _notEquals = (!Objects.equal(_op, null));
+      if (_notEquals) {
+        _builder.append("operator=\"");
+        String _op_1 = cond.getOp();
+        String _operator = this.getOperator(_op_1);
+        _builder.append(_operator, "");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(" ");
+    {
+      String _val = cond.getVal();
+      boolean _notEquals_1 = (!Objects.equal(_val, null));
+      if (_notEquals_1) {
+        _builder.append("value=\"");
+        String _val_1 = cond.getVal();
+        String _replace = _val_1.replace("\'", "");
+        _builder.append(_replace, "");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(" type=\"boolean\"/>");
+    return _builder;
+  }
+  
+  public CharSequence compile(final StringCondition cond) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<condition fact=\"");
+    String _fact = cond.getFact();
+    _builder.append(_fact, "");
+    _builder.append("\" ");
+    {
+      String _op = cond.getOp();
+      boolean _notEquals = (!Objects.equal(_op, null));
+      if (_notEquals) {
+        _builder.append("operator=\"");
+        String _op_1 = cond.getOp();
+        String _operator = this.getOperator(_op_1);
+        _builder.append(_operator, "");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(" ");
+    {
+      String _val = cond.getVal();
+      boolean _notEquals_1 = (!Objects.equal(_val, null));
+      if (_notEquals_1) {
+        _builder.append("value=\"");
+        String _val_1 = cond.getVal();
+        String _replace = _val_1.replace("\'", "");
+        _builder.append(_replace, "");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(" type=\"string\"/>");
+    return _builder;
+  }
+  
+  public CharSequence compile(final NumberCondition cond) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<condition fact=\"");
+    String _fact = cond.getFact();
+    _builder.append(_fact, "");
+    _builder.append("\" ");
+    {
+      String _op = cond.getOp();
+      boolean _notEquals = (!Objects.equal(_op, null));
+      if (_notEquals) {
+        _builder.append("operator=\"");
+        String _op_1 = cond.getOp();
+        String _operator = this.getOperator(_op_1);
+        _builder.append(_operator, "");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(" value=\"");
+    int _val = cond.getVal();
+    _builder.append(_val, "");
+    _builder.append("\" type=\"number\"/>");
+    return _builder;
+  }
+  
+  public String getOperator(final String op) {
+    switch (op) {
+      case "<=":
+        return "lte";
+      case ">=":
+        return "gte";
+      case "<":
+        return "lt";
+      case ">":
+        return "gt";
+      default:
+        return op;
+    }
   }
 }

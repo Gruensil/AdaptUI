@@ -7,14 +7,121 @@
   <genPackages prefix="AdaptDsl" basePackage="org.xtext.example.adaptdsl" disposableProviderFactory="true"
       fileExtensions="adaptdsl" ecorePackage="AdaptDsl.ecore#/">
     <genClasses ecoreClass="AdaptDsl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Model/services"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Model/flowName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Model/adaptationRules"/>
     </genClasses>
-    <genClasses ecoreClass="AdaptDsl.ecore#//Greeting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Greeting/name"/>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ServiceList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ServiceList/this"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ServiceList/next"/>
     </genClasses>
-    <genClasses ecoreClass="AdaptDsl.ecore#//adaptionRule"/>
-    <genClasses ecoreClass="AdaptDsl.ecore#//RuleName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//RuleName/rule"/>
+    <genClasses ecoreClass="AdaptDsl.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Service/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Service/loc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Service/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Service/functions"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//FunctionList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//FunctionList/this"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//FunctionList/next"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Function/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Function/id"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AdaptionRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/factType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/factName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptionRule/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptionRule/actionCollection"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ConditionalOrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalOrExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalOrExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ConditionalAndExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalAndExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalAndExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ConditionalPrimary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalPrimary/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//BooleanCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//BooleanCondition/fact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//BooleanCondition/op"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//BooleanCondition/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//NumberCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//NumberCondition/fact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//NumberCondition/op"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//NumberCondition/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//StringCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//StringCondition/fact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//StringCondition/op"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//StringCondition/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//Actions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Actions/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Actions/next"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ActionCategory">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ActionCategory/actionCategory"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ParentOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ParentOperation/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ServiceFunctionCallOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ServiceFunctionCallOperation/service"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ServiceFunctionCallOperation/function"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ServiceFunctionCallOperation/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//EditFactOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//EditFactOperation/prop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//EditFactOperation/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//SetDisplayPropertyOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//SetDisplayPropertyOperation/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//SetDisplayPropertyOperation/val"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AddViewComponentOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentOperation/viewComp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentOperation/target"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//DeleteViewComponentOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//DeleteViewComponentOperation/viewComp"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AddNavLinkOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddNavLinkOperation/viewComp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddNavLinkOperation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//DeleteNavLinkOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//DeleteNavLinkOperation/viewComp"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//RedirectNavLinkOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//RedirectNavLinkOperation/viewComp"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ClearNavOperation"/>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ChangeFontSizeOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeFontSizeOperation/sizePrimary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeFontSizeOperation/sizeSecondary"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ChangeColorSchemeOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeColorSchemeOperation/colorPrimary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeColorSchemeOperation/colorSecondary"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ChangeFontOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeFontOperation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//ChangeTableCssClassOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ChangeTableCssClassOperation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AdaptCssClassOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptCssClassOperation/cssClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptCssClassOperation/cssAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptCssClassOperation/cssAttributeValue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
