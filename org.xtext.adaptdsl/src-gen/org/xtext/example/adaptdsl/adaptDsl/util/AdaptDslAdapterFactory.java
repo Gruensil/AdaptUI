@@ -101,9 +101,9 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
         return createFunctionAdapter();
       }
       @Override
-      public Adapter caseAdaptionRule(AdaptionRule object)
+      public Adapter caseAdaptationRule(AdaptationRule object)
       {
-        return createAdaptionRuleAdapter();
+        return createAdaptationRuleAdapter();
       }
       @Override
       public Adapter caseConditionalOrExpression(ConditionalOrExpression object)
@@ -164,6 +164,26 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSetDisplayPropertyOperation(SetDisplayPropertyOperation object)
       {
         return createSetDisplayPropertyOperationAdapter();
+      }
+      @Override
+      public Adapter caseDisplayPropertyValue(DisplayPropertyValue object)
+      {
+        return createDisplayPropertyValueAdapter();
+      }
+      @Override
+      public Adapter caseIntValue(IntValue object)
+      {
+        return createIntValueAdapter();
+      }
+      @Override
+      public Adapter caseStringValue(StringValue object)
+      {
+        return createStringValueAdapter();
+      }
+      @Override
+      public Adapter caseBoolValue(BoolValue object)
+      {
+        return createBoolValueAdapter();
       }
       @Override
       public Adapter caseAddViewComponentOperation(AddViewComponentOperation object)
@@ -318,16 +338,16 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule <em>Adaption Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule <em>Adaptation Rule</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptionRule
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
    * @generated
    */
-  public Adapter createAdaptionRuleAdapter()
+  public Adapter createAdaptationRuleAdapter()
   {
     return null;
   }
@@ -508,6 +528,66 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSetDisplayPropertyOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue <em>Display Property Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue
+   * @generated
+   */
+  public Adapter createDisplayPropertyValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.IntValue <em>Int Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.IntValue
+   * @generated
+   */
+  public Adapter createIntValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.StringValue <em>String Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.StringValue
+   * @generated
+   */
+  public Adapter createStringValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.BoolValue <em>Bool Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.BoolValue
+   * @generated
+   */
+  public Adapter createBoolValueAdapter()
   {
     return null;
   }

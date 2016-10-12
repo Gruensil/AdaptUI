@@ -18,22 +18,26 @@ import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
 import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeFontSizeOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeTableCssClassOperation;
+import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
+import org.xtext.example.adaptdsl.adaptDsl.IntValue;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
@@ -43,6 +47,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
+import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -68,14 +73,17 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case AdaptDslPackage.ADAPT_CSS_CLASS_OPERATION:
 				sequence_AdaptCssClassOperation(context, (AdaptCssClassOperation) semanticObject); 
 				return; 
-			case AdaptDslPackage.ADAPTION_RULE:
-				sequence_AdaptionRule(context, (AdaptionRule) semanticObject); 
+			case AdaptDslPackage.ADAPTATION_RULE:
+				sequence_AdaptationRule(context, (AdaptationRule) semanticObject); 
 				return; 
 			case AdaptDslPackage.ADD_NAV_LINK_OPERATION:
 				sequence_AddNavLinkOperation(context, (AddNavLinkOperation) semanticObject); 
 				return; 
 			case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION:
 				sequence_AddViewComponentOperation(context, (AddViewComponentOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.BOOL_VALUE:
+				sequence_BoolValue(context, (BoolValue) semanticObject); 
 				return; 
 			case AdaptDslPackage.BOOLEAN_CONDITION:
 				sequence_BooleanCondition(context, (BooleanCondition) semanticObject); 
@@ -92,6 +100,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case AdaptDslPackage.CHANGE_TABLE_CSS_CLASS_OPERATION:
 				sequence_ChangeTableCssClassOperation(context, (ChangeTableCssClassOperation) semanticObject); 
 				return; 
+			case AdaptDslPackage.CLEAR_NAV_OPERATION:
+				sequence_ClearNavOperation(context, (ClearNavOperation) semanticObject); 
+				return; 
 			case AdaptDslPackage.CONDITIONAL_AND_EXPRESSION:
 				sequence_ConditionalAND(context, (ConditionalAndExpression) semanticObject); 
 				return; 
@@ -107,6 +118,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION:
 				sequence_DeleteViewComponentOperation(context, (DeleteViewComponentOperation) semanticObject); 
 				return; 
+			case AdaptDslPackage.DISPLAY_PROPERTY_VALUE:
+				sequence_DisplayPropertyValue(context, (DisplayPropertyValue) semanticObject); 
+				return; 
 			case AdaptDslPackage.EDIT_FACT_OPERATION:
 				sequence_EditFactOperation(context, (EditFactOperation) semanticObject); 
 				return; 
@@ -115,6 +129,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.FUNCTION_LIST:
 				sequence_Functions(context, (FunctionList) semanticObject); 
+				return; 
+			case AdaptDslPackage.INT_VALUE:
+				sequence_IntValue(context, (IntValue) semanticObject); 
 				return; 
 			case AdaptDslPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -157,6 +174,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.STRING_CONDITION:
 				sequence_StringCondition(context, (StringCondition) semanticObject); 
+				return; 
+			case AdaptDslPackage.STRING_VALUE:
+				sequence_StringValue(context, (StringValue) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -218,11 +238,11 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     AdaptionRule returns AdaptionRule
+	 *     AdaptationRule returns AdaptationRule
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=ID 
+	 *         name=STRING 
 	 *         level=INT 
 	 *         factType=ID 
 	 *         factName=ID 
@@ -230,28 +250,28 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         actionCollection=Actions
 	 *     )
 	 */
-	protected void sequence_AdaptionRule(ISerializationContext context, AdaptionRule semanticObject) {
+	protected void sequence_AdaptationRule(ISerializationContext context, AdaptationRule semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__NAME));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__LEVEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__LEVEL));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_TYPE));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__FACT_NAME));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__EXPR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__EXPR));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__ACTION_COLLECTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTION_RULE__ACTION_COLLECTION));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__EXPR));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__ACTION_COLLECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__ACTION_COLLECTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getLevelINTTerminalRuleCall_4_0(), semanticObject.getLevel());
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getFactTypeIDTerminalRuleCall_7_0(), semanticObject.getFactType());
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getFactNameIDTerminalRuleCall_8_0(), semanticObject.getFactName());
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getExprConditionalORParserRuleCall_12_0(), semanticObject.getExpr());
-		feeder.accept(grammarAccess.getAdaptionRuleAccess().getActionCollectionActionsParserRuleCall_16_0(), semanticObject.getActionCollection());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getLevelINTTerminalRuleCall_4_0(), semanticObject.getLevel());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_7_0(), semanticObject.getFactType());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactNameIDTerminalRuleCall_8_0(), semanticObject.getFactName());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_12_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_16_0(), semanticObject.getActionCollection());
 		feeder.finish();
 	}
 	
@@ -294,6 +314,24 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAddViewComponentOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
 		feeder.accept(grammarAccess.getAddViewComponentOperationAccess().getTargetTargetContainerParserRuleCall_4_0(), semanticObject.getTarget());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     BoolValue returns BoolValue
+	 *
+	 * Constraint:
+	 *     value=BOOL
+	 */
+	protected void sequence_BoolValue(ISerializationContext context, BoolValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.BOOL_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.BOOL_VALUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBoolValueAccess().getValueBOOLTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -390,6 +428,18 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     ClearNavOperation returns ClearNavOperation
+	 *
+	 * Constraint:
+	 *     {ClearNavOperation}
+	 */
+	protected void sequence_ClearNavOperation(ISerializationContext context, ClearNavOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ConditionalAND returns ConditionalAndExpression
 	 *
 	 * Constraint:
@@ -462,6 +512,18 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     DisplayPropertyValue returns DisplayPropertyValue
+	 *
+	 * Constraint:
+	 *     (propertyClass=IntValue | propertyClass=StringValue | propertyClass=BoolValue)
+	 */
+	protected void sequence_DisplayPropertyValue(ISerializationContext context, DisplayPropertyValue semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EditFactOperation returns EditFactOperation
 	 *
 	 * Constraint:
@@ -507,6 +569,24 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     IntValue returns IntValue
+	 *
+	 * Constraint:
+	 *     value=INT
+	 */
+	protected void sequence_IntValue(ISerializationContext context, IntValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.INT_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.INT_VALUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntValueAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     LayoutChangeOperation returns ParentOperation
 	 *
 	 * Constraint:
@@ -528,7 +608,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (services=Services? flowName=STRING adaptationRules+=AdaptionRule+)
+	 *     (services=Services? flowName=STRING adaptationRules+=AdaptationRule+)
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -594,7 +674,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     ServiceFunctionCallOperation returns ServiceFunctionCallOperation
 	 *
 	 * Constraint:
-	 *     (service=ID function=ID val=ID)
+	 *     (service=ID function=ID val=Value)
 	 */
 	protected void sequence_ServiceFunctionCallOperation(ISerializationContext context, ServiceFunctionCallOperation semanticObject) {
 		if (errorAcceptor != null) {
@@ -608,7 +688,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getServiceIDTerminalRuleCall_2_0(), semanticObject.getService());
 		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getFunctionIDTerminalRuleCall_4_0(), semanticObject.getFunction());
-		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getValIDTerminalRuleCall_6_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getServiceFunctionCallOperationAccess().getValValueParserRuleCall_6_0(), semanticObject.getVal());
 		feeder.finish();
 	}
 	
@@ -669,18 +749,18 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     SetDisplayPropertyOperation returns SetDisplayPropertyOperation
 	 *
 	 * Constraint:
-	 *     (property=STRING val=STRING)
+	 *     (property=STRING propertyValue=DisplayPropertyValue)
 	 */
 	protected void sequence_SetDisplayPropertyOperation(ISerializationContext context, SetDisplayPropertyOperation semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__VAL));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSetDisplayPropertyOperationAccess().getPropertySTRINGTerminalRuleCall_2_0(), semanticObject.getProperty());
-		feeder.accept(grammarAccess.getSetDisplayPropertyOperationAccess().getValSTRINGTerminalRuleCall_4_0(), semanticObject.getVal());
+		feeder.accept(grammarAccess.getSetDisplayPropertyOperationAccess().getPropertyValueDisplayPropertyValueParserRuleCall_4_0(), semanticObject.getPropertyValue());
 		feeder.finish();
 	}
 	
@@ -705,6 +785,24 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		feeder.accept(grammarAccess.getStringConditionAccess().getFactFactParserRuleCall_0_0(), semanticObject.getFact());
 		feeder.accept(grammarAccess.getStringConditionAccess().getOpStringOperatorsParserRuleCall_1_0(), semanticObject.getOp());
 		feeder.accept(grammarAccess.getStringConditionAccess().getValSTRINGTerminalRuleCall_2_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     StringValue returns StringValue
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_StringValue(ISerializationContext context, StringValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.STRING_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.STRING_VALUE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

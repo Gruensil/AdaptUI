@@ -29,13 +29,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Function/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Function/id"/>
     </genClasses>
-    <genClasses ecoreClass="AdaptDsl.ecore#//AdaptionRule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/level"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/factType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptionRule/factName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptionRule/expr"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptionRule/actionCollection"/>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AdaptationRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/actionCollection"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//ConditionalOrExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ConditionalOrExpression/left"/>
@@ -84,7 +84,19 @@
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//SetDisplayPropertyOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//SetDisplayPropertyOperation/property"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//SetDisplayPropertyOperation/val"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//SetDisplayPropertyOperation/propertyValue"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//DisplayPropertyValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//DisplayPropertyValue/propertyClass"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//IntValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//IntValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//StringValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//StringValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//BoolValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//BoolValue/value"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//AddViewComponentOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentOperation/viewComp"/>

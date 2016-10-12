@@ -14,28 +14,28 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Adaption Rule</b></em>'.
+ * An implementation of the model object '<em><b>Adaptation Rule</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getLevel <em>Level</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getFactType <em>Fact Type</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getFactName <em>Fact Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getExpr <em>Expr</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptionRuleImpl#getActionCollection <em>Action Collection</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getLevel <em>Level</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactType <em>Fact Type</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactName <em>Fact Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getActionCollection <em>Action Collection</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements AdaptionRule
+public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements AdaptationRule
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -142,7 +142,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AdaptionRuleImpl()
+  protected AdaptationRuleImpl()
   {
     super();
   }
@@ -155,7 +155,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   @Override
   protected EClass eStaticClass()
   {
-    return AdaptDslPackage.Literals.ADAPTION_RULE;
+    return AdaptDslPackage.Literals.ADAPTATION_RULE;
   }
 
   /**
@@ -178,7 +178,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__NAME, oldName, name));
   }
 
   /**
@@ -201,7 +201,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     int oldLevel = level;
     level = newLevel;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__LEVEL, oldLevel, level));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__LEVEL, oldLevel, level));
   }
 
   /**
@@ -224,7 +224,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     String oldFactType = factType;
     factType = newFactType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__FACT_TYPE, oldFactType, factType));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE, oldFactType, factType));
   }
 
   /**
@@ -247,7 +247,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     String oldFactName = factName;
     factName = newFactName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__FACT_NAME, oldFactName, factName));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, oldFactName, factName));
   }
 
   /**
@@ -271,7 +271,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     expr = newExpr;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__EXPR, oldExpr, newExpr);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__EXPR, oldExpr, newExpr);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -288,14 +288,14 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     {
       NotificationChain msgs = null;
       if (expr != null)
-        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTION_RULE__EXPR, null, msgs);
+        msgs = ((InternalEObject)expr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__EXPR, null, msgs);
       if (newExpr != null)
-        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTION_RULE__EXPR, null, msgs);
+        msgs = ((InternalEObject)newExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__EXPR, null, msgs);
       msgs = basicSetExpr(newExpr, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__EXPR, newExpr, newExpr));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__EXPR, newExpr, newExpr));
   }
 
   /**
@@ -319,7 +319,7 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     actionCollection = newActionCollection;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION, oldActionCollection, newActionCollection);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION, oldActionCollection, newActionCollection);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -336,14 +336,14 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     {
       NotificationChain msgs = null;
       if (actionCollection != null)
-        msgs = ((InternalEObject)actionCollection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION, null, msgs);
+        msgs = ((InternalEObject)actionCollection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION, null, msgs);
       if (newActionCollection != null)
-        msgs = ((InternalEObject)newActionCollection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION, null, msgs);
+        msgs = ((InternalEObject)newActionCollection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION, null, msgs);
       msgs = basicSetActionCollection(newActionCollection, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION, newActionCollection, newActionCollection));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION, newActionCollection, newActionCollection));
   }
 
   /**
@@ -356,9 +356,9 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   {
     switch (featureID)
     {
-      case AdaptDslPackage.ADAPTION_RULE__EXPR:
+      case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         return basicSetExpr(null, msgs);
-      case AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION:
+      case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
         return basicSetActionCollection(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -374,17 +374,17 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   {
     switch (featureID)
     {
-      case AdaptDslPackage.ADAPTION_RULE__NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return getName();
-      case AdaptDslPackage.ADAPTION_RULE__LEVEL:
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
         return getLevel();
-      case AdaptDslPackage.ADAPTION_RULE__FACT_TYPE:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return getFactType();
-      case AdaptDslPackage.ADAPTION_RULE__FACT_NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
         return getFactName();
-      case AdaptDslPackage.ADAPTION_RULE__EXPR:
+      case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         return getExpr();
-      case AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION:
+      case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
         return getActionCollection();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -400,22 +400,22 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   {
     switch (featureID)
     {
-      case AdaptDslPackage.ADAPTION_RULE__NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName((String)newValue);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__LEVEL:
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
         setLevel((Integer)newValue);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__FACT_TYPE:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType((String)newValue);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__FACT_NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
         setFactName((String)newValue);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__EXPR:
+      case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         setExpr((ConditionalOrExpression)newValue);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION:
+      case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
         setActionCollection((Actions)newValue);
         return;
     }
@@ -432,22 +432,22 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   {
     switch (featureID)
     {
-      case AdaptDslPackage.ADAPTION_RULE__NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__LEVEL:
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
         setLevel(LEVEL_EDEFAULT);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__FACT_TYPE:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType(FACT_TYPE_EDEFAULT);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__FACT_NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
         setFactName(FACT_NAME_EDEFAULT);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__EXPR:
+      case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         setExpr((ConditionalOrExpression)null);
         return;
-      case AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION:
+      case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
         setActionCollection((Actions)null);
         return;
     }
@@ -464,17 +464,17 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
   {
     switch (featureID)
     {
-      case AdaptDslPackage.ADAPTION_RULE__NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AdaptDslPackage.ADAPTION_RULE__LEVEL:
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
         return level != LEVEL_EDEFAULT;
-      case AdaptDslPackage.ADAPTION_RULE__FACT_TYPE:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return FACT_TYPE_EDEFAULT == null ? factType != null : !FACT_TYPE_EDEFAULT.equals(factType);
-      case AdaptDslPackage.ADAPTION_RULE__FACT_NAME:
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
         return FACT_NAME_EDEFAULT == null ? factName != null : !FACT_NAME_EDEFAULT.equals(factName);
-      case AdaptDslPackage.ADAPTION_RULE__EXPR:
+      case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         return expr != null;
-      case AdaptDslPackage.ADAPTION_RULE__ACTION_COLLECTION:
+      case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
         return actionCollection != null;
     }
     return super.eIsSet(featureID);
@@ -503,4 +503,4 @@ public class AdaptionRuleImpl extends MinimalEObjectImpl.Container implements Ad
     return result.toString();
   }
 
-} //AdaptionRuleImpl
+} //AdaptationRuleImpl

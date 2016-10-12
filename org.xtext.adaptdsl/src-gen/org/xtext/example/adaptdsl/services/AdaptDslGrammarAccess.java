@@ -6,6 +6,7 @@ package org.xtext.example.adaptdsl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
@@ -32,17 +33,17 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFlowNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cFlowNameAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cAdaptationRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAdaptationRulesAdaptionRuleParserRuleCall_4_0 = (RuleCall)cAdaptationRulesAssignment_4.eContents().get(0);
+		private final RuleCall cAdaptationRulesAdaptationRuleParserRuleCall_4_0 = (RuleCall)cAdaptationRulesAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Model:
 		//	services=Services?
 		//	'flow' flowName=STRING '{'
-		//	adaptationRules+=AdaptionRule+
+		//	adaptationRules+=AdaptationRule+
 		//	'};';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//services=Services? 'flow' flowName=STRING '{' adaptationRules+=AdaptionRule+ '};'
+		//services=Services? 'flow' flowName=STRING '{' adaptationRules+=AdaptationRule+ '};'
 		public Group getGroup() { return cGroup; }
 		
 		//services=Services?
@@ -63,11 +64,11 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//adaptationRules+=AdaptionRule+
+		//adaptationRules+=AdaptationRule+
 		public Assignment getAdaptationRulesAssignment_4() { return cAdaptationRulesAssignment_4; }
 		
-		//AdaptionRule
-		public RuleCall getAdaptationRulesAdaptionRuleParserRuleCall_4_0() { return cAdaptationRulesAdaptionRuleParserRuleCall_4_0; }
+		//AdaptationRule
+		public RuleCall getAdaptationRulesAdaptationRuleParserRuleCall_4_0() { return cAdaptationRulesAdaptationRuleParserRuleCall_4_0; }
 		
 		//'};'
 		public Keyword getRightCurlyBracketSemicolonKeyword_5() { return cRightCurlyBracketSemicolonKeyword_5; }
@@ -230,12 +231,12 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
-	public class AdaptionRuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.AdaptionRule");
+	public class AdaptationRuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.AdaptationRule");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cLEVELKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cLevelAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -260,8 +261,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_18 = (Keyword)cGroup.eContents().get(18);
 		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
 		
-		//AdaptionRule:
-		//	'rule' name=ID '{'
+		//AdaptationRule:
+		//	'rule' name=STRING '{'
 		//	'LEVEL' level=INT ';'
 		//	'FACT' factType=ID factName=ID ';'
 		//	'IF' '(' expr=ConditionalOR ')'
@@ -270,18 +271,18 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	')' ';' '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'rule' name=ID '{' 'LEVEL' level=INT ';' 'FACT' factType=ID factName=ID ';' 'IF' '(' expr=ConditionalOR ')' 'THEN' '('
-		//actionCollection=Actions ')' ';' '}'
+		//'rule' name=STRING '{' 'LEVEL' level=INT ';' 'FACT' factType=ID factName=ID ';' 'IF' '(' expr=ConditionalOR ')' 'THEN'
+		//'(' actionCollection=Actions ')' ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'rule'
 		public Keyword getRuleKeyword_0() { return cRuleKeyword_0; }
 		
-		//name=ID
+		//name=STRING
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -622,12 +623,16 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final RuleCall cIDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cLeftParenthesisKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final RuleCall cValueParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
 		//FactProperty:
-		//	ID '()'? ('.' ID '()'?)* '.' ID;
+		//	ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ID '()'? ('.' ID '()'?)* '.' ID
+		//ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?
 		public Group getGroup() { return cGroup; }
 		
 		//ID
@@ -653,6 +658,18 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getIDTerminalRuleCall_4() { return cIDTerminalRuleCall_4; }
+		
+		//('(' Value ')')?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_5_0() { return cLeftParenthesisKeyword_5_0; }
+		
+		//Value
+		public RuleCall getValueParserRuleCall_5_1() { return cValueParserRuleCall_5_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
 	}
 	public class NumberOperatorsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.NumberOperators");
@@ -734,29 +751,6 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'!='
 		public Keyword getExclamationMarkEqualsSignKeyword_1() { return cExclamationMarkEqualsSignKeyword_1; }
-	}
-	public class TypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.Type");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cNumberKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cStringKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cBooleanKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		
-		//Type:
-		//	"number" | "string" | "boolean";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"number" | "string" | "boolean"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//"number"
-		public Keyword getNumberKeyword_0() { return cNumberKeyword_0; }
-		
-		//"string"
-		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
-		
-		//"boolean"
-		public Keyword getBooleanKeyword_2() { return cBooleanKeyword_2; }
 	}
 	public class ActionsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.Actions");
@@ -877,15 +871,15 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunctionIDTerminalRuleCall_4_0 = (RuleCall)cFunctionAssignment_4.eContents().get(0);
 		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cValAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cValIDTerminalRuleCall_6_0 = (RuleCall)cValAssignment_6.eContents().get(0);
+		private final RuleCall cValValueParserRuleCall_6_0 = (RuleCall)cValAssignment_6.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//ServiceFunctionCallOperation:
-		//	'functionCall' '(' service=ID ',' function=ID ',' val=ID ')' ';';
+		//	'functionCall' '(' service=ID ',' function=ID ',' val=Value ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'functionCall' '(' service=ID ',' function=ID ',' val=ID ')' ';'
+		//'functionCall' '(' service=ID ',' function=ID ',' val=Value ')' ';'
 		public Group getGroup() { return cGroup; }
 		
 		//'functionCall'
@@ -912,11 +906,11 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//','
 		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
-		//val=ID
+		//val=Value
 		public Assignment getValAssignment_6() { return cValAssignment_6; }
 		
-		//ID
-		public RuleCall getValIDTerminalRuleCall_6_0() { return cValIDTerminalRuleCall_6_0; }
+		//Value
+		public RuleCall getValValueParserRuleCall_6_0() { return cValValueParserRuleCall_6_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
@@ -985,16 +979,16 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPropertyAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPropertySTRINGTerminalRuleCall_2_0 = (RuleCall)cPropertyAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cValAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValSTRINGTerminalRuleCall_4_0 = (RuleCall)cValAssignment_4.eContents().get(0);
+		private final Assignment cPropertyValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPropertyValueDisplayPropertyValueParserRuleCall_4_0 = (RuleCall)cPropertyValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//SetDisplayPropertyOperation:
-		//	'setDisplayProperty' '(' property=STRING ',' val=STRING ')' ';';
+		//	'setDisplayProperty' '(' property=STRING ',' propertyValue=DisplayPropertyValue ')' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'setDisplayProperty' '(' property=STRING ',' val=STRING ')' ';'
+		//'setDisplayProperty' '(' property=STRING ',' propertyValue=DisplayPropertyValue ')' ';'
 		public Group getGroup() { return cGroup; }
 		
 		//'setDisplayProperty'
@@ -1012,17 +1006,97 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
-		//val=STRING
-		public Assignment getValAssignment_4() { return cValAssignment_4; }
+		//propertyValue=DisplayPropertyValue
+		public Assignment getPropertyValueAssignment_4() { return cPropertyValueAssignment_4; }
 		
-		//STRING
-		public RuleCall getValSTRINGTerminalRuleCall_4_0() { return cValSTRINGTerminalRuleCall_4_0; }
+		//DisplayPropertyValue
+		public RuleCall getPropertyValueDisplayPropertyValueParserRuleCall_4_0() { return cPropertyValueDisplayPropertyValueParserRuleCall_4_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+	}
+	public class DisplayPropertyValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.DisplayPropertyValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cPropertyClassAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cPropertyClassIntValueParserRuleCall_0_0 = (RuleCall)cPropertyClassAssignment_0.eContents().get(0);
+		private final Assignment cPropertyClassAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cPropertyClassStringValueParserRuleCall_1_0 = (RuleCall)cPropertyClassAssignment_1.eContents().get(0);
+		private final Assignment cPropertyClassAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cPropertyClassBoolValueParserRuleCall_2_0 = (RuleCall)cPropertyClassAssignment_2.eContents().get(0);
+		
+		//DisplayPropertyValue:
+		//	propertyClass=IntValue | propertyClass=StringValue | propertyClass=BoolValue;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//propertyClass=IntValue | propertyClass=StringValue | propertyClass=BoolValue
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//propertyClass=IntValue
+		public Assignment getPropertyClassAssignment_0() { return cPropertyClassAssignment_0; }
+		
+		//IntValue
+		public RuleCall getPropertyClassIntValueParserRuleCall_0_0() { return cPropertyClassIntValueParserRuleCall_0_0; }
+		
+		//propertyClass=StringValue
+		public Assignment getPropertyClassAssignment_1() { return cPropertyClassAssignment_1; }
+		
+		//StringValue
+		public RuleCall getPropertyClassStringValueParserRuleCall_1_0() { return cPropertyClassStringValueParserRuleCall_1_0; }
+		
+		//propertyClass=BoolValue
+		public Assignment getPropertyClassAssignment_2() { return cPropertyClassAssignment_2; }
+		
+		//BoolValue
+		public RuleCall getPropertyClassBoolValueParserRuleCall_2_0() { return cPropertyClassBoolValueParserRuleCall_2_0; }
+	}
+	public class IntValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.IntValue");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//IntValue:
+		//	value=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=INT
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+	}
+	public class StringValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.StringValue");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//StringValue:
+		//	value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=STRING
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
+	}
+	public class BoolValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.BoolValue");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueBOOLTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//BoolValue:
+		//	value=BOOL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=BOOL
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//BOOL
+		public RuleCall getValueBOOLTerminalRuleCall_0() { return cValueBOOLTerminalRuleCall_0; }
 	}
 	public class TaskChangeOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.TaskChangeOperation");
@@ -1326,28 +1400,26 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class ClearNavOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.ClearNavOperation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cClearNavigationKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Action cClearNavOperationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cClearNavigationKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//ClearNavOperation: // clear all navigation links
-		//	'clearNavigation' '(' ')' ';';
+		//ClearNavOperation:
+		//	{ClearNavOperation} 'clearNavigation' '()' ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// clear all navigation links
-		//'clearNavigation' '(' ')' ';'
+		//{ClearNavOperation} 'clearNavigation' '()' ';'
 		public Group getGroup() { return cGroup; }
 		
-		//// clear all navigation links
+		//{ClearNavOperation}
+		public Action getClearNavOperationAction_0() { return cClearNavOperationAction_0; }
+		
 		//'clearNavigation'
-		public Keyword getClearNavigationKeyword_0() { return cClearNavigationKeyword_0; }
+		public Keyword getClearNavigationKeyword_1() { return cClearNavigationKeyword_1; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		//'()'
+		public Keyword getLeftParenthesisRightParenthesisKeyword_2() { return cLeftParenthesisRightParenthesisKeyword_2; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
@@ -1734,7 +1806,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final ServiceElements pService;
 	private final FunctionsElements pFunctions;
 	private final FunctionElements pFunction;
-	private final AdaptionRuleElements pAdaptionRule;
+	private final AdaptationRuleElements pAdaptationRule;
 	private final ConditionalORElements pConditionalOR;
 	private final ConditionalANDElements pConditionalAND;
 	private final ConditionalPrimaryElements pConditionalPrimary;
@@ -1746,13 +1818,16 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final NumberOperatorsElements pNumberOperators;
 	private final StringOperatorsElements pStringOperators;
 	private final BoolOperatorsElements pBoolOperators;
-	private final TypeElements pType;
 	private final ActionsElements pActions;
 	private final ActionElements pAction;
 	private final ServiceOperationElements pServiceOperation;
 	private final ServiceFunctionCallOperationElements pServiceFunctionCallOperation;
 	private final EditFactOperationElements pEditFactOperation;
 	private final SetDisplayPropertyOperationElements pSetDisplayPropertyOperation;
+	private final DisplayPropertyValueElements pDisplayPropertyValue;
+	private final IntValueElements pIntValue;
+	private final StringValueElements pStringValue;
+	private final BoolValueElements pBoolValue;
 	private final TaskChangeOperationElements pTaskChangeOperation;
 	private final AddViewComponentOperationElements pAddViewComponentOperation;
 	private final DeleteViewComponentOperationElements pDeleteViewComponentOperation;
@@ -1792,7 +1867,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pService = new ServiceElements();
 		this.pFunctions = new FunctionsElements();
 		this.pFunction = new FunctionElements();
-		this.pAdaptionRule = new AdaptionRuleElements();
+		this.pAdaptationRule = new AdaptationRuleElements();
 		this.pConditionalOR = new ConditionalORElements();
 		this.pConditionalAND = new ConditionalANDElements();
 		this.pConditionalPrimary = new ConditionalPrimaryElements();
@@ -1804,13 +1879,16 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pNumberOperators = new NumberOperatorsElements();
 		this.pStringOperators = new StringOperatorsElements();
 		this.pBoolOperators = new BoolOperatorsElements();
-		this.pType = new TypeElements();
 		this.pActions = new ActionsElements();
 		this.pAction = new ActionElements();
 		this.pServiceOperation = new ServiceOperationElements();
 		this.pServiceFunctionCallOperation = new ServiceFunctionCallOperationElements();
 		this.pEditFactOperation = new EditFactOperationElements();
 		this.pSetDisplayPropertyOperation = new SetDisplayPropertyOperationElements();
+		this.pDisplayPropertyValue = new DisplayPropertyValueElements();
+		this.pIntValue = new IntValueElements();
+		this.pStringValue = new StringValueElements();
+		this.pBoolValue = new BoolValueElements();
 		this.pTaskChangeOperation = new TaskChangeOperationElements();
 		this.pAddViewComponentOperation = new AddViewComponentOperationElements();
 		this.pDeleteViewComponentOperation = new DeleteViewComponentOperationElements();
@@ -1867,7 +1945,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	services=Services?
 	//	'flow' flowName=STRING '{'
-	//	adaptationRules+=AdaptionRule+
+	//	adaptationRules+=AdaptationRule+
 	//	'};';
 	public ModelElements getModelAccess() {
 		return pModel;
@@ -1919,20 +1997,20 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionAccess().getRule();
 	}
 	
-	//AdaptionRule:
-	//	'rule' name=ID '{'
+	//AdaptationRule:
+	//	'rule' name=STRING '{'
 	//	'LEVEL' level=INT ';'
 	//	'FACT' factType=ID factName=ID ';'
 	//	'IF' '(' expr=ConditionalOR ')'
 	//	'THEN' '('
 	//	actionCollection=Actions
 	//	')' ';' '}';
-	public AdaptionRuleElements getAdaptionRuleAccess() {
-		return pAdaptionRule;
+	public AdaptationRuleElements getAdaptationRuleAccess() {
+		return pAdaptationRule;
 	}
 	
-	public ParserRule getAdaptionRuleRule() {
-		return getAdaptionRuleAccess().getRule();
+	public ParserRule getAdaptationRuleRule() {
+		return getAdaptationRuleAccess().getRule();
 	}
 	
 	//ConditionalOR ConditionalOrExpression:
@@ -2008,7 +2086,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FactProperty:
-	//	ID '()'? ('.' ID '()'?)* '.' ID;
+	//	ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?;
 	public FactPropertyElements getFactPropertyAccess() {
 		return pFactProperty;
 	}
@@ -2047,16 +2125,6 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getBoolOperatorsAccess().getRule();
 	}
 	
-	//Type:
-	//	"number" | "string" | "boolean";
-	public TypeElements getTypeAccess() {
-		return pType;
-	}
-	
-	public ParserRule getTypeRule() {
-		return getTypeAccess().getRule();
-	}
-	
 	//Actions:
 	//	action=Action next=Actions?;
 	public ActionsElements getActionsAccess() {
@@ -2089,7 +2157,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ServiceFunctionCallOperation:
-	//	'functionCall' '(' service=ID ',' function=ID ',' val=ID ')' ';';
+	//	'functionCall' '(' service=ID ',' function=ID ',' val=Value ')' ';';
 	public ServiceFunctionCallOperationElements getServiceFunctionCallOperationAccess() {
 		return pServiceFunctionCallOperation;
 	}
@@ -2109,13 +2177,53 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SetDisplayPropertyOperation:
-	//	'setDisplayProperty' '(' property=STRING ',' val=STRING ')' ';';
+	//	'setDisplayProperty' '(' property=STRING ',' propertyValue=DisplayPropertyValue ')' ';';
 	public SetDisplayPropertyOperationElements getSetDisplayPropertyOperationAccess() {
 		return pSetDisplayPropertyOperation;
 	}
 	
 	public ParserRule getSetDisplayPropertyOperationRule() {
 		return getSetDisplayPropertyOperationAccess().getRule();
+	}
+	
+	//DisplayPropertyValue:
+	//	propertyClass=IntValue | propertyClass=StringValue | propertyClass=BoolValue;
+	public DisplayPropertyValueElements getDisplayPropertyValueAccess() {
+		return pDisplayPropertyValue;
+	}
+	
+	public ParserRule getDisplayPropertyValueRule() {
+		return getDisplayPropertyValueAccess().getRule();
+	}
+	
+	//IntValue:
+	//	value=INT;
+	public IntValueElements getIntValueAccess() {
+		return pIntValue;
+	}
+	
+	public ParserRule getIntValueRule() {
+		return getIntValueAccess().getRule();
+	}
+	
+	//StringValue:
+	//	value=STRING;
+	public StringValueElements getStringValueAccess() {
+		return pStringValue;
+	}
+	
+	public ParserRule getStringValueRule() {
+		return getStringValueAccess().getRule();
+	}
+	
+	//BoolValue:
+	//	value=BOOL;
+	public BoolValueElements getBoolValueAccess() {
+		return pBoolValue;
+	}
+	
+	public ParserRule getBoolValueRule() {
+		return getBoolValueAccess().getRule();
 	}
 	
 	//TaskChangeOperation ParentOperation:
@@ -2209,8 +2317,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getRedirectNavLinkOperationAccess().getRule();
 	}
 	
-	//ClearNavOperation: // clear all navigation links
-	//	'clearNavigation' '(' ')' ';';
+	//ClearNavOperation:
+	//	{ClearNavOperation} 'clearNavigation' '()' ';';
 	public ClearNavOperationElements getClearNavOperationAccess() {
 		return pClearNavOperation;
 	}

@@ -15,9 +15,10 @@ import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslFactory;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
@@ -29,9 +30,11 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
+import org.xtext.example.adaptdsl.adaptDsl.IntValue;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
@@ -41,6 +44,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
+import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,7 +94,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass adaptionRuleEClass = null;
+  private EClass adaptationRuleEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -175,6 +179,34 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass setDisplayPropertyOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass displayPropertyValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass intValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass boolValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -501,9 +533,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAdaptionRule()
+  public EClass getAdaptationRule()
   {
-    return adaptionRuleEClass;
+    return adaptationRuleEClass;
   }
 
   /**
@@ -511,9 +543,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptionRule_Name()
+  public EAttribute getAdaptationRule_Name()
   {
-    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -521,9 +553,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptionRule_Level()
+  public EAttribute getAdaptationRule_Level()
   {
-    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -531,9 +563,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptionRule_FactType()
+  public EAttribute getAdaptationRule_FactType()
   {
-    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -541,9 +573,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptionRule_FactName()
+  public EAttribute getAdaptationRule_FactName()
   {
-    return (EAttribute)adaptionRuleEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -551,9 +583,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdaptionRule_Expr()
+  public EReference getAdaptationRule_Expr()
   {
-    return (EReference)adaptionRuleEClass.getEStructuralFeatures().get(4);
+    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -561,9 +593,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdaptionRule_ActionCollection()
+  public EReference getAdaptationRule_ActionCollection()
   {
-    return (EReference)adaptionRuleEClass.getEStructuralFeatures().get(5);
+    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -931,9 +963,89 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSetDisplayPropertyOperation_Val()
+  public EReference getSetDisplayPropertyOperation_PropertyValue()
   {
-    return (EAttribute)setDisplayPropertyOperationEClass.getEStructuralFeatures().get(1);
+    return (EReference)setDisplayPropertyOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDisplayPropertyValue()
+  {
+    return displayPropertyValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDisplayPropertyValue_PropertyClass()
+  {
+    return (EReference)displayPropertyValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIntValue()
+  {
+    return intValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIntValue_Value()
+  {
+    return (EAttribute)intValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStringValue()
+  {
+    return stringValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringValue_Value()
+  {
+    return (EAttribute)stringValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBoolValue()
+  {
+    return boolValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBoolValue_Value()
+  {
+    return (EAttribute)boolValueEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1259,13 +1371,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEAttribute(functionEClass, FUNCTION__NAME);
     createEAttribute(functionEClass, FUNCTION__ID);
 
-    adaptionRuleEClass = createEClass(ADAPTION_RULE);
-    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__NAME);
-    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__LEVEL);
-    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__FACT_TYPE);
-    createEAttribute(adaptionRuleEClass, ADAPTION_RULE__FACT_NAME);
-    createEReference(adaptionRuleEClass, ADAPTION_RULE__EXPR);
-    createEReference(adaptionRuleEClass, ADAPTION_RULE__ACTION_COLLECTION);
+    adaptationRuleEClass = createEClass(ADAPTATION_RULE);
+    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__NAME);
+    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__LEVEL);
+    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_TYPE);
+    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_NAME);
+    createEReference(adaptationRuleEClass, ADAPTATION_RULE__EXPR);
+    createEReference(adaptationRuleEClass, ADAPTATION_RULE__ACTION_COLLECTION);
 
     conditionalOrExpressionEClass = createEClass(CONDITIONAL_OR_EXPRESSION);
     createEReference(conditionalOrExpressionEClass, CONDITIONAL_OR_EXPRESSION__LEFT);
@@ -1314,7 +1426,19 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     setDisplayPropertyOperationEClass = createEClass(SET_DISPLAY_PROPERTY_OPERATION);
     createEAttribute(setDisplayPropertyOperationEClass, SET_DISPLAY_PROPERTY_OPERATION__PROPERTY);
-    createEAttribute(setDisplayPropertyOperationEClass, SET_DISPLAY_PROPERTY_OPERATION__VAL);
+    createEReference(setDisplayPropertyOperationEClass, SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE);
+
+    displayPropertyValueEClass = createEClass(DISPLAY_PROPERTY_VALUE);
+    createEReference(displayPropertyValueEClass, DISPLAY_PROPERTY_VALUE__PROPERTY_CLASS);
+
+    intValueEClass = createEClass(INT_VALUE);
+    createEAttribute(intValueEClass, INT_VALUE__VALUE);
+
+    stringValueEClass = createEClass(STRING_VALUE);
+    createEAttribute(stringValueEClass, STRING_VALUE__VALUE);
+
+    boolValueEClass = createEClass(BOOL_VALUE);
+    createEAttribute(boolValueEClass, BOOL_VALUE__VALUE);
 
     addViewComponentOperationEClass = createEClass(ADD_VIEW_COMPONENT_OPERATION);
     createEAttribute(addViewComponentOperationEClass, ADD_VIEW_COMPONENT_OPERATION__VIEW_COMP);
@@ -1389,7 +1513,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Services(), this.getServiceList(), null, "services", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModel_FlowName(), ecorePackage.getEString(), "flowName", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_AdaptationRules(), this.getAdaptionRule(), null, "adaptationRules", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_AdaptationRules(), this.getAdaptationRule(), null, "adaptationRules", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(serviceListEClass, ServiceList.class, "ServiceList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getServiceList_This(), this.getService(), null, "this", null, 0, 1, ServiceList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1409,13 +1533,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunction_Id(), ecorePackage.getEString(), "id", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(adaptionRuleEClass, AdaptionRule.class, "AdaptionRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAdaptionRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdaptionRule_Level(), ecorePackage.getEInt(), "level", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdaptionRule_FactType(), ecorePackage.getEString(), "factType", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdaptionRule_FactName(), ecorePackage.getEString(), "factName", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAdaptionRule_Expr(), this.getConditionalOrExpression(), null, "expr", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAdaptionRule_ActionCollection(), this.getActions(), null, "actionCollection", null, 0, 1, AdaptionRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(adaptationRuleEClass, AdaptationRule.class, "AdaptationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAdaptationRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptationRule_Level(), ecorePackage.getEInt(), "level", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptationRule_FactType(), ecorePackage.getEString(), "factType", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptationRule_FactName(), ecorePackage.getEString(), "factName", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdaptationRule_Expr(), this.getConditionalOrExpression(), null, "expr", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdaptationRule_ActionCollection(), this.getActions(), null, "actionCollection", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionalOrExpressionEClass, ConditionalOrExpression.class, "ConditionalOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConditionalOrExpression_Left(), this.getConditionalAndExpression(), null, "left", null, 0, 1, ConditionalOrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1464,7 +1588,19 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(setDisplayPropertyOperationEClass, SetDisplayPropertyOperation.class, "SetDisplayPropertyOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSetDisplayPropertyOperation_Property(), ecorePackage.getEString(), "property", null, 0, 1, SetDisplayPropertyOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSetDisplayPropertyOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, SetDisplayPropertyOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetDisplayPropertyOperation_PropertyValue(), this.getDisplayPropertyValue(), null, "propertyValue", null, 0, 1, SetDisplayPropertyOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(displayPropertyValueEClass, DisplayPropertyValue.class, "DisplayPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDisplayPropertyValue_PropertyClass(), ecorePackage.getEObject(), null, "propertyClass", null, 0, 1, DisplayPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(intValueEClass, IntValue.class, "IntValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntValue_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringValueEClass, StringValue.class, "StringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(boolValueEClass, BoolValue.class, "BoolValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBoolValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, BoolValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(addViewComponentOperationEClass, AddViewComponentOperation.class, "AddViewComponentOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAddViewComponentOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, AddViewComponentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

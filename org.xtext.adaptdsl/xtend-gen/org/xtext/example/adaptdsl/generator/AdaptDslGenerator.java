@@ -18,9 +18,10 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
 import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeColorSchemeOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ChangeFontOperation;
@@ -32,9 +33,11 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
+import org.xtext.example.adaptdsl.adaptDsl.IntValue;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
@@ -44,6 +47,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
+import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl;
 
 /**
@@ -96,8 +100,8 @@ public class AdaptDslGenerator extends AbstractGenerator {
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     {
-      EList<AdaptionRule> _adaptationRules = model.getAdaptationRules();
-      for(final AdaptionRule rule : _adaptationRules) {
+      EList<AdaptationRule> _adaptationRules = model.getAdaptationRules();
+      for(final AdaptationRule rule : _adaptationRules) {
         _builder.append("\t\t");
         CharSequence _compile_1 = this.compile(rule);
         _builder.append(_compile_1, "\t\t");
@@ -198,9 +202,9 @@ public class AdaptDslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final AdaptionRule rule) {
+  public CharSequence compile(final AdaptationRule rule) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<adaptionRule name=\"");
+    _builder.append("<adaptationRule name=\"");
     String _name = rule.getName();
     _builder.append(_name, "");
     _builder.append("\" priority=\"");
@@ -236,7 +240,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("</actions>");
     _builder.newLine();
-    _builder.append("</adaptionRule>");
+    _builder.append("</adaptationRule>");
     _builder.newLine();
     return _builder;
   }
@@ -283,10 +287,10 @@ public class AdaptDslGenerator extends AbstractGenerator {
         _builder.append("\" function=\"");
         String _function = ((ServiceFunctionCallOperation) op).getFunction();
         _builder.append(_function, "");
-        _builder.append("\" value=\"");
+        _builder.append("\" value=");
         String _val = ((ServiceFunctionCallOperation) op).getVal();
         _builder.append(_val, "");
-        _builder.append("\"/>");
+        _builder.append("/>");
         _switchResult = _builder;
       }
       if (!_matched) {
@@ -314,15 +318,67 @@ public class AdaptDslGenerator extends AbstractGenerator {
       if (!_matched) {
         if (op instanceof SetDisplayPropertyOperation) {
           _matched=true;
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("<setDisplayProperty property=\"");
-          String _property = ((SetDisplayPropertyOperation) op).getProperty();
-          _builder.append(_property, "");
-          _builder.append("\" value=\"");
-          String _val = ((SetDisplayPropertyOperation) op).getVal();
-          _builder.append(_val, "");
-          _builder.append("\"/>");
-          _switchResult = _builder;
+          CharSequence _switchResult_1 = null;
+          DisplayPropertyValue _propertyValue = ((SetDisplayPropertyOperation) op).getPropertyValue();
+          EObject _propertyClass = _propertyValue.getPropertyClass();
+          boolean _matched_1 = false;
+          if (_propertyClass instanceof StringValue) {
+            _matched_1=true;
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("<setDisplayProperty property=\"");
+            String _property = ((SetDisplayPropertyOperation) op).getProperty();
+            _builder.append(_property, "");
+            _builder.append("\" value=\"");
+            DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
+            EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+            String _value = ((StringValue) _propertyClass_1).getValue();
+            _builder.append(_value, "");
+            _builder.append("\"/>");
+            _switchResult_1 = _builder;
+          }
+          if (!_matched_1) {
+            if (_propertyClass instanceof IntValue) {
+              _matched_1=true;
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("<setDisplayProperty property=\"");
+              String _property = ((SetDisplayPropertyOperation) op).getProperty();
+              _builder.append(_property, "");
+              _builder.append("\" value=\"");
+              DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
+              EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+              int _value = ((IntValue) _propertyClass_1).getValue();
+              _builder.append(_value, "");
+              _builder.append("\"/>");
+              _switchResult_1 = _builder;
+            }
+          }
+          if (!_matched_1) {
+            if (_propertyClass instanceof BoolValue) {
+              _matched_1=true;
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("<setDisplayProperty property=\"");
+              String _property = ((SetDisplayPropertyOperation) op).getProperty();
+              _builder.append(_property, "");
+              _builder.append("\" value=\"");
+              DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
+              EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+              String _value = ((BoolValue) _propertyClass_1).getValue();
+              _builder.append(_value, "");
+              _builder.append("\" type=\"boolean\"/>");
+              _switchResult_1 = _builder;
+            }
+          }
+          if (!_matched_1) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("<setDisplayProperty property=\"");
+            String _property = ((SetDisplayPropertyOperation) op).getProperty();
+            _builder.append(_property, "");
+            _builder.append("\" value=\"");
+            _builder.append(((SetDisplayPropertyOperation) op), "");
+            _builder.append("\"/>");
+            _switchResult_1 = _builder;
+          }
+          _switchResult = _switchResult_1;
         }
       }
       if (!_matched) {
@@ -357,10 +413,10 @@ public class AdaptDslGenerator extends AbstractGenerator {
           _builder.append("<addNavLinkOperation viewContainer=\"");
           String _viewComp = ((AddNavLinkOperation) op).getViewComp();
           _builder.append(_viewComp, "");
-          _builder.append("\" langKey=\"");
+          _builder.append("\" langKey=");
           String _text = ((AddNavLinkOperation) op).getText();
           _builder.append(_text, "");
-          _builder.append("\"/>");
+          _builder.append("/>");
           _switchResult = _builder;
         }
       }
@@ -416,16 +472,16 @@ public class AdaptDslGenerator extends AbstractGenerator {
         if (op instanceof AdaptCssClassOperation) {
           _matched=true;
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("<editCssClassOperation cssClass=\"");
+          _builder.append("<editCssClassOperation cssClass=");
           String _cssClass = ((AdaptCssClassOperation) op).getCssClass();
           _builder.append(_cssClass, "");
-          _builder.append("\" cssAttribute=\"");
+          _builder.append(" cssAttribute=");
           String _cssAttribute = ((AdaptCssClassOperation) op).getCssAttribute();
           _builder.append(_cssAttribute, "");
-          _builder.append("\" value=\"");
+          _builder.append(" value=");
           String _cssAttributeValue = ((AdaptCssClassOperation) op).getCssAttributeValue();
           _builder.append(_cssAttributeValue, "");
-          _builder.append("\"/>");
+          _builder.append("/>");
           _switchResult = _builder;
         }
       }
@@ -440,7 +496,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         {
           InputOutput.<String>println("ERROR: unknown operation");
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("//ERROR: unknown operation");
+          _builder.append("<!--ERROR: unknown operation-->");
           _xblockexpression_1 = _builder;
         }
         _switchResult = _xblockexpression_1;

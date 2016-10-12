@@ -108,10 +108,10 @@ public class AdaptDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AdaptDslPackage.ADAPTION_RULE:
+      case AdaptDslPackage.ADAPTATION_RULE:
       {
-        AdaptionRule adaptionRule = (AdaptionRule)theEObject;
-        T result = caseAdaptionRule(adaptionRule);
+        AdaptationRule adaptationRule = (AdaptationRule)theEObject;
+        T result = caseAdaptationRule(adaptationRule);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -196,6 +196,34 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         SetDisplayPropertyOperation setDisplayPropertyOperation = (SetDisplayPropertyOperation)theEObject;
         T result = caseSetDisplayPropertyOperation(setDisplayPropertyOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.DISPLAY_PROPERTY_VALUE:
+      {
+        DisplayPropertyValue displayPropertyValue = (DisplayPropertyValue)theEObject;
+        T result = caseDisplayPropertyValue(displayPropertyValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.INT_VALUE:
+      {
+        IntValue intValue = (IntValue)theEObject;
+        T result = caseIntValue(intValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.STRING_VALUE:
+      {
+        StringValue stringValue = (StringValue)theEObject;
+        T result = caseStringValue(stringValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.BOOL_VALUE:
+      {
+        BoolValue boolValue = (BoolValue)theEObject;
+        T result = caseBoolValue(boolValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -361,17 +389,17 @@ public class AdaptDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Adaption Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Adaptation Rule</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Adaption Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Adaptation Rule</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAdaptionRule(AdaptionRule object)
+  public T caseAdaptationRule(AdaptationRule object)
   {
     return null;
   }
@@ -564,6 +592,70 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSetDisplayPropertyOperation(SetDisplayPropertyOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Display Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Display Property Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDisplayPropertyValue(DisplayPropertyValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntValue(IntValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringValue(StringValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bool Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bool Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBoolValue(BoolValue object)
   {
     return null;
   }

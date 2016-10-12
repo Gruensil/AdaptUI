@@ -7,26 +7,26 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Adaption Rule</b></em>'.
+ * A representation of the model object '<em><b>Adaptation Rule</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getLevel <em>Level</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getFactType <em>Fact Type</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getFactName <em>Fact Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getExpr <em>Expr</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getActionCollection <em>Action Collection</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactType <em>Fact Type</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName <em>Fact Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getActionCollection <em>Action Collection</em>}</li>
  * </ul>
  *
- * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule()
+ * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule()
  * @model
  * @generated
  */
-public interface AdaptionRule extends EObject
+public interface AdaptationRule extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -38,14 +38,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_Name()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -64,14 +64,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Level</em>' attribute.
    * @see #setLevel(int)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_Level()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_Level()
    * @model
    * @generated
    */
   int getLevel();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getLevel <em>Level</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Level</em>' attribute.
@@ -90,14 +90,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Fact Type</em>' attribute.
    * @see #setFactType(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_FactType()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_FactType()
    * @model
    * @generated
    */
   String getFactType();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getFactType <em>Fact Type</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactType <em>Fact Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Fact Type</em>' attribute.
@@ -116,14 +116,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Fact Name</em>' attribute.
    * @see #setFactName(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_FactName()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_FactName()
    * @model
    * @generated
    */
   String getFactName();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getFactName <em>Fact Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName <em>Fact Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Fact Name</em>' attribute.
@@ -142,14 +142,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expr</em>' containment reference.
    * @see #setExpr(ConditionalOrExpression)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_Expr()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_Expr()
    * @model containment="true"
    * @generated
    */
   ConditionalOrExpression getExpr();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getExpr <em>Expr</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getExpr <em>Expr</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Expr</em>' containment reference.
@@ -168,14 +168,14 @@ public interface AdaptionRule extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Action Collection</em>' containment reference.
    * @see #setActionCollection(Actions)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptionRule_ActionCollection()
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_ActionCollection()
    * @model containment="true"
    * @generated
    */
   Actions getActionCollection();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule#getActionCollection <em>Action Collection</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getActionCollection <em>Action Collection</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Action Collection</em>' containment reference.
@@ -184,4 +184,4 @@ public interface AdaptionRule extends EObject
    */
   void setActionCollection(Actions value);
 
-} // AdaptionRule
+} // AdaptationRule

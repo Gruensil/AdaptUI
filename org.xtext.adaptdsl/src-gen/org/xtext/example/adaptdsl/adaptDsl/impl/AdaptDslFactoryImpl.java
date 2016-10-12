@@ -70,7 +70,7 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.SERVICE: return createService();
       case AdaptDslPackage.FUNCTION_LIST: return createFunctionList();
       case AdaptDslPackage.FUNCTION: return createFunction();
-      case AdaptDslPackage.ADAPTION_RULE: return createAdaptionRule();
+      case AdaptDslPackage.ADAPTATION_RULE: return createAdaptationRule();
       case AdaptDslPackage.CONDITIONAL_OR_EXPRESSION: return createConditionalOrExpression();
       case AdaptDslPackage.CONDITIONAL_AND_EXPRESSION: return createConditionalAndExpression();
       case AdaptDslPackage.CONDITIONAL_PRIMARY: return createConditionalPrimary();
@@ -83,6 +83,10 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.SERVICE_FUNCTION_CALL_OPERATION: return createServiceFunctionCallOperation();
       case AdaptDslPackage.EDIT_FACT_OPERATION: return createEditFactOperation();
       case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION: return createSetDisplayPropertyOperation();
+      case AdaptDslPackage.DISPLAY_PROPERTY_VALUE: return createDisplayPropertyValue();
+      case AdaptDslPackage.INT_VALUE: return createIntValue();
+      case AdaptDslPackage.STRING_VALUE: return createStringValue();
+      case AdaptDslPackage.BOOL_VALUE: return createBoolValue();
       case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION: return createAddViewComponentOperation();
       case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION: return createDeleteViewComponentOperation();
       case AdaptDslPackage.ADD_NAV_LINK_OPERATION: return createAddNavLinkOperation();
@@ -159,10 +163,10 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AdaptionRule createAdaptionRule()
+  public AdaptationRule createAdaptationRule()
   {
-    AdaptionRuleImpl adaptionRule = new AdaptionRuleImpl();
-    return adaptionRule;
+    AdaptationRuleImpl adaptationRule = new AdaptationRuleImpl();
+    return adaptationRule;
   }
 
   /**
@@ -295,6 +299,50 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     SetDisplayPropertyOperationImpl setDisplayPropertyOperation = new SetDisplayPropertyOperationImpl();
     return setDisplayPropertyOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DisplayPropertyValue createDisplayPropertyValue()
+  {
+    DisplayPropertyValueImpl displayPropertyValue = new DisplayPropertyValueImpl();
+    return displayPropertyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntValue createIntValue()
+  {
+    IntValueImpl intValue = new IntValueImpl();
+    return intValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringValue createStringValue()
+  {
+    StringValueImpl stringValue = new StringValueImpl();
+    return stringValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BoolValue createBoolValue()
+  {
+    BoolValueImpl boolValue = new BoolValueImpl();
+    return boolValue;
   }
 
   /**

@@ -4,13 +4,16 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 
 /**
@@ -22,7 +25,7 @@ import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.SetDisplayPropertyOperationImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.SetDisplayPropertyOperationImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.SetDisplayPropertyOperationImpl#getPropertyValue <em>Property Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,24 +53,14 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
   protected String property = PROPERTY_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
+   * The cached value of the '{@link #getPropertyValue() <em>Property Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getPropertyValue()
    * @generated
    * @ordered
    */
-  protected static final String VAL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVal()
-   * @generated
-   * @ordered
-   */
-  protected String val = VAL_EDEFAULT;
+  protected DisplayPropertyValue propertyValue;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,9 +111,9 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVal()
+  public DisplayPropertyValue getPropertyValue()
   {
-    return val;
+    return propertyValue;
   }
 
   /**
@@ -128,12 +121,53 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVal(String newVal)
+  public NotificationChain basicSetPropertyValue(DisplayPropertyValue newPropertyValue, NotificationChain msgs)
   {
-    String oldVal = val;
-    val = newVal;
+    DisplayPropertyValue oldPropertyValue = propertyValue;
+    propertyValue = newPropertyValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__VAL, oldVal, val));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE, oldPropertyValue, newPropertyValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPropertyValue(DisplayPropertyValue newPropertyValue)
+  {
+    if (newPropertyValue != propertyValue)
+    {
+      NotificationChain msgs = null;
+      if (propertyValue != null)
+        msgs = ((InternalEObject)propertyValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE, null, msgs);
+      if (newPropertyValue != null)
+        msgs = ((InternalEObject)newPropertyValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE, null, msgs);
+      msgs = basicSetPropertyValue(newPropertyValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE, newPropertyValue, newPropertyValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE:
+        return basicSetPropertyValue(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -148,8 +182,8 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
     {
       case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY:
         return getProperty();
-      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__VAL:
-        return getVal();
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE:
+        return getPropertyValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,8 +201,8 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
       case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY:
         setProperty((String)newValue);
         return;
-      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__VAL:
-        setVal((String)newValue);
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE:
+        setPropertyValue((DisplayPropertyValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,8 +221,8 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
       case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY:
         setProperty(PROPERTY_EDEFAULT);
         return;
-      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__VAL:
-        setVal(VAL_EDEFAULT);
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE:
+        setPropertyValue((DisplayPropertyValue)null);
         return;
     }
     super.eUnset(featureID);
@@ -206,8 +240,8 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
     {
       case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY:
         return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
-      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__VAL:
-        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
+      case AdaptDslPackage.SET_DISPLAY_PROPERTY_OPERATION__PROPERTY_VALUE:
+        return propertyValue != null;
     }
     return super.eIsSet(featureID);
   }
@@ -225,8 +259,6 @@ public class SetDisplayPropertyOperationImpl extends MinimalEObjectImpl.Containe
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (property: ");
     result.append(property);
-    result.append(", val: ");
-    result.append(val);
     result.append(')');
     return result.toString();
   }

@@ -8,7 +8,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.adaptdsl.adaptDsl.Model
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression
 import org.xtext.example.adaptdsl.adaptDsl.impl.ConditionalOrExpressionImpl
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary
@@ -39,6 +39,10 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList
 import org.xtext.example.adaptdsl.adaptDsl.Service
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList
 import org.xtext.example.adaptdsl.adaptDsl.Function
+import org.xtext.example.adaptdsl.adaptDsl.StringValue
+import org.xtext.example.adaptdsl.adaptDsl.IntValue
+import org.xtext.example.adaptdsl.adaptDsl.BoolValue
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
 
 /**
  * Generates code from your model files on save.
@@ -98,15 +102,15 @@ class AdaptDslGenerator extends AbstractGenerator {
 		<function id="«func.id»" name="«func.name»" />
 	'''
 	
-	def compile(AdaptionRule rule) '''
-	<adaptionRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»">
+	def compile(AdaptationRule rule) '''
+	<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»">
 		<conditions>
 			«rule.expr.compile»
 		</conditions>
 		<actions>
 			«rule.actionCollection.compile»
 		</actions>
-	</adaptionRule>
+	</adaptationRule>
 	'''
 	
 	def compile(Actions act)'''
@@ -122,13 +126,26 @@ class AdaptDslGenerator extends AbstractGenerator {
 		var op = pop.operation
 		switch (op) {
 			ServiceFunctionCallOperation: {
-				'''<functionCall service="«(op as ServiceFunctionCallOperation).service»" function="«(op as ServiceFunctionCallOperation).function»" value="«(op as ServiceFunctionCallOperation).^val»"/>'''
+				'''<functionCall service="«(op as ServiceFunctionCallOperation).service»" function="«(op as ServiceFunctionCallOperation).function»" value=«(op as ServiceFunctionCallOperation).^val»/>'''
 			}
 			EditFactOperation: {
 				'''<editFactOperation set="«(op as EditFactOperation).prop»" «IF (op as EditFactOperation).^val != null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
 			}
 			SetDisplayPropertyOperation: {
-				'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«(op as SetDisplayPropertyOperation).^val»"/>'''
+				switch ((op as SetDisplayPropertyOperation).propertyValue.propertyClass){
+					StringValue: {
+						'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«((op as SetDisplayPropertyOperation).propertyValue.propertyClass as StringValue).value»"/>'''
+					}
+					IntValue:{
+						'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«((op as SetDisplayPropertyOperation).propertyValue.propertyClass as IntValue).value»"/>'''
+					}
+					BoolValue: {
+						'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«((op as SetDisplayPropertyOperation).propertyValue.propertyClass as BoolValue).value»" type="boolean"/>'''
+					}
+					default:{
+						'''<setDisplayProperty property="«(op as SetDisplayPropertyOperation).property»" value="«(op as SetDisplayPropertyOperation)»"/>'''
+					}
+				}
 			}
 			AddViewComponentOperation: {
 				'''<addViewComponentOperation viewComponent="«(op as AddViewComponentOperation).viewComp»" target="«(op as AddViewComponentOperation).target»"/>'''
@@ -137,7 +154,7 @@ class AdaptDslGenerator extends AbstractGenerator {
 				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"'''
 			}
 			AddNavLinkOperationImpl: {
-				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey="«(op as AddNavLinkOperation).text»"/>'''
+				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey=«(op as AddNavLinkOperation).text»/>'''
 			}
 			DeleteNavLinkOperation: {
 				'''<deleteNavLinkOperation viewContainer="«(op as DeleteNavLinkOperation).viewComp»" />'''
@@ -158,14 +175,14 @@ class AdaptDslGenerator extends AbstractGenerator {
 				
 			}
 			AdaptCssClassOperation: {
-				'''<editCssClassOperation cssClass="«(op as AdaptCssClassOperation).cssClass»" cssAttribute="«(op as AdaptCssClassOperation).cssAttribute»" value="«(op as AdaptCssClassOperation).cssAttributeValue»"/>'''
+				'''<editCssClassOperation cssClass=«(op as AdaptCssClassOperation).cssClass» cssAttribute=«(op as AdaptCssClassOperation).cssAttribute» value=«(op as AdaptCssClassOperation).cssAttributeValue»/>'''
 			}
 			ChangeColorSchemeOperation: {
 				
 			}
 			default: {
 				println("ERROR: unknown operation")
-				'''//ERROR: unknown operation'''
+				'''<!--ERROR: unknown operation-->'''
 			}
 		}
 	}

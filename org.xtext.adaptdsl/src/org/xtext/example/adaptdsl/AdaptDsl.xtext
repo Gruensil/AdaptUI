@@ -6,7 +6,7 @@ generate adaptDsl "http://www.xtext.org/example/adaptdsl/AdaptDsl"
 Model:
 	(services = Services)?
 	'flow' flowName = STRING '{'
-		adaptationRules += AdaptionRule+
+		adaptationRules += AdaptationRule+
 	'};'
 ;
 
@@ -28,8 +28,8 @@ Function returns Function:
 	'function' name=ID 'as' id=STRING ';'
 ;
 
-AdaptionRule:
- 	'rule' name=ID '{' 
+AdaptationRule:
+ 	'rule' name=STRING '{' 
  	'LEVEL' level=INT ';'
  	'FACT' factType=ID factName=ID ';'
 	'IF''(' expr = ConditionalOR ')' 
@@ -69,7 +69,7 @@ Fact:
 ;
 
 FactProperty:
-	ID('()')?('.'ID('()')?)*'.'ID
+	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
 ;
 
 NumberOperators:
@@ -84,9 +84,6 @@ BoolOperators:
 	'==' | '!=' 
 ;
 
-Type:
-	"number" | "string" | "boolean"
-;
 
 Actions returns Actions:
 	action = Action (next=Actions)?
@@ -101,7 +98,7 @@ ServiceOperation returns ParentOperation:
 ;
 
 ServiceFunctionCallOperation returns ServiceFunctionCallOperation:
-	'functionCall''('service=ID','function=ID','val=ID')'';'
+	'functionCall''('service=ID','function=ID','val=Value')'';'
 ;
 
 EditFactOperation returns EditFactOperation:
@@ -110,7 +107,23 @@ EditFactOperation returns EditFactOperation:
 ;
 
 SetDisplayPropertyOperation returns SetDisplayPropertyOperation:
-	'setDisplayProperty''('property=STRING','val=STRING')'';'
+	'setDisplayProperty''('property=STRING','propertyValue=DisplayPropertyValue')'';'
+;
+
+DisplayPropertyValue returns DisplayPropertyValue:
+	propertyClass = IntValue | propertyClass = StringValue | propertyClass = BoolValue
+;
+
+IntValue returns IntValue:
+	value=INT
+;
+
+StringValue returns StringValue:
+	value=STRING
+;
+
+BoolValue returns BoolValue:
+	value=BOOL
 ;
 
 TaskChangeOperation returns ParentOperation: 
@@ -154,7 +167,7 @@ RedirectNavLinkOperation returns RedirectNavLinkOperation:
 
 ClearNavOperation returns ClearNavOperation:
 	// clear all navigation links
-	'clearNavigation''('')'';'
+	 {ClearNavOperation}'clearNavigation''()'';'
 ;
 
 Text:
@@ -213,6 +226,5 @@ FontSize:
 Value:
 	INT | STRING | BOOL
 ;
-
 
 terminal BOOL: 'true'|'false';

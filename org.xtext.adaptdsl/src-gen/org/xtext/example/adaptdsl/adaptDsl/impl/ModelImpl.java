@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptionRule;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 
@@ -79,7 +79,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    * @ordered
    */
-  protected EList<AdaptionRule> adaptationRules;
+  protected EList<AdaptationRule> adaptationRules;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,11 +178,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AdaptionRule> getAdaptationRules()
+  public EList<AdaptationRule> getAdaptationRules()
   {
     if (adaptationRules == null)
     {
-      adaptationRules = new EObjectContainmentEList<AdaptionRule>(AdaptionRule.class, this, AdaptDslPackage.MODEL__ADAPTATION_RULES);
+      adaptationRules = new EObjectContainmentEList<AdaptationRule>(AdaptationRule.class, this, AdaptDslPackage.MODEL__ADAPTATION_RULES);
     }
     return adaptationRules;
   }
@@ -244,7 +244,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return;
       case AdaptDslPackage.MODEL__ADAPTATION_RULES:
         getAdaptationRules().clear();
-        getAdaptationRules().addAll((Collection<? extends AdaptionRule>)newValue);
+        getAdaptationRules().addAll((Collection<? extends AdaptationRule>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation#getVal <em>Val</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation#getPropertyValue <em>Property Value</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getSetDisplayPropertyOperation()
@@ -51,29 +51,29 @@ public interface SetDisplayPropertyOperation extends EObject
   void setProperty(String value);
 
   /**
-   * Returns the value of the '<em><b>Val</b></em>' attribute.
+   * Returns the value of the '<em><b>Property Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Val</em>' attribute isn't clear,
+   * If the meaning of the '<em>Property Value</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' attribute.
-   * @see #setVal(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getSetDisplayPropertyOperation_Val()
-   * @model
+   * @return the value of the '<em>Property Value</em>' containment reference.
+   * @see #setPropertyValue(DisplayPropertyValue)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getSetDisplayPropertyOperation_PropertyValue()
+   * @model containment="true"
    * @generated
    */
-  String getVal();
+  DisplayPropertyValue getPropertyValue();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation#getVal <em>Val</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation#getPropertyValue <em>Property Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' attribute.
-   * @see #getVal()
+   * @param value the new value of the '<em>Property Value</em>' containment reference.
+   * @see #getPropertyValue()
    * @generated
    */
-  void setVal(String value);
+  void setPropertyValue(DisplayPropertyValue value);
 
 } // SetDisplayPropertyOperation

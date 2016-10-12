@@ -81,7 +81,7 @@ public interface Model extends EObject
 
   /**
    * Returns the value of the '<em><b>Adaptation Rules</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.AdaptionRule}.
+   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Adaptation Rules</em>' containment reference list isn't clear,
@@ -93,6 +93,6 @@ public interface Model extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<AdaptionRule> getAdaptationRules();
+  EList<AdaptationRule> getAdaptationRules();
 
 } // Model

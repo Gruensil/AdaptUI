@@ -69,13 +69,13 @@ public interface AdaptDslFactory extends EFactory
   Function createFunction();
 
   /**
-   * Returns a new object of class '<em>Adaption Rule</em>'.
+   * Returns a new object of class '<em>Adaptation Rule</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Adaption Rule</em>'.
+   * @return a new object of class '<em>Adaptation Rule</em>'.
    * @generated
    */
-  AdaptionRule createAdaptionRule();
+  AdaptationRule createAdaptationRule();
 
   /**
    * Returns a new object of class '<em>Conditional Or Expression</em>'.
@@ -184,6 +184,42 @@ public interface AdaptDslFactory extends EFactory
    * @generated
    */
   SetDisplayPropertyOperation createSetDisplayPropertyOperation();
+
+  /**
+   * Returns a new object of class '<em>Display Property Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Display Property Value</em>'.
+   * @generated
+   */
+  DisplayPropertyValue createDisplayPropertyValue();
+
+  /**
+   * Returns a new object of class '<em>Int Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Value</em>'.
+   * @generated
+   */
+  IntValue createIntValue();
+
+  /**
+   * Returns a new object of class '<em>String Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Value</em>'.
+   * @generated
+   */
+  StringValue createStringValue();
+
+  /**
+   * Returns a new object of class '<em>Bool Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bool Value</em>'.
+   * @generated
+   */
+  BoolValue createBoolValue();
 
   /**
    * Returns a new object of class '<em>Add View Component Operation</em>'.
