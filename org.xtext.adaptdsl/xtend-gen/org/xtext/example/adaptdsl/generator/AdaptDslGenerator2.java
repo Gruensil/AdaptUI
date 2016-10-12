@@ -56,7 +56,7 @@ import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 @SuppressWarnings("all")
-public class AdaptDslGenerator extends AbstractGenerator {
+public class AdaptDslGenerator2 extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
@@ -74,30 +74,45 @@ public class AdaptDslGenerator extends AbstractGenerator {
     _builder.append("<?xml version=\"1.0\" encoding=\"ASCII\"?>");
     _builder.newLine();
     _builder.append("<adaptModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
+    _builder.newLine();
     {
       ServiceList _services = model.getServices();
       boolean _notEquals = (!Objects.equal(_services, null));
       if (_notEquals) {
+        _builder.append("\t");
         _builder.append("<services>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
         ServiceList _services_1 = model.getServices();
         CharSequence _compile = this.compile(_services_1);
-        _builder.append(_compile, "");
+        _builder.append(_compile, "\t\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("</services>");
+        _builder.newLine();
       }
     }
+    _builder.append("\t");
     _builder.append("<flow name=\"");
     String _flowName = model.getFlowName();
-    _builder.append(_flowName, "");
+    _builder.append(_flowName, "\t");
     _builder.append("\">");
+    _builder.newLineIfNotEmpty();
     {
       EList<AdaptationRule> _adaptationRules = model.getAdaptationRules();
       for(final AdaptationRule rule : _adaptationRules) {
+        _builder.append("\t\t");
         CharSequence _compile_1 = this.compile(rule);
-        _builder.append(_compile_1, "");
+        _builder.append(_compile_1, "\t\t");
+        _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("</flow></adaptModel>");
-    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("</flow>");
+    _builder.newLine();
+    _builder.append("</adaptModel>");
+    _builder.newLine();
     return _builder;
   }
   
@@ -110,6 +125,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         Service _this_1 = slist.getThis();
         CharSequence _compile = this.compile(_this_1);
         _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -119,6 +135,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         ServiceList _next_1 = slist.getNext();
         Object _compile_1 = this.compile(_next_1);
         _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
@@ -136,10 +153,14 @@ public class AdaptDslGenerator extends AbstractGenerator {
     String _loc = svc.getLoc();
     _builder.append(_loc, "");
     _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     FunctionList _functions = svc.getFunctions();
     CharSequence _compile = this.compile(_functions);
-    _builder.append(_compile, "");
+    _builder.append(_compile, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("</service>");
+    _builder.newLine();
     return _builder;
   }
   
@@ -152,6 +173,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         Function _this_1 = flist.getThis();
         CharSequence _compile = this.compile(_this_1);
         _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -161,6 +183,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         FunctionList _next_1 = flist.getNext();
         Object _compile_1 = this.compile(_next_1);
         _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
@@ -175,6 +198,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
     String _name = func.getName();
     _builder.append(_name, "");
     _builder.append("\" />");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -192,15 +216,32 @@ public class AdaptDslGenerator extends AbstractGenerator {
     _builder.append("\" factName=\"");
     String _factName = rule.getFactName();
     _builder.append(_factName, "");
-    _builder.append("\"><conditions>");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("<conditions>");
+    _builder.newLine();
+    _builder.append("\t\t");
     ConditionalOrExpression _expr = rule.getExpr();
     CharSequence _compile = this.compile(_expr);
-    _builder.append(_compile, "");
-    _builder.append("</conditions><actions>");
+    _builder.append(_compile, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("</conditions>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<actions>");
+    _builder.newLine();
+    _builder.append("\t\t");
     Actions _actionCollection = rule.getActionCollection();
     CharSequence _compile_1 = this.compile(_actionCollection);
-    _builder.append(_compile_1, "");
-    _builder.append("</actions></adaptationRule>");
+    _builder.append(_compile_1, "\t\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("</actions>");
+    _builder.newLine();
+    _builder.append("</adaptationRule>");
+    _builder.newLine();
     return _builder;
   }
   
@@ -209,6 +250,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
     ActionCategory _action = act.getAction();
     CharSequence _compile = this.compile(_action);
     _builder.append(_compile, "");
+    _builder.newLineIfNotEmpty();
     {
       Actions _next = act.getNext();
       boolean _notEquals = (!Objects.equal(_next, null));
@@ -216,6 +258,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         Actions _next_1 = act.getNext();
         Object _compile_1 = this.compile(_next_1);
         _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
@@ -472,10 +515,14 @@ public class AdaptDslGenerator extends AbstractGenerator {
         {
           if (((!Objects.equal(expr.getLeft().getLeft(), null)) && (!Objects.equal(expr.getLeft().getRight(), null)))) {
             _builder.append("<conditionGroup>");
+            _builder.newLine();
+            _builder.append("\t");
             ConditionalAndExpression _left_1 = expr.getLeft();
             CharSequence _compile = this.compile(_left_1);
-            _builder.append(_compile, "");
+            _builder.append(_compile, "\t");
+            _builder.newLineIfNotEmpty();
             _builder.append("</conditionGroup>");
+            _builder.newLine();
           }
         }
         {
@@ -484,6 +531,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
             ConditionalPrimary _left_3 = _left_2.getLeft();
             CharSequence _compile_1 = this.compile(_left_3);
             _builder.append(_compile_1, "");
+            _builder.newLineIfNotEmpty();
           }
         }
       }
@@ -495,6 +543,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         ConditionalOrExpression _right_1 = expr.getRight();
         Object _compile_2 = this.compile(_right_1);
         _builder.append(_compile_2, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
@@ -509,6 +558,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         ConditionalPrimary _left_1 = expr.getLeft();
         CharSequence _compile = this.compile(_left_1);
         _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -518,6 +568,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         ConditionalAndExpression _right_1 = expr.getRight();
         Object _compile_1 = this.compile(_right_1);
         _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
@@ -531,6 +582,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         EObject _cond_1 = expr.getCond();
         CharSequence _compile = this.compile(((BooleanCondition) _cond_1));
         _builder.append(_compile, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -539,6 +591,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
         EObject _cond_3 = expr.getCond();
         CharSequence _compile_1 = this.compile(((NumberCondition) _cond_3));
         _builder.append(_compile_1, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -547,6 +600,8 @@ public class AdaptDslGenerator extends AbstractGenerator {
         EObject _cond_5 = expr.getCond();
         CharSequence _compile_2 = this.compile(((StringCondition) _cond_5));
         _builder.append(_compile_2, "");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
       }
     }
     return _builder;

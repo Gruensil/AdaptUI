@@ -49,7 +49,7 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class AdaptDslGenerator extends AbstractGenerator {
+class AdaptDslGenerator2 extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	    for (e : resource.allContents.toIterable.filter(Model)) {
 	        fsa.generateFile(
@@ -60,20 +60,65 @@ class AdaptDslGenerator extends AbstractGenerator {
 	
 	def compile(Model model) '''
 	<?xml version="1.0" encoding="ASCII"?>
-	<adaptModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">«IF model.services != null»<services>«model.services.compile»</services>«ENDIF»<flow name="«model.flowName»">«FOR rule: model.adaptationRules»«rule.compile»«ENDFOR»</flow></adaptModel>
+	<adaptModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		«IF model.services != null»
+			<services>
+				«model.services.compile»
+			</services>
+		«ENDIF»
+		<flow name="«model.flowName»">
+			«FOR rule: model.adaptationRules»
+				«rule.compile»
+			«ENDFOR»
+		</flow>
+	</adaptModel>
 	'''
 	
-	def compile(ServiceList slist)'''«IF slist.this != null»«slist.this.compile»«ENDIF»«IF slist.next != null»«slist.next.compile»«ENDIF»'''
+	def compile(ServiceList slist)'''
+		«IF slist.this != null»
+			«slist.this.compile»
+		«ENDIF»
+		«IF slist.next != null»
+			«slist.next.compile»
+		«ENDIF»
+	'''
 
-	def compile(Service svc)'''<service id="«svc.id»" type="«svc.type»" location="«svc.loc»">«svc.functions.compile»</service>'''
+	def compile(Service svc)'''
+		<service id="«svc.id»" type="«svc.type»" location="«svc.loc»">
+			«svc.functions.compile»
+		</service>
+	'''
 
-	def compile(FunctionList flist)'''«IF flist.this != null»«flist.this.compile»«ENDIF»«IF flist.next != null»«flist.next.compile»«ENDIF»'''
+	def compile(FunctionList flist)'''
+		«IF flist.this != null»
+			«flist.this.compile»
+		«ENDIF»
+		«IF flist.next != null»
+			«flist.next.compile»
+		«ENDIF»
+	'''
 	
-	def compile(Function func)'''<function id="«func.id»" name="«func.name»" />'''
+	def compile(Function func)'''
+		<function id="«func.id»" name="«func.name»" />
+	'''
 	
-	def compile(AdaptationRule rule) '''<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»"><conditions>«rule.expr.compile»</conditions><actions>«rule.actionCollection.compile»</actions></adaptationRule>'''
+	def compile(AdaptationRule rule) '''
+	<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»">
+		<conditions>
+			«rule.expr.compile»
+		</conditions>
+		<actions>
+			«rule.actionCollection.compile»
+		</actions>
+	</adaptationRule>
+	'''
 	
-	def compile(Actions act)'''«act.action.compile»«IF act.next != null»«act.next.compile»«ENDIF»'''
+	def compile(Actions act)'''
+		«act.action.compile»
+		«IF act.next != null»
+			«act.next.compile»
+		«ENDIF»
+	'''
 
 	def compile(ActionCategory cat)'''«cat.actionCategory.compile»'''
 	
@@ -142,11 +187,41 @@ class AdaptDslGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def compile(ConditionalOrExpression expr) '''«IF expr.left != null»«/*Binding Group*/IF expr.left.left != null && expr.left.right != null»<conditionGroup>«expr.left.compile»</conditionGroup>«ENDIF»«/*OR*/IF expr.left.left != null && expr.left.right == null»«expr.left.left.compile»«ENDIF»«ENDIF»«IF expr.right != null»«expr.right.compile»«ENDIF»'''
+	def compile(ConditionalOrExpression expr) '''
+		«IF expr.left != null»
+			«/*Binding Group*/IF expr.left.left != null && expr.left.right != null»
+				<conditionGroup>
+					«expr.left.compile»
+				</conditionGroup>
+			«ENDIF»
+			«/*OR*/IF expr.left.left != null && expr.left.right == null»
+				«expr.left.left.compile»
+			«ENDIF»
+		«ENDIF»
+		«IF expr.right != null»
+			«expr.right.compile»
+		«ENDIF»
+	'''
 	
-	def compile(ConditionalAndExpression expr)'''«IF expr.left != null»«expr.left.compile»«ENDIF»«IF expr.right != null»«expr.right.compile»«ENDIF»'''
+	def compile(ConditionalAndExpression expr)'''
+		«IF expr.left != null»
+			«expr.left.compile»
+		«ENDIF»
+		«IF expr.right != null»
+			«expr.right.compile»
+		«ENDIF»
+	'''
 
-	def compile(ConditionalPrimary expr)'''«IF expr.cond instanceof BooleanCondition»«(expr.cond as BooleanCondition).compile»«ENDIF»«IF expr.cond instanceof NumberCondition»«(expr.cond as NumberCondition).compile»«ENDIF»«IF expr.cond instanceof StringCondition»«(expr.cond as StringCondition).compile»«ENDIF»'''
+	def compile(ConditionalPrimary expr)'''
+		«IF expr.cond instanceof BooleanCondition»
+			«(expr.cond as BooleanCondition).compile»
+		«ENDIF»
+		«IF expr.cond instanceof NumberCondition»
+			«(expr.cond as NumberCondition).compile»
+		«ENDIF»
+		«IF expr.cond instanceof StringCondition»
+			«(expr.cond as StringCondition).compile»
+		«ENDIF»'''
 
 	def compile(BooleanCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val != null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
 	
