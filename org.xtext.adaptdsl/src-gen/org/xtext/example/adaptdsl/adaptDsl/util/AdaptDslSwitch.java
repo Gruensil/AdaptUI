@@ -241,6 +241,20 @@ public class AdaptDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AdaptDslPackage.ADD_VIEW_COMPONENT_BUTTON_OPERATION:
+      {
+        AddViewComponentButtonOperation addViewComponentButtonOperation = (AddViewComponentButtonOperation)theEObject;
+        T result = caseAddViewComponentButtonOperation(addViewComponentButtonOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.DELETE_VIEW_COMPONENT_BUTTON_OPERATION:
+      {
+        DeleteViewComponentButtonOperation deleteViewComponentButtonOperation = (DeleteViewComponentButtonOperation)theEObject;
+        T result = caseDeleteViewComponentButtonOperation(deleteViewComponentButtonOperation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AdaptDslPackage.ADD_NAV_LINK_OPERATION:
       {
         AddNavLinkOperation addNavLinkOperation = (AddNavLinkOperation)theEObject;
@@ -688,6 +702,38 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDeleteViewComponentOperation(DeleteViewComponentOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Add View Component Button Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Add View Component Button Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAddViewComponentButtonOperation(AddViewComponentButtonOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Delete View Component Button Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Delete View Component Button Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeleteViewComponentButtonOperation(DeleteViewComponentButtonOperation object)
   {
     return null;
   }

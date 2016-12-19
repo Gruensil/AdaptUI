@@ -20,6 +20,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
@@ -32,6 +33,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
@@ -359,6 +361,34 @@ public class AdaptDslGenerator extends AbstractGenerator {
           _builder.append("<deleteViewComponentOperation viewComponent=\"");
           String _viewComp = ((DeleteViewComponentOperation) op).getViewComp();
           _builder.append(_viewComp, "");
+          _builder.append("\"");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof AddViewComponentButtonOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<addViewComponentButtonOperation id=\"");
+          String _id = ((AddViewComponentButtonOperation) op).getId();
+          _builder.append(_id, "");
+          _builder.append("\" langKey=\"");
+          String _langKey = ((AddViewComponentButtonOperation) op).getLangKey();
+          _builder.append(_langKey, "");
+          _builder.append("\" action=\"");
+          String _action = ((AddViewComponentButtonOperation) op).getAction();
+          _builder.append(_action, "");
+          _builder.append("\"/>");
+          _switchResult = _builder;
+        }
+      }
+      if (!_matched) {
+        if (op instanceof DeleteViewComponentButtonOperation) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<deleteViewComponentButtonOperation viewComponent=\"");
+          String _id = ((DeleteViewComponentButtonOperation) op).getId();
+          _builder.append(_id, "");
           _builder.append("\"");
           _switchResult = _builder;
         }

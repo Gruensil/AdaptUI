@@ -2068,6 +2068,46 @@ ruleTaskChangeOperation returns [EObject current=null]
 				}
 			)
 		)
+		    |
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTaskChangeOperationAccess().getOperationAddViewComponentButtonOperationParserRuleCall_2_0());
+				}
+				lv_operation_2_0=ruleAddViewComponentButtonOperation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTaskChangeOperationRule());
+					}
+					set(
+						$current,
+						"operation",
+						lv_operation_2_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.AddViewComponentButtonOperation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		    |
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTaskChangeOperationAccess().getOperationDeleteViewComponentButtonOperationParserRuleCall_3_0());
+				}
+				lv_operation_3_0=ruleDeleteViewComponentButtonOperation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTaskChangeOperationRule());
+					}
+					set(
+						$current,
+						"operation",
+						lv_operation_3_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.DeleteViewComponentButtonOperation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -2198,6 +2238,156 @@ ruleDeleteViewComponentOperation returns [EObject current=null]
 		otherlv_4=';'
 		{
 			newLeafNode(otherlv_4, grammarAccess.getDeleteViewComponentOperationAccess().getSemicolonKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleAddViewComponentButtonOperation
+entryRuleAddViewComponentButtonOperation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAddViewComponentButtonOperationRule()); }
+	iv_ruleAddViewComponentButtonOperation=ruleAddViewComponentButtonOperation
+	{ $current=$iv_ruleAddViewComponentButtonOperation.current; }
+	EOF;
+
+// Rule AddViewComponentButtonOperation
+ruleAddViewComponentButtonOperation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='addViewComponentButton'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAddViewComponentButtonOperationAccess().getAddViewComponentButtonKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAddViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				lv_id_2_0=RULE_STRING
+				{
+					newLeafNode(lv_id_2_0, grammarAccess.getAddViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAddViewComponentButtonOperationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"id",
+						lv_id_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_3=','
+		{
+			newLeafNode(otherlv_3, grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_3());
+		}
+		(
+			(
+				lv_langKey_4_0=RULE_STRING
+				{
+					newLeafNode(lv_langKey_4_0, grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeySTRINGTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAddViewComponentButtonOperationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"langKey",
+						lv_langKey_4_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_5=','
+		{
+			newLeafNode(otherlv_5, grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_5());
+		}
+		(
+			(
+				lv_action_6_0=RULE_STRING
+				{
+					newLeafNode(lv_action_6_0, grammarAccess.getAddViewComponentButtonOperationAccess().getActionSTRINGTerminalRuleCall_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAddViewComponentButtonOperationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"action",
+						lv_action_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_7=')'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getAddViewComponentButtonOperationAccess().getRightParenthesisKeyword_7());
+		}
+		otherlv_8=';'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getAddViewComponentButtonOperationAccess().getSemicolonKeyword_8());
+		}
+	)
+;
+
+// Entry rule entryRuleDeleteViewComponentButtonOperation
+entryRuleDeleteViewComponentButtonOperation returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDeleteViewComponentButtonOperationRule()); }
+	iv_ruleDeleteViewComponentButtonOperation=ruleDeleteViewComponentButtonOperation
+	{ $current=$iv_ruleDeleteViewComponentButtonOperation.current; }
+	EOF;
+
+// Rule DeleteViewComponentButtonOperation
+ruleDeleteViewComponentButtonOperation returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='deleteViewComponentButton'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getDeleteViewComponentButtonOperationAccess().getDeleteViewComponentButtonKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDeleteViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				lv_id_2_0=RULE_STRING
+				{
+					newLeafNode(lv_id_2_0, grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDeleteViewComponentButtonOperationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"id",
+						lv_id_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_3=')'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getDeleteViewComponentButtonOperationAccess().getRightParenthesisKeyword_3());
+		}
+		otherlv_4=';'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDeleteViewComponentButtonOperationAccess().getSemicolonKeyword_4());
 		}
 	)
 ;

@@ -1105,12 +1105,18 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOperationAddViewComponentOperationParserRuleCall_0_0 = (RuleCall)cOperationAssignment_0.eContents().get(0);
 		private final Assignment cOperationAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cOperationDeleteViewComponentOperationParserRuleCall_1_0 = (RuleCall)cOperationAssignment_1.eContents().get(0);
+		private final Assignment cOperationAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cOperationAddViewComponentButtonOperationParserRuleCall_2_0 = (RuleCall)cOperationAssignment_2.eContents().get(0);
+		private final Assignment cOperationAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final RuleCall cOperationDeleteViewComponentButtonOperationParserRuleCall_3_0 = (RuleCall)cOperationAssignment_3.eContents().get(0);
 		
 		//TaskChangeOperation ParentOperation:
-		//	operation=AddViewComponentOperation | operation=DeleteViewComponentOperation
+		//	operation=AddViewComponentOperation | operation=DeleteViewComponentOperation |
+		//	operation=AddViewComponentButtonOperation | operation=DeleteViewComponentButtonOperation
 		@Override public ParserRule getRule() { return rule; }
 		
-		//operation=AddViewComponentOperation | operation=DeleteViewComponentOperation
+		//operation=AddViewComponentOperation | operation=DeleteViewComponentOperation | operation=AddViewComponentButtonOperation
+		//| operation=DeleteViewComponentButtonOperation
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//operation=AddViewComponentOperation
@@ -1124,6 +1130,18 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DeleteViewComponentOperation
 		public RuleCall getOperationDeleteViewComponentOperationParserRuleCall_1_0() { return cOperationDeleteViewComponentOperationParserRuleCall_1_0; }
+		
+		//operation=AddViewComponentButtonOperation
+		public Assignment getOperationAssignment_2() { return cOperationAssignment_2; }
+		
+		//AddViewComponentButtonOperation
+		public RuleCall getOperationAddViewComponentButtonOperationParserRuleCall_2_0() { return cOperationAddViewComponentButtonOperationParserRuleCall_2_0; }
+		
+		//operation=DeleteViewComponentButtonOperation
+		public Assignment getOperationAssignment_3() { return cOperationAssignment_3; }
+		
+		//DeleteViewComponentButtonOperation
+		public RuleCall getOperationDeleteViewComponentButtonOperationParserRuleCall_3_0() { return cOperationDeleteViewComponentButtonOperationParserRuleCall_3_0; }
 	}
 	public class AddViewComponentOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.AddViewComponentOperation");
@@ -1200,6 +1218,100 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ViewComponent
 		public RuleCall getViewCompViewComponentParserRuleCall_2_0() { return cViewCompViewComponentParserRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+	}
+	public class AddViewComponentButtonOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.AddViewComponentButtonOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAddViewComponentButtonKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIdAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cIdSTRINGTerminalRuleCall_2_0 = (RuleCall)cIdAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cLangKeyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cLangKeySTRINGTerminalRuleCall_4_0 = (RuleCall)cLangKeyAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cActionAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cActionSTRINGTerminalRuleCall_6_0 = (RuleCall)cActionAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//AddViewComponentButtonOperation:
+		//	'addViewComponentButton' '(' id=STRING ',' langKey=STRING ',' action=STRING ')' ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'addViewComponentButton' '(' id=STRING ',' langKey=STRING ',' action=STRING ')' ';'
+		public Group getGroup() { return cGroup; }
+		
+		//'addViewComponentButton'
+		public Keyword getAddViewComponentButtonKeyword_0() { return cAddViewComponentButtonKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//id=STRING
+		public Assignment getIdAssignment_2() { return cIdAssignment_2; }
+		
+		//STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_2_0() { return cIdSTRINGTerminalRuleCall_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//langKey=STRING
+		public Assignment getLangKeyAssignment_4() { return cLangKeyAssignment_4; }
+		
+		//STRING
+		public RuleCall getLangKeySTRINGTerminalRuleCall_4_0() { return cLangKeySTRINGTerminalRuleCall_4_0; }
+		
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		
+		//action=STRING
+		public Assignment getActionAssignment_6() { return cActionAssignment_6; }
+		
+		//STRING
+		public RuleCall getActionSTRINGTerminalRuleCall_6_0() { return cActionSTRINGTerminalRuleCall_6_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
+	}
+	public class DeleteViewComponentButtonOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.DeleteViewComponentButtonOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDeleteViewComponentButtonKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIdAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cIdSTRINGTerminalRuleCall_2_0 = (RuleCall)cIdAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//DeleteViewComponentButtonOperation:
+		//	'deleteViewComponentButton' '(' id=STRING ')' ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'deleteViewComponentButton' '(' id=STRING ')' ';'
+		public Group getGroup() { return cGroup; }
+		
+		//'deleteViewComponentButton'
+		public Keyword getDeleteViewComponentButtonKeyword_0() { return cDeleteViewComponentButtonKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//id=STRING
+		public Assignment getIdAssignment_2() { return cIdAssignment_2; }
+		
+		//STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_2_0() { return cIdSTRINGTerminalRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -1831,6 +1943,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final TaskChangeOperationElements pTaskChangeOperation;
 	private final AddViewComponentOperationElements pAddViewComponentOperation;
 	private final DeleteViewComponentOperationElements pDeleteViewComponentOperation;
+	private final AddViewComponentButtonOperationElements pAddViewComponentButtonOperation;
+	private final DeleteViewComponentButtonOperationElements pDeleteViewComponentButtonOperation;
 	private final ViewComponentElements pViewComponent;
 	private final TargetContainerElements pTargetContainer;
 	private final NavigationChangeOperationElements pNavigationChangeOperation;
@@ -1892,6 +2006,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pTaskChangeOperation = new TaskChangeOperationElements();
 		this.pAddViewComponentOperation = new AddViewComponentOperationElements();
 		this.pDeleteViewComponentOperation = new DeleteViewComponentOperationElements();
+		this.pAddViewComponentButtonOperation = new AddViewComponentButtonOperationElements();
+		this.pDeleteViewComponentButtonOperation = new DeleteViewComponentButtonOperationElements();
 		this.pViewComponent = new ViewComponentElements();
 		this.pTargetContainer = new TargetContainerElements();
 		this.pNavigationChangeOperation = new NavigationChangeOperationElements();
@@ -2227,7 +2343,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TaskChangeOperation ParentOperation:
-	//	operation=AddViewComponentOperation | operation=DeleteViewComponentOperation
+	//	operation=AddViewComponentOperation | operation=DeleteViewComponentOperation |
+	//	operation=AddViewComponentButtonOperation | operation=DeleteViewComponentButtonOperation
 	public TaskChangeOperationElements getTaskChangeOperationAccess() {
 		return pTaskChangeOperation;
 	}
@@ -2254,6 +2371,26 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getDeleteViewComponentOperationRule() {
 		return getDeleteViewComponentOperationAccess().getRule();
+	}
+	
+	//AddViewComponentButtonOperation:
+	//	'addViewComponentButton' '(' id=STRING ',' langKey=STRING ',' action=STRING ')' ';';
+	public AddViewComponentButtonOperationElements getAddViewComponentButtonOperationAccess() {
+		return pAddViewComponentButtonOperation;
+	}
+	
+	public ParserRule getAddViewComponentButtonOperationRule() {
+		return getAddViewComponentButtonOperationAccess().getRule();
+	}
+	
+	//DeleteViewComponentButtonOperation:
+	//	'deleteViewComponentButton' '(' id=STRING ')' ';';
+	public DeleteViewComponentButtonOperationElements getDeleteViewComponentButtonOperationAccess() {
+		return pDeleteViewComponentButtonOperation;
+	}
+	
+	public ParserRule getDeleteViewComponentButtonOperationRule() {
+		return getDeleteViewComponentButtonOperationAccess().getRule();
 	}
 	
 	//ViewComponent:

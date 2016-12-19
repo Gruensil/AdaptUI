@@ -105,6 +105,14 @@
     <genClasses ecoreClass="AdaptDsl.ecore#//DeleteViewComponentOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//DeleteViewComponentOperation/viewComp"/>
     </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//AddViewComponentButtonOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentButtonOperation/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentButtonOperation/langKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddViewComponentButtonOperation/action"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//DeleteViewComponentButtonOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//DeleteViewComponentButtonOperation/id"/>
+    </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//AddNavLinkOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddNavLinkOperation/viewComp"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AddNavLinkOperation/text"/>

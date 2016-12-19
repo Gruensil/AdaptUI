@@ -89,6 +89,8 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.BOOL_VALUE: return createBoolValue();
       case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION: return createAddViewComponentOperation();
       case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION: return createDeleteViewComponentOperation();
+      case AdaptDslPackage.ADD_VIEW_COMPONENT_BUTTON_OPERATION: return createAddViewComponentButtonOperation();
+      case AdaptDslPackage.DELETE_VIEW_COMPONENT_BUTTON_OPERATION: return createDeleteViewComponentButtonOperation();
       case AdaptDslPackage.ADD_NAV_LINK_OPERATION: return createAddNavLinkOperation();
       case AdaptDslPackage.DELETE_NAV_LINK_OPERATION: return createDeleteNavLinkOperation();
       case AdaptDslPackage.REDIRECT_NAV_LINK_OPERATION: return createRedirectNavLinkOperation();
@@ -365,6 +367,28 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     DeleteViewComponentOperationImpl deleteViewComponentOperation = new DeleteViewComponentOperationImpl();
     return deleteViewComponentOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AddViewComponentButtonOperation createAddViewComponentButtonOperation()
+  {
+    AddViewComponentButtonOperationImpl addViewComponentButtonOperation = new AddViewComponentButtonOperationImpl();
+    return addViewComponentButtonOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeleteViewComponentButtonOperation createDeleteViewComponentButtonOperation()
+  {
+    DeleteViewComponentButtonOperationImpl deleteViewComponentButtonOperation = new DeleteViewComponentButtonOperationImpl();
+    return deleteViewComponentButtonOperation;
   }
 
   /**

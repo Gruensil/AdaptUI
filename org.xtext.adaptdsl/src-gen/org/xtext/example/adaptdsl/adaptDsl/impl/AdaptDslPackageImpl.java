@@ -17,6 +17,7 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslFactory;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
@@ -29,6 +30,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
@@ -221,6 +223,20 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass deleteViewComponentOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addViewComponentButtonOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deleteViewComponentButtonOperationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1103,6 +1119,66 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAddViewComponentButtonOperation()
+  {
+    return addViewComponentButtonOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddViewComponentButtonOperation_Id()
+  {
+    return (EAttribute)addViewComponentButtonOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddViewComponentButtonOperation_LangKey()
+  {
+    return (EAttribute)addViewComponentButtonOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddViewComponentButtonOperation_Action()
+  {
+    return (EAttribute)addViewComponentButtonOperationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeleteViewComponentButtonOperation()
+  {
+    return deleteViewComponentButtonOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeleteViewComponentButtonOperation_Id()
+  {
+    return (EAttribute)deleteViewComponentButtonOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getAddNavLinkOperation()
   {
     return addNavLinkOperationEClass;
@@ -1447,6 +1523,14 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     deleteViewComponentOperationEClass = createEClass(DELETE_VIEW_COMPONENT_OPERATION);
     createEAttribute(deleteViewComponentOperationEClass, DELETE_VIEW_COMPONENT_OPERATION__VIEW_COMP);
 
+    addViewComponentButtonOperationEClass = createEClass(ADD_VIEW_COMPONENT_BUTTON_OPERATION);
+    createEAttribute(addViewComponentButtonOperationEClass, ADD_VIEW_COMPONENT_BUTTON_OPERATION__ID);
+    createEAttribute(addViewComponentButtonOperationEClass, ADD_VIEW_COMPONENT_BUTTON_OPERATION__LANG_KEY);
+    createEAttribute(addViewComponentButtonOperationEClass, ADD_VIEW_COMPONENT_BUTTON_OPERATION__ACTION);
+
+    deleteViewComponentButtonOperationEClass = createEClass(DELETE_VIEW_COMPONENT_BUTTON_OPERATION);
+    createEAttribute(deleteViewComponentButtonOperationEClass, DELETE_VIEW_COMPONENT_BUTTON_OPERATION__ID);
+
     addNavLinkOperationEClass = createEClass(ADD_NAV_LINK_OPERATION);
     createEAttribute(addNavLinkOperationEClass, ADD_NAV_LINK_OPERATION__VIEW_COMP);
     createEAttribute(addNavLinkOperationEClass, ADD_NAV_LINK_OPERATION__TEXT);
@@ -1608,6 +1692,14 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(deleteViewComponentOperationEClass, DeleteViewComponentOperation.class, "DeleteViewComponentOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeleteViewComponentOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, DeleteViewComponentOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addViewComponentButtonOperationEClass, AddViewComponentButtonOperation.class, "AddViewComponentButtonOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddViewComponentButtonOperation_Id(), ecorePackage.getEString(), "id", null, 0, 1, AddViewComponentButtonOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAddViewComponentButtonOperation_LangKey(), ecorePackage.getEString(), "langKey", null, 0, 1, AddViewComponentButtonOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAddViewComponentButtonOperation_Action(), ecorePackage.getEString(), "action", null, 0, 1, AddViewComponentButtonOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deleteViewComponentButtonOperationEClass, DeleteViewComponentButtonOperation.class, "DeleteViewComponentButtonOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeleteViewComponentButtonOperation_Id(), ecorePackage.getEString(), "id", null, 0, 1, DeleteViewComponentButtonOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(addNavLinkOperationEClass, AddNavLinkOperation.class, "AddNavLinkOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAddNavLinkOperation_ViewComp(), ecorePackage.getEString(), "viewComp", null, 0, 1, AddNavLinkOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

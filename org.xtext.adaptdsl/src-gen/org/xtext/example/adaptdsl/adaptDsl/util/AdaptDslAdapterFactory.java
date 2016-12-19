@@ -196,6 +196,16 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
         return createDeleteViewComponentOperationAdapter();
       }
       @Override
+      public Adapter caseAddViewComponentButtonOperation(AddViewComponentButtonOperation object)
+      {
+        return createAddViewComponentButtonOperationAdapter();
+      }
+      @Override
+      public Adapter caseDeleteViewComponentButtonOperation(DeleteViewComponentButtonOperation object)
+      {
+        return createDeleteViewComponentButtonOperationAdapter();
+      }
+      @Override
       public Adapter caseAddNavLinkOperation(AddNavLinkOperation object)
       {
         return createAddNavLinkOperationAdapter();
@@ -618,6 +628,36 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDeleteViewComponentOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation <em>Add View Component Button Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation
+   * @generated
+   */
+  public Adapter createAddViewComponentButtonOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation <em>Delete View Component Button Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation
+   * @generated
+   */
+  public Adapter createDeleteViewComponentButtonOperationAdapter()
   {
     return null;
   }

@@ -973,6 +973,80 @@ public interface AdaptDslPackage extends EPackage
   int DELETE_VIEW_COMPONENT_OPERATION_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.AddViewComponentButtonOperationImpl <em>Add View Component Button Operation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.AddViewComponentButtonOperationImpl
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddViewComponentButtonOperation()
+   * @generated
+   */
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION = 24;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION__ID = 0;
+
+  /**
+   * The feature id for the '<em><b>Lang Key</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION__LANG_KEY = 1;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION__ACTION = 2;
+
+  /**
+   * The number of structural features of the '<em>Add View Component Button Operation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.DeleteViewComponentButtonOperationImpl <em>Delete View Component Button Operation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.DeleteViewComponentButtonOperationImpl
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteViewComponentButtonOperation()
+   * @generated
+   */
+  int DELETE_VIEW_COMPONENT_BUTTON_OPERATION = 25;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE_VIEW_COMPONENT_BUTTON_OPERATION__ID = 0;
+
+  /**
+   * The number of structural features of the '<em>Delete View Component Button Operation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE_VIEW_COMPONENT_BUTTON_OPERATION_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl <em>Add Nav Link Operation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -980,7 +1054,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddNavLinkOperation()
    * @generated
    */
-  int ADD_NAV_LINK_OPERATION = 24;
+  int ADD_NAV_LINK_OPERATION = 26;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1017,7 +1091,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteNavLinkOperation()
    * @generated
    */
-  int DELETE_NAV_LINK_OPERATION = 25;
+  int DELETE_NAV_LINK_OPERATION = 27;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1045,7 +1119,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getRedirectNavLinkOperation()
    * @generated
    */
-  int REDIRECT_NAV_LINK_OPERATION = 26;
+  int REDIRECT_NAV_LINK_OPERATION = 28;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1073,7 +1147,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getClearNavOperation()
    * @generated
    */
-  int CLEAR_NAV_OPERATION = 27;
+  int CLEAR_NAV_OPERATION = 29;
 
   /**
    * The number of structural features of the '<em>Clear Nav Operation</em>' class.
@@ -1092,7 +1166,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeFontSizeOperation()
    * @generated
    */
-  int CHANGE_FONT_SIZE_OPERATION = 28;
+  int CHANGE_FONT_SIZE_OPERATION = 30;
 
   /**
    * The feature id for the '<em><b>Size Primary</b></em>' attribute.
@@ -1129,7 +1203,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeColorSchemeOperation()
    * @generated
    */
-  int CHANGE_COLOR_SCHEME_OPERATION = 29;
+  int CHANGE_COLOR_SCHEME_OPERATION = 31;
 
   /**
    * The feature id for the '<em><b>Color Primary</b></em>' attribute.
@@ -1166,7 +1240,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeFontOperation()
    * @generated
    */
-  int CHANGE_FONT_OPERATION = 30;
+  int CHANGE_FONT_OPERATION = 32;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1194,7 +1268,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeTableCssClassOperation()
    * @generated
    */
-  int CHANGE_TABLE_CSS_CLASS_OPERATION = 31;
+  int CHANGE_TABLE_CSS_CLASS_OPERATION = 33;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1222,7 +1296,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAdaptCssClassOperation()
    * @generated
    */
-  int ADAPT_CSS_CLASS_OPERATION = 32;
+  int ADAPT_CSS_CLASS_OPERATION = 34;
 
   /**
    * The feature id for the '<em><b>Css Class</b></em>' attribute.
@@ -2061,6 +2135,70 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    */
   EAttribute getDeleteViewComponentOperation_ViewComp();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation <em>Add View Component Button Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Add View Component Button Operation</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation
+   * @generated
+   */
+  EClass getAddViewComponentButtonOperation();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getId()
+   * @see #getAddViewComponentButtonOperation()
+   * @generated
+   */
+  EAttribute getAddViewComponentButtonOperation_Id();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getLangKey <em>Lang Key</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lang Key</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getLangKey()
+   * @see #getAddViewComponentButtonOperation()
+   * @generated
+   */
+  EAttribute getAddViewComponentButtonOperation_LangKey();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Action</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation#getAction()
+   * @see #getAddViewComponentButtonOperation()
+   * @generated
+   */
+  EAttribute getAddViewComponentButtonOperation_Action();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation <em>Delete View Component Button Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Delete View Component Button Operation</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation
+   * @generated
+   */
+  EClass getDeleteViewComponentButtonOperation();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation#getId()
+   * @see #getDeleteViewComponentButtonOperation()
+   * @generated
+   */
+  EAttribute getDeleteViewComponentButtonOperation_Id();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation <em>Add Nav Link Operation</em>}'.
@@ -2965,6 +3103,58 @@ public interface AdaptDslPackage extends EPackage
      * @generated
      */
     EAttribute DELETE_VIEW_COMPONENT_OPERATION__VIEW_COMP = eINSTANCE.getDeleteViewComponentOperation_ViewComp();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.AddViewComponentButtonOperationImpl <em>Add View Component Button Operation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.AddViewComponentButtonOperationImpl
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddViewComponentButtonOperation()
+     * @generated
+     */
+    EClass ADD_VIEW_COMPONENT_BUTTON_OPERATION = eINSTANCE.getAddViewComponentButtonOperation();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADD_VIEW_COMPONENT_BUTTON_OPERATION__ID = eINSTANCE.getAddViewComponentButtonOperation_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Lang Key</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADD_VIEW_COMPONENT_BUTTON_OPERATION__LANG_KEY = eINSTANCE.getAddViewComponentButtonOperation_LangKey();
+
+    /**
+     * The meta object literal for the '<em><b>Action</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADD_VIEW_COMPONENT_BUTTON_OPERATION__ACTION = eINSTANCE.getAddViewComponentButtonOperation_Action();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.DeleteViewComponentButtonOperationImpl <em>Delete View Component Button Operation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.DeleteViewComponentButtonOperationImpl
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteViewComponentButtonOperation()
+     * @generated
+     */
+    EClass DELETE_VIEW_COMPONENT_BUTTON_OPERATION = eINSTANCE.getDeleteViewComponentButtonOperation();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DELETE_VIEW_COMPONENT_BUTTON_OPERATION__ID = eINSTANCE.getDeleteViewComponentButtonOperation_Id();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl <em>Add Nav Link Operation</em>}' class.

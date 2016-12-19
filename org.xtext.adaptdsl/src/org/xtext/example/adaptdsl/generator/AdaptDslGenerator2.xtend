@@ -82,13 +82,13 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 			«slist.next.compile»
 		«ENDIF»
 	'''
-
+	
 	def compile(Service svc)'''
 		<service id="«svc.id»" type="«svc.type»" location="«svc.loc»">
 			«svc.functions.compile»
 		</service>
 	'''
-
+	
 	def compile(FunctionList flist)'''
 		«IF flist.this != null»
 			«flist.this.compile»

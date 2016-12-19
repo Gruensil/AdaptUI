@@ -127,7 +127,7 @@ BoolValue returns BoolValue:
 ;
 
 TaskChangeOperation returns ParentOperation: 
-	operation = AddViewComponentOperation | operation = DeleteViewComponentOperation
+	operation = AddViewComponentOperation | operation = DeleteViewComponentOperation  | operation = AddViewComponentButtonOperation | operation = DeleteViewComponentButtonOperation
 ;
 
 AddViewComponentOperation returns AddViewComponentOperation:
@@ -136,6 +136,14 @@ AddViewComponentOperation returns AddViewComponentOperation:
 
 DeleteViewComponentOperation returns DeleteViewComponentOperation:
 	'deleteViewComponent''(' viewComp=ViewComponent ')'';'
+;
+
+AddViewComponentButtonOperation returns AddViewComponentButtonOperation:
+	'addViewComponentButton''(' id=STRING','langKey=STRING','action=STRING')'';'
+;
+
+DeleteViewComponentButtonOperation returns DeleteViewComponentButtonOperation:
+	'deleteViewComponentButton''(' id=STRING ')'';'
 ;
 
 ViewComponent:

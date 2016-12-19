@@ -20,6 +20,7 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.BoolValue;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
@@ -32,6 +33,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
@@ -79,6 +81,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case AdaptDslPackage.ADD_NAV_LINK_OPERATION:
 				sequence_AddNavLinkOperation(context, (AddNavLinkOperation) semanticObject); 
 				return; 
+			case AdaptDslPackage.ADD_VIEW_COMPONENT_BUTTON_OPERATION:
+				sequence_AddViewComponentButtonOperation(context, (AddViewComponentButtonOperation) semanticObject); 
+				return; 
 			case AdaptDslPackage.ADD_VIEW_COMPONENT_OPERATION:
 				sequence_AddViewComponentOperation(context, (AddViewComponentOperation) semanticObject); 
 				return; 
@@ -114,6 +119,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.DELETE_NAV_LINK_OPERATION:
 				sequence_DeleteNavLinkOperation(context, (DeleteNavLinkOperation) semanticObject); 
+				return; 
+			case AdaptDslPackage.DELETE_VIEW_COMPONENT_BUTTON_OPERATION:
+				sequence_DeleteViewComponentButtonOperation(context, (DeleteViewComponentButtonOperation) semanticObject); 
 				return; 
 			case AdaptDslPackage.DELETE_VIEW_COMPONENT_OPERATION:
 				sequence_DeleteViewComponentOperation(context, (DeleteViewComponentOperation) semanticObject); 
@@ -293,6 +301,30 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAddNavLinkOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
 		feeder.accept(grammarAccess.getAddNavLinkOperationAccess().getTextTextParserRuleCall_4_0(), semanticObject.getText());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AddViewComponentButtonOperation returns AddViewComponentButtonOperation
+	 *
+	 * Constraint:
+	 *     (id=STRING langKey=STRING action=STRING)
+	 */
+	protected void sequence_AddViewComponentButtonOperation(ISerializationContext context, AddViewComponentButtonOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__ID));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__LANG_KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__LANG_KEY));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__ACTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADD_VIEW_COMPONENT_BUTTON_OPERATION__ACTION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAddViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0(), semanticObject.getId());
+		feeder.accept(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeySTRINGTerminalRuleCall_4_0(), semanticObject.getLangKey());
+		feeder.accept(grammarAccess.getAddViewComponentButtonOperationAccess().getActionSTRINGTerminalRuleCall_6_0(), semanticObject.getAction());
 		feeder.finish();
 	}
 	
@@ -488,6 +520,24 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDeleteNavLinkOperationAccess().getViewCompViewComponentParserRuleCall_2_0(), semanticObject.getViewComp());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DeleteViewComponentButtonOperation returns DeleteViewComponentButtonOperation
+	 *
+	 * Constraint:
+	 *     id=STRING
+	 */
+	protected void sequence_DeleteViewComponentButtonOperation(ISerializationContext context, DeleteViewComponentButtonOperation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.DELETE_VIEW_COMPONENT_BUTTON_OPERATION__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.DELETE_VIEW_COMPONENT_BUTTON_OPERATION__ID));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0(), semanticObject.getId());
 		feeder.finish();
 	}
 	
@@ -812,7 +862,12 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     TaskChangeOperation returns ParentOperation
 	 *
 	 * Constraint:
-	 *     (operation=AddViewComponentOperation | operation=DeleteViewComponentOperation)
+	 *     (
+	 *         operation=AddViewComponentOperation | 
+	 *         operation=DeleteViewComponentOperation | 
+	 *         operation=AddViewComponentButtonOperation | 
+	 *         operation=DeleteViewComponentButtonOperation
+	 *     )
 	 */
 	protected void sequence_TaskChangeOperation(ISerializationContext context, ParentOperation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

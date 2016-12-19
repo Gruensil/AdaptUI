@@ -240,6 +240,24 @@ public interface AdaptDslFactory extends EFactory
   DeleteViewComponentOperation createDeleteViewComponentOperation();
 
   /**
+   * Returns a new object of class '<em>Add View Component Button Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Add View Component Button Operation</em>'.
+   * @generated
+   */
+  AddViewComponentButtonOperation createAddViewComponentButtonOperation();
+
+  /**
+   * Returns a new object of class '<em>Delete View Component Button Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Delete View Component Button Operation</em>'.
+   * @generated
+   */
+  DeleteViewComponentButtonOperation createDeleteViewComponentButtonOperation();
+
+  /**
    * Returns a new object of class '<em>Add Nav Link Operation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

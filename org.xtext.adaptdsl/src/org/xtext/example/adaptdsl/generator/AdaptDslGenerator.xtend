@@ -43,6 +43,8 @@ import org.xtext.example.adaptdsl.adaptDsl.StringValue
 import org.xtext.example.adaptdsl.adaptDsl.IntValue
 import org.xtext.example.adaptdsl.adaptDsl.BoolValue
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
+import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation
+import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation
 
 /**
  * Generates code from your model files on save.
@@ -107,6 +109,12 @@ class AdaptDslGenerator extends AbstractGenerator {
 			}
 			DeleteViewComponentOperation: {
 				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"'''
+			}
+			AddViewComponentButtonOperation: {
+				'''<addViewComponentButtonOperation id="«(op as AddViewComponentButtonOperation).id»" langKey="«(op as AddViewComponentButtonOperation).langKey»" action="«(op as AddViewComponentButtonOperation).action»"/>'''
+			}
+			DeleteViewComponentButtonOperation: {
+				'''<deleteViewComponentButtonOperation viewComponent="«(op as DeleteViewComponentButtonOperation).id»"'''
 			}
 			AddNavLinkOperationImpl: {
 				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey=«(op as AddNavLinkOperation).text»/>'''
