@@ -114,7 +114,7 @@ class AdaptDslGenerator extends AbstractGenerator {
 				'''<addViewComponentButtonOperation id="«(op as AddViewComponentButtonOperation).id»" langKey="«(op as AddViewComponentButtonOperation).langKey»" action="«(op as AddViewComponentButtonOperation).action»"/>'''
 			}
 			DeleteViewComponentButtonOperation: {
-				'''<deleteViewComponentButtonOperation viewComponent="«(op as DeleteViewComponentButtonOperation).id»"'''
+				'''<deleteViewComponentButtonOperation viewComponent="«(op as DeleteViewComponentButtonOperation).id»"/>'''
 			}
 			AddNavLinkOperationImpl: {
 				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey=«(op as AddNavLinkOperation).text»/>'''
