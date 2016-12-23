@@ -72,6 +72,8 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSetDisplayPropertyOperationAccess().getGroup(), "rule__SetDisplayPropertyOperation__Group__0");
 					put(grammarAccess.getAddViewComponentOperationAccess().getGroup(), "rule__AddViewComponentOperation__Group__0");
 					put(grammarAccess.getDeleteViewComponentOperationAccess().getGroup(), "rule__DeleteViewComponentOperation__Group__0");
+					put(grammarAccess.getAddViewComponentButtonOperationAccess().getGroup(), "rule__AddViewComponentButtonOperation__Group__0");
+					put(grammarAccess.getDeleteViewComponentButtonOperationAccess().getGroup(), "rule__DeleteViewComponentButtonOperation__Group__0");
 					put(grammarAccess.getAddNavLinkOperationAccess().getGroup(), "rule__AddNavLinkOperation__Group__0");
 					put(grammarAccess.getDeleteNavLinkOperationAccess().getGroup(), "rule__DeleteNavLinkOperation__Group__0");
 					put(grammarAccess.getRedirectNavLinkOperationAccess().getGroup(), "rule__RedirectNavLinkOperation__Group__0");
@@ -141,9 +143,15 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBoolValueAccess().getValueAssignment(), "rule__BoolValue__ValueAssignment");
 					put(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_0(), "rule__TaskChangeOperation__OperationAssignment_0");
 					put(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_1(), "rule__TaskChangeOperation__OperationAssignment_1");
+					put(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_2(), "rule__TaskChangeOperation__OperationAssignment_2");
+					put(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_3(), "rule__TaskChangeOperation__OperationAssignment_3");
 					put(grammarAccess.getAddViewComponentOperationAccess().getViewCompAssignment_2(), "rule__AddViewComponentOperation__ViewCompAssignment_2");
 					put(grammarAccess.getAddViewComponentOperationAccess().getTargetAssignment_4(), "rule__AddViewComponentOperation__TargetAssignment_4");
 					put(grammarAccess.getDeleteViewComponentOperationAccess().getViewCompAssignment_2(), "rule__DeleteViewComponentOperation__ViewCompAssignment_2");
+					put(grammarAccess.getAddViewComponentButtonOperationAccess().getIdAssignment_2(), "rule__AddViewComponentButtonOperation__IdAssignment_2");
+					put(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeyAssignment_4(), "rule__AddViewComponentButtonOperation__LangKeyAssignment_4");
+					put(grammarAccess.getAddViewComponentButtonOperationAccess().getActionAssignment_6(), "rule__AddViewComponentButtonOperation__ActionAssignment_6");
+					put(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdAssignment_2(), "rule__DeleteViewComponentButtonOperation__IdAssignment_2");
 					put(grammarAccess.getNavigationChangeOperationAccess().getOperationAssignment_0(), "rule__NavigationChangeOperation__OperationAssignment_0");
 					put(grammarAccess.getNavigationChangeOperationAccess().getOperationAssignment_1(), "rule__NavigationChangeOperation__OperationAssignment_1");
 					put(grammarAccess.getNavigationChangeOperationAccess().getOperationAssignment_2(), "rule__NavigationChangeOperation__OperationAssignment_2");

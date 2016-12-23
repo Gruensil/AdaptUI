@@ -151,7 +151,7 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 				'''<addViewComponentOperation viewComponent="«(op as AddViewComponentOperation).viewComp»" target="«(op as AddViewComponentOperation).target»"/>'''
 			}
 			DeleteViewComponentOperation: {
-				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"'''
+				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"/>'''
 			}
 			AddNavLinkOperationImpl: {
 				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey=«(op as AddNavLinkOperation).text»/>'''

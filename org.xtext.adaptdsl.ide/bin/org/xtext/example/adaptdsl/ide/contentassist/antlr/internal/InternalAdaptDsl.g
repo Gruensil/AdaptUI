@@ -799,6 +799,56 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleAddViewComponentButtonOperation
+entryRuleAddViewComponentButtonOperation
+:
+{ before(grammarAccess.getAddViewComponentButtonOperationRule()); }
+	 ruleAddViewComponentButtonOperation
+{ after(grammarAccess.getAddViewComponentButtonOperationRule()); } 
+	 EOF 
+;
+
+// Rule AddViewComponentButtonOperation
+ruleAddViewComponentButtonOperation 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getGroup()); }
+		(rule__AddViewComponentButtonOperation__Group__0)
+		{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleDeleteViewComponentButtonOperation
+entryRuleDeleteViewComponentButtonOperation
+:
+{ before(grammarAccess.getDeleteViewComponentButtonOperationRule()); }
+	 ruleDeleteViewComponentButtonOperation
+{ after(grammarAccess.getDeleteViewComponentButtonOperationRule()); } 
+	 EOF 
+;
+
+// Rule DeleteViewComponentButtonOperation
+ruleDeleteViewComponentButtonOperation 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getGroup()); }
+		(rule__DeleteViewComponentButtonOperation__Group__0)
+		{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleViewComponent
 entryRuleViewComponent
 :
@@ -1548,6 +1598,18 @@ rule__TaskChangeOperation__Alternatives
 		{ before(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_1()); }
 		(rule__TaskChangeOperation__OperationAssignment_1)
 		{ after(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_2()); }
+		(rule__TaskChangeOperation__OperationAssignment_2)
+		{ after(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_3()); }
+		(rule__TaskChangeOperation__OperationAssignment_3)
+		{ after(grammarAccess.getTaskChangeOperationAccess().getOperationAssignment_3()); }
 	)
 ;
 finally {
@@ -4819,6 +4881,384 @@ finally {
 }
 
 
+rule__AddViewComponentButtonOperation__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__0__Impl
+	rule__AddViewComponentButtonOperation__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getAddViewComponentButtonKeyword_0()); }
+	'addViewComponentButton'
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getAddViewComponentButtonKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__1__Impl
+	rule__AddViewComponentButtonOperation__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1()); }
+	'('
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__2__Impl
+	rule__AddViewComponentButtonOperation__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getIdAssignment_2()); }
+	(rule__AddViewComponentButtonOperation__IdAssignment_2)
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getIdAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__3__Impl
+	rule__AddViewComponentButtonOperation__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_3()); }
+	','
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__4__Impl
+	rule__AddViewComponentButtonOperation__Group__5
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeyAssignment_4()); }
+	(rule__AddViewComponentButtonOperation__LangKeyAssignment_4)
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeyAssignment_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__5__Impl
+	rule__AddViewComponentButtonOperation__Group__6
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_5()); }
+	','
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getCommaKeyword_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__6__Impl
+	rule__AddViewComponentButtonOperation__Group__7
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__6__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getActionAssignment_6()); }
+	(rule__AddViewComponentButtonOperation__ActionAssignment_6)
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getActionAssignment_6()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__7__Impl
+	rule__AddViewComponentButtonOperation__Group__8
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__7__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getRightParenthesisKeyword_7()); }
+	')'
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getRightParenthesisKeyword_7()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__8
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AddViewComponentButtonOperation__Group__8__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__Group__8__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getSemicolonKeyword_8()); }
+	';'
+	{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getSemicolonKeyword_8()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DeleteViewComponentButtonOperation__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DeleteViewComponentButtonOperation__Group__0__Impl
+	rule__DeleteViewComponentButtonOperation__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getDeleteViewComponentButtonKeyword_0()); }
+	'deleteViewComponentButton'
+	{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getDeleteViewComponentButtonKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DeleteViewComponentButtonOperation__Group__1__Impl
+	rule__DeleteViewComponentButtonOperation__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1()); }
+	'('
+	{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getLeftParenthesisKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DeleteViewComponentButtonOperation__Group__2__Impl
+	rule__DeleteViewComponentButtonOperation__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdAssignment_2()); }
+	(rule__DeleteViewComponentButtonOperation__IdAssignment_2)
+	{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DeleteViewComponentButtonOperation__Group__3__Impl
+	rule__DeleteViewComponentButtonOperation__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getRightParenthesisKeyword_3()); }
+	')'
+	{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getRightParenthesisKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DeleteViewComponentButtonOperation__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getSemicolonKeyword_4()); }
+	';'
+	{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getSemicolonKeyword_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__AddNavLinkOperation__Group__0
 	@init {
 		int stackSize = keepStackSize();
@@ -7177,6 +7617,36 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__TaskChangeOperation__OperationAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTaskChangeOperationAccess().getOperationAddViewComponentButtonOperationParserRuleCall_2_0()); }
+		ruleAddViewComponentButtonOperation
+		{ after(grammarAccess.getTaskChangeOperationAccess().getOperationAddViewComponentButtonOperationParserRuleCall_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TaskChangeOperation__OperationAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTaskChangeOperationAccess().getOperationDeleteViewComponentButtonOperationParserRuleCall_3_0()); }
+		ruleDeleteViewComponentButtonOperation
+		{ after(grammarAccess.getTaskChangeOperationAccess().getOperationDeleteViewComponentButtonOperationParserRuleCall_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__AddViewComponentOperation__ViewCompAssignment_2
 	@init {
 		int stackSize = keepStackSize();
@@ -7216,6 +7686,66 @@ rule__DeleteViewComponentOperation__ViewCompAssignment_2
 		{ before(grammarAccess.getDeleteViewComponentOperationAccess().getViewCompViewComponentParserRuleCall_2_0()); }
 		ruleViewComponent
 		{ after(grammarAccess.getDeleteViewComponentOperationAccess().getViewCompViewComponentParserRuleCall_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__IdAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__LangKeyAssignment_4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeySTRINGTerminalRuleCall_4_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getLangKeySTRINGTerminalRuleCall_4_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddViewComponentButtonOperation__ActionAssignment_6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAddViewComponentButtonOperationAccess().getActionSTRINGTerminalRuleCall_6_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getAddViewComponentButtonOperationAccess().getActionSTRINGTerminalRuleCall_6_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DeleteViewComponentButtonOperation__IdAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getDeleteViewComponentButtonOperationAccess().getIdSTRINGTerminalRuleCall_2_0()); }
 	)
 ;
 finally {
