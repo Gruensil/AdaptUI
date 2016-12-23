@@ -361,7 +361,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
           _builder.append("<deleteViewComponentOperation viewComponent=\"");
           String _viewComp = ((DeleteViewComponentOperation) op).getViewComp();
           _builder.append(_viewComp, "");
-          _builder.append("\"");
+          _builder.append("\"/>");
           _switchResult = _builder;
         }
       }
