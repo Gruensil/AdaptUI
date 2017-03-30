@@ -6,6 +6,9 @@ package org.xtext.example.adaptdsl.validation
 import org.eclipse.xtext.validation.Check
 import org.xtext.example.adaptdsl.adaptDsl.Model
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage
+import org.xtext.example.adaptdsl.adaptDsl.Provider
+import org.xtext.example.adaptdsl.adaptDsl.Entity
+import org.xtext.example.adaptdsl.adaptDsl.ContextModel
 
 /**
  * This class contains custom validation rules. 
@@ -15,23 +18,97 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage
 class AdaptDslValidator extends AbstractAdaptDslValidator {
 	
 	@Check
-	def void isServiceDefined(Model model) {
-		
-		//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
-		for(ent: model.getEntity()){
+	//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
+	def void isProviderDefined(Model model) {			
+		for(ent: model.getContextModel().getEntity()){
 			for(attr: ent.getProperty()){
 				var defined = false;
-				for(prov: model.getProvider()){
+				for(prov: model.getContextModel().getProvider()){
 					if(attr.getProvider().getName() == prov.getName()){
 						//the Provider is defined
 						defined = true;
 					}
 				}
 				if(!defined){
-					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__PROVIDER);
+					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__CONTEXT_MODEL);
 				}
 			}
 		}
-	}	
+	}
 	
+	@Check
+	def void isProviderNotEmpty(Provider provider) {		
+		if(provider.getName() == ""){
+			error('Provider Name shall not be empty', AdaptDslPackage$Literals::PROVIDER__NAME);
+		}
+	}
+	
+	@Check
+	def void isEntityUnique(ContextModel contextModel) {
+		var i = 0;
+		for(firstEnt: contextModel.getEntity()){
+			i += 1;
+			var j = 0;
+			for(secEnt: contextModel.getEntity()){
+				j +=1;
+				if(firstEnt.getName()==secEnt.getName() && i!=j){
+					error('Entity names must be unique in a Context Model.', AdaptDslPackage$Literals::CONTEXT_MODEL__ENTITY)
+				}
+			}
+		}
+	}
+	
+	@Check
+	def void isPropertyUnique(Entity entity) {
+		var i = 0;
+		for(firstProp: entity.getProperty()){
+			i += 1;
+			var j = 0;
+			for(secProp: entity.getProperty()){
+				j += 1;
+				if(firstProp.getPropertyName() ==secProp.getPropertyName() && i!=j){
+					error('Property names must be unique in an Entity.', AdaptDslPackage$Literals::ENTITY__PROPERTY)
+				}
+			}
+		}
+	}
+	
+	@Check
+	def void isProviderUnique(ContextModel contextModel) {
+		var i = 0;
+		for(firstProv: contextModel.getProvider()){
+			i += 1;
+			var j = 0;
+			for(secProv: contextModel.getProvider()){
+				j += 1;
+				if(firstProv.getName() ==secProv.getName() && i!=j){
+					error('Provider names must be unique in a Context Model.', AdaptDslPackage$Literals::CONTEXT_MODEL__PROVIDER)
+				}
+			}
+		}
+	}
+	
+//	@Check
+//	def void isPropertyDefined(Model model) {
+//		
+//		for(){
+//			
+//		}
+//
+//
+//		for(rules: model.getAdaptationRules()){
+//			for(attr: rules.){
+//				var defined = false;
+//				for(prov: model.getProvider()){
+//					if(attr.getProvider().getName() == prov.getName()){
+//						//the Provider is defined
+//						defined = true;
+//					}
+//				}
+//				if(!defined){
+//					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__PROVIDER);
+//				}
+//			}
+//		}
+//	}	
 }

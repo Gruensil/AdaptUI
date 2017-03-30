@@ -17,6 +17,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslFactory;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationModel;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation;
@@ -31,6 +32,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.ContextModel;
 import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.DefTypes;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
@@ -110,6 +112,8 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
     switch (eClass.getClassifierID())
     {
       case AdaptDslPackage.MODEL: return createModel();
+      case AdaptDslPackage.CONTEXT_MODEL: return createContextModel();
+      case AdaptDslPackage.ADAPTATION_MODEL: return createAdaptationModel();
       case AdaptDslPackage.SERVICE_LIST: return createServiceList();
       case AdaptDslPackage.SERVICE: return createService();
       case AdaptDslPackage.FUNCTION_LIST: return createFunctionList();
@@ -199,6 +203,28 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     ModelImpl model = new ModelImpl();
     return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContextModel createContextModel()
+  {
+    ContextModelImpl contextModel = new ContextModelImpl();
+    return contextModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdaptationModel createAdaptationModel()
+  {
+    AdaptationModelImpl adaptationModel = new AdaptationModelImpl();
+    return adaptationModel;
   }
 
   /**

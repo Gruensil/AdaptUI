@@ -7,6 +7,7 @@ import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.ContextModel;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
@@ -21,14 +22,14 @@ import org.xtext.example.adaptdsl.validation.AbstractAdaptDslValidator;
 @SuppressWarnings("all")
 public class AdaptDslValidator extends AbstractAdaptDslValidator {
   @Check
-  public void isServiceDefined(final Model model) {
-    EList<Entity> _entity = model.getEntity();
+  public void isProviderDefined(final Model model) {
+    EList<Entity> _entity = model.getContextModel().getEntity();
     for (final Entity ent : _entity) {
       EList<Property> _property = ent.getProperty();
       for (final Property attr : _property) {
         {
           boolean defined = false;
-          EList<Provider> _provider = model.getProvider();
+          EList<Provider> _provider = model.getContextModel().getProvider();
           for (final Provider prov : _provider) {
             String _name = attr.getProvider().getName();
             String _name_1 = prov.getName();
@@ -38,7 +39,85 @@ public class AdaptDslValidator extends AbstractAdaptDslValidator {
             }
           }
           if ((!defined)) {
-            this.error("One of the Providers is not listed or misspelled.", AdaptDslPackage.Literals.MODEL__PROVIDER);
+            this.error("One of the Providers is not listed or misspelled.", AdaptDslPackage.Literals.MODEL__CONTEXT_MODEL);
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void isProviderNotEmpty(final Provider provider) {
+    String _name = provider.getName();
+    boolean _equals = Objects.equal(_name, "");
+    if (_equals) {
+      this.error("Provider Name shall not be empty", AdaptDslPackage.Literals.PROVIDER__NAME);
+    }
+  }
+  
+  @Check
+  public void isEntityUnique(final ContextModel contextModel) {
+    int i = 0;
+    EList<Entity> _entity = contextModel.getEntity();
+    for (final Entity firstEnt : _entity) {
+      {
+        int _i = i;
+        i = (_i + 1);
+        int j = 0;
+        EList<Entity> _entity_1 = contextModel.getEntity();
+        for (final Entity secEnt : _entity_1) {
+          {
+            int _j = j;
+            j = (_j + 1);
+            if ((Objects.equal(firstEnt.getName(), secEnt.getName()) && (i != j))) {
+              this.error("Entity names must be unique in a Context Model.", AdaptDslPackage.Literals.CONTEXT_MODEL__ENTITY);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void isPropertyUnique(final Entity entity) {
+    int i = 0;
+    EList<Property> _property = entity.getProperty();
+    for (final Property firstProp : _property) {
+      {
+        int _i = i;
+        i = (_i + 1);
+        int j = 0;
+        EList<Property> _property_1 = entity.getProperty();
+        for (final Property secProp : _property_1) {
+          {
+            int _j = j;
+            j = (_j + 1);
+            if ((Objects.equal(firstProp.getPropertyName(), secProp.getPropertyName()) && (i != j))) {
+              this.error("Property names must be unique in an Entity.", AdaptDslPackage.Literals.ENTITY__PROPERTY);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void isProviderUnique(final ContextModel contextModel) {
+    int i = 0;
+    EList<Provider> _provider = contextModel.getProvider();
+    for (final Provider firstProv : _provider) {
+      {
+        int _i = i;
+        i = (_i + 1);
+        int j = 0;
+        EList<Provider> _provider_1 = contextModel.getProvider();
+        for (final Provider secProv : _provider_1) {
+          {
+            int _j = j;
+            j = (_j + 1);
+            if ((Objects.equal(firstProv.getName(), secProv.getName()) && (i != j))) {
+              this.error("Provider names must be unique in a Context Model.", AdaptDslPackage.Literals.CONTEXT_MODEL__PROVIDER);
+            }
           }
         }
       }

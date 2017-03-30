@@ -4,17 +4,29 @@ generate adaptDsl "http://www.xtext.org/example/adaptdsl/AdaptDsl"
 
 
 Model:
-	(services = Services)?
-	'flow' flowName = STRING '{'
-		adaptationRules += AdaptationRule+
+	contextModel=ContextModel
+	adaptationModel=AdaptationModel	
+;
+
+ContextModel returns ContextModel:
+	'ContextModel{'
+		(entity += Entity)+
+		('Services{'
+			(provider += Provider ';')*
+		'};')?
+		('Types{'
+			types = DefTypes
+		'};')?
 	'};'
-	(entity += Entity)*
-	'Services{'
-		(provider += Provider ';')*
-	'}'
-	'Types{'
-		types = DefTypes
-	'}'
+;
+
+AdaptationModel returns AdaptationModel:
+	'AdaptationModel{'
+		(services = Services)?
+		'flow' flowName = STRING '{'
+			adaptationRules += AdaptationRule+
+		'};'
+	'};'
 ;
 
 Services returns ServiceList:
@@ -246,12 +258,12 @@ terminal BOOL: 'true'|'false';
 
 Entity returns Entity:
 	'Entity' name=ID '{'
-		(property += Property)*
-	'}'
+		(property += Property)+
+	'};'
 ;
 
 Property returns Property:
-	'name' name=STRING ':' type=TYPE 'from' provider=Provider ';'
+	propertyName=STRING ':' type=TYPE 'from' provider=Provider ';'
 ;
 
 Provider returns Provider:

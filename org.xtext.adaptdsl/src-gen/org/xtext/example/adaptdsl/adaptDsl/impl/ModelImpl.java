@@ -3,12 +3,8 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -16,16 +12,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
-import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
-import org.xtext.example.adaptdsl.adaptDsl.DefTypes;
-import org.xtext.example.adaptdsl.adaptDsl.Entity;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationModel;
+import org.xtext.example.adaptdsl.adaptDsl.ContextModel;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
-import org.xtext.example.adaptdsl.adaptDsl.Provider;
-import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,12 +25,8 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getServices <em>Services</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getFlowName <em>Flow Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getAdaptationRules <em>Adaptation Rules</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getContextModel <em>Context Model</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ModelImpl#getAdaptationModel <em>Adaptation Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,74 +34,24 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference.
+   * The cached value of the '{@link #getContextModel() <em>Context Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getServices()
+   * @see #getContextModel()
    * @generated
    * @ordered
    */
-  protected ServiceList services;
+  protected ContextModel contextModel;
 
   /**
-   * The default value of the '{@link #getFlowName() <em>Flow Name</em>}' attribute.
+   * The cached value of the '{@link #getAdaptationModel() <em>Adaptation Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFlowName()
+   * @see #getAdaptationModel()
    * @generated
    * @ordered
    */
-  protected static final String FLOW_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getFlowName() <em>Flow Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFlowName()
-   * @generated
-   * @ordered
-   */
-  protected String flowName = FLOW_NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getAdaptationRules() <em>Adaptation Rules</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAdaptationRules()
-   * @generated
-   * @ordered
-   */
-  protected EList<AdaptationRule> adaptationRules;
-
-  /**
-   * The cached value of the '{@link #getEntity() <em>Entity</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEntity()
-   * @generated
-   * @ordered
-   */
-  protected EList<Entity> entity;
-
-  /**
-   * The cached value of the '{@link #getProvider() <em>Provider</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProvider()
-   * @generated
-   * @ordered
-   */
-  protected EList<Provider> provider;
-
-  /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypes()
-   * @generated
-   * @ordered
-   */
-  protected DefTypes types;
+  protected AdaptationModel adaptationModel;
 
   /**
    * <!-- begin-user-doc -->
@@ -143,9 +79,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public ServiceList getServices()
+  public ContextModel getContextModel()
   {
-    return services;
+    return contextModel;
   }
 
   /**
@@ -153,13 +89,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetServices(ServiceList newServices, NotificationChain msgs)
+  public NotificationChain basicSetContextModel(ContextModel newContextModel, NotificationChain msgs)
   {
-    ServiceList oldServices = services;
-    services = newServices;
+    ContextModel oldContextModel = contextModel;
+    contextModel = newContextModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__SERVICES, oldServices, newServices);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__CONTEXT_MODEL, oldContextModel, newContextModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -170,20 +106,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setServices(ServiceList newServices)
+  public void setContextModel(ContextModel newContextModel)
   {
-    if (newServices != services)
+    if (newContextModel != contextModel)
     {
       NotificationChain msgs = null;
-      if (services != null)
-        msgs = ((InternalEObject)services).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__SERVICES, null, msgs);
-      if (newServices != null)
-        msgs = ((InternalEObject)newServices).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__SERVICES, null, msgs);
-      msgs = basicSetServices(newServices, msgs);
+      if (contextModel != null)
+        msgs = ((InternalEObject)contextModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__CONTEXT_MODEL, null, msgs);
+      if (newContextModel != null)
+        msgs = ((InternalEObject)newContextModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__CONTEXT_MODEL, null, msgs);
+      msgs = basicSetContextModel(newContextModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__SERVICES, newServices, newServices));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__CONTEXT_MODEL, newContextModel, newContextModel));
   }
 
   /**
@@ -191,9 +127,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getFlowName()
+  public AdaptationModel getAdaptationModel()
   {
-    return flowName;
+    return adaptationModel;
   }
 
   /**
@@ -201,78 +137,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFlowName(String newFlowName)
+  public NotificationChain basicSetAdaptationModel(AdaptationModel newAdaptationModel, NotificationChain msgs)
   {
-    String oldFlowName = flowName;
-    flowName = newFlowName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__FLOW_NAME, oldFlowName, flowName));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<AdaptationRule> getAdaptationRules()
-  {
-    if (adaptationRules == null)
-    {
-      adaptationRules = new EObjectContainmentEList<AdaptationRule>(AdaptationRule.class, this, AdaptDslPackage.MODEL__ADAPTATION_RULES);
-    }
-    return adaptationRules;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Entity> getEntity()
-  {
-    if (entity == null)
-    {
-      entity = new EObjectContainmentEList<Entity>(Entity.class, this, AdaptDslPackage.MODEL__ENTITY);
-    }
-    return entity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Provider> getProvider()
-  {
-    if (provider == null)
-    {
-      provider = new EObjectContainmentEList<Provider>(Provider.class, this, AdaptDslPackage.MODEL__PROVIDER);
-    }
-    return provider;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefTypes getTypes()
-  {
-    return types;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypes(DefTypes newTypes, NotificationChain msgs)
-  {
-    DefTypes oldTypes = types;
-    types = newTypes;
+    AdaptationModel oldAdaptationModel = adaptationModel;
+    adaptationModel = newAdaptationModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__TYPES, oldTypes, newTypes);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__ADAPTATION_MODEL, oldAdaptationModel, newAdaptationModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -283,20 +154,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypes(DefTypes newTypes)
+  public void setAdaptationModel(AdaptationModel newAdaptationModel)
   {
-    if (newTypes != types)
+    if (newAdaptationModel != adaptationModel)
     {
       NotificationChain msgs = null;
-      if (types != null)
-        msgs = ((InternalEObject)types).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__TYPES, null, msgs);
-      if (newTypes != null)
-        msgs = ((InternalEObject)newTypes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__TYPES, null, msgs);
-      msgs = basicSetTypes(newTypes, msgs);
+      if (adaptationModel != null)
+        msgs = ((InternalEObject)adaptationModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__ADAPTATION_MODEL, null, msgs);
+      if (newAdaptationModel != null)
+        msgs = ((InternalEObject)newAdaptationModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.MODEL__ADAPTATION_MODEL, null, msgs);
+      msgs = basicSetAdaptationModel(newAdaptationModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__TYPES, newTypes, newTypes));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.MODEL__ADAPTATION_MODEL, newAdaptationModel, newAdaptationModel));
   }
 
   /**
@@ -309,16 +180,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AdaptDslPackage.MODEL__SERVICES:
-        return basicSetServices(null, msgs);
-      case AdaptDslPackage.MODEL__ADAPTATION_RULES:
-        return ((InternalEList<?>)getAdaptationRules()).basicRemove(otherEnd, msgs);
-      case AdaptDslPackage.MODEL__ENTITY:
-        return ((InternalEList<?>)getEntity()).basicRemove(otherEnd, msgs);
-      case AdaptDslPackage.MODEL__PROVIDER:
-        return ((InternalEList<?>)getProvider()).basicRemove(otherEnd, msgs);
-      case AdaptDslPackage.MODEL__TYPES:
-        return basicSetTypes(null, msgs);
+      case AdaptDslPackage.MODEL__CONTEXT_MODEL:
+        return basicSetContextModel(null, msgs);
+      case AdaptDslPackage.MODEL__ADAPTATION_MODEL:
+        return basicSetAdaptationModel(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -333,18 +198,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AdaptDslPackage.MODEL__SERVICES:
-        return getServices();
-      case AdaptDslPackage.MODEL__FLOW_NAME:
-        return getFlowName();
-      case AdaptDslPackage.MODEL__ADAPTATION_RULES:
-        return getAdaptationRules();
-      case AdaptDslPackage.MODEL__ENTITY:
-        return getEntity();
-      case AdaptDslPackage.MODEL__PROVIDER:
-        return getProvider();
-      case AdaptDslPackage.MODEL__TYPES:
-        return getTypes();
+      case AdaptDslPackage.MODEL__CONTEXT_MODEL:
+        return getContextModel();
+      case AdaptDslPackage.MODEL__ADAPTATION_MODEL:
+        return getAdaptationModel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -354,32 +211,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case AdaptDslPackage.MODEL__SERVICES:
-        setServices((ServiceList)newValue);
+      case AdaptDslPackage.MODEL__CONTEXT_MODEL:
+        setContextModel((ContextModel)newValue);
         return;
-      case AdaptDslPackage.MODEL__FLOW_NAME:
-        setFlowName((String)newValue);
-        return;
-      case AdaptDslPackage.MODEL__ADAPTATION_RULES:
-        getAdaptationRules().clear();
-        getAdaptationRules().addAll((Collection<? extends AdaptationRule>)newValue);
-        return;
-      case AdaptDslPackage.MODEL__ENTITY:
-        getEntity().clear();
-        getEntity().addAll((Collection<? extends Entity>)newValue);
-        return;
-      case AdaptDslPackage.MODEL__PROVIDER:
-        getProvider().clear();
-        getProvider().addAll((Collection<? extends Provider>)newValue);
-        return;
-      case AdaptDslPackage.MODEL__TYPES:
-        setTypes((DefTypes)newValue);
+      case AdaptDslPackage.MODEL__ADAPTATION_MODEL:
+        setAdaptationModel((AdaptationModel)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -395,23 +236,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AdaptDslPackage.MODEL__SERVICES:
-        setServices((ServiceList)null);
+      case AdaptDslPackage.MODEL__CONTEXT_MODEL:
+        setContextModel((ContextModel)null);
         return;
-      case AdaptDslPackage.MODEL__FLOW_NAME:
-        setFlowName(FLOW_NAME_EDEFAULT);
-        return;
-      case AdaptDslPackage.MODEL__ADAPTATION_RULES:
-        getAdaptationRules().clear();
-        return;
-      case AdaptDslPackage.MODEL__ENTITY:
-        getEntity().clear();
-        return;
-      case AdaptDslPackage.MODEL__PROVIDER:
-        getProvider().clear();
-        return;
-      case AdaptDslPackage.MODEL__TYPES:
-        setTypes((DefTypes)null);
+      case AdaptDslPackage.MODEL__ADAPTATION_MODEL:
+        setAdaptationModel((AdaptationModel)null);
         return;
     }
     super.eUnset(featureID);
@@ -427,37 +256,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AdaptDslPackage.MODEL__SERVICES:
-        return services != null;
-      case AdaptDslPackage.MODEL__FLOW_NAME:
-        return FLOW_NAME_EDEFAULT == null ? flowName != null : !FLOW_NAME_EDEFAULT.equals(flowName);
-      case AdaptDslPackage.MODEL__ADAPTATION_RULES:
-        return adaptationRules != null && !adaptationRules.isEmpty();
-      case AdaptDslPackage.MODEL__ENTITY:
-        return entity != null && !entity.isEmpty();
-      case AdaptDslPackage.MODEL__PROVIDER:
-        return provider != null && !provider.isEmpty();
-      case AdaptDslPackage.MODEL__TYPES:
-        return types != null;
+      case AdaptDslPackage.MODEL__CONTEXT_MODEL:
+        return contextModel != null;
+      case AdaptDslPackage.MODEL__ADAPTATION_MODEL:
+        return adaptationModel != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (flowName: ");
-    result.append(flowName);
-    result.append(')');
-    return result.toString();
   }
 
 } //ModelImpl

@@ -33,6 +33,24 @@ public interface AdaptDslFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Context Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Context Model</em>'.
+   * @generated
+   */
+  ContextModel createContextModel();
+
+  /**
+   * Returns a new object of class '<em>Adaptation Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Adaptation Model</em>'.
+   * @generated
+   */
+  AdaptationModel createAdaptationModel();
+
+  /**
    * Returns a new object of class '<em>Service List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

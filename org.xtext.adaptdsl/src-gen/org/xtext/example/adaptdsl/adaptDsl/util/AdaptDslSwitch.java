@@ -12,6 +12,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ActionCategory;
 import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptCssClassOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptationModel;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.AddNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation;
@@ -26,6 +27,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.ContextModel;
 import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.DefTypes;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
@@ -118,6 +120,20 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         Model model = (Model)theEObject;
         T result = caseModel(model);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.CONTEXT_MODEL:
+      {
+        ContextModel contextModel = (ContextModel)theEObject;
+        T result = caseContextModel(contextModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.ADAPTATION_MODEL:
+      {
+        AdaptationModel adaptationModel = (AdaptationModel)theEObject;
+        T result = caseAdaptationModel(adaptationModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -424,6 +440,38 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseModel(Model object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Context Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Context Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContextModel(ContextModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Adaptation Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Adaptation Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdaptationModel(AdaptationModel object)
   {
     return null;
   }

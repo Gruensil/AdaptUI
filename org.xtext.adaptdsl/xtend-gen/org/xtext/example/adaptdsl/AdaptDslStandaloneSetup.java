@@ -11,7 +11,6 @@ import org.xtext.example.adaptdsl.AdaptDslStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class AdaptDslStandaloneSetup extends AdaptDslStandaloneSetupGenerated {
   public static void doSetup() {
-    AdaptDslStandaloneSetup _adaptDslStandaloneSetup = new AdaptDslStandaloneSetup();
-    _adaptDslStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new AdaptDslStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }

@@ -3,10 +3,8 @@
  */
 package org.xtext.example.adaptdsl.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -33,7 +31,6 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
-import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
@@ -59,13 +56,11 @@ import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl;
 public class AdaptDslGenerator2 extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<Model> _filter = Iterables.<Model>filter(_iterable, Model.class);
+    Iterable<Model> _filter = Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class);
     for (final Model e : _filter) {
-      CharSequence _compile = this.compile(e);
       fsa.generateFile(
-        ("adaptDSL" + ".xml"), _compile);
+        ("adaptDSL" + ".xml"), 
+        this.compile(e));
     }
   }
   
@@ -76,16 +71,15 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     _builder.append("<adaptModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
     _builder.newLine();
     {
-      ServiceList _services = model.getServices();
-      boolean _notEquals = (!Objects.equal(_services, null));
-      if (_notEquals) {
+      ServiceList _services = model.getAdaptationModel().getServices();
+      boolean _tripleNotEquals = (_services != null);
+      if (_tripleNotEquals) {
         _builder.append("\t");
         _builder.append("<services>");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        ServiceList _services_1 = model.getServices();
-        CharSequence _compile = this.compile(_services_1);
+        CharSequence _compile = this.compile(model.getAdaptationModel().getServices());
         _builder.append(_compile, "\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -95,12 +89,12 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     }
     _builder.append("\t");
     _builder.append("<flow name=\"");
-    String _flowName = model.getFlowName();
+    String _flowName = model.getAdaptationModel().getFlowName();
     _builder.append(_flowName, "\t");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     {
-      EList<AdaptationRule> _adaptationRules = model.getAdaptationRules();
+      EList<AdaptationRule> _adaptationRules = model.getAdaptationModel().getAdaptationRules();
       for(final AdaptationRule rule : _adaptationRules) {
         _builder.append("\t\t");
         CharSequence _compile_1 = this.compile(rule);
@@ -120,21 +114,19 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       Service _this = slist.getThis();
-      boolean _notEquals = (!Objects.equal(_this, null));
-      if (_notEquals) {
-        Service _this_1 = slist.getThis();
-        CharSequence _compile = this.compile(_this_1);
-        _builder.append(_compile, "");
+      boolean _tripleNotEquals = (_this != null);
+      if (_tripleNotEquals) {
+        CharSequence _compile = this.compile(slist.getThis());
+        _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
     {
       ServiceList _next = slist.getNext();
-      boolean _notEquals_1 = (!Objects.equal(_next, null));
-      if (_notEquals_1) {
-        ServiceList _next_1 = slist.getNext();
-        Object _compile_1 = this.compile(_next_1);
-        _builder.append(_compile_1, "");
+      boolean _tripleNotEquals_1 = (_next != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_1 = this.compile(slist.getNext());
+        _builder.append(_compile_1);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -145,18 +137,17 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<service id=\"");
     String _id = svc.getId();
-    _builder.append(_id, "");
+    _builder.append(_id);
     _builder.append("\" type=\"");
     String _type = svc.getType();
-    _builder.append(_type, "");
+    _builder.append(_type);
     _builder.append("\" location=\"");
     String _loc = svc.getLoc();
-    _builder.append(_loc, "");
+    _builder.append(_loc);
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    FunctionList _functions = svc.getFunctions();
-    CharSequence _compile = this.compile(_functions);
+    CharSequence _compile = this.compile(svc.getFunctions());
     _builder.append(_compile, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("</service>");
@@ -168,21 +159,19 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       Function _this = flist.getThis();
-      boolean _notEquals = (!Objects.equal(_this, null));
-      if (_notEquals) {
-        Function _this_1 = flist.getThis();
-        CharSequence _compile = this.compile(_this_1);
-        _builder.append(_compile, "");
+      boolean _tripleNotEquals = (_this != null);
+      if (_tripleNotEquals) {
+        CharSequence _compile = this.compile(flist.getThis());
+        _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
     {
       FunctionList _next = flist.getNext();
-      boolean _notEquals_1 = (!Objects.equal(_next, null));
-      if (_notEquals_1) {
-        FunctionList _next_1 = flist.getNext();
-        Object _compile_1 = this.compile(_next_1);
-        _builder.append(_compile_1, "");
+      boolean _tripleNotEquals_1 = (_next != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_1 = this.compile(flist.getNext());
+        _builder.append(_compile_1);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -193,10 +182,10 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<function id=\"");
     String _id = func.getId();
-    _builder.append(_id, "");
+    _builder.append(_id);
     _builder.append("\" name=\"");
     String _name = func.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append("\" />");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -206,24 +195,23 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<adaptationRule name=\"");
     String _name = rule.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append("\" priority=\"");
     int _level = rule.getLevel();
-    _builder.append(_level, "");
+    _builder.append(_level);
     _builder.append("\" factType=\"");
     String _factType = rule.getFactType();
-    _builder.append(_factType, "");
+    _builder.append(_factType);
     _builder.append("\" factName=\"");
     String _factName = rule.getFactName();
-    _builder.append(_factName, "");
+    _builder.append(_factName);
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<conditions>");
     _builder.newLine();
     _builder.append("\t\t");
-    ConditionalOrExpression _expr = rule.getExpr();
-    CharSequence _compile = this.compile(_expr);
+    CharSequence _compile = this.compile(rule.getExpr());
     _builder.append(_compile, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -233,8 +221,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     _builder.append("<actions>");
     _builder.newLine();
     _builder.append("\t\t");
-    Actions _actionCollection = rule.getActionCollection();
-    CharSequence _compile_1 = this.compile(_actionCollection);
+    CharSequence _compile_1 = this.compile(rule.getActionCollection());
     _builder.append(_compile_1, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -247,17 +234,15 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   
   public CharSequence compile(final Actions act) {
     StringConcatenation _builder = new StringConcatenation();
-    ActionCategory _action = act.getAction();
-    CharSequence _compile = this.compile(_action);
-    _builder.append(_compile, "");
+    CharSequence _compile = this.compile(act.getAction());
+    _builder.append(_compile);
     _builder.newLineIfNotEmpty();
     {
       Actions _next = act.getNext();
-      boolean _notEquals = (!Objects.equal(_next, null));
-      if (_notEquals) {
-        Actions _next_1 = act.getNext();
-        Object _compile_1 = this.compile(_next_1);
-        _builder.append(_compile_1, "");
+      boolean _tripleNotEquals = (_next != null);
+      if (_tripleNotEquals) {
+        Object _compile_1 = this.compile(act.getNext());
+        _builder.append(_compile_1);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -266,9 +251,8 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   
   public CharSequence compile(final ActionCategory cat) {
     StringConcatenation _builder = new StringConcatenation();
-    ParentOperation _actionCategory = cat.getActionCategory();
-    CharSequence _compile = this.compile(_actionCategory);
-    _builder.append(_compile, "");
+    CharSequence _compile = this.compile(cat.getActionCategory());
+    _builder.append(_compile);
     return _builder;
   }
   
@@ -283,13 +267,13 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("<functionCall service=\"");
         String _service = ((ServiceFunctionCallOperation) op).getService();
-        _builder.append(_service, "");
+        _builder.append(_service);
         _builder.append("\" function=\"");
         String _function = ((ServiceFunctionCallOperation) op).getFunction();
-        _builder.append(_function, "");
+        _builder.append(_function);
         _builder.append("\" value=");
         String _val = ((ServiceFunctionCallOperation) op).getVal();
-        _builder.append(_val, "");
+        _builder.append(_val);
         _builder.append("/>");
         _switchResult = _builder;
       }
@@ -299,15 +283,15 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<editFactOperation set=\"");
           String _prop = ((EditFactOperation) op).getProp();
-          _builder.append(_prop, "");
+          _builder.append(_prop);
           _builder.append("\" ");
           {
             String _val = ((EditFactOperation) op).getVal();
-            boolean _notEquals = (!Objects.equal(_val, null));
-            if (_notEquals) {
+            boolean _tripleNotEquals = (_val != null);
+            if (_tripleNotEquals) {
               _builder.append("value=\"");
               String _val_1 = ((EditFactOperation) op).getVal();
-              _builder.append(_val_1, "");
+              _builder.append(_val_1);
               _builder.append("\"");
             }
           }
@@ -319,20 +303,18 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
         if (op instanceof SetDisplayPropertyOperation) {
           _matched=true;
           CharSequence _switchResult_1 = null;
-          DisplayPropertyValue _propertyValue = ((SetDisplayPropertyOperation) op).getPropertyValue();
-          EObject _propertyClass = _propertyValue.getPropertyClass();
+          EObject _propertyClass = ((SetDisplayPropertyOperation) op).getPropertyValue().getPropertyClass();
           boolean _matched_1 = false;
           if (_propertyClass instanceof StringValue) {
             _matched_1=true;
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("<setDisplayProperty property=\"");
             String _property = ((SetDisplayPropertyOperation) op).getProperty();
-            _builder.append(_property, "");
+            _builder.append(_property);
             _builder.append("\" value=\"");
-            DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
-            EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+            EObject _propertyClass_1 = ((SetDisplayPropertyOperation) op).getPropertyValue().getPropertyClass();
             String _value = ((StringValue) _propertyClass_1).getValue();
-            _builder.append(_value, "");
+            _builder.append(_value);
             _builder.append("\"/>");
             _switchResult_1 = _builder;
           }
@@ -342,12 +324,11 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
               StringConcatenation _builder = new StringConcatenation();
               _builder.append("<setDisplayProperty property=\"");
               String _property = ((SetDisplayPropertyOperation) op).getProperty();
-              _builder.append(_property, "");
+              _builder.append(_property);
               _builder.append("\" value=\"");
-              DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
-              EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+              EObject _propertyClass_1 = ((SetDisplayPropertyOperation) op).getPropertyValue().getPropertyClass();
               int _value = ((IntValue) _propertyClass_1).getValue();
-              _builder.append(_value, "");
+              _builder.append(_value);
               _builder.append("\"/>");
               _switchResult_1 = _builder;
             }
@@ -358,12 +339,11 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
               StringConcatenation _builder = new StringConcatenation();
               _builder.append("<setDisplayProperty property=\"");
               String _property = ((SetDisplayPropertyOperation) op).getProperty();
-              _builder.append(_property, "");
+              _builder.append(_property);
               _builder.append("\" value=\"");
-              DisplayPropertyValue _propertyValue_1 = ((SetDisplayPropertyOperation) op).getPropertyValue();
-              EObject _propertyClass_1 = _propertyValue_1.getPropertyClass();
+              EObject _propertyClass_1 = ((SetDisplayPropertyOperation) op).getPropertyValue().getPropertyClass();
               String _value = ((BoolValue) _propertyClass_1).getValue();
-              _builder.append(_value, "");
+              _builder.append(_value);
               _builder.append("\" type=\"boolean\"/>");
               _switchResult_1 = _builder;
             }
@@ -372,9 +352,9 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("<setDisplayProperty property=\"");
             String _property = ((SetDisplayPropertyOperation) op).getProperty();
-            _builder.append(_property, "");
+            _builder.append(_property);
             _builder.append("\" value=\"");
-            _builder.append(((SetDisplayPropertyOperation) op), "");
+            _builder.append(((SetDisplayPropertyOperation) op));
             _builder.append("\"/>");
             _switchResult_1 = _builder;
           }
@@ -387,10 +367,10 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<addViewComponentOperation viewComponent=\"");
           String _viewComp = ((AddViewComponentOperation) op).getViewComp();
-          _builder.append(_viewComp, "");
+          _builder.append(_viewComp);
           _builder.append("\" target=\"");
           String _target = ((AddViewComponentOperation) op).getTarget();
-          _builder.append(_target, "");
+          _builder.append(_target);
           _builder.append("\"/>");
           _switchResult = _builder;
         }
@@ -401,7 +381,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<deleteViewComponentOperation viewComponent=\"");
           String _viewComp = ((DeleteViewComponentOperation) op).getViewComp();
-          _builder.append(_viewComp, "");
+          _builder.append(_viewComp);
           _builder.append("\"/>");
           _switchResult = _builder;
         }
@@ -412,10 +392,10 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<addNavLinkOperation viewContainer=\"");
           String _viewComp = ((AddNavLinkOperation) op).getViewComp();
-          _builder.append(_viewComp, "");
+          _builder.append(_viewComp);
           _builder.append("\" langKey=");
           String _text = ((AddNavLinkOperation) op).getText();
-          _builder.append(_text, "");
+          _builder.append(_text);
           _builder.append("/>");
           _switchResult = _builder;
         }
@@ -426,7 +406,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<deleteNavLinkOperation viewContainer=\"");
           String _viewComp = ((DeleteNavLinkOperation) op).getViewComp();
-          _builder.append(_viewComp, "");
+          _builder.append(_viewComp);
           _builder.append("\" />");
           _switchResult = _builder;
         }
@@ -437,7 +417,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<redirectNavLinkOperation viewContainer=\"");
           String _viewComp = ((RedirectNavLinkOperation) op).getViewComp();
-          _builder.append(_viewComp, "");
+          _builder.append(_viewComp);
           _builder.append("\" />");
           _switchResult = _builder;
         }
@@ -474,13 +454,13 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<editCssClassOperation cssClass=");
           String _cssClass = ((AdaptCssClassOperation) op).getCssClass();
-          _builder.append(_cssClass, "");
+          _builder.append(_cssClass);
           _builder.append(" cssAttribute=");
           String _cssAttribute = ((AdaptCssClassOperation) op).getCssAttribute();
-          _builder.append(_cssAttribute, "");
+          _builder.append(_cssAttribute);
           _builder.append(" value=");
           String _cssAttributeValue = ((AdaptCssClassOperation) op).getCssAttributeValue();
-          _builder.append(_cssAttributeValue, "");
+          _builder.append(_cssAttributeValue);
           _builder.append("/>");
           _switchResult = _builder;
         }
@@ -510,15 +490,14 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       ConditionalAndExpression _left = expr.getLeft();
-      boolean _notEquals = (!Objects.equal(_left, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
         {
-          if (((!Objects.equal(expr.getLeft().getLeft(), null)) && (!Objects.equal(expr.getLeft().getRight(), null)))) {
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
             _builder.append("<conditionGroup>");
             _builder.newLine();
             _builder.append("\t");
-            ConditionalAndExpression _left_1 = expr.getLeft();
-            CharSequence _compile = this.compile(_left_1);
+            CharSequence _compile = this.compile(expr.getLeft());
             _builder.append(_compile, "\t");
             _builder.newLineIfNotEmpty();
             _builder.append("</conditionGroup>");
@@ -526,11 +505,9 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           }
         }
         {
-          if (((!Objects.equal(expr.getLeft().getLeft(), null)) && Objects.equal(expr.getLeft().getRight(), null))) {
-            ConditionalAndExpression _left_2 = expr.getLeft();
-            ConditionalPrimary _left_3 = _left_2.getLeft();
-            CharSequence _compile_1 = this.compile(_left_3);
-            _builder.append(_compile_1, "");
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
+            CharSequence _compile_1 = this.compile(expr.getLeft().getLeft());
+            _builder.append(_compile_1);
             _builder.newLineIfNotEmpty();
           }
         }
@@ -538,11 +515,10 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     }
     {
       ConditionalOrExpression _right = expr.getRight();
-      boolean _notEquals_1 = (!Objects.equal(_right, null));
-      if (_notEquals_1) {
-        ConditionalOrExpression _right_1 = expr.getRight();
-        Object _compile_2 = this.compile(_right_1);
-        _builder.append(_compile_2, "");
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_2 = this.compile(expr.getRight());
+        _builder.append(_compile_2);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -553,21 +529,19 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       ConditionalPrimary _left = expr.getLeft();
-      boolean _notEquals = (!Objects.equal(_left, null));
-      if (_notEquals) {
-        ConditionalPrimary _left_1 = expr.getLeft();
-        CharSequence _compile = this.compile(_left_1);
-        _builder.append(_compile, "");
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
+        CharSequence _compile = this.compile(expr.getLeft());
+        _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
     {
       ConditionalAndExpression _right = expr.getRight();
-      boolean _notEquals_1 = (!Objects.equal(_right, null));
-      if (_notEquals_1) {
-        ConditionalAndExpression _right_1 = expr.getRight();
-        Object _compile_1 = this.compile(_right_1);
-        _builder.append(_compile_1, "");
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_1 = this.compile(expr.getRight());
+        _builder.append(_compile_1);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -581,7 +555,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
       if ((_cond instanceof BooleanCondition)) {
         EObject _cond_1 = expr.getCond();
         CharSequence _compile = this.compile(((BooleanCondition) _cond_1));
-        _builder.append(_compile, "");
+        _builder.append(_compile);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -590,7 +564,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
       if ((_cond_2 instanceof NumberCondition)) {
         EObject _cond_3 = expr.getCond();
         CharSequence _compile_1 = this.compile(((NumberCondition) _cond_3));
-        _builder.append(_compile_1, "");
+        _builder.append(_compile_1);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -599,7 +573,7 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
       if ((_cond_4 instanceof StringCondition)) {
         EObject _cond_5 = expr.getCond();
         CharSequence _compile_2 = this.compile(((StringCondition) _cond_5));
-        _builder.append(_compile_2, "");
+        _builder.append(_compile_2);
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
       }
@@ -611,28 +585,26 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
     String _fact = cond.getFact();
-    _builder.append(_fact, "");
+    _builder.append(_fact);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
-      boolean _notEquals = (!Objects.equal(_op, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_op != null);
+      if (_tripleNotEquals) {
         _builder.append("operator=\"");
-        String _op_1 = cond.getOp();
-        String _operator = this.getOperator(_op_1);
-        _builder.append(_operator, "");
+        String _operator = this.getOperator(cond.getOp());
+        _builder.append(_operator);
         _builder.append("\"");
       }
     }
     _builder.append(" ");
     {
       String _val = cond.getVal();
-      boolean _notEquals_1 = (!Objects.equal(_val, null));
-      if (_notEquals_1) {
+      boolean _tripleNotEquals_1 = (_val != null);
+      if (_tripleNotEquals_1) {
         _builder.append("value=\"");
-        String _val_1 = cond.getVal();
-        String _replace = _val_1.replace("\'", "");
-        _builder.append(_replace, "");
+        String _replace = cond.getVal().replace("\'", "");
+        _builder.append(_replace);
         _builder.append("\"");
       }
     }
@@ -644,28 +616,26 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
     String _fact = cond.getFact();
-    _builder.append(_fact, "");
+    _builder.append(_fact);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
-      boolean _notEquals = (!Objects.equal(_op, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_op != null);
+      if (_tripleNotEquals) {
         _builder.append("operator=\"");
-        String _op_1 = cond.getOp();
-        String _operator = this.getOperator(_op_1);
-        _builder.append(_operator, "");
+        String _operator = this.getOperator(cond.getOp());
+        _builder.append(_operator);
         _builder.append("\"");
       }
     }
     _builder.append(" ");
     {
       String _val = cond.getVal();
-      boolean _notEquals_1 = (!Objects.equal(_val, null));
-      if (_notEquals_1) {
+      boolean _tripleNotEquals_1 = (_val != null);
+      if (_tripleNotEquals_1) {
         _builder.append("value=\"");
-        String _val_1 = cond.getVal();
-        String _replace = _val_1.replace("\'", "");
-        _builder.append(_replace, "");
+        String _replace = cond.getVal().replace("\'", "");
+        _builder.append(_replace);
         _builder.append("\"");
       }
     }
@@ -677,38 +647,41 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
     String _fact = cond.getFact();
-    _builder.append(_fact, "");
+    _builder.append(_fact);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
-      boolean _notEquals = (!Objects.equal(_op, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_op != null);
+      if (_tripleNotEquals) {
         _builder.append("operator=\"");
-        String _op_1 = cond.getOp();
-        String _operator = this.getOperator(_op_1);
-        _builder.append(_operator, "");
+        String _operator = this.getOperator(cond.getOp());
+        _builder.append(_operator);
         _builder.append("\"");
       }
     }
     _builder.append(" value=\"");
     int _val = cond.getVal();
-    _builder.append(_val, "");
+    _builder.append(_val);
     _builder.append("\" type=\"number\"/>");
     return _builder;
   }
   
   public String getOperator(final String op) {
-    switch (op) {
-      case "<=":
-        return "lte";
-      case ">=":
-        return "gte";
-      case "<":
-        return "lt";
-      case ">":
-        return "gt";
-      default:
-        return op;
+    if (op != null) {
+      switch (op) {
+        case "<=":
+          return "lte";
+        case ">=":
+          return "gte";
+        case "<":
+          return "lt";
+        case ">":
+          return "gt";
+        default:
+          return op;
+      }
+    } else {
+      return op;
     }
   }
 }

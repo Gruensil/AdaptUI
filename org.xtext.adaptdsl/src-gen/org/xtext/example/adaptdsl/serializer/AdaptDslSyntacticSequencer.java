@@ -10,6 +10,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
@@ -18,10 +21,12 @@ import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected AdaptDslGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AdaptDslGrammarAccess) access;
+		match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getContextModelAccess().getServicesKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_2_2()));
 	}
 	
 	@Override
@@ -36,8 +41,22 @@ public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q.equals(syntax))
+				emit_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('Services{' '};')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     entity+=Entity (ambiguity) 'Types{' types=DefTypes
+	 *     entity+=Entity (ambiguity) '};' (rule end)
+	 */
+	protected void emit_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

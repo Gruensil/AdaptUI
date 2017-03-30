@@ -61,13 +61,13 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	def compile(Model model) '''
 	<?xml version="1.0" encoding="ASCII"?>
 	<adaptModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-		«IF model.services != null»
+		«IF model.adaptationModel.services !== null»
 			<services>
-				«model.services.compile»
+				«model.adaptationModel.services.compile»
 			</services>
 		«ENDIF»
-		<flow name="«model.flowName»">
-			«FOR rule: model.adaptationRules»
+		<flow name="«model.adaptationModel.flowName»">
+			«FOR rule: model.adaptationModel.adaptationRules»
 				«rule.compile»
 			«ENDFOR»
 		</flow>
@@ -75,10 +75,10 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	'''
 	
 	def compile(ServiceList slist)'''
-		«IF slist.this != null»
+		«IF slist.this !== null»
 			«slist.this.compile»
 		«ENDIF»
-		«IF slist.next != null»
+		«IF slist.next !== null»
 			«slist.next.compile»
 		«ENDIF»
 	'''
@@ -90,10 +90,10 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	'''
 	
 	def compile(FunctionList flist)'''
-		«IF flist.this != null»
+		«IF flist.this !== null»
 			«flist.this.compile»
 		«ENDIF»
-		«IF flist.next != null»
+		«IF flist.next !== null»
 			«flist.next.compile»
 		«ENDIF»
 	'''
@@ -115,7 +115,7 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	
 	def compile(Actions act)'''
 		«act.action.compile»
-		«IF act.next != null»
+		«IF act.next !== null»
 			«act.next.compile»
 		«ENDIF»
 	'''
@@ -129,7 +129,7 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 				'''<functionCall service="«(op as ServiceFunctionCallOperation).service»" function="«(op as ServiceFunctionCallOperation).function»" value=«(op as ServiceFunctionCallOperation).^val»/>'''
 			}
 			EditFactOperation: {
-				'''<editFactOperation set="«(op as EditFactOperation).prop»" «IF (op as EditFactOperation).^val != null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
+				'''<editFactOperation set="«(op as EditFactOperation).prop»" «IF (op as EditFactOperation).^val !== null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
 			}
 			SetDisplayPropertyOperation: {
 				switch ((op as SetDisplayPropertyOperation).propertyValue.propertyClass){
@@ -188,26 +188,26 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	}
 	
 	def compile(ConditionalOrExpression expr) '''
-		«IF expr.left != null»
-			«/*Binding Group*/IF expr.left.left != null && expr.left.right != null»
+		«IF expr.left !== null»
+			«/*Binding Group*/IF expr.left.left !== null && expr.left.right !== null»
 				<conditionGroup>
 					«expr.left.compile»
 				</conditionGroup>
 			«ENDIF»
-			«/*OR*/IF expr.left.left != null && expr.left.right == null»
+			«/*OR*/IF expr.left.left !== null && expr.left.right !== null»
 				«expr.left.left.compile»
 			«ENDIF»
 		«ENDIF»
-		«IF expr.right != null»
+		«IF expr.right !== null»
 			«expr.right.compile»
 		«ENDIF»
 	'''
 	
 	def compile(ConditionalAndExpression expr)'''
-		«IF expr.left != null»
+		«IF expr.left !== null»
 			«expr.left.compile»
 		«ENDIF»
-		«IF expr.right != null»
+		«IF expr.right !== null»
 			«expr.right.compile»
 		«ENDIF»
 	'''
@@ -223,11 +223,11 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 			«(expr.cond as StringCondition).compile»
 		«ENDIF»'''
 
-	def compile(BooleanCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val != null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
+	def compile(BooleanCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
 	
-	def compile(StringCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val != null»value="«cond.^val.replace("'","")»"«ENDIF» type="string"/>'''
+	def compile(StringCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="string"/>'''
 	
-	def compile(NumberCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op != null)»operator="«getOperator(cond.op)»"«ENDIF» value="«cond.^val»" type="number"/>'''
+	def compile(NumberCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» value="«cond.^val»" type="number"/>'''
 
 //
 	def getOperator(String op){

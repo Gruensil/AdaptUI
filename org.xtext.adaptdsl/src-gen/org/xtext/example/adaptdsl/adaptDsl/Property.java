@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}</li>
  * </ul>
@@ -26,30 +26,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Property extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Property Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Property Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_Name()
+   * @return the value of the '<em>Property Name</em>' attribute.
+   * @see #setPropertyName(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_PropertyName()
    * @model
    * @generated
    */
-  String getName();
+  String getPropertyName();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getPropertyName <em>Property Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Property Name</em>' attribute.
+   * @see #getPropertyName()
    * @generated
    */
-  void setName(String value);
+  void setPropertyName(String value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.

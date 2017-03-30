@@ -3,17 +3,25 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="adaptDsl" nsURI="http://www.xtext.org/example/adaptdsl/AdaptDsl"
     nsPrefix="adaptDsl">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="services" eType="#//ServiceList"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextModel" eType="#//ContextModel"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flowName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
-        eType="#//AdaptationRule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationModel" eType="#//AdaptationModel"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" upperBound="-1"
         eType="#//Entity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" upperBound="-1"
         eType="#//Provider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" eType="#//DefTypes"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdaptationModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" eType="#//ServiceList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flowName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adaptationRules" upperBound="-1"
+        eType="#//AdaptationRule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="this" eType="#//Service"
@@ -171,7 +179,7 @@
         eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TYPE"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" eType="#//Provider"
         containment="true"/>

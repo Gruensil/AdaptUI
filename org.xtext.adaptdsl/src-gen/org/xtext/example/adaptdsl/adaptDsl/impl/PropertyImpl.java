@@ -25,7 +25,7 @@ import org.xtext.example.adaptdsl.adaptDsl.TYPE;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getProvider <em>Provider</em>}</li>
  * </ul>
@@ -35,24 +35,24 @@ import org.xtext.example.adaptdsl.adaptDsl.TYPE;
 public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getPropertyName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String PROPERTY_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getPropertyName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String propertyName = PROPERTY_NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -110,9 +110,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getPropertyName()
   {
-    return name;
+    return propertyName;
   }
 
   /**
@@ -120,12 +120,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setPropertyName(String newPropertyName)
   {
-    String oldName = name;
-    name = newName;
+    String oldPropertyName = propertyName;
+    propertyName = newPropertyName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
   }
 
   /**
@@ -225,8 +225,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__NAME:
-        return getName();
+      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
+        return getPropertyName();
       case AdaptDslPackage.PROPERTY__TYPE:
         return getType();
       case AdaptDslPackage.PROPERTY__PROVIDER:
@@ -245,8 +245,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__NAME:
-        setName((String)newValue);
+      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
+        setPropertyName((String)newValue);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType((TYPE)newValue);
@@ -268,8 +268,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__NAME:
-        setName(NAME_EDEFAULT);
+      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
+        setPropertyName(PROPERTY_NAME_EDEFAULT);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType(TYPE_EDEFAULT);
@@ -291,8 +291,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
+        return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
       case AdaptDslPackage.PROPERTY__TYPE:
         return type != TYPE_EDEFAULT;
       case AdaptDslPackage.PROPERTY__PROVIDER:
@@ -312,8 +312,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (propertyName: ");
+    result.append(propertyName);
     result.append(", type: ");
     result.append(type);
     result.append(')');

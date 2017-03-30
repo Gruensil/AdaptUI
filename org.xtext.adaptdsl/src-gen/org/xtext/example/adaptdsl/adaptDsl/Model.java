@@ -3,8 +3,6 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,12 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getServices <em>Services</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getFlowName <em>Flow Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getAdaptationRules <em>Adaptation Rules</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getContextModel <em>Context Model</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Model#getAdaptationModel <em>Adaptation Model</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel()
@@ -31,129 +25,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface Model extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Services</b></em>' containment reference.
+   * Returns the value of the '<em><b>Context Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Services</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Context Model</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Services</em>' containment reference.
-   * @see #setServices(ServiceList)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_Services()
+   * @return the value of the '<em>Context Model</em>' containment reference.
+   * @see #setContextModel(ContextModel)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_ContextModel()
    * @model containment="true"
    * @generated
    */
-  ServiceList getServices();
+  ContextModel getContextModel();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Model#getServices <em>Services</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Model#getContextModel <em>Context Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Services</em>' containment reference.
-   * @see #getServices()
+   * @param value the new value of the '<em>Context Model</em>' containment reference.
+   * @see #getContextModel()
    * @generated
    */
-  void setServices(ServiceList value);
+  void setContextModel(ContextModel value);
 
   /**
-   * Returns the value of the '<em><b>Flow Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Adaptation Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Flow Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Adaptation Model</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Flow Name</em>' attribute.
-   * @see #setFlowName(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_FlowName()
-   * @model
-   * @generated
-   */
-  String getFlowName();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Model#getFlowName <em>Flow Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Flow Name</em>' attribute.
-   * @see #getFlowName()
-   * @generated
-   */
-  void setFlowName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Adaptation Rules</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Adaptation Rules</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Adaptation Rules</em>' containment reference list.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_AdaptationRules()
+   * @return the value of the '<em>Adaptation Model</em>' containment reference.
+   * @see #setAdaptationModel(AdaptationModel)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_AdaptationModel()
    * @model containment="true"
    * @generated
    */
-  EList<AdaptationRule> getAdaptationRules();
+  AdaptationModel getAdaptationModel();
 
   /**
-   * Returns the value of the '<em><b>Entity</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.Entity}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Entity</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Entity</em>' containment reference list.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_Entity()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Entity> getEntity();
-
-  /**
-   * Returns the value of the '<em><b>Provider</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.Provider}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Provider</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Provider</em>' containment reference list.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_Provider()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Provider> getProvider();
-
-  /**
-   * Returns the value of the '<em><b>Types</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Types</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Types</em>' containment reference.
-   * @see #setTypes(DefTypes)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getModel_Types()
-   * @model containment="true"
-   * @generated
-   */
-  DefTypes getTypes();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Model#getTypes <em>Types</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Model#getAdaptationModel <em>Adaptation Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Types</em>' containment reference.
-   * @see #getTypes()
+   * @param value the new value of the '<em>Adaptation Model</em>' containment reference.
+   * @see #getAdaptationModel()
    * @generated
    */
-  void setTypes(DefTypes value);
+  void setAdaptationModel(AdaptationModel value);
 
 } // Model
