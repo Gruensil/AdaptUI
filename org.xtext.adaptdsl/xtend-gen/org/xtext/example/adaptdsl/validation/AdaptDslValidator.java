@@ -3,6 +3,14 @@
  */
 package org.xtext.example.adaptdsl.validation;
 
+import com.google.common.base.Objects;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.validation.Check;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.Entity;
+import org.xtext.example.adaptdsl.adaptDsl.Model;
+import org.xtext.example.adaptdsl.adaptDsl.Property;
+import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.validation.AbstractAdaptDslValidator;
 
 /**
@@ -12,4 +20,28 @@ import org.xtext.example.adaptdsl.validation.AbstractAdaptDslValidator;
  */
 @SuppressWarnings("all")
 public class AdaptDslValidator extends AbstractAdaptDslValidator {
+  @Check
+  public void isServiceDefined(final Model model) {
+    EList<Entity> _entity = model.getEntity();
+    for (final Entity ent : _entity) {
+      EList<Property> _property = ent.getProperty();
+      for (final Property attr : _property) {
+        {
+          boolean defined = false;
+          EList<Provider> _provider = model.getProvider();
+          for (final Provider prov : _provider) {
+            String _name = attr.getProvider().getName();
+            String _name_1 = prov.getName();
+            boolean _equals = Objects.equal(_name, _name_1);
+            if (_equals) {
+              defined = true;
+            }
+          }
+          if ((!defined)) {
+            this.error("One of the Providers is not listed or misspelled.", AdaptDslPackage.Literals.MODEL__PROVIDER);
+          }
+        }
+      }
+    }
+  }
 }

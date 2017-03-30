@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.tests.AdaptDslInjectorProvider;
 
-@RunWith(XtextRunner.class)
-@InjectWith(AdaptDslInjectorProvider.class)
+@RunWith(XtextRunner.class)/* 
+@InjectWith(AdaptDslInjectorProvider.class) */
 @SuppressWarnings("all")
 public class AdaptDslParsingTest {
   @Inject

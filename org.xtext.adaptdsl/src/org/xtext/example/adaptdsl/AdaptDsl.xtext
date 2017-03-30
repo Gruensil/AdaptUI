@@ -8,6 +8,13 @@ Model:
 	'flow' flowName = STRING '{'
 		adaptationRules += AdaptationRule+
 	'};'
+	(entity += Entity)*
+	'Services{'
+		(provider += Provider ';')*
+	'}'
+	'Types{'
+		types = DefTypes
+	'}'
 ;
 
 Services returns ServiceList:
@@ -236,3 +243,42 @@ Value:
 ;
 
 terminal BOOL: 'true'|'false';
+
+Entity returns Entity:
+	'Entity' name=ID '{'
+		(property += Property)*
+	'}'
+;
+
+Property returns Property:
+	'name' name=STRING ':' type=TYPE 'from' provider=Provider ';'
+;
+
+Provider returns Provider:
+	name=STRING
+;
+
+DefTypes returns DefTypes:
+	this=DefType
+	(next=DefTypes)?
+;
+
+DefType returns DefType:
+	name=ID ':' enums=Enums ';'
+;
+
+Enums returns Enums:
+	this=Enum
+	(',' next=Enums)?
+;
+
+Enum returns Enum:
+	name=STRING
+;
+
+
+enum TYPE: 
+	STRING  = 'string' |
+	NUMBER = 'number' |
+	BOOL = 'bool'
+;

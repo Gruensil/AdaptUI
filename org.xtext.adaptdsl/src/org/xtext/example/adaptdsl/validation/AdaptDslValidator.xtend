@@ -3,6 +3,9 @@
  */
 package org.xtext.example.adaptdsl.validation
 
+import org.eclipse.xtext.validation.Check
+import org.xtext.example.adaptdsl.adaptDsl.Model
+import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +14,24 @@ package org.xtext.example.adaptdsl.validation
  */
 class AdaptDslValidator extends AbstractAdaptDslValidator {
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					AdaptDslPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+	def void isServiceDefined(Model model) {
+		
+		//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
+		for(ent: model.getEntity()){
+			for(attr: ent.getProperty()){
+				var defined = false;
+				for(prov: model.getProvider()){
+					if(attr.getProvider().getName() == prov.getName()){
+						//the Provider is defined
+						defined = true;
+					}
+				}
+				if(!defined){
+					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__PROVIDER);
+				}
+			}
+		}
+	}	
 	
 }
