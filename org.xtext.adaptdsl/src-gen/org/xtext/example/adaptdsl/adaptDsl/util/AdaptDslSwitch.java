@@ -52,6 +52,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
+import org.xtext.example.adaptdsl.adaptDsl.TYPE;
 
 /**
  * <!-- begin-user-doc -->
@@ -421,6 +422,13 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         org.xtext.example.adaptdsl.adaptDsl.Enum enum_ = (org.xtext.example.adaptdsl.adaptDsl.Enum)theEObject;
         T result = caseEnum(enum_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.TYPE:
+      {
+        TYPE type = (TYPE)theEObject;
+        T result = caseTYPE(type);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1128,6 +1136,22 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEnum(org.xtext.example.adaptdsl.adaptDsl.Enum object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>TYPE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>TYPE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTYPE(TYPE object)
   {
     return null;
   }

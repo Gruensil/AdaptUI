@@ -200,6 +200,10 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumsAccess().getThisAssignment_0(), "rule__Enums__ThisAssignment_0");
 					put(grammarAccess.getEnumsAccess().getNextAssignment_1_1(), "rule__Enums__NextAssignment_1_1");
 					put(grammarAccess.getEnumAccess().getNameAssignment(), "rule__Enum__NameAssignment");
+					put(grammarAccess.getTYPEAccess().getStringAssignment_0(), "rule__TYPE__StringAssignment_0");
+					put(grammarAccess.getTYPEAccess().getNumberAssignment_1(), "rule__TYPE__NumberAssignment_1");
+					put(grammarAccess.getTYPEAccess().getBoolAssignment_2(), "rule__TYPE__BoolAssignment_2");
+					put(grammarAccess.getTYPEAccess().getDeftypeAssignment_3(), "rule__TYPE__DeftypeAssignment_3");
 				}
 			};
 		}

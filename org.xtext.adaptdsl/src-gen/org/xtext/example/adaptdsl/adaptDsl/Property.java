@@ -52,29 +52,26 @@ public interface Property extends EObject
   void setPropertyName(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * The literals are from the enumeration {@link org.xtext.example.adaptdsl.adaptDsl.TYPE}.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE
+   * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(TYPE)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_Type()
-   * @model
+   * @model containment="true"
    * @generated
    */
   TYPE getType();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE
+   * @param value the new value of the '<em>Type</em>' containment reference.
    * @see #getType()
    * @generated
    */

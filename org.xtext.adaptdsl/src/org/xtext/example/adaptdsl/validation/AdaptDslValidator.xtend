@@ -4,7 +4,6 @@
 package org.xtext.example.adaptdsl.validation
 
 import org.eclipse.xtext.validation.Check
-import org.xtext.example.adaptdsl.adaptDsl.Model
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage
 import org.xtext.example.adaptdsl.adaptDsl.Provider
 import org.xtext.example.adaptdsl.adaptDsl.Entity
@@ -16,7 +15,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ContextModel
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AdaptDslValidator extends AbstractAdaptDslValidator {
-	
+//	Not required anymore due to working ScopeProvider --->>>
 //	@Check
 //	//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
 //	def void isProviderDefined(Model model) {			
@@ -34,7 +33,7 @@ class AdaptDslValidator extends AbstractAdaptDslValidator {
 //				}
 //			}
 //		}
-//	}
+//	}<<<---
 	
 	@Check
 	def void isProviderNotEmpty(Provider provider) {		
@@ -87,28 +86,4 @@ class AdaptDslValidator extends AbstractAdaptDslValidator {
 			}
 		}
 	}
-	
-//	@Check
-//	def void isPropertyDefined(Model model) {
-//		
-//		for(){
-//			
-//		}
-//
-//
-//		for(rules: model.getAdaptationRules()){
-//			for(attr: rules.){
-//				var defined = false;
-//				for(prov: model.getProvider()){
-//					if(attr.getProvider().getName() == prov.getName()){
-//						//the Provider is defined
-//						defined = true;
-//					}
-//				}
-//				if(!defined){
-//					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__PROVIDER);
-//				}
-//			}
-//		}
-//	}	
 }

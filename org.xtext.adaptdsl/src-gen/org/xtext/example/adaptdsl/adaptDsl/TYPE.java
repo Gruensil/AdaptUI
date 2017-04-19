@@ -3,255 +3,131 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>TYPE</b></em>',
- * and utility methods for working with them.
+ * A representation of the model object '<em><b>TYPE</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getString <em>String</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getNumber <em>Number</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype <em>Deftype</em>}</li>
+ * </ul>
+ *
  * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE()
  * @model
  * @generated
  */
-public enum TYPE implements Enumerator
+public interface TYPE extends EObject
 {
   /**
-   * The '<em><b>STRING</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #STRING_VALUE
-   * @generated
-   * @ordered
-   */
-  STRING(0, "STRING", "string"),
-
-  /**
-   * The '<em><b>NUMBER</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #NUMBER_VALUE
-   * @generated
-   * @ordered
-   */
-  NUMBER(1, "NUMBER", "number"),
-
-  /**
-   * The '<em><b>BOOL</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #BOOL_VALUE
-   * @generated
-   * @ordered
-   */
-  BOOL(2, "BOOL", "bool");
-
-  /**
-   * The '<em><b>STRING</b></em>' literal value.
+   * Returns the value of the '<em><b>String</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
+   * If the meaning of the '<em>String</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #STRING
-   * @model literal="string"
+   * @return the value of the '<em>String</em>' attribute.
+   * @see #setString(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_String()
+   * @model
    * @generated
-   * @ordered
    */
-  public static final int STRING_VALUE = 0;
+  String getString();
 
   /**
-   * The '<em><b>NUMBER</b></em>' literal value.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getString <em>String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>String</em>' attribute.
+   * @see #getString()
+   * @generated
+   */
+  void setString(String value);
+
+  /**
+   * Returns the value of the '<em><b>Number</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>NUMBER</b></em>' literal object isn't clear,
+   * If the meaning of the '<em>Number</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #NUMBER
-   * @model literal="number"
+   * @return the value of the '<em>Number</em>' attribute.
+   * @see #setNumber(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_Number()
+   * @model
    * @generated
-   * @ordered
    */
-  public static final int NUMBER_VALUE = 1;
+  String getNumber();
 
   /**
-   * The '<em><b>BOOL</b></em>' literal value.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getNumber <em>Number</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Number</em>' attribute.
+   * @see #getNumber()
+   * @generated
+   */
+  void setNumber(String value);
+
+  /**
+   * Returns the value of the '<em><b>Bool</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>BOOL</b></em>' literal object isn't clear,
+   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #BOOL
-   * @model literal="bool"
+   * @return the value of the '<em>Bool</em>' attribute.
+   * @see #setBool(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_Bool()
+   * @model
    * @generated
-   * @ordered
    */
-  public static final int BOOL_VALUE = 2;
+  String getBool();
 
   /**
-   * An array of all the '<em><b>TYPE</b></em>' enumerators.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Bool</em>' attribute.
+   * @see #getBool()
    * @generated
    */
-  private static final TYPE[] VALUES_ARRAY =
-    new TYPE[]
-    {
-      STRING,
-      NUMBER,
-      BOOL,
-    };
+  void setBool(String value);
 
   /**
-   * A public read-only list of all the '<em><b>TYPE</b></em>' enumerators.
+   * Returns the value of the '<em><b>Deftype</b></em>' reference.
    * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Deftype</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
    * <!-- end-user-doc -->
+   * @return the value of the '<em>Deftype</em>' reference.
+   * @see #setDeftype(DefType)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_Deftype()
+   * @model
    * @generated
    */
-  public static final List<TYPE> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+  DefType getDeftype();
 
   /**
-   * Returns the '<em><b>TYPE</b></em>' literal with the specified literal value.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype <em>Deftype</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param literal the literal.
-   * @return the matching enumerator or <code>null</code>.
+   * @param value the new value of the '<em>Deftype</em>' reference.
+   * @see #getDeftype()
    * @generated
    */
-  public static TYPE get(String literal)
-  {
-    for (int i = 0; i < VALUES_ARRAY.length; ++i)
-    {
-      TYPE result = VALUES_ARRAY[i];
-      if (result.toString().equals(literal))
-      {
-        return result;
-      }
-    }
-    return null;
-  }
+  void setDeftype(DefType value);
 
-  /**
-   * Returns the '<em><b>TYPE</b></em>' literal with the specified name.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param name the name.
-   * @return the matching enumerator or <code>null</code>.
-   * @generated
-   */
-  public static TYPE getByName(String name)
-  {
-    for (int i = 0; i < VALUES_ARRAY.length; ++i)
-    {
-      TYPE result = VALUES_ARRAY[i];
-      if (result.getName().equals(name))
-      {
-        return result;
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Returns the '<em><b>TYPE</b></em>' literal with the specified integer value.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the integer value.
-   * @return the matching enumerator or <code>null</code>.
-   * @generated
-   */
-  public static TYPE get(int value)
-  {
-    switch (value)
-    {
-      case STRING_VALUE: return STRING;
-      case NUMBER_VALUE: return NUMBER;
-      case BOOL_VALUE: return BOOL;
-    }
-    return null;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final int value;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final String name;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private final String literal;
-
-  /**
-   * Only this class can construct instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private TYPE(int value, String name, String literal)
-  {
-    this.value = value;
-    this.name = name;
-    this.literal = literal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getValue()
-  {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getLiteral()
-  {
-    return literal;
-  }
-
-  /**
-   * Returns the literal value of the enumerator, which is its string representation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    return literal;
-  }
-  
-} //TYPE
+} // TYPE

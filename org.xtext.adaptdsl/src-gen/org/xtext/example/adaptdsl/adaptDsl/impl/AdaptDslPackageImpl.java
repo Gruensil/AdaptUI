@@ -5,7 +5,6 @@ package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -378,7 +377,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum typeEEnum = null;
+  private EClass typeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1598,9 +1597,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Type()
+  public EReference getProperty_Type()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1748,9 +1747,49 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getTYPE()
+  public EClass getTYPE()
   {
-    return typeEEnum;
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTYPE_String()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTYPE_Number()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTYPE_Bool()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTYPE_Deftype()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1936,7 +1975,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__PROPERTY_NAME);
-    createEAttribute(propertyEClass, PROPERTY__TYPE);
+    createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__PROVIDER);
 
     providerEClass = createEClass(PROVIDER);
@@ -1957,8 +1996,11 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     enumEClass = createEClass(ENUM);
     createEAttribute(enumEClass, ENUM__NAME);
 
-    // Create enums
-    typeEEnum = createEEnum(TYPE);
+    typeEClass = createEClass(TYPE);
+    createEAttribute(typeEClass, TYPE__STRING);
+    createEAttribute(typeEClass, TYPE__NUMBER);
+    createEAttribute(typeEClass, TYPE__BOOL);
+    createEReference(typeEClass, TYPE__DEFTYPE);
   }
 
   /**
@@ -2145,7 +2187,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_PropertyName(), ecorePackage.getEString(), "propertyName", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProperty_Type(), this.getTYPE(), "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_Type(), this.getTYPE(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Provider(), this.getProvider(), null, "provider", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(providerEClass, Provider.class, "Provider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2166,11 +2208,11 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEClass(enumEClass, org.xtext.example.adaptdsl.adaptDsl.Enum.class, "Enum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnum_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.Enum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    // Initialize enums and add enum literals
-    initEEnum(typeEEnum, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, "TYPE");
-    addEEnumLiteral(typeEEnum, org.xtext.example.adaptdsl.adaptDsl.TYPE.STRING);
-    addEEnumLiteral(typeEEnum, org.xtext.example.adaptdsl.adaptDsl.TYPE.NUMBER);
-    addEEnumLiteral(typeEEnum, org.xtext.example.adaptdsl.adaptDsl.TYPE.BOOL);
+    initEClass(typeEClass, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, "TYPE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTYPE_String(), ecorePackage.getEString(), "string", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTYPE_Number(), ecorePackage.getEString(), "number", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTYPE_Bool(), ecorePackage.getEString(), "bool", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTYPE_Deftype(), this.getDefType(), null, "deftype", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

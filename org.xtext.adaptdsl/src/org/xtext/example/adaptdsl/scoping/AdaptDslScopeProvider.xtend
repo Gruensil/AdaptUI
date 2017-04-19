@@ -9,6 +9,7 @@ import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.xtext.example.adaptdsl.adaptDsl.Provider
+import org.xtext.example.adaptdsl.adaptDsl.DefType
 
 /**
  * This class contains custom scoping description.
@@ -27,6 +28,11 @@ class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
 	        val rootElement = EcoreUtil2.getRootContainer(context)
 	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Provider)
 	        // Create IEObjectDescriptions and puts them into an IScope instance
+	        return Scopes.scopeFor(candidates)
+	    }else if(context instanceof DefType
+	            && reference == AdaptDslPackage$Literals::TYPE__DEFTYPE){
+	    	val rootElement = EcoreUtil2.getRootContainer(context)
+	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, DefType)
 	        return Scopes.scopeFor(candidates)
 	    }
 	    return super.getScope(context, reference);

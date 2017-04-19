@@ -4,6 +4,7 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -54,24 +55,14 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   protected String propertyName = PROPERTY_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final TYPE TYPE_EDEFAULT = TYPE.STRING;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected TYPE type = TYPE_EDEFAULT;
+  protected TYPE type;
 
   /**
    * The cached value of the '{@link #getProvider() <em>Provider</em>}' reference.
@@ -142,12 +133,37 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(TYPE newType)
+  public NotificationChain basicSetType(TYPE newType, NotificationChain msgs)
   {
     TYPE oldType = type;
-    type = newType == null ? TYPE_EDEFAULT : newType;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(TYPE newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__TYPE, newType, newType));
   }
 
   /**
@@ -191,6 +207,22 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     provider = newProvider;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROVIDER, oldProvider, provider));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdaptDslPackage.PROPERTY__TYPE:
+        return basicSetType(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -251,7 +283,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         setPropertyName(PROPERTY_NAME_EDEFAULT);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
-        setType(TYPE_EDEFAULT);
+        setType((TYPE)null);
         return;
       case AdaptDslPackage.PROPERTY__PROVIDER:
         setProvider((Provider)null);
@@ -273,7 +305,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
         return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
       case AdaptDslPackage.PROPERTY__TYPE:
-        return type != TYPE_EDEFAULT;
+        return type != null;
       case AdaptDslPackage.PROPERTY__PROVIDER:
         return provider != null;
     }
@@ -293,8 +325,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (propertyName: ");
     result.append(propertyName);
-    result.append(", type: ");
-    result.append(type);
     result.append(')');
     return result.toString();
   }

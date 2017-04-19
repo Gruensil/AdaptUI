@@ -289,8 +289,9 @@ Enum returns Enum:
 ;
 
 
-enum TYPE: 
-	STRING  = 'string' |
-	NUMBER = 'number' |
-	BOOL = 'bool'
+TYPE: 
+	string  = 'string' |
+	number = 'number' |
+	bool = 'bool' |
+	deftype = [DefType]
 ;

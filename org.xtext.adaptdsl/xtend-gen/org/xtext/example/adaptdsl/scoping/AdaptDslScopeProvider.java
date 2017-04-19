@@ -11,6 +11,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
 
@@ -28,6 +29,12 @@ public class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
       final EObject rootElement = EcoreUtil2.getRootContainer(context);
       final List<Provider> candidates = EcoreUtil2.<Provider>getAllContentsOfType(rootElement, Provider.class);
       return Scopes.scopeFor(candidates);
+    } else {
+      if (((context instanceof DefType) && Objects.equal(reference, AdaptDslPackage.Literals.TYPE__DEFTYPE))) {
+        final EObject rootElement_1 = EcoreUtil2.getRootContainer(context);
+        final List<DefType> candidates_1 = EcoreUtil2.<DefType>getAllContentsOfType(rootElement_1, DefType.class);
+        return Scopes.scopeFor(candidates_1);
+      }
     }
     return super.getScope(context, reference);
   }

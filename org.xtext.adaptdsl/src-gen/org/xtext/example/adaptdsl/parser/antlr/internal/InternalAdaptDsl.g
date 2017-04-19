@@ -23,7 +23,6 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -3712,7 +3711,7 @@ ruleProperty returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPropertyAccess().getTypeTYPEEnumRuleCall_2_0());
+					newCompositeNode(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0());
 				}
 				lv_type_2_0=ruleTYPE
 				{
@@ -4006,8 +4005,15 @@ ruleEnum returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleTYPE
+entryRuleTYPE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTYPERule()); }
+	iv_ruleTYPE=ruleTYPE
+	{ $current=$iv_ruleTYPE.current; }
+	EOF;
+
 // Rule TYPE
-ruleTYPE returns [Enumerator current=null]
+ruleTYPE returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -4016,27 +4022,62 @@ ruleTYPE returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='string'
-			{
-				$current = grammarAccess.getTYPEAccess().getSTRINGEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getTYPEAccess().getSTRINGEnumLiteralDeclaration_0());
-			}
+			(
+				lv_string_0_0='string'
+				{
+					newLeafNode(lv_string_0_0, grammarAccess.getTYPEAccess().getStringStringKeyword_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTYPERule());
+					}
+					setWithLastConsumed($current, "string", lv_string_0_0, "string");
+				}
+			)
 		)
 		    |
 		(
-			enumLiteral_1='number'
-			{
-				$current = grammarAccess.getTYPEAccess().getNUMBEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getTYPEAccess().getNUMBEREnumLiteralDeclaration_1());
-			}
+			(
+				lv_number_1_0='number'
+				{
+					newLeafNode(lv_number_1_0, grammarAccess.getTYPEAccess().getNumberNumberKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTYPERule());
+					}
+					setWithLastConsumed($current, "number", lv_number_1_0, "number");
+				}
+			)
 		)
 		    |
 		(
-			enumLiteral_2='bool'
-			{
-				$current = grammarAccess.getTYPEAccess().getBOOLEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getTYPEAccess().getBOOLEnumLiteralDeclaration_2());
-			}
+			(
+				lv_bool_2_0='bool'
+				{
+					newLeafNode(lv_bool_2_0, grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTYPERule());
+					}
+					setWithLastConsumed($current, "bool", lv_bool_2_0, "bool");
+				}
+			)
+		)
+		    |
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTYPERule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getTYPEAccess().getDeftypeDefTypeCrossReference_3_0());
+				}
+			)
 		)
 	)
 ;

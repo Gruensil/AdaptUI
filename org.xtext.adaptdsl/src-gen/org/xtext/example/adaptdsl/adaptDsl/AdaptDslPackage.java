@@ -5,7 +5,6 @@ package org.xtext.example.adaptdsl.adaptDsl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1475,7 +1474,7 @@ public interface AdaptDslPackage extends EPackage
   int PROPERTY__PROPERTY_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1669,14 +1668,59 @@ public interface AdaptDslPackage extends EPackage
   int ENUM_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE <em>TYPE</em>}' enum.
+   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl <em>TYPE</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getTYPE()
    * @generated
    */
   int TYPE = 44;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__STRING = 0;
+
+  /**
+   * The feature id for the '<em><b>Number</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__NUMBER = 1;
+
+  /**
+   * The feature id for the '<em><b>Bool</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__BOOL = 2;
+
+  /**
+   * The feature id for the '<em><b>Deftype</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__DEFTYPE = 3;
+
+  /**
+   * The number of structural features of the '<em>TYPE</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_FEATURE_COUNT = 4;
 
 
   /**
@@ -2906,15 +2950,15 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getProperty_PropertyName();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see org.xtext.example.adaptdsl.adaptDsl.Property#getType()
    * @see #getProperty()
    * @generated
    */
-  EAttribute getProperty_Type();
+  EReference getProperty_Type();
 
   /**
    * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}'.
@@ -3066,14 +3110,58 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getEnum_Name();
 
   /**
-   * Returns the meta object for enum '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE <em>TYPE</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE <em>TYPE</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>TYPE</em>'.
+   * @return the meta object for class '<em>TYPE</em>'.
    * @see org.xtext.example.adaptdsl.adaptDsl.TYPE
    * @generated
    */
-  EEnum getTYPE();
+  EClass getTYPE();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getString <em>String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>String</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getString()
+   * @see #getTYPE()
+   * @generated
+   */
+  EAttribute getTYPE_String();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getNumber <em>Number</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Number</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getNumber()
+   * @see #getTYPE()
+   * @generated
+   */
+  EAttribute getTYPE_Number();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Bool</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool()
+   * @see #getTYPE()
+   * @generated
+   */
+  EAttribute getTYPE_Bool();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype <em>Deftype</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Deftype</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype()
+   * @see #getTYPE()
+   * @generated
+   */
+  EReference getTYPE_Deftype();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -4097,12 +4185,12 @@ public interface AdaptDslPackage extends EPackage
     EAttribute PROPERTY__PROPERTY_NAME = eINSTANCE.getProperty_PropertyName();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY__TYPE = eINSTANCE.getProperty_Type();
+    EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
     /**
      * The meta object literal for the '<em><b>Provider</b></em>' reference feature.
@@ -4227,14 +4315,46 @@ public interface AdaptDslPackage extends EPackage
     EAttribute ENUM__NAME = eINSTANCE.getEnum_Name();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE <em>TYPE</em>}' enum.
+     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl <em>TYPE</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.adaptdsl.adaptDsl.TYPE
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl
      * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getTYPE()
      * @generated
      */
-    EEnum TYPE = eINSTANCE.getTYPE();
+    EClass TYPE = eINSTANCE.getTYPE();
+
+    /**
+     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__STRING = eINSTANCE.getTYPE_String();
+
+    /**
+     * The meta object literal for the '<em><b>Number</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__NUMBER = eINSTANCE.getTYPE_Number();
+
+    /**
+     * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__BOOL = eINSTANCE.getTYPE_Bool();
+
+    /**
+     * The meta object literal for the '<em><b>Deftype</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE__DEFTYPE = eINSTANCE.getTYPE_Deftype();
 
   }
 

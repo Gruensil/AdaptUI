@@ -10,8 +10,6 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EnumLiteralDeclaration;
-import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -20,7 +18,6 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
-import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
@@ -2081,7 +2078,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPropertyNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cPropertyNameAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeTYPEEnumRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final RuleCall cTypeTYPEParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		private final Keyword cFromKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cProviderAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cProviderProviderCrossReference_4_0 = (CrossReference)cProviderAssignment_4.eContents().get(0);
@@ -2108,7 +2105,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 		
 		//TYPE
-		public RuleCall getTypeTYPEEnumRuleCall_2_0() { return cTypeTYPEEnumRuleCall_2_0; }
+		public RuleCall getTypeTYPEParserRuleCall_2_0() { return cTypeTYPEParserRuleCall_2_0; }
 		
 		//'from'
 		public Keyword getFromKeyword_3() { return cFromKeyword_3; }
@@ -2253,44 +2250,54 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_0() { return cNameSTRINGTerminalRuleCall_0; }
 	}
-	
-	public class TYPEElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.TYPE");
+	public class TYPEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.TYPE");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cSTRINGEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cSTRINGStringKeyword_0_0 = (Keyword)cSTRINGEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cNUMBEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cNUMBERNumberKeyword_1_0 = (Keyword)cNUMBEREnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cBOOLEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cBOOLBoolKeyword_2_0 = (Keyword)cBOOLEnumLiteralDeclaration_2.eContents().get(0);
+		private final Assignment cStringAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cStringStringKeyword_0_0 = (Keyword)cStringAssignment_0.eContents().get(0);
+		private final Assignment cNumberAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cNumberNumberKeyword_1_0 = (Keyword)cNumberAssignment_1.eContents().get(0);
+		private final Assignment cBoolAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cBoolBoolKeyword_2_0 = (Keyword)cBoolAssignment_2.eContents().get(0);
+		private final Assignment cDeftypeAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final CrossReference cDeftypeDefTypeCrossReference_3_0 = (CrossReference)cDeftypeAssignment_3.eContents().get(0);
+		private final RuleCall cDeftypeDefTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cDeftypeDefTypeCrossReference_3_0.eContents().get(1);
 		
-		//enum TYPE:
-		//	STRING='string' |
-		//	NUMBER='number' |
-		//	BOOL='bool';
-		public EnumRule getRule() { return rule; }
+		//TYPE:
+		//	string='string' | number='number' | bool='bool' | deftype=[DefType];
+		@Override public ParserRule getRule() { return rule; }
 		
-		//STRING='string' | NUMBER='number' | BOOL='bool'
+		//string='string' | number='number' | bool='bool' | deftype=[DefType]
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//STRING='string'
-		public EnumLiteralDeclaration getSTRINGEnumLiteralDeclaration_0() { return cSTRINGEnumLiteralDeclaration_0; }
+		//string='string'
+		public Assignment getStringAssignment_0() { return cStringAssignment_0; }
 		
 		//'string'
-		public Keyword getSTRINGStringKeyword_0_0() { return cSTRINGStringKeyword_0_0; }
+		public Keyword getStringStringKeyword_0_0() { return cStringStringKeyword_0_0; }
 		
-		//NUMBER='number'
-		public EnumLiteralDeclaration getNUMBEREnumLiteralDeclaration_1() { return cNUMBEREnumLiteralDeclaration_1; }
+		//number='number'
+		public Assignment getNumberAssignment_1() { return cNumberAssignment_1; }
 		
 		//'number'
-		public Keyword getNUMBERNumberKeyword_1_0() { return cNUMBERNumberKeyword_1_0; }
+		public Keyword getNumberNumberKeyword_1_0() { return cNumberNumberKeyword_1_0; }
 		
-		//BOOL='bool'
-		public EnumLiteralDeclaration getBOOLEnumLiteralDeclaration_2() { return cBOOLEnumLiteralDeclaration_2; }
+		//bool='bool'
+		public Assignment getBoolAssignment_2() { return cBoolAssignment_2; }
 		
 		//'bool'
-		public Keyword getBOOLBoolKeyword_2_0() { return cBOOLBoolKeyword_2_0; }
+		public Keyword getBoolBoolKeyword_2_0() { return cBoolBoolKeyword_2_0; }
+		
+		//deftype=[DefType]
+		public Assignment getDeftypeAssignment_3() { return cDeftypeAssignment_3; }
+		
+		//[DefType]
+		public CrossReference getDeftypeDefTypeCrossReference_3_0() { return cDeftypeDefTypeCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getDeftypeDefTypeIDTerminalRuleCall_3_0_1() { return cDeftypeDefTypeIDTerminalRuleCall_3_0_1; }
 	}
+	
 	
 	private final ModelElements pModel;
 	private final ContextModelElements pContextModel;
@@ -2354,7 +2361,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final DefTypeElements pDefType;
 	private final EnumsElements pEnums;
 	private final EnumElements pEnum;
-	private final TYPEElements eTYPE;
+	private final TYPEElements pTYPE;
 	
 	private final Grammar grammar;
 	
@@ -2427,7 +2434,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDefType = new DefTypeElements();
 		this.pEnums = new EnumsElements();
 		this.pEnum = new EnumElements();
-		this.eTYPE = new TYPEElements();
+		this.pTYPE = new TYPEElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -3101,15 +3108,13 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnumAccess().getRule();
 	}
 	
-	//enum TYPE:
-	//	STRING='string' |
-	//	NUMBER='number' |
-	//	BOOL='bool';
+	//TYPE:
+	//	string='string' | number='number' | bool='bool' | deftype=[DefType];
 	public TYPEElements getTYPEAccess() {
-		return eTYPE;
+		return pTYPE;
 	}
 	
-	public EnumRule getTYPERule() {
+	public ParserRule getTYPERule() {
 		return getTYPEAccess().getRule();
 	}
 	

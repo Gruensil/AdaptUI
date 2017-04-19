@@ -58,6 +58,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
+import org.xtext.example.adaptdsl.adaptDsl.TYPE;
 import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -220,6 +221,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
+				return; 
+			case AdaptDslPackage.TYPE:
+				sequence_TYPE(context, (TYPE) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -862,7 +866,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPropertyAccess().getPropertyNameSTRINGTerminalRuleCall_0_0(), semanticObject.getPropertyName());
-		feeder.accept(grammarAccess.getPropertyAccess().getTypeTYPEEnumRuleCall_2_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_4_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.PROPERTY__PROVIDER, false));
 		feeder.finish();
 	}
@@ -1039,6 +1043,18 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TYPE returns TYPE
+	 *
+	 * Constraint:
+	 *     (string='string' | number='number' | bool='bool' | deftype=[DefType|ID])
+	 */
+	protected void sequence_TYPE(ISerializationContext context, TYPE semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

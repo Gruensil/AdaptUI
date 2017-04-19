@@ -1574,12 +1574,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleTYPE
+entryRuleTYPE
+:
+{ before(grammarAccess.getTYPERule()); }
+	 ruleTYPE
+{ after(grammarAccess.getTYPERule()); } 
+	 EOF 
+;
+
 // Rule TYPE
-ruleTYPE
+ruleTYPE 
 	@init {
 		int stackSize = keepStackSize();
 	}
-:
+	:
 	(
 		{ before(grammarAccess.getTYPEAccess().getAlternatives()); }
 		(rule__TYPE__Alternatives)
@@ -1962,21 +1971,27 @@ rule__TYPE__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getTYPEAccess().getSTRINGEnumLiteralDeclaration_0()); }
-		('string')
-		{ after(grammarAccess.getTYPEAccess().getSTRINGEnumLiteralDeclaration_0()); }
+		{ before(grammarAccess.getTYPEAccess().getStringAssignment_0()); }
+		(rule__TYPE__StringAssignment_0)
+		{ after(grammarAccess.getTYPEAccess().getStringAssignment_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getTYPEAccess().getNUMBEREnumLiteralDeclaration_1()); }
-		('number')
-		{ after(grammarAccess.getTYPEAccess().getNUMBEREnumLiteralDeclaration_1()); }
+		{ before(grammarAccess.getTYPEAccess().getNumberAssignment_1()); }
+		(rule__TYPE__NumberAssignment_1)
+		{ after(grammarAccess.getTYPEAccess().getNumberAssignment_1()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getTYPEAccess().getBOOLEnumLiteralDeclaration_2()); }
-		('bool')
-		{ after(grammarAccess.getTYPEAccess().getBOOLEnumLiteralDeclaration_2()); }
+		{ before(grammarAccess.getTYPEAccess().getBoolAssignment_2()); }
+		(rule__TYPE__BoolAssignment_2)
+		{ after(grammarAccess.getTYPEAccess().getBoolAssignment_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getTYPEAccess().getDeftypeAssignment_3()); }
+		(rule__TYPE__DeftypeAssignment_3)
+		{ after(grammarAccess.getTYPEAccess().getDeftypeAssignment_3()); }
 	)
 ;
 finally {
@@ -9516,9 +9531,9 @@ rule__Property__TypeAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getPropertyAccess().getTypeTYPEEnumRuleCall_2_0()); }
+		{ before(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0()); }
 		ruleTYPE
-		{ after(grammarAccess.getPropertyAccess().getTypeTYPEEnumRuleCall_2_0()); }
+		{ after(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9658,6 +9673,82 @@ rule__Enum__NameAssignment
 		{ before(grammarAccess.getEnumAccess().getNameSTRINGTerminalRuleCall_0()); }
 		RULE_STRING
 		{ after(grammarAccess.getEnumAccess().getNameSTRINGTerminalRuleCall_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TYPE__StringAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTYPEAccess().getStringStringKeyword_0_0()); }
+		(
+			{ before(grammarAccess.getTYPEAccess().getStringStringKeyword_0_0()); }
+			'string'
+			{ after(grammarAccess.getTYPEAccess().getStringStringKeyword_0_0()); }
+		)
+		{ after(grammarAccess.getTYPEAccess().getStringStringKeyword_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TYPE__NumberAssignment_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTYPEAccess().getNumberNumberKeyword_1_0()); }
+		(
+			{ before(grammarAccess.getTYPEAccess().getNumberNumberKeyword_1_0()); }
+			'number'
+			{ after(grammarAccess.getTYPEAccess().getNumberNumberKeyword_1_0()); }
+		)
+		{ after(grammarAccess.getTYPEAccess().getNumberNumberKeyword_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TYPE__BoolAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0()); }
+		(
+			{ before(grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0()); }
+			'bool'
+			{ after(grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0()); }
+		)
+		{ after(grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TYPE__DeftypeAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTYPEAccess().getDeftypeDefTypeCrossReference_3_0()); }
+		(
+			{ before(grammarAccess.getTYPEAccess().getDeftypeDefTypeIDTerminalRuleCall_3_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getTYPEAccess().getDeftypeDefTypeIDTerminalRuleCall_3_0_1()); }
+		)
+		{ after(grammarAccess.getTYPEAccess().getDeftypeDefTypeCrossReference_3_0()); }
 	)
 ;
 finally {

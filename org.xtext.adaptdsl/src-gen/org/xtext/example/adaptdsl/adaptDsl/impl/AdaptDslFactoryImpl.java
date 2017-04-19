@@ -4,7 +4,6 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -155,42 +154,9 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.DEF_TYPE: return createDefType();
       case AdaptDslPackage.ENUMS: return createEnums();
       case AdaptDslPackage.ENUM: return createEnum();
+      case AdaptDslPackage.TYPE: return createTYPE();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case AdaptDslPackage.TYPE:
-        return createTYPEFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case AdaptDslPackage.TYPE:
-        return convertTYPEToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -683,21 +649,10 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public TYPE createTYPEFromString(EDataType eDataType, String initialValue)
+  public TYPE createTYPE()
   {
-    TYPE result = TYPE.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertTYPEToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
+    TYPEImpl type = new TYPEImpl();
+    return type;
   }
 
   /**
