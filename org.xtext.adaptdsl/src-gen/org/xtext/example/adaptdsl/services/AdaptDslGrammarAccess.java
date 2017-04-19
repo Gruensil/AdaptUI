@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -2083,14 +2084,15 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTYPEEnumRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		private final Keyword cFromKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cProviderAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cProviderProviderParserRuleCall_4_0 = (RuleCall)cProviderAssignment_4.eContents().get(0);
+		private final CrossReference cProviderProviderCrossReference_4_0 = (CrossReference)cProviderAssignment_4.eContents().get(0);
+		private final RuleCall cProviderProviderIDTerminalRuleCall_4_0_1 = (RuleCall)cProviderProviderCrossReference_4_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Property:
-		//	propertyName=STRING ':' type=TYPE 'from' provider=Provider ';';
+		//	propertyName=STRING ':' type=TYPE 'from' provider=[Provider] ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//propertyName=STRING ':' type=TYPE 'from' provider=Provider ';'
+		//propertyName=STRING ':' type=TYPE 'from' provider=[Provider] ';'
 		public Group getGroup() { return cGroup; }
 		
 		//propertyName=STRING
@@ -2111,11 +2113,14 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'from'
 		public Keyword getFromKeyword_3() { return cFromKeyword_3; }
 		
-		//provider=Provider
+		//provider=[Provider]
 		public Assignment getProviderAssignment_4() { return cProviderAssignment_4; }
 		
-		//Provider
-		public RuleCall getProviderProviderParserRuleCall_4_0() { return cProviderProviderParserRuleCall_4_0; }
+		//[Provider]
+		public CrossReference getProviderProviderCrossReference_4_0() { return cProviderProviderCrossReference_4_0; }
+		
+		//ID
+		public RuleCall getProviderProviderIDTerminalRuleCall_4_0_1() { return cProviderProviderIDTerminalRuleCall_4_0_1; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
@@ -3036,7 +3041,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Property:
-	//	propertyName=STRING ':' type=TYPE 'from' provider=Provider ';';
+	//	propertyName=STRING ':' type=TYPE 'from' provider=[Provider] ';';
 	public PropertyElements getPropertyAccess() {
 		return pProperty;
 	}

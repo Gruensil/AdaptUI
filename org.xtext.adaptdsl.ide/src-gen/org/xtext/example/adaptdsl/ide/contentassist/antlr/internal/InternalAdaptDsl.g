@@ -9531,9 +9531,13 @@ rule__Property__ProviderAssignment_4
 	}
 :
 	(
-		{ before(grammarAccess.getPropertyAccess().getProviderProviderParserRuleCall_4_0()); }
-		ruleProvider
-		{ after(grammarAccess.getPropertyAccess().getProviderProviderParserRuleCall_4_0()); }
+		{ before(grammarAccess.getPropertyAccess().getProviderProviderCrossReference_4_0()); }
+		(
+			{ before(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_4_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_4_0_1()); }
+		)
+		{ after(grammarAccess.getPropertyAccess().getProviderProviderCrossReference_4_0()); }
 	)
 ;
 finally {

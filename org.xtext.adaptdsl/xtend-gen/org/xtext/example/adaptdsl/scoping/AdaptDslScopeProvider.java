@@ -3,6 +3,15 @@
  */
 package org.xtext.example.adaptdsl.scoping;
 
+import com.google.common.base.Objects;
+import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
+import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
 
 /**
@@ -13,4 +22,13 @@ import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
  */
 @SuppressWarnings("all")
 public class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
+  @Override
+  public IScope getScope(final EObject context, final EReference reference) {
+    if (((context instanceof Provider) && Objects.equal(reference, AdaptDslPackage.Literals.PROPERTY__PROVIDER))) {
+      final EObject rootElement = EcoreUtil2.getRootContainer(context);
+      final List<Provider> candidates = EcoreUtil2.<Provider>getAllContentsOfType(rootElement, Provider.class);
+      return Scopes.scopeFor(candidates);
+    }
+    return super.getScope(context, reference);
+  }
 }

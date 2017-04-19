@@ -3,6 +3,12 @@
  */
 package org.xtext.example.adaptdsl.scoping
 
+import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.xtext.example.adaptdsl.adaptDsl.Provider
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +17,18 @@ package org.xtext.example.adaptdsl.scoping
  * on how and when to use it.
  */
 class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
-
+	override getScope(EObject context, EReference reference) {
+	    // We want to define the Scope for the Element's superElement cross-reference
+	    if (context instanceof Provider
+	            && reference == AdaptDslPackage$Literals::PROPERTY__PROVIDER) {
+	        // Collect a list of candidates by going through the model
+	        // EcoreUtil2 provides useful functionality to do that
+	        // For example searching for all elements within the root Object's tree
+	        val rootElement = EcoreUtil2.getRootContainer(context)
+	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Provider)
+	        // Create IEObjectDescriptions and puts them into an IScope instance
+	        return Scopes.scopeFor(candidates)
+	    }
+	    return super.getScope(context, reference);
+	}
 }

@@ -263,7 +263,7 @@ Entity returns Entity:
 ;
 
 Property returns Property:
-	propertyName=STRING ':' type=TYPE 'from' provider=Provider ';'
+	propertyName=STRING ':' type=TYPE 'from' provider=[Provider] ';'
 ;
 
 Provider returns Provider:

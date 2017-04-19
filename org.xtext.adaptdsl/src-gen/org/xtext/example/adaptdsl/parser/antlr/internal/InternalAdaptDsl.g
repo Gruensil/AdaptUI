@@ -3735,19 +3735,13 @@ ruleProperty returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPropertyAccess().getProviderProviderParserRuleCall_4_0());
-				}
-				lv_provider_4_0=ruleProvider
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPropertyRule());
+						$current = createModelElement(grammarAccess.getPropertyRule());
 					}
-					set(
-						$current,
-						"provider",
-						lv_provider_4_0,
-						"org.xtext.example.adaptdsl.AdaptDsl.Provider");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_4=RULE_ID
+				{
+					newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getProviderProviderCrossReference_4_0());
 				}
 			)
 		)

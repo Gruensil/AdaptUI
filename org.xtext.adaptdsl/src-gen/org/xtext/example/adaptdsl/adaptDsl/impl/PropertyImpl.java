@@ -4,7 +4,6 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -75,7 +74,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   protected TYPE type = TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getProvider() <em>Provider</em>}' containment reference.
+   * The cached value of the '{@link #getProvider() <em>Provider</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getProvider()
@@ -158,6 +157,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    */
   public Provider getProvider()
   {
+    if (provider != null && provider.eIsProxy())
+    {
+      InternalEObject oldProvider = (InternalEObject)provider;
+      provider = (Provider)eResolveProxy(oldProvider);
+      if (provider != oldProvider)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptDslPackage.PROPERTY__PROVIDER, oldProvider, provider));
+      }
+    }
     return provider;
   }
 
@@ -166,16 +175,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProvider(Provider newProvider, NotificationChain msgs)
+  public Provider basicGetProvider()
   {
-    Provider oldProvider = provider;
-    provider = newProvider;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROVIDER, oldProvider, newProvider);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return provider;
   }
 
   /**
@@ -185,34 +187,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    */
   public void setProvider(Provider newProvider)
   {
-    if (newProvider != provider)
-    {
-      NotificationChain msgs = null;
-      if (provider != null)
-        msgs = ((InternalEObject)provider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__PROVIDER, null, msgs);
-      if (newProvider != null)
-        msgs = ((InternalEObject)newProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__PROVIDER, null, msgs);
-      msgs = basicSetProvider(newProvider, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROVIDER, newProvider, newProvider));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case AdaptDslPackage.PROPERTY__PROVIDER:
-        return basicSetProvider(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    Provider oldProvider = provider;
+    provider = newProvider;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROVIDER, oldProvider, provider));
   }
 
   /**
@@ -230,7 +208,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case AdaptDslPackage.PROPERTY__TYPE:
         return getType();
       case AdaptDslPackage.PROPERTY__PROVIDER:
-        return getProvider();
+        if (resolve) return getProvider();
+        return basicGetProvider();
     }
     return super.eGet(featureID, resolve, coreType);
   }

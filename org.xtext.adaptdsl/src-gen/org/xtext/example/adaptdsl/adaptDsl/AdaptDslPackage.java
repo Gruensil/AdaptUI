@@ -1484,7 +1484,7 @@ public interface AdaptDslPackage extends EPackage
   int PROPERTY__TYPE = 1;
 
   /**
-   * The feature id for the '<em><b>Provider</b></em>' containment reference.
+   * The feature id for the '<em><b>Provider</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2917,10 +2917,10 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getProperty_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}'.
+   * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Provider</em>'.
+   * @return the meta object for the reference '<em>Provider</em>'.
    * @see org.xtext.example.adaptdsl.adaptDsl.Property#getProvider()
    * @see #getProperty()
    * @generated
@@ -4105,7 +4105,7 @@ public interface AdaptDslPackage extends EPackage
     EAttribute PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
     /**
-     * The meta object literal for the '<em><b>Provider</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Provider</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

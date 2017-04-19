@@ -17,24 +17,24 @@ import org.xtext.example.adaptdsl.adaptDsl.ContextModel
  */
 class AdaptDslValidator extends AbstractAdaptDslValidator {
 	
-	@Check
-	//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
-	def void isProviderDefined(Model model) {			
-		for(ent: model.getContextModel().getEntity()){
-			for(attr: ent.getProperty()){
-				var defined = false;
-				for(prov: model.getContextModel().getProvider()){
-					if(attr.getProvider().getName() == prov.getName()){
-						//the Provider is defined
-						defined = true;
-					}
-				}
-				if(!defined){
-					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__CONTEXT_MODEL);
-				}
-			}
-		}
-	}
+//	@Check
+//	//Loop trough all Defined Providers for all Provides mentioned in the Attributes an compare
+//	def void isProviderDefined(Model model) {			
+//		for(ent: model.getContextModel().getEntity()){
+//			for(attr: ent.getProperty()){
+//				var defined = false;
+//				for(prov: model.getContextModel().getProvider()){
+//					if(attr.getProvider().getName() == prov.getName()){
+//						//the Provider is defined
+//						defined = true;
+//					}
+//				}
+//				if(!defined){
+//					error('One of the Providers is not listed or misspelled.', AdaptDslPackage$Literals::MODEL__CONTEXT_MODEL);
+//				}
+//			}
+//		}
+//	}
 	
 	@Check
 	def void isProviderNotEmpty(Provider provider) {		

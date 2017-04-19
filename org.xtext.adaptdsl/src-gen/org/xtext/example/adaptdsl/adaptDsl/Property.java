@@ -81,26 +81,26 @@ public interface Property extends EObject
   void setType(TYPE value);
 
   /**
-   * Returns the value of the '<em><b>Provider</b></em>' containment reference.
+   * Returns the value of the '<em><b>Provider</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Provider</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Provider</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Provider</em>' containment reference.
+   * @return the value of the '<em>Provider</em>' reference.
    * @see #setProvider(Provider)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_Provider()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Provider getProvider();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Provider</em>' containment reference.
+   * @param value the new value of the '<em>Provider</em>' reference.
    * @see #getProvider()
    * @generated
    */

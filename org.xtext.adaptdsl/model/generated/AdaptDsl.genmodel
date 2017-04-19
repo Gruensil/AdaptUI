@@ -164,7 +164,7 @@
     <genClasses ecoreClass="AdaptDsl.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Property/propertyName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Property/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Property/provider"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Property/provider"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Provider">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Provider/name"/>

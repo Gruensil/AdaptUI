@@ -849,7 +849,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Property returns Property
 	 *
 	 * Constraint:
-	 *     (propertyName=STRING type=TYPE provider=Provider)
+	 *     (propertyName=STRING type=TYPE provider=[Provider|ID])
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
 		if (errorAcceptor != null) {
@@ -863,7 +863,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPropertyAccess().getPropertyNameSTRINGTerminalRuleCall_0_0(), semanticObject.getPropertyName());
 		feeder.accept(grammarAccess.getPropertyAccess().getTypeTYPEEnumRuleCall_2_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderParserRuleCall_4_0(), semanticObject.getProvider());
+		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_4_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.PROPERTY__PROVIDER, false));
 		feeder.finish();
 	}
 	
