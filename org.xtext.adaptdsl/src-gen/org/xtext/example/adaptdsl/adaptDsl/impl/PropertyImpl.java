@@ -16,6 +16,7 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +29,7 @@ import org.xtext.example.adaptdsl.adaptDsl.TYPE;
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getProvider <em>Provider</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getUpdate <em>Update</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +75,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @ordered
    */
   protected Provider provider;
+
+  /**
+   * The cached value of the '{@link #getUpdate() <em>Update</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUpdate()
+   * @generated
+   * @ordered
+   */
+  protected UpdateType update;
 
   /**
    * <!-- begin-user-doc -->
@@ -214,6 +226,54 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
+  public UpdateType getUpdate()
+  {
+    return update;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetUpdate(UpdateType newUpdate, NotificationChain msgs)
+  {
+    UpdateType oldUpdate = update;
+    update = newUpdate;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__UPDATE, oldUpdate, newUpdate);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUpdate(UpdateType newUpdate)
+  {
+    if (newUpdate != update)
+    {
+      NotificationChain msgs = null;
+      if (update != null)
+        msgs = ((InternalEObject)update).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__UPDATE, null, msgs);
+      if (newUpdate != null)
+        msgs = ((InternalEObject)newUpdate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.PROPERTY__UPDATE, null, msgs);
+      msgs = basicSetUpdate(newUpdate, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__UPDATE, newUpdate, newUpdate));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -221,6 +281,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     {
       case AdaptDslPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
+      case AdaptDslPackage.PROPERTY__UPDATE:
+        return basicSetUpdate(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -242,6 +304,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case AdaptDslPackage.PROPERTY__PROVIDER:
         if (resolve) return getProvider();
         return basicGetProvider();
+      case AdaptDslPackage.PROPERTY__UPDATE:
+        return getUpdate();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -264,6 +328,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return;
       case AdaptDslPackage.PROPERTY__PROVIDER:
         setProvider((Provider)newValue);
+        return;
+      case AdaptDslPackage.PROPERTY__UPDATE:
+        setUpdate((UpdateType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -288,6 +355,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case AdaptDslPackage.PROPERTY__PROVIDER:
         setProvider((Provider)null);
         return;
+      case AdaptDslPackage.PROPERTY__UPDATE:
+        setUpdate((UpdateType)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -308,6 +378,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return type != null;
       case AdaptDslPackage.PROPERTY__PROVIDER:
         return provider != null;
+      case AdaptDslPackage.PROPERTY__UPDATE:
+        return update != null;
     }
     return super.eIsSet(featureID);
   }

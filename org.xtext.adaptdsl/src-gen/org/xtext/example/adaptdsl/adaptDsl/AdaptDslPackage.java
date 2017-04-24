@@ -1492,13 +1492,22 @@ public interface AdaptDslPackage extends EPackage
   int PROPERTY__PROVIDER = 2;
 
   /**
+   * The feature id for the '<em><b>Update</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__UPDATE = 3;
+
+  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 3;
+  int PROPERTY_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ProviderImpl <em>Provider</em>}' class.
@@ -1721,6 +1730,52 @@ public interface AdaptDslPackage extends EPackage
    * @ordered
    */
   int TYPE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.UpdateTypeImpl <em>Update Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.UpdateTypeImpl
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getUpdateType()
+   * @generated
+   */
+  int UPDATE_TYPE = 45;
+
+  /**
+   * The feature id for the '<em><b>Event</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE_TYPE__EVENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Slow</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE_TYPE__SLOW = 1;
+
+  /**
+   * The feature id for the '<em><b>Fast</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE_TYPE__FAST = 2;
+
+  /**
+   * The number of structural features of the '<em>Update Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE_TYPE_FEATURE_COUNT = 3;
 
 
   /**
@@ -2972,6 +3027,17 @@ public interface AdaptDslPackage extends EPackage
   EReference getProperty_Provider();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getUpdate <em>Update</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Update</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Property#getUpdate()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Update();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.Provider <em>Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3162,6 +3228,49 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    */
   EReference getTYPE_Deftype();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.UpdateType <em>Update Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Update Type</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.UpdateType
+   * @generated
+   */
+  EClass getUpdateType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.UpdateType#getEvent <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Event</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.UpdateType#getEvent()
+   * @see #getUpdateType()
+   * @generated
+   */
+  EAttribute getUpdateType_Event();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.UpdateType#getSlow <em>Slow</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Slow</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.UpdateType#getSlow()
+   * @see #getUpdateType()
+   * @generated
+   */
+  EAttribute getUpdateType_Slow();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.UpdateType#getFast <em>Fast</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fast</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.UpdateType#getFast()
+   * @see #getUpdateType()
+   * @generated
+   */
+  EAttribute getUpdateType_Fast();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -4201,6 +4310,14 @@ public interface AdaptDslPackage extends EPackage
     EReference PROPERTY__PROVIDER = eINSTANCE.getProperty_Provider();
 
     /**
+     * The meta object literal for the '<em><b>Update</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__UPDATE = eINSTANCE.getProperty_Update();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ProviderImpl <em>Provider</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4355,6 +4472,40 @@ public interface AdaptDslPackage extends EPackage
      * @generated
      */
     EReference TYPE__DEFTYPE = eINSTANCE.getTYPE_Deftype();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.UpdateTypeImpl <em>Update Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.UpdateTypeImpl
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getUpdateType()
+     * @generated
+     */
+    EClass UPDATE_TYPE = eINSTANCE.getUpdateType();
+
+    /**
+     * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UPDATE_TYPE__EVENT = eINSTANCE.getUpdateType_Event();
+
+    /**
+     * The meta object literal for the '<em><b>Slow</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UPDATE_TYPE__SLOW = eINSTANCE.getUpdateType_Slow();
+
+    /**
+     * The meta object literal for the '<em><b>Fast</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UPDATE_TYPE__FAST = eINSTANCE.getUpdateType_Fast();
 
   }
 

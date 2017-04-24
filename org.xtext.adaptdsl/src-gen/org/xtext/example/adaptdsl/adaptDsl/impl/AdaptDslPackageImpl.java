@@ -55,6 +55,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -378,6 +379,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass updateTypeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1617,6 +1625,16 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getProperty_Update()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getProvider()
   {
     return providerEClass;
@@ -1790,6 +1808,46 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
   public EReference getTYPE_Deftype()
   {
     return (EReference)typeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUpdateType()
+  {
+    return updateTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpdateType_Event()
+  {
+    return (EAttribute)updateTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpdateType_Slow()
+  {
+    return (EAttribute)updateTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpdateType_Fast()
+  {
+    return (EAttribute)updateTypeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1977,6 +2035,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEAttribute(propertyEClass, PROPERTY__PROPERTY_NAME);
     createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__PROVIDER);
+    createEReference(propertyEClass, PROPERTY__UPDATE);
 
     providerEClass = createEClass(PROVIDER);
     createEAttribute(providerEClass, PROVIDER__NAME);
@@ -2001,6 +2060,11 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEAttribute(typeEClass, TYPE__NUMBER);
     createEAttribute(typeEClass, TYPE__BOOL);
     createEReference(typeEClass, TYPE__DEFTYPE);
+
+    updateTypeEClass = createEClass(UPDATE_TYPE);
+    createEAttribute(updateTypeEClass, UPDATE_TYPE__EVENT);
+    createEAttribute(updateTypeEClass, UPDATE_TYPE__SLOW);
+    createEAttribute(updateTypeEClass, UPDATE_TYPE__FAST);
   }
 
   /**
@@ -2189,6 +2253,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEAttribute(getProperty_PropertyName(), ecorePackage.getEString(), "propertyName", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Type(), this.getTYPE(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Provider(), this.getProvider(), null, "provider", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_Update(), this.getUpdateType(), null, "update", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(providerEClass, Provider.class, "Provider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProvider_Name(), ecorePackage.getEString(), "name", null, 0, 1, Provider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2213,6 +2278,11 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEAttribute(getTYPE_Number(), ecorePackage.getEString(), "number", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTYPE_Bool(), ecorePackage.getEString(), "bool", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTYPE_Deftype(), this.getDefType(), null, "deftype", null, 0, 1, org.xtext.example.adaptdsl.adaptDsl.TYPE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(updateTypeEClass, UpdateType.class, "UpdateType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUpdateType_Event(), ecorePackage.getEString(), "event", null, 0, 1, UpdateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getUpdateType_Slow(), ecorePackage.getEString(), "slow", null, 0, 1, UpdateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getUpdateType_Fast(), ecorePackage.getEString(), "fast", null, 0, 1, UpdateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

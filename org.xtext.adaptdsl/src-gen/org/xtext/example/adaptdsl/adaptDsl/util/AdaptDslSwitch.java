@@ -53,6 +53,7 @@ import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -429,6 +430,13 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         TYPE type = (TYPE)theEObject;
         T result = caseTYPE(type);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.UPDATE_TYPE:
+      {
+        UpdateType updateType = (UpdateType)theEObject;
+        T result = caseUpdateType(updateType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1152,6 +1160,22 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTYPE(TYPE object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdateType(UpdateType object)
   {
     return null;
   }

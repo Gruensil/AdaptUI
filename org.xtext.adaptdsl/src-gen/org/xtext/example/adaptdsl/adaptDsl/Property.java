@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getUpdate <em>Update</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty()
@@ -102,5 +103,31 @@ public interface Property extends EObject
    * @generated
    */
   void setProvider(Provider value);
+
+  /**
+   * Returns the value of the '<em><b>Update</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Update</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Update</em>' containment reference.
+   * @see #setUpdate(UpdateType)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_Update()
+   * @model containment="true"
+   * @generated
+   */
+  UpdateType getUpdate();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getUpdate <em>Update</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Update</em>' containment reference.
+   * @see #getUpdate()
+   * @generated
+   */
+  void setUpdate(UpdateType value);
 
 } // Property

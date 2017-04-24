@@ -57,6 +57,7 @@ import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -155,6 +156,7 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.ENUMS: return createEnums();
       case AdaptDslPackage.ENUM: return createEnum();
       case AdaptDslPackage.TYPE: return createTYPE();
+      case AdaptDslPackage.UPDATE_TYPE: return createUpdateType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -653,6 +655,17 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     TYPEImpl type = new TYPEImpl();
     return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpdateType createUpdateType()
+  {
+    UpdateTypeImpl updateType = new UpdateTypeImpl();
+    return updateType;
   }
 
   /**

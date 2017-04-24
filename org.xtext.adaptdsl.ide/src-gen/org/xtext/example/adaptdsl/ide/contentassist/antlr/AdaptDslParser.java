@@ -44,6 +44,7 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLayoutChangeOperationAccess().getAlternatives(), "rule__LayoutChangeOperation__Alternatives");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getTYPEAccess().getAlternatives(), "rule__TYPE__Alternatives");
+					put(grammarAccess.getUpdateTypeAccess().getAlternatives(), "rule__UpdateType__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getContextModelAccess().getGroup(), "rule__ContextModel__Group__0");
 					put(grammarAccess.getContextModelAccess().getGroup_2(), "rule__ContextModel__Group_2__0");
@@ -191,7 +192,8 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityAccess().getPropertyAssignment_3(), "rule__Entity__PropertyAssignment_3");
 					put(grammarAccess.getPropertyAccess().getPropertyNameAssignment_0(), "rule__Property__PropertyNameAssignment_0");
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_2(), "rule__Property__TypeAssignment_2");
-					put(grammarAccess.getPropertyAccess().getProviderAssignment_4(), "rule__Property__ProviderAssignment_4");
+					put(grammarAccess.getPropertyAccess().getProviderAssignment_5(), "rule__Property__ProviderAssignment_5");
+					put(grammarAccess.getPropertyAccess().getUpdateAssignment_8(), "rule__Property__UpdateAssignment_8");
 					put(grammarAccess.getProviderAccess().getNameAssignment(), "rule__Provider__NameAssignment");
 					put(grammarAccess.getDefTypesAccess().getThisAssignment_0(), "rule__DefTypes__ThisAssignment_0");
 					put(grammarAccess.getDefTypesAccess().getNextAssignment_1(), "rule__DefTypes__NextAssignment_1");
@@ -204,6 +206,9 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTYPEAccess().getNumberAssignment_1(), "rule__TYPE__NumberAssignment_1");
 					put(grammarAccess.getTYPEAccess().getBoolAssignment_2(), "rule__TYPE__BoolAssignment_2");
 					put(grammarAccess.getTYPEAccess().getDeftypeAssignment_3(), "rule__TYPE__DeftypeAssignment_3");
+					put(grammarAccess.getUpdateTypeAccess().getEventAssignment_0(), "rule__UpdateType__EventAssignment_0");
+					put(grammarAccess.getUpdateTypeAccess().getSlowAssignment_1(), "rule__UpdateType__SlowAssignment_1");
+					put(grammarAccess.getUpdateTypeAccess().getFastAssignment_2(), "rule__UpdateType__FastAssignment_2");
 				}
 			};
 		}

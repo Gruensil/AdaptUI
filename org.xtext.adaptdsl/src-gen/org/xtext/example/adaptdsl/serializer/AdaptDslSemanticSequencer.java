@@ -59,6 +59,7 @@ import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -224,6 +225,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.TYPE:
 				sequence_TYPE(context, (TYPE) semanticObject); 
+				return; 
+			case AdaptDslPackage.UPDATE_TYPE:
+				sequence_UpdateType(context, (UpdateType) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -853,7 +857,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Property returns Property
 	 *
 	 * Constraint:
-	 *     (propertyName=STRING type=TYPE provider=[Provider|ID])
+	 *     (propertyName=ID type=TYPE provider=[Provider|ID] update=UpdateType)
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
 		if (errorAcceptor != null) {
@@ -863,11 +867,14 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__TYPE));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__PROVIDER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__PROVIDER));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__UPDATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__UPDATE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyAccess().getPropertyNameSTRINGTerminalRuleCall_0_0(), semanticObject.getPropertyName());
+		feeder.accept(grammarAccess.getPropertyAccess().getPropertyNameIDTerminalRuleCall_0_0(), semanticObject.getPropertyName());
 		feeder.accept(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_4_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.PROPERTY__PROVIDER, false));
+		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.PROPERTY__PROVIDER, false));
+		feeder.accept(grammarAccess.getPropertyAccess().getUpdateUpdateTypeParserRuleCall_8_0(), semanticObject.getUpdate());
 		feeder.finish();
 	}
 	
@@ -877,7 +884,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Provider returns Provider
 	 *
 	 * Constraint:
-	 *     name=STRING
+	 *     name=ID
 	 */
 	protected void sequence_Provider(ISerializationContext context, Provider semanticObject) {
 		if (errorAcceptor != null) {
@@ -885,7 +892,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROVIDER__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getProviderAccess().getNameSTRINGTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getProviderAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1071,6 +1078,18 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     )
 	 */
 	protected void sequence_TaskChangeOperation(ISerializationContext context, ParentOperation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     UpdateType returns UpdateType
+	 *
+	 * Constraint:
+	 *     (event='eventTriggered' | slow='slow' | fast='fast')
+	 */
+	protected void sequence_UpdateType(ISerializationContext context, UpdateType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

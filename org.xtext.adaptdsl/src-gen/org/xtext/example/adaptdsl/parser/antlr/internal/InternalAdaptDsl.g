@@ -3688,9 +3688,9 @@ ruleProperty returns [EObject current=null]
 	(
 		(
 			(
-				lv_propertyName_0_0=RULE_STRING
+				lv_propertyName_0_0=RULE_ID
 				{
-					newLeafNode(lv_propertyName_0_0, grammarAccess.getPropertyAccess().getPropertyNameSTRINGTerminalRuleCall_0_0());
+					newLeafNode(lv_propertyName_0_0, grammarAccess.getPropertyAccess().getPropertyNameIDTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
@@ -3700,13 +3700,13 @@ ruleProperty returns [EObject current=null]
 						$current,
 						"propertyName",
 						lv_propertyName_0_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_1=':'
+		otherlv_1='{'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getColonKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
@@ -3727,9 +3727,13 @@ ruleProperty returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='from'
+		otherlv_3=','
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getFromKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getCommaKeyword_3());
+		}
+		otherlv_4='provider'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getProviderKeyword_4());
 		}
 		(
 			(
@@ -3738,15 +3742,42 @@ ruleProperty returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getPropertyRule());
 					}
 				}
-				otherlv_4=RULE_ID
+				otherlv_5=RULE_ID
 				{
-					newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getProviderProviderCrossReference_4_0());
+					newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getProviderProviderCrossReference_5_0());
 				}
 			)
 		)
-		otherlv_5=';'
+		otherlv_6=','
 		{
-			newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getSemicolonKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getPropertyAccess().getCommaKeyword_6());
+		}
+		otherlv_7='update'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getUpdateKeyword_7());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPropertyAccess().getUpdateUpdateTypeParserRuleCall_8_0());
+				}
+				lv_update_8_0=ruleUpdateType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPropertyRule());
+					}
+					set(
+						$current,
+						"update",
+						lv_update_8_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.UpdateType");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_9='};'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getPropertyAccess().getRightCurlyBracketSemicolonKeyword_9());
 		}
 	)
 ;
@@ -3768,9 +3799,9 @@ ruleProvider returns [EObject current=null]
 }:
 	(
 		(
-			lv_name_0_0=RULE_STRING
+			lv_name_0_0=RULE_ID
 			{
-				newLeafNode(lv_name_0_0, grammarAccess.getProviderAccess().getNameSTRINGTerminalRuleCall_0());
+				newLeafNode(lv_name_0_0, grammarAccess.getProviderAccess().getNameIDTerminalRuleCall_0());
 			}
 			{
 				if ($current==null) {
@@ -3780,7 +3811,7 @@ ruleProvider returns [EObject current=null]
 					$current,
 					"name",
 					lv_name_0_0,
-					"org.eclipse.xtext.common.Terminals.STRING");
+					"org.eclipse.xtext.common.Terminals.ID");
 			}
 		)
 	)
@@ -4076,6 +4107,69 @@ ruleTYPE returns [EObject current=null]
 				otherlv_3=RULE_ID
 				{
 					newLeafNode(otherlv_3, grammarAccess.getTYPEAccess().getDeftypeDefTypeCrossReference_3_0());
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleUpdateType
+entryRuleUpdateType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getUpdateTypeRule()); }
+	iv_ruleUpdateType=ruleUpdateType
+	{ $current=$iv_ruleUpdateType.current; }
+	EOF;
+
+// Rule UpdateType
+ruleUpdateType returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_event_0_0='eventTriggered'
+				{
+					newLeafNode(lv_event_0_0, grammarAccess.getUpdateTypeAccess().getEventEventTriggeredKeyword_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUpdateTypeRule());
+					}
+					setWithLastConsumed($current, "event", lv_event_0_0, "eventTriggered");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_slow_1_0='slow'
+				{
+					newLeafNode(lv_slow_1_0, grammarAccess.getUpdateTypeAccess().getSlowSlowKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUpdateTypeRule());
+					}
+					setWithLastConsumed($current, "slow", lv_slow_1_0, "slow");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_fast_2_0='fast'
+				{
+					newLeafNode(lv_fast_2_0, grammarAccess.getUpdateTypeAccess().getFastFastKeyword_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUpdateTypeRule());
+					}
+					setWithLastConsumed($current, "fast", lv_fast_2_0, "fast");
 				}
 			)
 		)

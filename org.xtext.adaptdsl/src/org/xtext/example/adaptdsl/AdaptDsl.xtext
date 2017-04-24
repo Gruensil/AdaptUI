@@ -263,11 +263,11 @@ Entity returns Entity:
 ;
 
 Property returns Property:
-	propertyName=STRING ':' type=TYPE 'from' provider=[Provider] ';'
+	propertyName=ID '{' type=TYPE ',' 'provider' provider=[Provider] ',' 'update' update=UpdateType '};'
 ;
 
 Provider returns Provider:
-	name=STRING
+	name=ID
 ;
 
 DefTypes returns DefTypes:
@@ -294,4 +294,10 @@ TYPE:
 	number = 'number' |
 	bool = 'bool' |
 	deftype = [DefType]
+;
+
+UpdateType:
+	event = 'eventTriggered' |
+	slow = 'slow' |
+	fast = 'fast'
 ;

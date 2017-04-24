@@ -160,6 +160,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Property/propertyName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Property/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Property/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Property/update"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Provider">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Provider/name"/>
@@ -184,6 +185,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/number"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/bool"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//TYPE/deftype"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//UpdateType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//UpdateType/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//UpdateType/slow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//UpdateType/fast"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

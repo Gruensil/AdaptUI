@@ -429,6 +429,15 @@ public interface AdaptDslFactory extends EFactory
   TYPE createTYPE();
 
   /**
+   * Returns a new object of class '<em>Update Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update Type</em>'.
+   * @generated
+   */
+  UpdateType createUpdateType();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

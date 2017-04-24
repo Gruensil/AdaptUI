@@ -55,6 +55,7 @@ import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -343,6 +344,11 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTYPE(TYPE object)
       {
         return createTYPEAdapter();
+      }
+      @Override
+      public Adapter caseUpdateType(UpdateType object)
+      {
+        return createUpdateTypeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -1037,6 +1043,21 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTYPEAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.UpdateType <em>Update Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.UpdateType
+   * @generated
+   */
+  public Adapter createUpdateTypeAdapter()
   {
     return null;
   }
