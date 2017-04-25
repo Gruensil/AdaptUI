@@ -53,21 +53,21 @@ public class AdaptDslValidator extends AbstractAdaptDslValidator {
   }
   
   @Check
-  public void isPropertyUnique(final Entity entity) {
+  public void isPropertyUnique(final ContextModel contextModel) {
     int i = 0;
-    EList<Property> _property = entity.getProperty();
+    EList<Property> _property = contextModel.getProperty();
     for (final Property firstProp : _property) {
       {
         int _i = i;
         i = (_i + 1);
         int j = 0;
-        EList<Property> _property_1 = entity.getProperty();
+        EList<Property> _property_1 = contextModel.getProperty();
         for (final Property secProp : _property_1) {
           {
             int _j = j;
             j = (_j + 1);
-            if ((Objects.equal(firstProp.getPropertyName(), secProp.getPropertyName()) && (i != j))) {
-              this.error("Property names must be unique in an Entity.", AdaptDslPackage.Literals.ENTITY__PROPERTY);
+            if ((Objects.equal(firstProp.getName(), secProp.getName()) && (i != j))) {
+              this.error("Property names must be unique.", AdaptDslPackage.Literals.CONTEXT_MODEL__PROPERTY);
             }
           }
         }

@@ -3,8 +3,6 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getProvider <em>Provider</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Property#getUpdate <em>Update</em>}</li>
@@ -29,20 +27,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Property extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Property Name</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.PropertyName}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Property Name</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Property Name</em>' containment reference list.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_PropertyName()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_Name()
+   * @model
    * @generated
    */
-  EList<PropertyName> getPropertyName();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

@@ -21,12 +21,12 @@ import org.xtext.example.adaptdsl.services.AdaptDslGrammarAccess;
 public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected AdaptDslGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_ContextModel___ServicesKeyword_3_0_RightCurlyBracketSemicolonKeyword_3_2__q;
+	protected AbstractElementAlias match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (AdaptDslGrammarAccess) access;
-		match_ContextModel___ServicesKeyword_3_0_RightCurlyBracketSemicolonKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getContextModelAccess().getServicesKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_3_2()));
+		match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getContextModelAccess().getServicesKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_2_2()));
 	}
 	
 	@Override
@@ -41,8 +41,8 @@ public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_ContextModel___ServicesKeyword_3_0_RightCurlyBracketSemicolonKeyword_3_2__q.equals(syntax))
-				emit_ContextModel___ServicesKeyword_3_0_RightCurlyBracketSemicolonKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q.equals(syntax))
+				emit_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -52,10 +52,10 @@ public class AdaptDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('Services{' '};')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     propertyName+=PropertyName ',' (ambiguity) 'Types{' types=DefTypes
-	 *     propertyName+=PropertyName ',' (ambiguity) '};' (rule end)
+	 *     property+=Property '};' (ambiguity) 'Types{' types=DefTypes
+	 *     property+=Property '};' (ambiguity) '};' (rule end)
 	 */
-	protected void emit_ContextModel___ServicesKeyword_3_0_RightCurlyBracketSemicolonKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ContextModel___ServicesKeyword_2_0_RightCurlyBracketSemicolonKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -51,7 +51,6 @@ import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
@@ -203,9 +202,6 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				else break;
 			case AdaptDslPackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
-				return; 
-			case AdaptDslPackage.PROPERTY_NAME:
-				sequence_PropertyName(context, (PropertyName) semanticObject); 
 				return; 
 			case AdaptDslPackage.PROVIDER:
 				sequence_Provider(context, (Provider) semanticObject); 
@@ -574,7 +570,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     ContextModel returns ContextModel
 	 *
 	 * Constraint:
-	 *     (entity+=Entity+ propertyName+=PropertyName+ provider+=Provider* types=DefTypes?)
+	 *     ((entity+=Entity property+=Property+)+ provider+=Provider* types=DefTypes?)
 	 */
 	protected void sequence_ContextModel(ISerializationContext context, ContextModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -697,10 +693,16 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Entity returns Entity
 	 *
 	 * Constraint:
-	 *     (name=ID property+=Property+)
+	 *     name=ID
 	 */
 	protected void sequence_Entity(ISerializationContext context, Entity semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ENTITY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ENTITY__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -739,7 +741,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Fact returns Fact
 	 *
 	 * Constraint:
-	 *     (entity=[Entity|ID] propertyName=[PropertyName|ID])
+	 *     (entity=[Entity|ID] propertyName=[Property|ID])
 	 */
 	protected void sequence_Fact(ISerializationContext context, Fact semanticObject) {
 		if (errorAcceptor != null) {
@@ -750,7 +752,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFactAccess().getEntityEntityIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__ENTITY, false));
-		feeder.accept(grammarAccess.getFactAccess().getPropertyNamePropertyNameIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__PROPERTY_NAME, false));
+		feeder.accept(grammarAccess.getFactAccess().getPropertyNamePropertyIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__PROPERTY_NAME, false));
 		feeder.finish();
 	}
 	
@@ -883,31 +885,28 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     PropertyName returns PropertyName
-	 *
-	 * Constraint:
-	 *     name=ID
-	 */
-	protected void sequence_PropertyName(ISerializationContext context, PropertyName semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY_NAME__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY_NAME__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyNameAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Property returns Property
 	 *
 	 * Constraint:
-	 *     (propertyName+=PropertyName type=TYPE provider=[Provider|ID] update=UpdateType)
+	 *     (name=ID type=TYPE provider=[Provider|ID] update=UpdateType)
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__TYPE));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__PROVIDER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__PROVIDER));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.PROPERTY__UPDATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.PROPERTY__UPDATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyAccess().getTypeTYPEParserRuleCall_2_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getPropertyAccess().getProviderProviderIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.PROPERTY__PROVIDER, false));
+		feeder.accept(grammarAccess.getPropertyAccess().getUpdateUpdateTypeParserRuleCall_8_0(), semanticObject.getUpdate());
+		feeder.finish();
 	}
 	
 	

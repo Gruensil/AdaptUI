@@ -10,8 +10,10 @@ Model:
 
 ContextModel returns ContextModel:
 	'ContextModel{'
-		(entity += Entity)+
-		(propertyName += PropertyName ',')+
+		(entity += Entity
+		 '{'
+			(property += Property)+
+		'};')+
 		('Services{'
 			(provider += Provider ';')*
 		'};')?
@@ -86,7 +88,7 @@ StringCondition returns StringCondition:
 
 Fact returns Fact:
 	//ID('()')?('.'ID('()')?)*
-	'm''.get' entity=[Entity]'()' '.get' propertyName=[PropertyName]'()'
+	'm''.get' entity=[Entity]'()' '.get' propertyName=[Property]'()'
 ;
 
 FactProperty:
@@ -259,17 +261,11 @@ Value:
 terminal BOOL: 'true'|'false';
 
 Entity returns Entity:
-	'Entity' name=ID '{'
-		(property += Property)+
-	'};'
+	'Entity' name=ID
 ;
 
 Property returns Property:
-	propertyName+=PropertyName '{' type=TYPE ',' 'provider' provider=[Provider] ',' 'update' update=UpdateType '};'
-;
-
-PropertyName returns PropertyName:
-	name=ID
+	name=ID '{' type=TYPE ',' 'provider' provider=[Provider] ',' 'update' update=UpdateType '};'
 ;
 
 Provider returns Provider:

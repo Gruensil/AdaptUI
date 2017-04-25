@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
+import org.xtext.example.adaptdsl.adaptDsl.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * @generated
    * @ordered
    */
-  protected PropertyName propertyName;
+  protected Property propertyName;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,12 +121,12 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyName getPropertyName()
+  public Property getPropertyName()
   {
     if (propertyName != null && propertyName.eIsProxy())
     {
       InternalEObject oldPropertyName = (InternalEObject)propertyName;
-      propertyName = (PropertyName)eResolveProxy(oldPropertyName);
+      propertyName = (Property)eResolveProxy(oldPropertyName);
       if (propertyName != oldPropertyName)
       {
         if (eNotificationRequired())
@@ -141,7 +141,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyName basicGetPropertyName()
+  public Property basicGetPropertyName()
   {
     return propertyName;
   }
@@ -151,9 +151,9 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPropertyName(PropertyName newPropertyName)
+  public void setPropertyName(Property newPropertyName)
   {
-    PropertyName oldPropertyName = propertyName;
+    Property oldPropertyName = propertyName;
     propertyName = newPropertyName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.FACT__PROPERTY_NAME, oldPropertyName, propertyName));
@@ -193,7 +193,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
         setEntity((Entity)newValue);
         return;
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        setPropertyName((PropertyName)newValue);
+        setPropertyName((Property)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -213,7 +213,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
         setEntity((Entity)null);
         return;
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        setPropertyName((PropertyName)null);
+        setPropertyName((Property)null);
         return;
     }
     super.eUnset(featureID);

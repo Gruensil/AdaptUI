@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.xtext.example.adaptdsl.adaptDsl.Provider
 import org.xtext.example.adaptdsl.adaptDsl.Entity
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName
+import org.xtext.example.adaptdsl.adaptDsl.Property
 import org.xtext.example.adaptdsl.adaptDsl.DefType
 
 /**
@@ -41,10 +41,10 @@ class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
 	    	val rootElement = EcoreUtil2.getRootContainer(context)
 	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Entity)
 	        return Scopes.scopeFor(candidates)
-	    }else if(context instanceof PropertyName
+	    }else if(context instanceof Property
 	            && reference == AdaptDslPackage$Literals::FACT__PROPERTY_NAME){
 	    	val rootElement = EcoreUtil2.getRootContainer(context)
-	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, PropertyName)
+	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Property)
 	        return Scopes.scopeFor(candidates)
 	    }
 	    return super.getScope(context, reference);

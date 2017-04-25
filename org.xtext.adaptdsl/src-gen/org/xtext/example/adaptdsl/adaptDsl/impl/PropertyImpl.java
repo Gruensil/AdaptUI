@@ -3,12 +3,8 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -16,12 +12,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
 import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
@@ -34,7 +26,7 @@ import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getProvider <em>Provider</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl#getUpdate <em>Update</em>}</li>
@@ -45,14 +37,24 @@ import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
 {
   /**
-   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPropertyName()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<PropertyName> propertyName;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -110,13 +112,22 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PropertyName> getPropertyName()
+  public String getName()
   {
-    if (propertyName == null)
-    {
-      propertyName = new EObjectContainmentEList<PropertyName>(PropertyName.class, this, AdaptDslPackage.PROPERTY__PROPERTY_NAME);
-    }
-    return propertyName;
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__NAME, oldName, name));
   }
 
   /**
@@ -268,8 +279,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        return ((InternalEList<?>)getPropertyName()).basicRemove(otherEnd, msgs);
       case AdaptDslPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
       case AdaptDslPackage.PROPERTY__UPDATE:
@@ -288,8 +297,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        return getPropertyName();
+      case AdaptDslPackage.PROPERTY__NAME:
+        return getName();
       case AdaptDslPackage.PROPERTY__TYPE:
         return getType();
       case AdaptDslPackage.PROPERTY__PROVIDER:
@@ -306,15 +315,13 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        getPropertyName().clear();
-        getPropertyName().addAll((Collection<? extends PropertyName>)newValue);
+      case AdaptDslPackage.PROPERTY__NAME:
+        setName((String)newValue);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType((TYPE)newValue);
@@ -339,8 +346,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        getPropertyName().clear();
+      case AdaptDslPackage.PROPERTY__NAME:
+        setName(NAME_EDEFAULT);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType((TYPE)null);
@@ -365,8 +372,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        return propertyName != null && !propertyName.isEmpty();
+      case AdaptDslPackage.PROPERTY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AdaptDslPackage.PROPERTY__TYPE:
         return type != null;
       case AdaptDslPackage.PROPERTY__PROVIDER:
@@ -375,6 +382,23 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return update != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //PropertyImpl

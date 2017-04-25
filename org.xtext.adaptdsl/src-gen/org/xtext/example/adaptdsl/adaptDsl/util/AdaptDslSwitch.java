@@ -45,7 +45,6 @@ import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
@@ -397,13 +396,6 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         Property property = (Property)theEObject;
         T result = caseProperty(property);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AdaptDslPackage.PROPERTY_NAME:
-      {
-        PropertyName propertyName = (PropertyName)theEObject;
-        T result = casePropertyName(propertyName);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1096,22 +1088,6 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProperty(Property object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Name</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Name</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePropertyName(PropertyName object)
   {
     return null;
   }

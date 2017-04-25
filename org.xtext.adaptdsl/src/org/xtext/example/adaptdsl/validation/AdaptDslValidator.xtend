@@ -58,15 +58,15 @@ class AdaptDslValidator extends AbstractAdaptDslValidator {
 	}
 	
 	@Check
-	def void isPropertyUnique(Entity entity) {
+	def void isPropertyUnique(ContextModel contextModel) {
 		var i = 0;
-		for(firstProp: entity.getProperty()){
+		for(firstProp: contextModel.getProperty()){
 			i += 1;
 			var j = 0;
-			for(secProp: entity.getProperty()){
+			for(secProp: contextModel.getProperty()){
 				j += 1;
-				if(firstProp.getPropertyName() ==secProp.getPropertyName() && i!=j){
-					error('Property names must be unique in an Entity.', AdaptDslPackage$Literals::ENTITY__PROPERTY)
+				if(firstProp.getName() ==secProp.getName() && i!=j){
+					error('Property names must be unique.', AdaptDslPackage$Literals::CONTEXT_MODEL__PROPERTY)
 				}
 			}
 		}

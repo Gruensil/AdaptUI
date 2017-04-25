@@ -3,25 +3,15 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
-import org.xtext.example.adaptdsl.adaptDsl.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +22,6 @@ import org.xtext.example.adaptdsl.adaptDsl.Property;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.EntityImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,16 +47,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProperty()
-   * @generated
-   * @ordered
-   */
-  protected EList<Property> property;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,36 +97,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Property> getProperty()
-  {
-    if (property == null)
-    {
-      property = new EObjectContainmentEList<Property>(Property.class, this, AdaptDslPackage.ENTITY__PROPERTY);
-    }
-    return property;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case AdaptDslPackage.ENTITY__PROPERTY:
-        return ((InternalEList<?>)getProperty()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -155,8 +104,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case AdaptDslPackage.ENTITY__NAME:
         return getName();
-      case AdaptDslPackage.ENTITY__PROPERTY:
-        return getProperty();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -166,7 +113,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -174,10 +120,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case AdaptDslPackage.ENTITY__NAME:
         setName((String)newValue);
-        return;
-      case AdaptDslPackage.ENTITY__PROPERTY:
-        getProperty().clear();
-        getProperty().addAll((Collection<? extends Property>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,9 +138,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
       case AdaptDslPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AdaptDslPackage.ENTITY__PROPERTY:
-        getProperty().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -215,8 +154,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case AdaptDslPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AdaptDslPackage.ENTITY__PROPERTY:
-        return property != null && !property.isEmpty();
     }
     return super.eIsSet(featureID);
   }

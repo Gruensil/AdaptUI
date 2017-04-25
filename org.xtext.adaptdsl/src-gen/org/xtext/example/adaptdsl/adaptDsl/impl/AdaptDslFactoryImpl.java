@@ -49,7 +49,6 @@ import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
@@ -153,7 +152,6 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.ADAPT_CSS_CLASS_OPERATION: return createAdaptCssClassOperation();
       case AdaptDslPackage.ENTITY: return createEntity();
       case AdaptDslPackage.PROPERTY: return createProperty();
-      case AdaptDslPackage.PROPERTY_NAME: return createPropertyName();
       case AdaptDslPackage.PROVIDER: return createProvider();
       case AdaptDslPackage.DEF_TYPES: return createDefTypes();
       case AdaptDslPackage.DEF_TYPE: return createDefType();
@@ -604,17 +602,6 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     PropertyImpl property = new PropertyImpl();
     return property;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PropertyName createPropertyName()
-  {
-    PropertyNameImpl propertyName = new PropertyNameImpl();
-    return propertyName;
   }
 
   /**

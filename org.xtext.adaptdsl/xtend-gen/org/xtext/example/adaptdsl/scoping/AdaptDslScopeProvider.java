@@ -13,7 +13,7 @@ import org.eclipse.xtext.scoping.Scopes;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
-import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
+import org.xtext.example.adaptdsl.adaptDsl.Property;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
 
@@ -42,9 +42,9 @@ public class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
           final List<Entity> candidates_2 = EcoreUtil2.<Entity>getAllContentsOfType(rootElement_2, Entity.class);
           return Scopes.scopeFor(candidates_2);
         } else {
-          if (((context instanceof PropertyName) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__PROPERTY_NAME))) {
+          if (((context instanceof Property) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__PROPERTY_NAME))) {
             final EObject rootElement_3 = EcoreUtil2.getRootContainer(context);
-            final List<PropertyName> candidates_3 = EcoreUtil2.<PropertyName>getAllContentsOfType(rootElement_3, PropertyName.class);
+            final List<Property> candidates_3 = EcoreUtil2.<Property>getAllContentsOfType(rootElement_3, Property.class);
             return Scopes.scopeFor(candidates_3);
           }
         }

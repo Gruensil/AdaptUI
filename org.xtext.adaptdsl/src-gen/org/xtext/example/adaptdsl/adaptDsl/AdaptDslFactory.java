@@ -384,15 +384,6 @@ public interface AdaptDslFactory extends EFactory
   Property createProperty();
 
   /**
-   * Returns a new object of class '<em>Property Name</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Name</em>'.
-   * @generated
-   */
-  PropertyName createPropertyName();
-
-  /**
    * Returns a new object of class '<em>Provider</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

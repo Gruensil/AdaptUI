@@ -59,12 +59,12 @@ public interface Fact extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Property Name</em>' reference.
-   * @see #setPropertyName(PropertyName)
+   * @see #setPropertyName(Property)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getFact_PropertyName()
    * @model
    * @generated
    */
-  PropertyName getPropertyName();
+  Property getPropertyName();
 
   /**
    * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}' reference.
@@ -74,6 +74,6 @@ public interface Fact extends EObject
    * @see #getPropertyName()
    * @generated
    */
-  void setPropertyName(PropertyName value);
+  void setPropertyName(Property value);
 
 } // Fact

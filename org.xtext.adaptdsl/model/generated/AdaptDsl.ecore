@@ -11,8 +11,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" upperBound="-1"
         eType="#//Entity" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" upperBound="-1"
-        eType="#//PropertyName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
+        eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" upperBound="-1"
         eType="#//Provider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" eType="#//DefTypes"
@@ -91,7 +91,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Fact">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" eType="#//PropertyName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" eType="#//Property"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Actions">
     <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//ActionCategory"
@@ -181,19 +181,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
-        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" upperBound="-1"
-        eType="#//PropertyName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TYPE" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" eType="#//Provider"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="update" eType="#//UpdateType"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyName">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Provider">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

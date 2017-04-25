@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getProperty <em>Property</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getProvider <em>Provider</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getTypes <em>Types</em>}</li>
  * </ul>
@@ -45,20 +45,20 @@ public interface ContextModel extends EObject
   EList<Entity> getEntity();
 
   /**
-   * Returns the value of the '<em><b>Property Name</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.PropertyName}.
+   * Returns the value of the '<em><b>Property</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.Property}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Property Name</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Property</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Property Name</em>' containment reference list.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getContextModel_PropertyName()
+   * @return the value of the '<em>Property</em>' containment reference list.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getContextModel_Property()
    * @model containment="true"
    * @generated
    */
-  EList<PropertyName> getPropertyName();
+  EList<Property> getProperty();
 
   /**
    * Returns the value of the '<em><b>Provider</b></em>' containment reference list.
