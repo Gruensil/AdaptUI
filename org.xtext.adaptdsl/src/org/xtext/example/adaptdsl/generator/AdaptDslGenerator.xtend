@@ -73,7 +73,7 @@ class AdaptDslGenerator extends AbstractGenerator {
 	
 	def compile(Function func)'''<function id="«func.id»" name="«func.name»" />'''
 	
-	def compile(AdaptationRule rule) '''<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»"><conditions>«rule.expr.compile»</conditions><actions>«rule.actionCollection.compile»</actions></adaptationRule>'''
+	def compile(AdaptationRule rule) '''<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName.name»"><conditions>«rule.expr.compile»</conditions><actions>«rule.actionCollection.compile»</actions></adaptationRule>'''
 	
 	def compile(Actions act)'''«act.action.compile»«IF act.next !== null»«act.next.compile»«ENDIF»'''
 

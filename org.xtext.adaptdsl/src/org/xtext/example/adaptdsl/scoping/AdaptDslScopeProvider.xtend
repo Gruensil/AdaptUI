@@ -9,6 +9,7 @@ import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.xtext.example.adaptdsl.adaptDsl.Provider
+import org.xtext.example.adaptdsl.adaptDsl.FactName
 import org.xtext.example.adaptdsl.adaptDsl.Entity
 import org.xtext.example.adaptdsl.adaptDsl.Property
 import org.xtext.example.adaptdsl.adaptDsl.DefType
@@ -35,6 +36,11 @@ class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
 	            && reference == AdaptDslPackage$Literals::TYPE__DEFTYPE){
 	    	val rootElement = EcoreUtil2.getRootContainer(context)
 	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, DefType)
+	        return Scopes.scopeFor(candidates)
+	    }else if(context instanceof FactName
+	            && reference == AdaptDslPackage$Literals::FACT__FACT_NAME){
+	    	val rootElement = EcoreUtil2.getRootContainer(context)
+	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, FactName)
 	        return Scopes.scopeFor(candidates)
 	    }else if(context instanceof Entity
 	            && reference == AdaptDslPackage$Literals::FACT__ENTITY){

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
 
 /**
@@ -24,6 +25,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Property;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactImpl#getFactName <em>Fact Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactImpl#getPropertyName <em>Property Name</em>}</li>
  * </ul>
@@ -32,6 +34,16 @@ import org.xtext.example.adaptdsl.adaptDsl.Property;
  */
 public class FactImpl extends MinimalEObjectImpl.Container implements Fact
 {
+  /**
+   * The cached value of the '{@link #getFactName() <em>Fact Name</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFactName()
+   * @generated
+   * @ordered
+   */
+  protected FactName factName;
+
   /**
    * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
    * <!-- begin-user-doc -->
@@ -71,6 +83,49 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   protected EClass eStaticClass()
   {
     return AdaptDslPackage.Literals.FACT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FactName getFactName()
+  {
+    if (factName != null && factName.eIsProxy())
+    {
+      InternalEObject oldFactName = (InternalEObject)factName;
+      factName = (FactName)eResolveProxy(oldFactName);
+      if (factName != oldFactName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptDslPackage.FACT__FACT_NAME, oldFactName, factName));
+      }
+    }
+    return factName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FactName basicGetFactName()
+  {
+    return factName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFactName(FactName newFactName)
+  {
+    FactName oldFactName = factName;
+    factName = newFactName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.FACT__FACT_NAME, oldFactName, factName));
   }
 
   /**
@@ -169,6 +224,9 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   {
     switch (featureID)
     {
+      case AdaptDslPackage.FACT__FACT_NAME:
+        if (resolve) return getFactName();
+        return basicGetFactName();
       case AdaptDslPackage.FACT__ENTITY:
         if (resolve) return getEntity();
         return basicGetEntity();
@@ -189,6 +247,9 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   {
     switch (featureID)
     {
+      case AdaptDslPackage.FACT__FACT_NAME:
+        setFactName((FactName)newValue);
+        return;
       case AdaptDslPackage.FACT__ENTITY:
         setEntity((Entity)newValue);
         return;
@@ -209,6 +270,9 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   {
     switch (featureID)
     {
+      case AdaptDslPackage.FACT__FACT_NAME:
+        setFactName((FactName)null);
+        return;
       case AdaptDslPackage.FACT__ENTITY:
         setEntity((Entity)null);
         return;
@@ -229,6 +293,8 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   {
     switch (featureID)
     {
+      case AdaptDslPackage.FACT__FACT_NAME:
+        return factName != null;
       case AdaptDslPackage.FACT__ENTITY:
         return entity != null;
       case AdaptDslPackage.FACT__PROPERTY_NAME:

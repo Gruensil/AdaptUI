@@ -41,6 +41,7 @@ import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -170,6 +171,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass factEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass factNameEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -743,7 +751,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptationRule_FactType()
+  public EAttribute getAdaptationRule_Level()
   {
     return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(1);
   }
@@ -753,7 +761,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptationRule_FactName()
+  public EAttribute getAdaptationRule_FactType()
   {
     return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(2);
   }
@@ -763,7 +771,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdaptationRule_Expr()
+  public EReference getAdaptationRule_FactName()
   {
     return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(3);
   }
@@ -773,9 +781,19 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdaptationRule_ActionCollection()
+  public EReference getAdaptationRule_Expr()
   {
     return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdaptationRule_ActionCollection()
+  {
+    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -993,7 +1011,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFact_Entity()
+  public EReference getFact_FactName()
   {
     return (EReference)factEClass.getEStructuralFeatures().get(0);
   }
@@ -1003,9 +1021,39 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFact_PropertyName()
+  public EReference getFact_Entity()
   {
     return (EReference)factEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFact_PropertyName()
+  {
+    return (EReference)factEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFactName()
+  {
+    return factNameEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFactName_Name()
+  {
+    return (EAttribute)factNameEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1943,8 +1991,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     adaptationRuleEClass = createEClass(ADAPTATION_RULE);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__NAME);
+    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__LEVEL);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_TYPE);
-    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_NAME);
+    createEReference(adaptationRuleEClass, ADAPTATION_RULE__FACT_NAME);
     createEReference(adaptationRuleEClass, ADAPTATION_RULE__EXPR);
     createEReference(adaptationRuleEClass, ADAPTATION_RULE__ACTION_COLLECTION);
 
@@ -1975,8 +2024,12 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEAttribute(stringConditionEClass, STRING_CONDITION__VAL);
 
     factEClass = createEClass(FACT);
+    createEReference(factEClass, FACT__FACT_NAME);
     createEReference(factEClass, FACT__ENTITY);
     createEReference(factEClass, FACT__PROPERTY_NAME);
+
+    factNameEClass = createEClass(FACT_NAME);
+    createEAttribute(factNameEClass, FACT_NAME__NAME);
 
     actionsEClass = createEClass(ACTIONS);
     createEReference(actionsEClass, ACTIONS__ACTION);
@@ -2164,8 +2217,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(adaptationRuleEClass, AdaptationRule.class, "AdaptationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdaptationRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdaptationRule_Level(), ecorePackage.getEInt(), "level", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAdaptationRule_FactType(), ecorePackage.getEString(), "factType", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdaptationRule_FactName(), ecorePackage.getEString(), "factName", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdaptationRule_FactName(), this.getFactName(), null, "factName", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAdaptationRule_Expr(), this.getConditionalOrExpression(), null, "expr", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAdaptationRule_ActionCollection(), this.getActions(), null, "actionCollection", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2196,8 +2250,12 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEAttribute(getStringCondition_Val(), ecorePackage.getEString(), "val", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(factEClass, Fact.class, "Fact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFact_FactName(), this.getFactName(), null, "factName", null, 0, 1, Fact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFact_Entity(), this.getEntity(), null, "entity", null, 0, 1, Fact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFact_PropertyName(), this.getProperty(), null, "propertyName", null, 0, 1, Fact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(factNameEClass, FactName.class, "FactName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFactName_Name(), ecorePackage.getEString(), "name", null, 0, 1, FactName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionsEClass, Actions.class, "Actions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActions_Action(), this.getActionCategory(), null, "action", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

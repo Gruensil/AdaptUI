@@ -13,6 +13,7 @@ import org.eclipse.xtext.scoping.Scopes;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
@@ -37,15 +38,21 @@ public class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
         final List<DefType> candidates_1 = EcoreUtil2.<DefType>getAllContentsOfType(rootElement_1, DefType.class);
         return Scopes.scopeFor(candidates_1);
       } else {
-        if (((context instanceof Entity) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__ENTITY))) {
+        if (((context instanceof FactName) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__FACT_NAME))) {
           final EObject rootElement_2 = EcoreUtil2.getRootContainer(context);
-          final List<Entity> candidates_2 = EcoreUtil2.<Entity>getAllContentsOfType(rootElement_2, Entity.class);
+          final List<FactName> candidates_2 = EcoreUtil2.<FactName>getAllContentsOfType(rootElement_2, FactName.class);
           return Scopes.scopeFor(candidates_2);
         } else {
-          if (((context instanceof Property) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__PROPERTY_NAME))) {
+          if (((context instanceof Entity) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__ENTITY))) {
             final EObject rootElement_3 = EcoreUtil2.getRootContainer(context);
-            final List<Property> candidates_3 = EcoreUtil2.<Property>getAllContentsOfType(rootElement_3, Property.class);
+            final List<Entity> candidates_3 = EcoreUtil2.<Entity>getAllContentsOfType(rootElement_3, Entity.class);
             return Scopes.scopeFor(candidates_3);
+          } else {
+            if (((context instanceof Property) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__PROPERTY_NAME))) {
+              final EObject rootElement_4 = EcoreUtil2.getRootContainer(context);
+              final List<Property> candidates_4 = EcoreUtil2.<Property>getAllContentsOfType(rootElement_4, Property.class);
+              return Scopes.scopeFor(candidates_4);
+            }
           }
         }
       }

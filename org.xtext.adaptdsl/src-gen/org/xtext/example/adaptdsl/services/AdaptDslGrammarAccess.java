@@ -380,37 +380,41 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cFACTKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cFactTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cFactTypeIDTerminalRuleCall_4_0 = (RuleCall)cFactTypeAssignment_4.eContents().get(0);
-		private final Assignment cFactNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cFactNameIDTerminalRuleCall_5_0 = (RuleCall)cFactNameAssignment_5.eContents().get(0);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cIFKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cLeftParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cExprAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cExprConditionalORParserRuleCall_9_0 = (RuleCall)cExprAssignment_9.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Keyword cTHENKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cLeftParenthesisKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Assignment cActionCollectionAssignment_13 = (Assignment)cGroup.eContents().get(13);
-		private final RuleCall cActionCollectionActionsParserRuleCall_13_0 = (RuleCall)cActionCollectionAssignment_13.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Keyword cSemicolonKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Keyword cRightCurlyBracketKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Keyword cLEVELKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cLevelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cLevelINTTerminalRuleCall_4_0 = (RuleCall)cLevelAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cFACTKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cFactTypeAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cFactTypeIDTerminalRuleCall_7_0 = (RuleCall)cFactTypeAssignment_7.eContents().get(0);
+		private final Assignment cFactNameAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cFactNameFactNameParserRuleCall_8_0 = (RuleCall)cFactNameAssignment_8.eContents().get(0);
+		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cIFKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cLeftParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cExprAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cExprConditionalORParserRuleCall_12_0 = (RuleCall)cExprAssignment_12.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cTHENKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cLeftParenthesisKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cActionCollectionAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cActionCollectionActionsParserRuleCall_16_0 = (RuleCall)cActionCollectionAssignment_16.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Keyword cSemicolonKeyword_18 = (Keyword)cGroup.eContents().get(18);
+		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
 		
 		//AdaptationRule:
 		//	'rule' name=STRING '{'
-		//	// 	'LEVEL' level=INT ';'
-		//	'FACT' factType=ID factName=ID ';'
+		//	'LEVEL' level=INT ';'
+		//	'FACT' factType=ID factName=FactName ';'
 		//	'IF' '(' expr=ConditionalOR ')'
 		//	'THEN' '('
 		//	actionCollection=Actions
 		//	')' ';' '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'rule' name=STRING '{' // 	'LEVEL' level=INT ';'
-		//'FACT' factType=ID factName=ID ';' 'IF' '(' expr=ConditionalOR ')' 'THEN' '(' actionCollection=Actions ')' ';' '}'
+		//'rule' name=STRING '{' 'LEVEL' level=INT ';' 'FACT' factType=ID factName=FactName ';' 'IF' '(' expr=ConditionalOR ')'
+		//'THEN' '(' actionCollection=Actions ')' ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'rule'
@@ -425,60 +429,71 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//// 	'LEVEL' level=INT ';'
+		//'LEVEL'
+		public Keyword getLEVELKeyword_3() { return cLEVELKeyword_3; }
+		
+		//level=INT
+		public Assignment getLevelAssignment_4() { return cLevelAssignment_4; }
+		
+		//INT
+		public RuleCall getLevelINTTerminalRuleCall_4_0() { return cLevelINTTerminalRuleCall_4_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		
 		//'FACT'
-		public Keyword getFACTKeyword_3() { return cFACTKeyword_3; }
+		public Keyword getFACTKeyword_6() { return cFACTKeyword_6; }
 		
 		//factType=ID
-		public Assignment getFactTypeAssignment_4() { return cFactTypeAssignment_4; }
+		public Assignment getFactTypeAssignment_7() { return cFactTypeAssignment_7; }
 		
 		//ID
-		public RuleCall getFactTypeIDTerminalRuleCall_4_0() { return cFactTypeIDTerminalRuleCall_4_0; }
+		public RuleCall getFactTypeIDTerminalRuleCall_7_0() { return cFactTypeIDTerminalRuleCall_7_0; }
 		
-		//factName=ID
-		public Assignment getFactNameAssignment_5() { return cFactNameAssignment_5; }
+		//factName=FactName
+		public Assignment getFactNameAssignment_8() { return cFactNameAssignment_8; }
 		
-		//ID
-		public RuleCall getFactNameIDTerminalRuleCall_5_0() { return cFactNameIDTerminalRuleCall_5_0; }
+		//FactName
+		public RuleCall getFactNameFactNameParserRuleCall_8_0() { return cFactNameFactNameParserRuleCall_8_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
 		
 		//'IF'
-		public Keyword getIFKeyword_7() { return cIFKeyword_7; }
+		public Keyword getIFKeyword_10() { return cIFKeyword_10; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_8() { return cLeftParenthesisKeyword_8; }
+		public Keyword getLeftParenthesisKeyword_11() { return cLeftParenthesisKeyword_11; }
 		
 		//expr=ConditionalOR
-		public Assignment getExprAssignment_9() { return cExprAssignment_9; }
+		public Assignment getExprAssignment_12() { return cExprAssignment_12; }
 		
 		//ConditionalOR
-		public RuleCall getExprConditionalORParserRuleCall_9_0() { return cExprConditionalORParserRuleCall_9_0; }
+		public RuleCall getExprConditionalORParserRuleCall_12_0() { return cExprConditionalORParserRuleCall_12_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_10() { return cRightParenthesisKeyword_10; }
+		public Keyword getRightParenthesisKeyword_13() { return cRightParenthesisKeyword_13; }
 		
 		//'THEN'
-		public Keyword getTHENKeyword_11() { return cTHENKeyword_11; }
+		public Keyword getTHENKeyword_14() { return cTHENKeyword_14; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_12() { return cLeftParenthesisKeyword_12; }
+		public Keyword getLeftParenthesisKeyword_15() { return cLeftParenthesisKeyword_15; }
 		
 		//actionCollection=Actions
-		public Assignment getActionCollectionAssignment_13() { return cActionCollectionAssignment_13; }
+		public Assignment getActionCollectionAssignment_16() { return cActionCollectionAssignment_16; }
 		
 		//Actions
-		public RuleCall getActionCollectionActionsParserRuleCall_13_0() { return cActionCollectionActionsParserRuleCall_13_0; }
+		public RuleCall getActionCollectionActionsParserRuleCall_16_0() { return cActionCollectionActionsParserRuleCall_16_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_14() { return cRightParenthesisKeyword_14; }
+		public Keyword getRightParenthesisKeyword_17() { return cRightParenthesisKeyword_17; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_15() { return cSemicolonKeyword_15; }
+		public Keyword getSemicolonKeyword_18() { return cSemicolonKeyword_18; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
+		public Keyword getRightCurlyBracketKeyword_19() { return cRightCurlyBracketKeyword_19; }
 	}
 	public class ConditionalORElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.ConditionalOR");
@@ -707,7 +722,9 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class FactElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.Fact");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cFactNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cFactNameFactNameCrossReference_0_0 = (CrossReference)cFactNameAssignment_0.eContents().get(0);
+		private final RuleCall cFactNameFactNameIDTerminalRuleCall_0_0_1 = (RuleCall)cFactNameFactNameCrossReference_0_0.eContents().get(1);
 		private final Keyword cGetKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cEntityAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cEntityEntityCrossReference_2_0 = (CrossReference)cEntityAssignment_2.eContents().get(0);
@@ -719,17 +736,23 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPropertyNamePropertyIDTerminalRuleCall_5_0_1 = (RuleCall)cPropertyNamePropertyCrossReference_5_0.eContents().get(1);
 		private final Keyword cLeftParenthesisRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//Fact: //ID('()')?('.'ID('()')?)*
-		//	'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
+		//Fact:
+		//	factName=[FactName] '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
 		@Override public ParserRule getRule() { return rule; }
 		
 		////ID('()')?('.'ID('()')?)*
-		//'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()'
+		//factName=[FactName] '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()'
 		public Group getGroup() { return cGroup; }
 		
 		////ID('()')?('.'ID('()')?)*
-		//'M'
-		public Keyword getMKeyword_0() { return cMKeyword_0; }
+		//factName=[FactName]
+		public Assignment getFactNameAssignment_0() { return cFactNameAssignment_0; }
+		
+		//[FactName]
+		public CrossReference getFactNameFactNameCrossReference_0_0() { return cFactNameFactNameCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getFactNameFactNameIDTerminalRuleCall_0_0_1() { return cFactNameFactNameIDTerminalRuleCall_0_0_1; }
 		
 		//'.get'
 		public Keyword getGetKeyword_1() { return cGetKeyword_1; }
@@ -760,6 +783,21 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'()'
 		public Keyword getLeftParenthesisRightParenthesisKeyword_6() { return cLeftParenthesisRightParenthesisKeyword_6; }
+	}
+	public class FactNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.FactName");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//FactName:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class FactPropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.FactProperty");
@@ -2381,6 +2419,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final NumberConditionElements pNumberCondition;
 	private final StringConditionElements pStringCondition;
 	private final FactElements pFact;
+	private final FactNameElements pFactName;
 	private final FactPropertyElements pFactProperty;
 	private final NumberOperatorsElements pNumberOperators;
 	private final StringOperatorsElements pStringOperators;
@@ -2455,6 +2494,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pNumberCondition = new NumberConditionElements();
 		this.pStringCondition = new StringConditionElements();
 		this.pFact = new FactElements();
+		this.pFactName = new FactNameElements();
 		this.pFactProperty = new FactPropertyElements();
 		this.pNumberOperators = new NumberOperatorsElements();
 		this.pStringOperators = new StringOperatorsElements();
@@ -2620,8 +2660,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//AdaptationRule:
 	//	'rule' name=STRING '{'
-	//	// 	'LEVEL' level=INT ';'
-	//	'FACT' factType=ID factName=ID ';'
+	//	'LEVEL' level=INT ';'
+	//	'FACT' factType=ID factName=FactName ';'
 	//	'IF' '(' expr=ConditionalOR ')'
 	//	'THEN' '('
 	//	actionCollection=Actions
@@ -2696,14 +2736,24 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getStringConditionAccess().getRule();
 	}
 	
-	//Fact: //ID('()')?('.'ID('()')?)*
-	//	'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
+	//Fact:
+	//	factName=[FactName] '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
 	public FactElements getFactAccess() {
 		return pFact;
 	}
 	
 	public ParserRule getFactRule() {
 		return getFactAccess().getRule();
+	}
+	
+	//FactName:
+	//	name=ID;
+	public FactNameElements getFactNameAccess() {
+		return pFactName;
+	}
+	
+	public ParserRule getFactNameRule() {
+		return getFactNameAccess().getRule();
 	}
 	
 	//FactProperty:

@@ -112,10 +112,11 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 					put(grammarAccess.getFunctionAccess().getIdAssignment_3(), "rule__Function__IdAssignment_3");
 					put(grammarAccess.getAdaptationRuleAccess().getNameAssignment_1(), "rule__AdaptationRule__NameAssignment_1");
-					put(grammarAccess.getAdaptationRuleAccess().getFactTypeAssignment_4(), "rule__AdaptationRule__FactTypeAssignment_4");
-					put(grammarAccess.getAdaptationRuleAccess().getFactNameAssignment_5(), "rule__AdaptationRule__FactNameAssignment_5");
-					put(grammarAccess.getAdaptationRuleAccess().getExprAssignment_9(), "rule__AdaptationRule__ExprAssignment_9");
-					put(grammarAccess.getAdaptationRuleAccess().getActionCollectionAssignment_13(), "rule__AdaptationRule__ActionCollectionAssignment_13");
+					put(grammarAccess.getAdaptationRuleAccess().getLevelAssignment_4(), "rule__AdaptationRule__LevelAssignment_4");
+					put(grammarAccess.getAdaptationRuleAccess().getFactTypeAssignment_7(), "rule__AdaptationRule__FactTypeAssignment_7");
+					put(grammarAccess.getAdaptationRuleAccess().getFactNameAssignment_8(), "rule__AdaptationRule__FactNameAssignment_8");
+					put(grammarAccess.getAdaptationRuleAccess().getExprAssignment_12(), "rule__AdaptationRule__ExprAssignment_12");
+					put(grammarAccess.getAdaptationRuleAccess().getActionCollectionAssignment_16(), "rule__AdaptationRule__ActionCollectionAssignment_16");
 					put(grammarAccess.getConditionalORAccess().getLeftAssignment_0(), "rule__ConditionalOR__LeftAssignment_0");
 					put(grammarAccess.getConditionalORAccess().getRightAssignment_1_1(), "rule__ConditionalOR__RightAssignment_1_1");
 					put(grammarAccess.getConditionalANDAccess().getLeftAssignment_0(), "rule__ConditionalAND__LeftAssignment_0");
@@ -133,8 +134,10 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringConditionAccess().getFactAssignment_0(), "rule__StringCondition__FactAssignment_0");
 					put(grammarAccess.getStringConditionAccess().getOpAssignment_1(), "rule__StringCondition__OpAssignment_1");
 					put(grammarAccess.getStringConditionAccess().getValAssignment_2(), "rule__StringCondition__ValAssignment_2");
+					put(grammarAccess.getFactAccess().getFactNameAssignment_0(), "rule__Fact__FactNameAssignment_0");
 					put(grammarAccess.getFactAccess().getEntityAssignment_2(), "rule__Fact__EntityAssignment_2");
 					put(grammarAccess.getFactAccess().getPropertyNameAssignment_5(), "rule__Fact__PropertyNameAssignment_5");
+					put(grammarAccess.getFactNameAccess().getNameAssignment(), "rule__FactName__NameAssignment");
 					put(grammarAccess.getActionsAccess().getActionAssignment_0(), "rule__Actions__ActionAssignment_0");
 					put(grammarAccess.getActionsAccess().getNextAssignment_1(), "rule__Actions__NextAssignment_1");
 					put(grammarAccess.getActionAccess().getActionCategoryAssignment_0(), "rule__Action__ActionCategoryAssignment_0");

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getFactName <em>Fact Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}</li>
  * </ul>
@@ -24,6 +25,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Fact extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Fact Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Fact Name</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Fact Name</em>' reference.
+   * @see #setFactName(FactName)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getFact_FactName()
+   * @model
+   * @generated
+   */
+  FactName getFactName();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getFactName <em>Fact Name</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Fact Name</em>' reference.
+   * @see #getFactName()
+   * @generated
+   */
+  void setFactName(FactName value);
+
   /**
    * Returns the value of the '<em><b>Entity</b></em>' reference.
    * <!-- begin-user-doc -->

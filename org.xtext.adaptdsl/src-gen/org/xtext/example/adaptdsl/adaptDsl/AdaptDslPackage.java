@@ -381,22 +381,31 @@ public interface AdaptDslPackage extends EPackage
   int ADAPTATION_RULE__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Level</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADAPTATION_RULE__LEVEL = 1;
+
+  /**
    * The feature id for the '<em><b>Fact Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__FACT_TYPE = 1;
+  int ADAPTATION_RULE__FACT_TYPE = 2;
 
   /**
-   * The feature id for the '<em><b>Fact Name</b></em>' attribute.
+   * The feature id for the '<em><b>Fact Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__FACT_NAME = 2;
+  int ADAPTATION_RULE__FACT_NAME = 3;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -405,7 +414,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__EXPR = 3;
+  int ADAPTATION_RULE__EXPR = 4;
 
   /**
    * The feature id for the '<em><b>Action Collection</b></em>' containment reference.
@@ -414,7 +423,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__ACTION_COLLECTION = 4;
+  int ADAPTATION_RULE__ACTION_COLLECTION = 5;
 
   /**
    * The number of structural features of the '<em>Adaptation Rule</em>' class.
@@ -423,7 +432,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE_FEATURE_COUNT = 5;
+  int ADAPTATION_RULE_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -676,13 +685,22 @@ public interface AdaptDslPackage extends EPackage
   int FACT = 14;
 
   /**
+   * The feature id for the '<em><b>Fact Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACT__FACT_NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Entity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FACT__ENTITY = 0;
+  int FACT__ENTITY = 1;
 
   /**
    * The feature id for the '<em><b>Property Name</b></em>' reference.
@@ -691,7 +709,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FACT__PROPERTY_NAME = 1;
+  int FACT__PROPERTY_NAME = 2;
 
   /**
    * The number of structural features of the '<em>Fact</em>' class.
@@ -700,7 +718,35 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FACT_FEATURE_COUNT = 2;
+  int FACT_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactNameImpl <em>Fact Name</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.FactNameImpl
+   * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getFactName()
+   * @generated
+   */
+  int FACT_NAME = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACT_NAME__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Fact Name</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACT_NAME_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ActionsImpl <em>Actions</em>}' class.
@@ -710,7 +756,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getActions()
    * @generated
    */
-  int ACTIONS = 15;
+  int ACTIONS = 16;
 
   /**
    * The feature id for the '<em><b>Action</b></em>' containment reference.
@@ -747,7 +793,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getActionCategory()
    * @generated
    */
-  int ACTION_CATEGORY = 16;
+  int ACTION_CATEGORY = 17;
 
   /**
    * The feature id for the '<em><b>Action Category</b></em>' containment reference.
@@ -775,7 +821,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getParentOperation()
    * @generated
    */
-  int PARENT_OPERATION = 17;
+  int PARENT_OPERATION = 18;
 
   /**
    * The feature id for the '<em><b>Operation</b></em>' containment reference.
@@ -803,7 +849,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getServiceFunctionCallOperation()
    * @generated
    */
-  int SERVICE_FUNCTION_CALL_OPERATION = 18;
+  int SERVICE_FUNCTION_CALL_OPERATION = 19;
 
   /**
    * The feature id for the '<em><b>Service</b></em>' attribute.
@@ -849,7 +895,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getEditFactOperation()
    * @generated
    */
-  int EDIT_FACT_OPERATION = 19;
+  int EDIT_FACT_OPERATION = 20;
 
   /**
    * The feature id for the '<em><b>Prop</b></em>' attribute.
@@ -886,7 +932,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getSetDisplayPropertyOperation()
    * @generated
    */
-  int SET_DISPLAY_PROPERTY_OPERATION = 20;
+  int SET_DISPLAY_PROPERTY_OPERATION = 21;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' attribute.
@@ -923,7 +969,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDisplayPropertyValue()
    * @generated
    */
-  int DISPLAY_PROPERTY_VALUE = 21;
+  int DISPLAY_PROPERTY_VALUE = 22;
 
   /**
    * The feature id for the '<em><b>Property Class</b></em>' containment reference.
@@ -951,7 +997,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getIntValue()
    * @generated
    */
-  int INT_VALUE = 22;
+  int INT_VALUE = 23;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -979,7 +1025,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getStringValue()
    * @generated
    */
-  int STRING_VALUE = 23;
+  int STRING_VALUE = 24;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1007,7 +1053,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getBoolValue()
    * @generated
    */
-  int BOOL_VALUE = 24;
+  int BOOL_VALUE = 25;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1035,7 +1081,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddViewComponentOperation()
    * @generated
    */
-  int ADD_VIEW_COMPONENT_OPERATION = 25;
+  int ADD_VIEW_COMPONENT_OPERATION = 26;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1072,7 +1118,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteViewComponentOperation()
    * @generated
    */
-  int DELETE_VIEW_COMPONENT_OPERATION = 26;
+  int DELETE_VIEW_COMPONENT_OPERATION = 27;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1100,7 +1146,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddViewComponentButtonOperation()
    * @generated
    */
-  int ADD_VIEW_COMPONENT_BUTTON_OPERATION = 27;
+  int ADD_VIEW_COMPONENT_BUTTON_OPERATION = 28;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1146,7 +1192,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteViewComponentButtonOperation()
    * @generated
    */
-  int DELETE_VIEW_COMPONENT_BUTTON_OPERATION = 28;
+  int DELETE_VIEW_COMPONENT_BUTTON_OPERATION = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1174,7 +1220,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAddNavLinkOperation()
    * @generated
    */
-  int ADD_NAV_LINK_OPERATION = 29;
+  int ADD_NAV_LINK_OPERATION = 30;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1211,7 +1257,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDeleteNavLinkOperation()
    * @generated
    */
-  int DELETE_NAV_LINK_OPERATION = 30;
+  int DELETE_NAV_LINK_OPERATION = 31;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1239,7 +1285,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getRedirectNavLinkOperation()
    * @generated
    */
-  int REDIRECT_NAV_LINK_OPERATION = 31;
+  int REDIRECT_NAV_LINK_OPERATION = 32;
 
   /**
    * The feature id for the '<em><b>View Comp</b></em>' attribute.
@@ -1267,7 +1313,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getClearNavOperation()
    * @generated
    */
-  int CLEAR_NAV_OPERATION = 32;
+  int CLEAR_NAV_OPERATION = 33;
 
   /**
    * The number of structural features of the '<em>Clear Nav Operation</em>' class.
@@ -1286,7 +1332,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeFontSizeOperation()
    * @generated
    */
-  int CHANGE_FONT_SIZE_OPERATION = 33;
+  int CHANGE_FONT_SIZE_OPERATION = 34;
 
   /**
    * The feature id for the '<em><b>Size Primary</b></em>' attribute.
@@ -1323,7 +1369,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeColorSchemeOperation()
    * @generated
    */
-  int CHANGE_COLOR_SCHEME_OPERATION = 34;
+  int CHANGE_COLOR_SCHEME_OPERATION = 35;
 
   /**
    * The feature id for the '<em><b>Color Primary</b></em>' attribute.
@@ -1360,7 +1406,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeFontOperation()
    * @generated
    */
-  int CHANGE_FONT_OPERATION = 35;
+  int CHANGE_FONT_OPERATION = 36;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1388,7 +1434,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getChangeTableCssClassOperation()
    * @generated
    */
-  int CHANGE_TABLE_CSS_CLASS_OPERATION = 36;
+  int CHANGE_TABLE_CSS_CLASS_OPERATION = 37;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1416,7 +1462,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getAdaptCssClassOperation()
    * @generated
    */
-  int ADAPT_CSS_CLASS_OPERATION = 37;
+  int ADAPT_CSS_CLASS_OPERATION = 38;
 
   /**
    * The feature id for the '<em><b>Css Class</b></em>' attribute.
@@ -1462,7 +1508,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 38;
+  int ENTITY = 39;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1490,7 +1536,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 39;
+  int PROPERTY = 40;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1545,7 +1591,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getProvider()
    * @generated
    */
-  int PROVIDER = 40;
+  int PROVIDER = 41;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1573,7 +1619,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDefTypes()
    * @generated
    */
-  int DEF_TYPES = 41;
+  int DEF_TYPES = 42;
 
   /**
    * The feature id for the '<em><b>This</b></em>' containment reference.
@@ -1610,7 +1656,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getDefType()
    * @generated
    */
-  int DEF_TYPE = 42;
+  int DEF_TYPE = 43;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1647,7 +1693,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getEnums()
    * @generated
    */
-  int ENUMS = 43;
+  int ENUMS = 44;
 
   /**
    * The feature id for the '<em><b>This</b></em>' containment reference.
@@ -1684,7 +1730,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getEnum()
    * @generated
    */
-  int ENUM = 44;
+  int ENUM = 45;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1712,7 +1758,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getTYPE()
    * @generated
    */
-  int TYPE = 45;
+  int TYPE = 46;
 
   /**
    * The feature id for the '<em><b>String</b></em>' attribute.
@@ -1767,7 +1813,7 @@ public interface AdaptDslPackage extends EPackage
    * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getUpdateType()
    * @generated
    */
-  int UPDATE_TYPE = 46;
+  int UPDATE_TYPE = 47;
 
   /**
    * The feature id for the '<em><b>Event</b></em>' attribute.
@@ -2107,6 +2153,17 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getAdaptationRule_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Level</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel()
+   * @see #getAdaptationRule()
+   * @generated
+   */
+  EAttribute getAdaptationRule_Level();
+
+  /**
    * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactType <em>Fact Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2118,15 +2175,15 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getAdaptationRule_FactType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName <em>Fact Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName <em>Fact Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Fact Name</em>'.
+   * @return the meta object for the containment reference '<em>Fact Name</em>'.
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName()
    * @see #getAdaptationRule()
    * @generated
    */
-  EAttribute getAdaptationRule_FactName();
+  EReference getAdaptationRule_FactName();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getExpr <em>Expr</em>}'.
@@ -2375,6 +2432,17 @@ public interface AdaptDslPackage extends EPackage
   EClass getFact();
 
   /**
+   * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getFactName <em>Fact Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Fact Name</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Fact#getFactName()
+   * @see #getFact()
+   * @generated
+   */
+  EReference getFact_FactName();
+
+  /**
    * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getEntity <em>Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2395,6 +2463,27 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    */
   EReference getFact_PropertyName();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.FactName <em>Fact Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fact Name</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.FactName
+   * @generated
+   */
+  EClass getFactName();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.FactName#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.FactName#getName()
+   * @see #getFactName()
+   * @generated
+   */
+  EAttribute getFactName_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.Actions <em>Actions</em>}'.
@@ -3585,6 +3674,14 @@ public interface AdaptDslPackage extends EPackage
     EAttribute ADAPTATION_RULE__NAME = eINSTANCE.getAdaptationRule_Name();
 
     /**
+     * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADAPTATION_RULE__LEVEL = eINSTANCE.getAdaptationRule_Level();
+
+    /**
      * The meta object literal for the '<em><b>Fact Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3593,12 +3690,12 @@ public interface AdaptDslPackage extends EPackage
     EAttribute ADAPTATION_RULE__FACT_TYPE = eINSTANCE.getAdaptationRule_FactType();
 
     /**
-     * The meta object literal for the '<em><b>Fact Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Fact Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ADAPTATION_RULE__FACT_NAME = eINSTANCE.getAdaptationRule_FactName();
+    EReference ADAPTATION_RULE__FACT_NAME = eINSTANCE.getAdaptationRule_FactName();
 
     /**
      * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
@@ -3799,6 +3896,14 @@ public interface AdaptDslPackage extends EPackage
     EClass FACT = eINSTANCE.getFact();
 
     /**
+     * The meta object literal for the '<em><b>Fact Name</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FACT__FACT_NAME = eINSTANCE.getFact_FactName();
+
+    /**
      * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3813,6 +3918,24 @@ public interface AdaptDslPackage extends EPackage
      * @generated
      */
     EReference FACT__PROPERTY_NAME = eINSTANCE.getFact_PropertyName();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactNameImpl <em>Fact Name</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.FactNameImpl
+     * @see org.xtext.example.adaptdsl.adaptDsl.impl.AdaptDslPackageImpl#getFactName()
+     * @generated
+     */
+    EClass FACT_NAME = eINSTANCE.getFactName();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FACT_NAME__NAME = eINSTANCE.getFactName_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ActionsImpl <em>Actions</em>}' class.

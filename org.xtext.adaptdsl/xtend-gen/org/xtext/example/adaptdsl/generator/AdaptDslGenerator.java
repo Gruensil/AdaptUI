@@ -172,8 +172,27 @@ public class AdaptDslGenerator extends AbstractGenerator {
   }
   
   public CharSequence compile(final AdaptationRule rule) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field level is undefined for the type AdaptationRule");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<adaptationRule name=\"");
+    String _name = rule.getName();
+    _builder.append(_name);
+    _builder.append("\" priority=\"");
+    int _level = rule.getLevel();
+    _builder.append(_level);
+    _builder.append("\" factType=\"");
+    String _factType = rule.getFactType();
+    _builder.append(_factType);
+    _builder.append("\" factName=\"");
+    String _name_1 = rule.getFactName().getName();
+    _builder.append(_name_1);
+    _builder.append("\"><conditions>");
+    CharSequence _compile = this.compile(rule.getExpr());
+    _builder.append(_compile);
+    _builder.append("</conditions><actions>");
+    CharSequence _compile_1 = this.compile(rule.getActionCollection());
+    _builder.append(_compile_1);
+    _builder.append("</actions></adaptationRule>");
+    return _builder;
   }
   
   public CharSequence compile(final Actions act) {

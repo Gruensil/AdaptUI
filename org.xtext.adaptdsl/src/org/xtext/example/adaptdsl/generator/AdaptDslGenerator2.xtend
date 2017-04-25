@@ -103,7 +103,7 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	'''
 	
 	def compile(AdaptationRule rule) '''
-	<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName»">
+	<adaptationRule name="«rule.name»" priority="«rule.level»" factType="«rule.factType»" factName="«rule.factName.name»">
 		<conditions>
 			«rule.expr.compile»
 		</conditions>

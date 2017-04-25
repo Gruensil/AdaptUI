@@ -44,6 +44,7 @@ import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -166,6 +167,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.FACT:
 				sequence_Fact(context, (Fact) semanticObject); 
+				return; 
+			case AdaptDslPackage.FACT_NAME:
+				sequence_FactName(context, (FactName) semanticObject); 
 				return; 
 			case AdaptDslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
@@ -308,12 +312,21 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     AdaptationRule returns AdaptationRule
 	 *
 	 * Constraint:
-	 *     (name=STRING factType=ID factName=ID expr=ConditionalOR actionCollection=Actions)
+	 *     (
+	 *         name=STRING 
+	 *         level=INT 
+	 *         factType=ID 
+	 *         factName=FactName 
+	 *         expr=ConditionalOR 
+	 *         actionCollection=Actions
+	 *     )
 	 */
 	protected void sequence_AdaptationRule(ISerializationContext context, AdaptationRule semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_NAME) == ValueTransient.YES)
@@ -325,10 +338,11 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAdaptationRuleAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_4_0(), semanticObject.getFactType());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactNameIDTerminalRuleCall_5_0(), semanticObject.getFactName());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_9_0(), semanticObject.getExpr());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_13_0(), semanticObject.getActionCollection());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getLevelINTTerminalRuleCall_4_0(), semanticObject.getLevel());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_7_0(), semanticObject.getFactType());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactNameFactNameParserRuleCall_8_0(), semanticObject.getFactName());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_12_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_16_0(), semanticObject.getActionCollection());
 		feeder.finish();
 	}
 	
@@ -728,19 +742,40 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     FactName returns FactName
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_FactName(ISerializationContext context, FactName semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT_NAME__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT_NAME__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFactNameAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Fact returns Fact
 	 *
 	 * Constraint:
-	 *     (entity=[Entity|ID] propertyName=[Property|ID])
+	 *     (factName=[FactName|ID] entity=[Entity|ID] propertyName=[Property|ID])
 	 */
 	protected void sequence_Fact(ISerializationContext context, Fact semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT__FACT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT__FACT_NAME));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT__ENTITY) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT__ENTITY));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT__PROPERTY_NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT__PROPERTY_NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFactAccess().getFactNameFactNameIDTerminalRuleCall_0_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__FACT_NAME, false));
 		feeder.accept(grammarAccess.getFactAccess().getEntityEntityIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__ENTITY, false));
 		feeder.accept(grammarAccess.getFactAccess().getPropertyNamePropertyIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__PROPERTY_NAME, false));
 		feeder.finish();

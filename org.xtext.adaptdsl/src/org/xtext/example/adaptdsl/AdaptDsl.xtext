@@ -52,8 +52,8 @@ Function returns Function:
 
 AdaptationRule:
  	'rule' name=STRING '{' 
-// 	'LEVEL' level=INT ';'
- 	'FACT' factType=ID factName=ID ';'
+ 	'LEVEL' level=INT ';'
+ 	'FACT' factType=ID factName=FactName ';'
 	'IF''(' expr = ConditionalOR ')' 
 	'THEN''(' 
 		actionCollection = Actions 
@@ -88,7 +88,11 @@ StringCondition returns StringCondition:
 
 Fact returns Fact:
 	//ID('()')?('.'ID('()')?)*
-	'M''.get' entity=[Entity]'()' '.get' propertyName=[Property]'()'
+	factName = [FactName] '.get' entity=[Entity]'()' '.get' propertyName=[Property]'()'
+;
+
+FactName returns FactName:
+	name = ID
 ;
 
 FactProperty:

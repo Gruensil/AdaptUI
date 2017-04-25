@@ -40,6 +40,7 @@ import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -195,6 +196,11 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFact(Fact object)
       {
         return createFactAdapter();
+      }
+      @Override
+      public Adapter caseFactName(FactName object)
+      {
+        return createFactNameAdapter();
       }
       @Override
       public Adapter caseActions(Actions object)
@@ -599,6 +605,21 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFactAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.FactName <em>Fact Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.FactName
+   * @generated
+   */
+  public Adapter createFactNameAdapter()
   {
     return null;
   }

@@ -41,8 +41,9 @@
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//AdaptationRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/level"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/factName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/expr"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/actionCollection"/>
     </genClasses>
@@ -73,8 +74,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//StringCondition/val"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Fact">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/factName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/entity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/propertyName"/>
+    </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//FactName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//FactName/name"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Actions">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Actions/action"/>

@@ -16,6 +16,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Actions;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
+import org.xtext.example.adaptdsl.adaptDsl.FactName;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +27,7 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactType <em>Fact Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactName <em>Fact Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getExpr <em>Expr</em>}</li>
@@ -57,6 +59,26 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLevel()
+   * @generated
+   * @ordered
+   */
+  protected static final int LEVEL_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLevel()
+   * @generated
+   * @ordered
+   */
+  protected int level = LEVEL_EDEFAULT;
+
+  /**
    * The default value of the '{@link #getFactType() <em>Fact Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,24 +99,14 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
   protected String factType = FACT_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getFactName() <em>Fact Name</em>}' attribute.
+   * The cached value of the '{@link #getFactName() <em>Fact Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFactName()
    * @generated
    * @ordered
    */
-  protected static final String FACT_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getFactName() <em>Fact Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFactName()
-   * @generated
-   * @ordered
-   */
-  protected String factName = FACT_NAME_EDEFAULT;
+  protected FactName factName;
 
   /**
    * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
@@ -165,6 +177,29 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getLevel()
+  {
+    return level;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLevel(int newLevel)
+  {
+    int oldLevel = level;
+    level = newLevel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__LEVEL, oldLevel, level));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getFactType()
   {
     return factType;
@@ -188,7 +223,7 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getFactName()
+  public FactName getFactName()
   {
     return factName;
   }
@@ -198,12 +233,37 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFactName(String newFactName)
+  public NotificationChain basicSetFactName(FactName newFactName, NotificationChain msgs)
   {
-    String oldFactName = factName;
+    FactName oldFactName = factName;
     factName = newFactName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, oldFactName, factName));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, oldFactName, newFactName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFactName(FactName newFactName)
+  {
+    if (newFactName != factName)
+    {
+      NotificationChain msgs = null;
+      if (factName != null)
+        msgs = ((InternalEObject)factName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, null, msgs);
+      if (newFactName != null)
+        msgs = ((InternalEObject)newFactName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, null, msgs);
+      msgs = basicSetFactName(newFactName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__FACT_NAME, newFactName, newFactName));
   }
 
   /**
@@ -312,6 +372,8 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
+        return basicSetFactName(null, msgs);
       case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         return basicSetExpr(null, msgs);
       case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
@@ -332,6 +394,8 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     {
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return getName();
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
+        return getLevel();
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return getFactType();
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
@@ -357,11 +421,14 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName((String)newValue);
         return;
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
+        setLevel((Integer)newValue);
+        return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType((String)newValue);
         return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
-        setFactName((String)newValue);
+        setFactName((FactName)newValue);
         return;
       case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         setExpr((ConditionalOrExpression)newValue);
@@ -386,11 +453,14 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
+        setLevel(LEVEL_EDEFAULT);
+        return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType(FACT_TYPE_EDEFAULT);
         return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
-        setFactName(FACT_NAME_EDEFAULT);
+        setFactName((FactName)null);
         return;
       case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         setExpr((ConditionalOrExpression)null);
@@ -414,10 +484,12 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     {
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
+        return level != LEVEL_EDEFAULT;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return FACT_TYPE_EDEFAULT == null ? factType != null : !FACT_TYPE_EDEFAULT.equals(factType);
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
-        return FACT_NAME_EDEFAULT == null ? factName != null : !FACT_NAME_EDEFAULT.equals(factName);
+        return factName != null;
       case AdaptDslPackage.ADAPTATION_RULE__EXPR:
         return expr != null;
       case AdaptDslPackage.ADAPTATION_RULE__ACTION_COLLECTION:
@@ -439,10 +511,10 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", level: ");
+    result.append(level);
     result.append(", factType: ");
     result.append(factType);
-    result.append(", factName: ");
-    result.append(factName);
     result.append(')');
     return result.toString();
   }

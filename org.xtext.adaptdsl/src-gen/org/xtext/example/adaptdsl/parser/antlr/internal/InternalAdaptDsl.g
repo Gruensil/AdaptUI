@@ -686,15 +686,41 @@ ruleAdaptationRule returns [EObject current=null]
 		{
 			newLeafNode(otherlv_2, grammarAccess.getAdaptationRuleAccess().getLeftCurlyBracketKeyword_2());
 		}
-		otherlv_3='FACT'
+		otherlv_3='LEVEL'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getAdaptationRuleAccess().getFACTKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getAdaptationRuleAccess().getLEVELKeyword_3());
 		}
 		(
 			(
-				lv_factType_4_0=RULE_ID
+				lv_level_4_0=RULE_INT
 				{
-					newLeafNode(lv_factType_4_0, grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_4_0());
+					newLeafNode(lv_level_4_0, grammarAccess.getAdaptationRuleAccess().getLevelINTTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAdaptationRuleRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"level",
+						lv_level_4_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_5=';'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getAdaptationRuleAccess().getSemicolonKeyword_5());
+		}
+		otherlv_6='FACT'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getAdaptationRuleAccess().getFACTKeyword_6());
+		}
+		(
+			(
+				lv_factType_7_0=RULE_ID
+				{
+					newLeafNode(lv_factType_7_0, grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_7_0());
 				}
 				{
 					if ($current==null) {
@@ -703,47 +729,48 @@ ruleAdaptationRule returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"factType",
-						lv_factType_4_0,
+						lv_factType_7_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
 		(
 			(
-				lv_factName_5_0=RULE_ID
 				{
-					newLeafNode(lv_factName_5_0, grammarAccess.getAdaptationRuleAccess().getFactNameIDTerminalRuleCall_5_0());
+					newCompositeNode(grammarAccess.getAdaptationRuleAccess().getFactNameFactNameParserRuleCall_8_0());
 				}
+				lv_factName_8_0=ruleFactName
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getAdaptationRuleRule());
+						$current = createModelElementForParent(grammarAccess.getAdaptationRuleRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"factName",
-						lv_factName_5_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						lv_factName_8_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.FactName");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_6=';'
+		otherlv_9=';'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getAdaptationRuleAccess().getSemicolonKeyword_6());
+			newLeafNode(otherlv_9, grammarAccess.getAdaptationRuleAccess().getSemicolonKeyword_9());
 		}
-		otherlv_7='IF'
+		otherlv_10='IF'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getAdaptationRuleAccess().getIFKeyword_7());
+			newLeafNode(otherlv_10, grammarAccess.getAdaptationRuleAccess().getIFKeyword_10());
 		}
-		otherlv_8='('
+		otherlv_11='('
 		{
-			newLeafNode(otherlv_8, grammarAccess.getAdaptationRuleAccess().getLeftParenthesisKeyword_8());
+			newLeafNode(otherlv_11, grammarAccess.getAdaptationRuleAccess().getLeftParenthesisKeyword_11());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_12_0());
 				}
-				lv_expr_9_0=ruleConditionalOR
+				lv_expr_12_0=ruleConditionalOR
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAdaptationRuleRule());
@@ -751,30 +778,30 @@ ruleAdaptationRule returns [EObject current=null]
 					set(
 						$current,
 						"expr",
-						lv_expr_9_0,
+						lv_expr_12_0,
 						"org.xtext.example.adaptdsl.AdaptDsl.ConditionalOR");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_10=')'
+		otherlv_13=')'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getAdaptationRuleAccess().getRightParenthesisKeyword_10());
+			newLeafNode(otherlv_13, grammarAccess.getAdaptationRuleAccess().getRightParenthesisKeyword_13());
 		}
-		otherlv_11='THEN'
+		otherlv_14='THEN'
 		{
-			newLeafNode(otherlv_11, grammarAccess.getAdaptationRuleAccess().getTHENKeyword_11());
+			newLeafNode(otherlv_14, grammarAccess.getAdaptationRuleAccess().getTHENKeyword_14());
 		}
-		otherlv_12='('
+		otherlv_15='('
 		{
-			newLeafNode(otherlv_12, grammarAccess.getAdaptationRuleAccess().getLeftParenthesisKeyword_12());
+			newLeafNode(otherlv_15, grammarAccess.getAdaptationRuleAccess().getLeftParenthesisKeyword_15());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_13_0());
+					newCompositeNode(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_16_0());
 				}
-				lv_actionCollection_13_0=ruleActions
+				lv_actionCollection_16_0=ruleActions
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAdaptationRuleRule());
@@ -782,23 +809,23 @@ ruleAdaptationRule returns [EObject current=null]
 					set(
 						$current,
 						"actionCollection",
-						lv_actionCollection_13_0,
+						lv_actionCollection_16_0,
 						"org.xtext.example.adaptdsl.AdaptDsl.Actions");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_14=')'
+		otherlv_17=')'
 		{
-			newLeafNode(otherlv_14, grammarAccess.getAdaptationRuleAccess().getRightParenthesisKeyword_14());
+			newLeafNode(otherlv_17, grammarAccess.getAdaptationRuleAccess().getRightParenthesisKeyword_17());
 		}
-		otherlv_15=';'
+		otherlv_18=';'
 		{
-			newLeafNode(otherlv_15, grammarAccess.getAdaptationRuleAccess().getSemicolonKeyword_15());
+			newLeafNode(otherlv_18, grammarAccess.getAdaptationRuleAccess().getSemicolonKeyword_18());
 		}
-		otherlv_16='}'
+		otherlv_19='}'
 		{
-			newLeafNode(otherlv_16, grammarAccess.getAdaptationRuleAccess().getRightCurlyBracketKeyword_16());
+			newLeafNode(otherlv_19, grammarAccess.getAdaptationRuleAccess().getRightCurlyBracketKeyword_19());
 		}
 	)
 ;
@@ -1270,10 +1297,19 @@ ruleFact returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='M'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getFactAccess().getMKeyword_0());
-		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFactRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFactAccess().getFactNameFactNameCrossReference_0_0());
+				}
+			)
+		)
 		otherlv_1='.get'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getFactAccess().getGetKeyword_1());
@@ -1316,6 +1352,41 @@ ruleFact returns [EObject current=null]
 		{
 			newLeafNode(otherlv_6, grammarAccess.getFactAccess().getLeftParenthesisRightParenthesisKeyword_6());
 		}
+	)
+;
+
+// Entry rule entryRuleFactName
+entryRuleFactName returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFactNameRule()); }
+	iv_ruleFactName=ruleFactName
+	{ $current=$iv_ruleFactName.current; }
+	EOF;
+
+// Rule FactName
+ruleFactName returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_name_0_0=RULE_ID
+			{
+				newLeafNode(lv_name_0_0, grammarAccess.getFactNameAccess().getNameIDTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getFactNameRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"name",
+					lv_name_0_0,
+					"org.eclipse.xtext.common.Terminals.ID");
+			}
+		)
 	)
 ;
 
