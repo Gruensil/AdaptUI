@@ -150,6 +150,15 @@ public interface AdaptDslFactory extends EFactory
   StringCondition createStringCondition();
 
   /**
+   * Returns a new object of class '<em>Fact</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fact</em>'.
+   * @generated
+   */
+  Fact createFact();
+
+  /**
    * Returns a new object of class '<em>Actions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -373,6 +382,15 @@ public interface AdaptDslFactory extends EFactory
    * @generated
    */
   Property createProperty();
+
+  /**
+   * Returns a new object of class '<em>Property Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Name</em>'.
+   * @generated
+   */
+  PropertyName createPropertyName();
 
   /**
    * Returns a new object of class '<em>Provider</em>'.

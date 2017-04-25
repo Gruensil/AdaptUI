@@ -4,14 +4,17 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
+import org.xtext.example.adaptdsl.adaptDsl.Fact;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,24 +34,14 @@ import org.xtext.example.adaptdsl.adaptDsl.BooleanCondition;
 public class BooleanConditionImpl extends MinimalEObjectImpl.Container implements BooleanCondition
 {
   /**
-   * The default value of the '{@link #getFact() <em>Fact</em>}' attribute.
+   * The cached value of the '{@link #getFact() <em>Fact</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFact()
    * @generated
    * @ordered
    */
-  protected static final String FACT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getFact() <em>Fact</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFact()
-   * @generated
-   * @ordered
-   */
-  protected String fact = FACT_EDEFAULT;
+  protected Fact fact;
 
   /**
    * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
@@ -116,7 +109,7 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getFact()
+  public Fact getFact()
   {
     return fact;
   }
@@ -126,12 +119,37 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFact(String newFact)
+  public NotificationChain basicSetFact(Fact newFact, NotificationChain msgs)
   {
-    String oldFact = fact;
+    Fact oldFact = fact;
     fact = newFact;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.BOOLEAN_CONDITION__FACT, oldFact, fact));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.BOOLEAN_CONDITION__FACT, oldFact, newFact);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFact(Fact newFact)
+  {
+    if (newFact != fact)
+    {
+      NotificationChain msgs = null;
+      if (fact != null)
+        msgs = ((InternalEObject)fact).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.BOOLEAN_CONDITION__FACT, null, msgs);
+      if (newFact != null)
+        msgs = ((InternalEObject)newFact).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.BOOLEAN_CONDITION__FACT, null, msgs);
+      msgs = basicSetFact(newFact, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.BOOLEAN_CONDITION__FACT, newFact, newFact));
   }
 
   /**
@@ -186,6 +204,22 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdaptDslPackage.BOOLEAN_CONDITION__FACT:
+        return basicSetFact(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -211,7 +245,7 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case AdaptDslPackage.BOOLEAN_CONDITION__FACT:
-        setFact((String)newValue);
+        setFact((Fact)newValue);
         return;
       case AdaptDslPackage.BOOLEAN_CONDITION__OP:
         setOp((String)newValue);
@@ -234,7 +268,7 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case AdaptDslPackage.BOOLEAN_CONDITION__FACT:
-        setFact(FACT_EDEFAULT);
+        setFact((Fact)null);
         return;
       case AdaptDslPackage.BOOLEAN_CONDITION__OP:
         setOp(OP_EDEFAULT);
@@ -257,7 +291,7 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
     switch (featureID)
     {
       case AdaptDslPackage.BOOLEAN_CONDITION__FACT:
-        return FACT_EDEFAULT == null ? fact != null : !FACT_EDEFAULT.equals(fact);
+        return fact != null;
       case AdaptDslPackage.BOOLEAN_CONDITION__OP:
         return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
       case AdaptDslPackage.BOOLEAN_CONDITION__VAL:
@@ -277,9 +311,7 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (fact: ");
-    result.append(fact);
-    result.append(", op: ");
+    result.append(" (op: ");
     result.append(op);
     result.append(", val: ");
     result.append(val);

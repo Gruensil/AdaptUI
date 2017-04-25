@@ -26,30 +26,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface BooleanCondition extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Fact</b></em>' attribute.
+   * Returns the value of the '<em><b>Fact</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Fact</em>' attribute isn't clear,
+   * If the meaning of the '<em>Fact</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Fact</em>' attribute.
-   * @see #setFact(String)
+   * @return the value of the '<em>Fact</em>' containment reference.
+   * @see #setFact(Fact)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getBooleanCondition_Fact()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getFact();
+  Fact getFact();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.BooleanCondition#getFact <em>Fact</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.BooleanCondition#getFact <em>Fact</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Fact</em>' attribute.
+   * @param value the new value of the '<em>Fact</em>' containment reference.
    * @see #getFact()
    * @generated
    */
-  void setFact(String value);
+  void setFact(Fact value);
 
   /**
    * Returns the value of the '<em><b>Op</b></em>' attribute.

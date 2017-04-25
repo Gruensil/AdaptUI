@@ -39,6 +39,7 @@ import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
+import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -46,6 +47,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
+import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
@@ -191,6 +193,11 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
         return createStringConditionAdapter();
       }
       @Override
+      public Adapter caseFact(Fact object)
+      {
+        return createFactAdapter();
+      }
+      @Override
       public Adapter caseActions(Actions object)
       {
         return createActionsAdapter();
@@ -314,6 +321,11 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseProperty(Property object)
       {
         return createPropertyAdapter();
+      }
+      @Override
+      public Adapter casePropertyName(PropertyName object)
+      {
+        return createPropertyNameAdapter();
       }
       @Override
       public Adapter caseProvider(Provider object)
@@ -578,6 +590,21 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.Fact <em>Fact</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Fact
+   * @generated
+   */
+  public Adapter createFactAdapter()
   {
     return null;
   }
@@ -953,6 +980,21 @@ public class AdaptDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.adaptdsl.adaptDsl.PropertyName <em>Property Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.adaptdsl.adaptDsl.PropertyName
+   * @generated
+   */
+  public Adapter createPropertyNameAdapter()
   {
     return null;
   }

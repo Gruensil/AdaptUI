@@ -48,8 +48,9 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getContextModelAccess().getGroup(), "rule__ContextModel__Group__0");
 					put(grammarAccess.getContextModelAccess().getGroup_2(), "rule__ContextModel__Group_2__0");
-					put(grammarAccess.getContextModelAccess().getGroup_2_1(), "rule__ContextModel__Group_2_1__0");
 					put(grammarAccess.getContextModelAccess().getGroup_3(), "rule__ContextModel__Group_3__0");
+					put(grammarAccess.getContextModelAccess().getGroup_3_1(), "rule__ContextModel__Group_3_1__0");
+					put(grammarAccess.getContextModelAccess().getGroup_4(), "rule__ContextModel__Group_4__0");
 					put(grammarAccess.getAdaptationModelAccess().getGroup(), "rule__AdaptationModel__Group__0");
 					put(grammarAccess.getServicesAccess().getGroup(), "rule__Services__Group__0");
 					put(grammarAccess.getServiceAccess().getGroup(), "rule__Service__Group__0");
@@ -64,7 +65,6 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNumberConditionAccess().getGroup(), "rule__NumberCondition__Group__0");
 					put(grammarAccess.getStringConditionAccess().getGroup(), "rule__StringCondition__Group__0");
 					put(grammarAccess.getFactAccess().getGroup(), "rule__Fact__Group__0");
-					put(grammarAccess.getFactAccess().getGroup_2(), "rule__Fact__Group_2__0");
 					put(grammarAccess.getFactPropertyAccess().getGroup(), "rule__FactProperty__Group__0");
 					put(grammarAccess.getFactPropertyAccess().getGroup_2(), "rule__FactProperty__Group_2__0");
 					put(grammarAccess.getFactPropertyAccess().getGroup_5(), "rule__FactProperty__Group_5__0");
@@ -95,8 +95,9 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getContextModelAssignment_0(), "rule__Model__ContextModelAssignment_0");
 					put(grammarAccess.getModelAccess().getAdaptationModelAssignment_1(), "rule__Model__AdaptationModelAssignment_1");
 					put(grammarAccess.getContextModelAccess().getEntityAssignment_1(), "rule__ContextModel__EntityAssignment_1");
-					put(grammarAccess.getContextModelAccess().getProviderAssignment_2_1_0(), "rule__ContextModel__ProviderAssignment_2_1_0");
-					put(grammarAccess.getContextModelAccess().getTypesAssignment_3_1(), "rule__ContextModel__TypesAssignment_3_1");
+					put(grammarAccess.getContextModelAccess().getPropertyNameAssignment_2_0(), "rule__ContextModel__PropertyNameAssignment_2_0");
+					put(grammarAccess.getContextModelAccess().getProviderAssignment_3_1_0(), "rule__ContextModel__ProviderAssignment_3_1_0");
+					put(grammarAccess.getContextModelAccess().getTypesAssignment_4_1(), "rule__ContextModel__TypesAssignment_4_1");
 					put(grammarAccess.getAdaptationModelAccess().getServicesAssignment_1(), "rule__AdaptationModel__ServicesAssignment_1");
 					put(grammarAccess.getAdaptationModelAccess().getFlowNameAssignment_3(), "rule__AdaptationModel__FlowNameAssignment_3");
 					put(grammarAccess.getAdaptationModelAccess().getAdaptationRulesAssignment_5(), "rule__AdaptationModel__AdaptationRulesAssignment_5");
@@ -133,6 +134,8 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringConditionAccess().getFactAssignment_0(), "rule__StringCondition__FactAssignment_0");
 					put(grammarAccess.getStringConditionAccess().getOpAssignment_1(), "rule__StringCondition__OpAssignment_1");
 					put(grammarAccess.getStringConditionAccess().getValAssignment_2(), "rule__StringCondition__ValAssignment_2");
+					put(grammarAccess.getFactAccess().getEntityAssignment_2(), "rule__Fact__EntityAssignment_2");
+					put(grammarAccess.getFactAccess().getPropertyNameAssignment_5(), "rule__Fact__PropertyNameAssignment_5");
 					put(grammarAccess.getActionsAccess().getActionAssignment_0(), "rule__Actions__ActionAssignment_0");
 					put(grammarAccess.getActionsAccess().getNextAssignment_1(), "rule__Actions__NextAssignment_1");
 					put(grammarAccess.getActionAccess().getActionCategoryAssignment_0(), "rule__Action__ActionCategoryAssignment_0");
@@ -194,6 +197,7 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_2(), "rule__Property__TypeAssignment_2");
 					put(grammarAccess.getPropertyAccess().getProviderAssignment_5(), "rule__Property__ProviderAssignment_5");
 					put(grammarAccess.getPropertyAccess().getUpdateAssignment_8(), "rule__Property__UpdateAssignment_8");
+					put(grammarAccess.getPropertyNameAccess().getNameAssignment(), "rule__PropertyName__NameAssignment");
 					put(grammarAccess.getProviderAccess().getNameAssignment(), "rule__Provider__NameAssignment");
 					put(grammarAccess.getDefTypesAccess().getThisAssignment_0(), "rule__DefTypes__ThisAssignment_0");
 					put(grammarAccess.getDefTypesAccess().getNextAssignment_1(), "rule__DefTypes__NextAssignment_1");

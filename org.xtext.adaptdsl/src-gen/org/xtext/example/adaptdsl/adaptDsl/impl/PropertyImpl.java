@@ -3,8 +3,12 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -12,8 +16,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
+import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.TYPE;
 import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
@@ -37,24 +45,14 @@ import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
 {
   /**
-   * The default value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
+   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPropertyName()
    * @generated
    * @ordered
    */
-  protected static final String PROPERTY_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPropertyName()
-   * @generated
-   * @ordered
-   */
-  protected String propertyName = PROPERTY_NAME_EDEFAULT;
+  protected EList<PropertyName> propertyName;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -112,22 +110,13 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPropertyName()
+  public EList<PropertyName> getPropertyName()
   {
+    if (propertyName == null)
+    {
+      propertyName = new EObjectContainmentEList<PropertyName>(PropertyName.class, this, AdaptDslPackage.PROPERTY__PROPERTY_NAME);
+    }
     return propertyName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPropertyName(String newPropertyName)
-  {
-    String oldPropertyName = propertyName;
-    propertyName = newPropertyName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.PROPERTY__PROPERTY_NAME, oldPropertyName, propertyName));
   }
 
   /**
@@ -279,6 +268,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
+        return ((InternalEList<?>)getPropertyName()).basicRemove(otherEnd, msgs);
       case AdaptDslPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
       case AdaptDslPackage.PROPERTY__UPDATE:
@@ -315,13 +306,15 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        setPropertyName((String)newValue);
+        getPropertyName().clear();
+        getPropertyName().addAll((Collection<? extends PropertyName>)newValue);
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType((TYPE)newValue);
@@ -347,7 +340,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     switch (featureID)
     {
       case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        setPropertyName(PROPERTY_NAME_EDEFAULT);
+        getPropertyName().clear();
         return;
       case AdaptDslPackage.PROPERTY__TYPE:
         setType((TYPE)null);
@@ -373,7 +366,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     switch (featureID)
     {
       case AdaptDslPackage.PROPERTY__PROPERTY_NAME:
-        return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
+        return propertyName != null && !propertyName.isEmpty();
       case AdaptDslPackage.PROPERTY__TYPE:
         return type != null;
       case AdaptDslPackage.PROPERTY__PROVIDER:
@@ -382,23 +375,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return update != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (propertyName: ");
-    result.append(propertyName);
-    result.append(')');
-    return result.toString();
   }
 
 } //PropertyImpl

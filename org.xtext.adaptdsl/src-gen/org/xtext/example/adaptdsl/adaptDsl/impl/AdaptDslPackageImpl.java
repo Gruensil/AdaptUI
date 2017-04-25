@@ -40,6 +40,7 @@ import org.xtext.example.adaptdsl.adaptDsl.DisplayPropertyValue;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
+import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -47,6 +48,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Property;
+import org.xtext.example.adaptdsl.adaptDsl.PropertyName;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
@@ -162,6 +164,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass stringConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass factEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -343,6 +352,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass propertyNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass providerEClass = null;
 
   /**
@@ -505,7 +521,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContextModel_Provider()
+  public EReference getContextModel_PropertyName()
   {
     return (EReference)contextModelEClass.getEStructuralFeatures().get(1);
   }
@@ -515,9 +531,19 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContextModel_Types()
+  public EReference getContextModel_Provider()
   {
     return (EReference)contextModelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContextModel_Types()
+  {
+    return (EReference)contextModelEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -865,9 +891,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBooleanCondition_Fact()
+  public EReference getBooleanCondition_Fact()
   {
-    return (EAttribute)booleanConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)booleanConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -905,9 +931,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNumberCondition_Fact()
+  public EReference getNumberCondition_Fact()
   {
-    return (EAttribute)numberConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)numberConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -945,9 +971,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringCondition_Fact()
+  public EReference getStringCondition_Fact()
   {
-    return (EAttribute)stringConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)stringConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -968,6 +994,36 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
   public EAttribute getStringCondition_Val()
   {
     return (EAttribute)stringConditionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFact()
+  {
+    return factEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFact_Entity()
+  {
+    return (EReference)factEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFact_PropertyName()
+  {
+    return (EReference)factEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1595,9 +1651,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_PropertyName()
+  public EReference getProperty_PropertyName()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1628,6 +1684,26 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
   public EReference getProperty_Update()
   {
     return (EReference)propertyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPropertyName()
+  {
+    return propertyNameEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPropertyName_Name()
+  {
+    return (EAttribute)propertyNameEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1886,6 +1962,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     contextModelEClass = createEClass(CONTEXT_MODEL);
     createEReference(contextModelEClass, CONTEXT_MODEL__ENTITY);
+    createEReference(contextModelEClass, CONTEXT_MODEL__PROPERTY_NAME);
     createEReference(contextModelEClass, CONTEXT_MODEL__PROVIDER);
     createEReference(contextModelEClass, CONTEXT_MODEL__TYPES);
 
@@ -1932,19 +2009,23 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEReference(conditionalPrimaryEClass, CONDITIONAL_PRIMARY__COND);
 
     booleanConditionEClass = createEClass(BOOLEAN_CONDITION);
-    createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__FACT);
+    createEReference(booleanConditionEClass, BOOLEAN_CONDITION__FACT);
     createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__OP);
     createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__VAL);
 
     numberConditionEClass = createEClass(NUMBER_CONDITION);
-    createEAttribute(numberConditionEClass, NUMBER_CONDITION__FACT);
+    createEReference(numberConditionEClass, NUMBER_CONDITION__FACT);
     createEAttribute(numberConditionEClass, NUMBER_CONDITION__OP);
     createEAttribute(numberConditionEClass, NUMBER_CONDITION__VAL);
 
     stringConditionEClass = createEClass(STRING_CONDITION);
-    createEAttribute(stringConditionEClass, STRING_CONDITION__FACT);
+    createEReference(stringConditionEClass, STRING_CONDITION__FACT);
     createEAttribute(stringConditionEClass, STRING_CONDITION__OP);
     createEAttribute(stringConditionEClass, STRING_CONDITION__VAL);
+
+    factEClass = createEClass(FACT);
+    createEReference(factEClass, FACT__ENTITY);
+    createEReference(factEClass, FACT__PROPERTY_NAME);
 
     actionsEClass = createEClass(ACTIONS);
     createEReference(actionsEClass, ACTIONS__ACTION);
@@ -2032,10 +2113,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEReference(entityEClass, ENTITY__PROPERTY);
 
     propertyEClass = createEClass(PROPERTY);
-    createEAttribute(propertyEClass, PROPERTY__PROPERTY_NAME);
+    createEReference(propertyEClass, PROPERTY__PROPERTY_NAME);
     createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__PROVIDER);
     createEReference(propertyEClass, PROPERTY__UPDATE);
+
+    propertyNameEClass = createEClass(PROPERTY_NAME);
+    createEAttribute(propertyNameEClass, PROPERTY_NAME__NAME);
 
     providerEClass = createEClass(PROVIDER);
     createEAttribute(providerEClass, PROVIDER__NAME);
@@ -2104,6 +2188,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(contextModelEClass, ContextModel.class, "ContextModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContextModel_Entity(), this.getEntity(), null, "entity", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContextModel_PropertyName(), this.getPropertyName(), null, "propertyName", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextModel_Provider(), this.getProvider(), null, "provider", null, 0, -1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContextModel_Types(), this.getDefTypes(), null, "types", null, 0, 1, ContextModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2150,19 +2235,23 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEReference(getConditionalPrimary_Cond(), ecorePackage.getEObject(), null, "cond", null, 0, 1, ConditionalPrimary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(booleanConditionEClass, BooleanCondition.class, "BooleanCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanCondition_Fact(), this.getFact(), null, "fact", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBooleanCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBooleanCondition_Val(), ecorePackage.getEString(), "val", null, 0, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(numberConditionEClass, NumberCondition.class, "NumberCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumberCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNumberCondition_Fact(), this.getFact(), null, "fact", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getNumberCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getNumberCondition_Val(), ecorePackage.getEInt(), "val", null, 0, 1, NumberCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringConditionEClass, StringCondition.class, "StringCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringCondition_Fact(), ecorePackage.getEString(), "fact", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStringCondition_Fact(), this.getFact(), null, "fact", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringCondition_Val(), ecorePackage.getEString(), "val", null, 0, 1, StringCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(factEClass, Fact.class, "Fact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFact_Entity(), this.getEntity(), null, "entity", null, 0, 1, Fact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFact_PropertyName(), this.getPropertyName(), null, "propertyName", null, 0, 1, Fact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionsEClass, Actions.class, "Actions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActions_Action(), this.getActionCategory(), null, "action", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2250,10 +2339,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEReference(getEntity_Property(), this.getProperty(), null, "property", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProperty_PropertyName(), ecorePackage.getEString(), "propertyName", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_PropertyName(), this.getPropertyName(), null, "propertyName", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Type(), this.getTYPE(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Provider(), this.getProvider(), null, "provider", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Update(), this.getUpdateType(), null, "update", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(propertyNameEClass, PropertyName.class, "PropertyName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPropertyName_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(providerEClass, Provider.class, "Provider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProvider_Name(), ecorePackage.getEString(), "name", null, 0, 1, Provider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -35,6 +35,7 @@ import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -560,7 +561,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
   public CharSequence compile(final BooleanCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    String _fact = cond.getFact();
+    Fact _fact = cond.getFact();
     _builder.append(_fact);
     _builder.append("\" ");
     {
@@ -591,7 +592,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
   public CharSequence compile(final StringCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    String _fact = cond.getFact();
+    Fact _fact = cond.getFact();
     _builder.append(_fact);
     _builder.append("\" ");
     {
@@ -622,7 +623,7 @@ public class AdaptDslGenerator extends AbstractGenerator {
   public CharSequence compile(final NumberCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    String _fact = cond.getFact();
+    Fact _fact = cond.getFact();
     _builder.append(_fact);
     _builder.append("\" ");
     {

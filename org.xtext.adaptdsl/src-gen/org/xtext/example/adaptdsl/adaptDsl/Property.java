@@ -3,6 +3,8 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -27,30 +29,20 @@ import org.eclipse.emf.ecore.EObject;
 public interface Property extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Property Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Property Name</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.PropertyName}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Property Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Property Name</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Property Name</em>' attribute.
-   * @see #setPropertyName(String)
+   * @return the value of the '<em>Property Name</em>' containment reference list.
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getProperty_PropertyName()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getPropertyName();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Property#getPropertyName <em>Property Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Property Name</em>' attribute.
-   * @see #getPropertyName()
-   * @generated
-   */
-  void setPropertyName(String value);
+  EList<PropertyName> getPropertyName();
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
