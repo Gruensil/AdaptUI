@@ -26,7 +26,6 @@ import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactType <em>Fact Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getFactName <em>Fact Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationRuleImpl#getExpr <em>Expr</em>}</li>
@@ -56,26 +55,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLevel()
-   * @generated
-   * @ordered
-   */
-  protected static final int LEVEL_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLevel()
-   * @generated
-   * @ordered
-   */
-  protected int level = LEVEL_EDEFAULT;
 
   /**
    * The default value of the '{@link #getFactType() <em>Fact Type</em>}' attribute.
@@ -179,29 +158,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getLevel()
-  {
-    return level;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLevel(int newLevel)
-  {
-    int oldLevel = level;
-    level = newLevel;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.ADAPTATION_RULE__LEVEL, oldLevel, level));
   }
 
   /**
@@ -376,8 +332,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     {
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return getName();
-      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
-        return getLevel();
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return getFactType();
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
@@ -402,9 +356,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     {
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName((String)newValue);
-        return;
-      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
-        setLevel((Integer)newValue);
         return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType((String)newValue);
@@ -435,9 +386,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
-        setLevel(LEVEL_EDEFAULT);
-        return;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         setFactType(FACT_TYPE_EDEFAULT);
         return;
@@ -466,8 +414,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     {
       case AdaptDslPackage.ADAPTATION_RULE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AdaptDslPackage.ADAPTATION_RULE__LEVEL:
-        return level != LEVEL_EDEFAULT;
       case AdaptDslPackage.ADAPTATION_RULE__FACT_TYPE:
         return FACT_TYPE_EDEFAULT == null ? factType != null : !FACT_TYPE_EDEFAULT.equals(factType);
       case AdaptDslPackage.ADAPTATION_RULE__FACT_NAME:
@@ -493,8 +439,6 @@ public class AdaptationRuleImpl extends MinimalEObjectImpl.Container implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", level: ");
-    result.append(level);
     result.append(", factType: ");
     result.append(factType);
     result.append(", factName: ");

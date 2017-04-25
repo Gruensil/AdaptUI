@@ -112,11 +112,10 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
 					put(grammarAccess.getFunctionAccess().getIdAssignment_3(), "rule__Function__IdAssignment_3");
 					put(grammarAccess.getAdaptationRuleAccess().getNameAssignment_1(), "rule__AdaptationRule__NameAssignment_1");
-					put(grammarAccess.getAdaptationRuleAccess().getLevelAssignment_4(), "rule__AdaptationRule__LevelAssignment_4");
-					put(grammarAccess.getAdaptationRuleAccess().getFactTypeAssignment_7(), "rule__AdaptationRule__FactTypeAssignment_7");
-					put(grammarAccess.getAdaptationRuleAccess().getFactNameAssignment_8(), "rule__AdaptationRule__FactNameAssignment_8");
-					put(grammarAccess.getAdaptationRuleAccess().getExprAssignment_12(), "rule__AdaptationRule__ExprAssignment_12");
-					put(grammarAccess.getAdaptationRuleAccess().getActionCollectionAssignment_16(), "rule__AdaptationRule__ActionCollectionAssignment_16");
+					put(grammarAccess.getAdaptationRuleAccess().getFactTypeAssignment_4(), "rule__AdaptationRule__FactTypeAssignment_4");
+					put(grammarAccess.getAdaptationRuleAccess().getFactNameAssignment_5(), "rule__AdaptationRule__FactNameAssignment_5");
+					put(grammarAccess.getAdaptationRuleAccess().getExprAssignment_9(), "rule__AdaptationRule__ExprAssignment_9");
+					put(grammarAccess.getAdaptationRuleAccess().getActionCollectionAssignment_13(), "rule__AdaptationRule__ActionCollectionAssignment_13");
 					put(grammarAccess.getConditionalORAccess().getLeftAssignment_0(), "rule__ConditionalOR__LeftAssignment_0");
 					put(grammarAccess.getConditionalORAccess().getRightAssignment_1_1(), "rule__ConditionalOR__RightAssignment_1_1");
 					put(grammarAccess.getConditionalANDAccess().getLeftAssignment_0(), "rule__ConditionalAND__LeftAssignment_0");

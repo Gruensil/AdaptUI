@@ -381,22 +381,13 @@ public interface AdaptDslPackage extends EPackage
   int ADAPTATION_RULE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Level</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADAPTATION_RULE__LEVEL = 1;
-
-  /**
    * The feature id for the '<em><b>Fact Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__FACT_TYPE = 2;
+  int ADAPTATION_RULE__FACT_TYPE = 1;
 
   /**
    * The feature id for the '<em><b>Fact Name</b></em>' attribute.
@@ -405,7 +396,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__FACT_NAME = 3;
+  int ADAPTATION_RULE__FACT_NAME = 2;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -414,7 +405,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__EXPR = 4;
+  int ADAPTATION_RULE__EXPR = 3;
 
   /**
    * The feature id for the '<em><b>Action Collection</b></em>' containment reference.
@@ -423,7 +414,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE__ACTION_COLLECTION = 5;
+  int ADAPTATION_RULE__ACTION_COLLECTION = 4;
 
   /**
    * The number of structural features of the '<em>Adaptation Rule</em>' class.
@@ -432,7 +423,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADAPTATION_RULE_FEATURE_COUNT = 6;
+  int ADAPTATION_RULE_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.ConditionalOrExpressionImpl <em>Conditional Or Expression</em>}' class.
@@ -2116,17 +2107,6 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getAdaptationRule_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Level</em>'.
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel()
-   * @see #getAdaptationRule()
-   * @generated
-   */
-  EAttribute getAdaptationRule_Level();
-
-  /**
    * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactType <em>Fact Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3603,14 +3583,6 @@ public interface AdaptDslPackage extends EPackage
      * @generated
      */
     EAttribute ADAPTATION_RULE__NAME = eINSTANCE.getAdaptationRule_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ADAPTATION_RULE__LEVEL = eINSTANCE.getAdaptationRule_Level();
 
     /**
      * The meta object literal for the '<em><b>Fact Type</b></em>' attribute feature.

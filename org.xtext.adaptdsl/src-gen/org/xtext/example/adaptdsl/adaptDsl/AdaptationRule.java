@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactType <em>Fact Type</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getFactName <em>Fact Name</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getExpr <em>Expr</em>}</li>
@@ -53,32 +52,6 @@ public interface AdaptationRule extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Level</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Level</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Level</em>' attribute.
-   * @see #setLevel(int)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getAdaptationRule_Level()
-   * @model
-   * @generated
-   */
-  int getLevel();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.AdaptationRule#getLevel <em>Level</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Level</em>' attribute.
-   * @see #getLevel()
-   * @generated
-   */
-  void setLevel(int value);
 
   /**
    * Returns the value of the '<em><b>Fact Type</b></em>' attribute.

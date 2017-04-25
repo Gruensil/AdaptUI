@@ -743,7 +743,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptationRule_Level()
+  public EAttribute getAdaptationRule_FactType()
   {
     return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(1);
   }
@@ -753,7 +753,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptationRule_FactType()
+  public EAttribute getAdaptationRule_FactName()
   {
     return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(2);
   }
@@ -763,19 +763,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAdaptationRule_FactName()
-  {
-    return (EAttribute)adaptationRuleEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getAdaptationRule_Expr()
   {
-    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(4);
+    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -785,7 +775,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    */
   public EReference getAdaptationRule_ActionCollection()
   {
-    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(5);
+    return (EReference)adaptationRuleEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1953,7 +1943,6 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     adaptationRuleEClass = createEClass(ADAPTATION_RULE);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__NAME);
-    createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__LEVEL);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_TYPE);
     createEAttribute(adaptationRuleEClass, ADAPTATION_RULE__FACT_NAME);
     createEReference(adaptationRuleEClass, ADAPTATION_RULE__EXPR);
@@ -2175,7 +2164,6 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
 
     initEClass(adaptationRuleEClass, AdaptationRule.class, "AdaptationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdaptationRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdaptationRule_Level(), ecorePackage.getEInt(), "level", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAdaptationRule_FactType(), ecorePackage.getEString(), "factType", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAdaptationRule_FactName(), ecorePackage.getEString(), "factName", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAdaptationRule_Expr(), this.getConditionalOrExpression(), null, "expr", null, 0, 1, AdaptationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

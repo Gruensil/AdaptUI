@@ -41,7 +41,6 @@
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//AdaptationRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/level"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//AdaptationRule/factName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//AdaptationRule/expr"/>

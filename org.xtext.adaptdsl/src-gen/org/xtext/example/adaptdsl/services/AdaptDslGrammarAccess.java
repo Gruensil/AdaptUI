@@ -380,32 +380,28 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLEVELKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cLevelAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cLevelINTTerminalRuleCall_4_0 = (RuleCall)cLevelAssignment_4.eContents().get(0);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cFACTKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cFactTypeAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cFactTypeIDTerminalRuleCall_7_0 = (RuleCall)cFactTypeAssignment_7.eContents().get(0);
-		private final Assignment cFactNameAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cFactNameIDTerminalRuleCall_8_0 = (RuleCall)cFactNameAssignment_8.eContents().get(0);
-		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cIFKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Keyword cLeftParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cExprAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cExprConditionalORParserRuleCall_12_0 = (RuleCall)cExprAssignment_12.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Keyword cTHENKeyword_14 = (Keyword)cGroup.eContents().get(14);
-		private final Keyword cLeftParenthesisKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Assignment cActionCollectionAssignment_16 = (Assignment)cGroup.eContents().get(16);
-		private final RuleCall cActionCollectionActionsParserRuleCall_16_0 = (RuleCall)cActionCollectionAssignment_16.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_17 = (Keyword)cGroup.eContents().get(17);
-		private final Keyword cSemicolonKeyword_18 = (Keyword)cGroup.eContents().get(18);
-		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Keyword cFACTKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cFactTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cFactTypeIDTerminalRuleCall_4_0 = (RuleCall)cFactTypeAssignment_4.eContents().get(0);
+		private final Assignment cFactNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFactNameIDTerminalRuleCall_5_0 = (RuleCall)cFactNameAssignment_5.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cIFKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cExprAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cExprConditionalORParserRuleCall_9_0 = (RuleCall)cExprAssignment_9.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cTHENKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cLeftParenthesisKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cActionCollectionAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cActionCollectionActionsParserRuleCall_13_0 = (RuleCall)cActionCollectionAssignment_13.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cSemicolonKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Keyword cRightCurlyBracketKeyword_16 = (Keyword)cGroup.eContents().get(16);
 		
 		//AdaptationRule:
 		//	'rule' name=STRING '{'
-		//	'LEVEL' level=INT ';'
+		//	// 	'LEVEL' level=INT ';'
 		//	'FACT' factType=ID factName=ID ';'
 		//	'IF' '(' expr=ConditionalOR ')'
 		//	'THEN' '('
@@ -413,8 +409,8 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	')' ';' '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'rule' name=STRING '{' 'LEVEL' level=INT ';' 'FACT' factType=ID factName=ID ';' 'IF' '(' expr=ConditionalOR ')' 'THEN'
-		//'(' actionCollection=Actions ')' ';' '}'
+		//'rule' name=STRING '{' // 	'LEVEL' level=INT ';'
+		//'FACT' factType=ID factName=ID ';' 'IF' '(' expr=ConditionalOR ')' 'THEN' '(' actionCollection=Actions ')' ';' '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'rule'
@@ -429,71 +425,60 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//'LEVEL'
-		public Keyword getLEVELKeyword_3() { return cLEVELKeyword_3; }
-		
-		//level=INT
-		public Assignment getLevelAssignment_4() { return cLevelAssignment_4; }
-		
-		//INT
-		public RuleCall getLevelINTTerminalRuleCall_4_0() { return cLevelINTTerminalRuleCall_4_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
-		
+		//// 	'LEVEL' level=INT ';'
 		//'FACT'
-		public Keyword getFACTKeyword_6() { return cFACTKeyword_6; }
+		public Keyword getFACTKeyword_3() { return cFACTKeyword_3; }
 		
 		//factType=ID
-		public Assignment getFactTypeAssignment_7() { return cFactTypeAssignment_7; }
+		public Assignment getFactTypeAssignment_4() { return cFactTypeAssignment_4; }
 		
 		//ID
-		public RuleCall getFactTypeIDTerminalRuleCall_7_0() { return cFactTypeIDTerminalRuleCall_7_0; }
+		public RuleCall getFactTypeIDTerminalRuleCall_4_0() { return cFactTypeIDTerminalRuleCall_4_0; }
 		
 		//factName=ID
-		public Assignment getFactNameAssignment_8() { return cFactNameAssignment_8; }
+		public Assignment getFactNameAssignment_5() { return cFactNameAssignment_5; }
 		
 		//ID
-		public RuleCall getFactNameIDTerminalRuleCall_8_0() { return cFactNameIDTerminalRuleCall_8_0; }
+		public RuleCall getFactNameIDTerminalRuleCall_5_0() { return cFactNameIDTerminalRuleCall_5_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 		
 		//'IF'
-		public Keyword getIFKeyword_10() { return cIFKeyword_10; }
+		public Keyword getIFKeyword_7() { return cIFKeyword_7; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_11() { return cLeftParenthesisKeyword_11; }
+		public Keyword getLeftParenthesisKeyword_8() { return cLeftParenthesisKeyword_8; }
 		
 		//expr=ConditionalOR
-		public Assignment getExprAssignment_12() { return cExprAssignment_12; }
+		public Assignment getExprAssignment_9() { return cExprAssignment_9; }
 		
 		//ConditionalOR
-		public RuleCall getExprConditionalORParserRuleCall_12_0() { return cExprConditionalORParserRuleCall_12_0; }
+		public RuleCall getExprConditionalORParserRuleCall_9_0() { return cExprConditionalORParserRuleCall_9_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_13() { return cRightParenthesisKeyword_13; }
+		public Keyword getRightParenthesisKeyword_10() { return cRightParenthesisKeyword_10; }
 		
 		//'THEN'
-		public Keyword getTHENKeyword_14() { return cTHENKeyword_14; }
+		public Keyword getTHENKeyword_11() { return cTHENKeyword_11; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_15() { return cLeftParenthesisKeyword_15; }
+		public Keyword getLeftParenthesisKeyword_12() { return cLeftParenthesisKeyword_12; }
 		
 		//actionCollection=Actions
-		public Assignment getActionCollectionAssignment_16() { return cActionCollectionAssignment_16; }
+		public Assignment getActionCollectionAssignment_13() { return cActionCollectionAssignment_13; }
 		
 		//Actions
-		public RuleCall getActionCollectionActionsParserRuleCall_16_0() { return cActionCollectionActionsParserRuleCall_16_0; }
+		public RuleCall getActionCollectionActionsParserRuleCall_13_0() { return cActionCollectionActionsParserRuleCall_13_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_17() { return cRightParenthesisKeyword_17; }
+		public Keyword getRightParenthesisKeyword_14() { return cRightParenthesisKeyword_14; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_18() { return cSemicolonKeyword_18; }
+		public Keyword getSemicolonKeyword_15() { return cSemicolonKeyword_15; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_19() { return cRightCurlyBracketKeyword_19; }
+		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
 	}
 	public class ConditionalORElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.ConditionalOR");
@@ -735,15 +720,15 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Fact: //ID('()')?('.'ID('()')?)*
-		//	'm' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
+		//	'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
 		@Override public ParserRule getRule() { return rule; }
 		
 		////ID('()')?('.'ID('()')?)*
-		//'m' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()'
+		//'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()'
 		public Group getGroup() { return cGroup; }
 		
 		////ID('()')?('.'ID('()')?)*
-		//'m'
+		//'M'
 		public Keyword getMKeyword_0() { return cMKeyword_0; }
 		
 		//'.get'
@@ -2635,7 +2620,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//AdaptationRule:
 	//	'rule' name=STRING '{'
-	//	'LEVEL' level=INT ';'
+	//	// 	'LEVEL' level=INT ';'
 	//	'FACT' factType=ID factName=ID ';'
 	//	'IF' '(' expr=ConditionalOR ')'
 	//	'THEN' '('
@@ -2712,7 +2697,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Fact: //ID('()')?('.'ID('()')?)*
-	//	'm' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
+	//	'M' '.get' entity=[Entity] '()' '.get' propertyName=[Property] '()';
 	public FactElements getFactAccess() {
 		return pFact;
 	}

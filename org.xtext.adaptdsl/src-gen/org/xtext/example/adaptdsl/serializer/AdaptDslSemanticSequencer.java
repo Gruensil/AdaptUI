@@ -308,21 +308,12 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     AdaptationRule returns AdaptationRule
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=STRING 
-	 *         level=INT 
-	 *         factType=ID 
-	 *         factName=ID 
-	 *         expr=ConditionalOR 
-	 *         actionCollection=Actions
-	 *     )
+	 *     (name=STRING factType=ID factName=ID expr=ConditionalOR actionCollection=Actions)
 	 */
 	protected void sequence_AdaptationRule(ISerializationContext context, AdaptationRule semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__NAME));
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__LEVEL));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_TYPE));
 			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ADAPTATION_RULE__FACT_NAME) == ValueTransient.YES)
@@ -334,11 +325,10 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAdaptationRuleAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getLevelINTTerminalRuleCall_4_0(), semanticObject.getLevel());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_7_0(), semanticObject.getFactType());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactNameIDTerminalRuleCall_8_0(), semanticObject.getFactName());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_12_0(), semanticObject.getExpr());
-		feeder.accept(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_16_0(), semanticObject.getActionCollection());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactTypeIDTerminalRuleCall_4_0(), semanticObject.getFactType());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getFactNameIDTerminalRuleCall_5_0(), semanticObject.getFactName());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getExprConditionalORParserRuleCall_9_0(), semanticObject.getExpr());
+		feeder.accept(grammarAccess.getAdaptationRuleAccess().getActionCollectionActionsParserRuleCall_13_0(), semanticObject.getActionCollection());
 		feeder.finish();
 	}
 	
