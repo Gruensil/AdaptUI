@@ -12,7 +12,6 @@
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//ContextModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ContextModel/entity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ContextModel/property"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ContextModel/provider"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//ContextModel/types"/>
     </genClasses>
@@ -76,7 +75,7 @@
     <genClasses ecoreClass="AdaptDsl.ecore#//Fact">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/factName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/entity"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Fact/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Fact/propertyName"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//FactName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//FactName/name"/>
@@ -163,6 +162,7 @@
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Entity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Entity/property"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//Property/name"/>
@@ -191,7 +191,7 @@
     <genClasses ecoreClass="AdaptDsl.ecore#//TYPE">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/string"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/number"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/bool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//TYPE/boolean"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//TYPE/deftype"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//UpdateType">

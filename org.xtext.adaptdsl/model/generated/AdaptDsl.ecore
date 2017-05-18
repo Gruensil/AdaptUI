@@ -11,8 +11,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="ContextModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" upperBound="-1"
         eType="#//Entity" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
-        eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" upperBound="-1"
         eType="#//Provider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" eType="#//DefTypes"
@@ -93,7 +91,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Fact">
     <eStructuralFeatures xsi:type="ecore:EReference" name="factName" eType="#//FactName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FactName">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -186,6 +184,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -219,7 +219,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TYPE">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="string" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bool" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolean" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deftype" eType="#//DefType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateType">

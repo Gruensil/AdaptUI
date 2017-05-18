@@ -23,7 +23,6 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.ContextModel;
 import org.xtext.example.adaptdsl.adaptDsl.DefTypes;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
-import org.xtext.example.adaptdsl.adaptDsl.Property;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 
 /**
@@ -35,7 +34,6 @@ import org.xtext.example.adaptdsl.adaptDsl.Provider;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ContextModelImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ContextModelImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ContextModelImpl#getProvider <em>Provider</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.ContextModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
@@ -53,16 +51,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
    * @ordered
    */
   protected EList<Entity> entity;
-
-  /**
-   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProperty()
-   * @generated
-   * @ordered
-   */
-  protected EList<Property> property;
 
   /**
    * The cached value of the '{@link #getProvider() <em>Provider</em>}' containment reference list.
@@ -117,20 +105,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       entity = new EObjectContainmentEList<Entity>(Entity.class, this, AdaptDslPackage.CONTEXT_MODEL__ENTITY);
     }
     return entity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Property> getProperty()
-  {
-    if (property == null)
-    {
-      property = new EObjectContainmentEList<Property>(Property.class, this, AdaptDslPackage.CONTEXT_MODEL__PROPERTY);
-    }
-    return property;
   }
 
   /**
@@ -207,8 +181,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case AdaptDslPackage.CONTEXT_MODEL__ENTITY:
         return ((InternalEList<?>)getEntity()).basicRemove(otherEnd, msgs);
-      case AdaptDslPackage.CONTEXT_MODEL__PROPERTY:
-        return ((InternalEList<?>)getProperty()).basicRemove(otherEnd, msgs);
       case AdaptDslPackage.CONTEXT_MODEL__PROVIDER:
         return ((InternalEList<?>)getProvider()).basicRemove(otherEnd, msgs);
       case AdaptDslPackage.CONTEXT_MODEL__TYPES:
@@ -229,8 +201,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case AdaptDslPackage.CONTEXT_MODEL__ENTITY:
         return getEntity();
-      case AdaptDslPackage.CONTEXT_MODEL__PROPERTY:
-        return getProperty();
       case AdaptDslPackage.CONTEXT_MODEL__PROVIDER:
         return getProvider();
       case AdaptDslPackage.CONTEXT_MODEL__TYPES:
@@ -253,10 +223,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       case AdaptDslPackage.CONTEXT_MODEL__ENTITY:
         getEntity().clear();
         getEntity().addAll((Collection<? extends Entity>)newValue);
-        return;
-      case AdaptDslPackage.CONTEXT_MODEL__PROPERTY:
-        getProperty().clear();
-        getProperty().addAll((Collection<? extends Property>)newValue);
         return;
       case AdaptDslPackage.CONTEXT_MODEL__PROVIDER:
         getProvider().clear();
@@ -282,9 +248,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
       case AdaptDslPackage.CONTEXT_MODEL__ENTITY:
         getEntity().clear();
         return;
-      case AdaptDslPackage.CONTEXT_MODEL__PROPERTY:
-        getProperty().clear();
-        return;
       case AdaptDslPackage.CONTEXT_MODEL__PROVIDER:
         getProvider().clear();
         return;
@@ -307,8 +270,6 @@ public class ContextModelImpl extends MinimalEObjectImpl.Container implements Co
     {
       case AdaptDslPackage.CONTEXT_MODEL__ENTITY:
         return entity != null && !entity.isEmpty();
-      case AdaptDslPackage.CONTEXT_MODEL__PROPERTY:
-        return property != null && !property.isEmpty();
       case AdaptDslPackage.CONTEXT_MODEL__PROVIDER:
         return provider != null && !provider.isEmpty();
       case AdaptDslPackage.CONTEXT_MODEL__TYPES:

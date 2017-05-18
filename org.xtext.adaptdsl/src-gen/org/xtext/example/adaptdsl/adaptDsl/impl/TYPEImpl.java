@@ -25,7 +25,7 @@ import org.xtext.example.adaptdsl.adaptDsl.TYPE;
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl#getString <em>String</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl#getBool <em>Bool</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl#getBoolean <em>Boolean</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.impl.TYPEImpl#getDeftype <em>Deftype</em>}</li>
  * </ul>
  *
@@ -74,24 +74,24 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
   protected String number = NUMBER_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * The default value of the '{@link #getBoolean() <em>Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBool()
+   * @see #getBoolean()
    * @generated
    * @ordered
    */
-  protected static final String BOOL_EDEFAULT = null;
+  protected static final String BOOLEAN_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
+   * The cached value of the '{@link #getBoolean() <em>Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBool()
+   * @see #getBoolean()
    * @generated
    * @ordered
    */
-  protected String bool = BOOL_EDEFAULT;
+  protected String boolean_ = BOOLEAN_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getDeftype() <em>Deftype</em>}' reference.
@@ -175,9 +175,9 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getBool()
+  public String getBoolean()
   {
-    return bool;
+    return boolean_;
   }
 
   /**
@@ -185,12 +185,12 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBool(String newBool)
+  public void setBoolean(String newBoolean)
   {
-    String oldBool = bool;
-    bool = newBool;
+    String oldBoolean = boolean_;
+    boolean_ = newBoolean;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.TYPE__BOOL, oldBool, bool));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.TYPE__BOOLEAN, oldBoolean, boolean_));
   }
 
   /**
@@ -250,8 +250,8 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
         return getString();
       case AdaptDslPackage.TYPE__NUMBER:
         return getNumber();
-      case AdaptDslPackage.TYPE__BOOL:
-        return getBool();
+      case AdaptDslPackage.TYPE__BOOLEAN:
+        return getBoolean();
       case AdaptDslPackage.TYPE__DEFTYPE:
         if (resolve) return getDeftype();
         return basicGetDeftype();
@@ -275,8 +275,8 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
       case AdaptDslPackage.TYPE__NUMBER:
         setNumber((String)newValue);
         return;
-      case AdaptDslPackage.TYPE__BOOL:
-        setBool((String)newValue);
+      case AdaptDslPackage.TYPE__BOOLEAN:
+        setBoolean((String)newValue);
         return;
       case AdaptDslPackage.TYPE__DEFTYPE:
         setDeftype((DefType)newValue);
@@ -301,8 +301,8 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
       case AdaptDslPackage.TYPE__NUMBER:
         setNumber(NUMBER_EDEFAULT);
         return;
-      case AdaptDslPackage.TYPE__BOOL:
-        setBool(BOOL_EDEFAULT);
+      case AdaptDslPackage.TYPE__BOOLEAN:
+        setBoolean(BOOLEAN_EDEFAULT);
         return;
       case AdaptDslPackage.TYPE__DEFTYPE:
         setDeftype((DefType)null);
@@ -325,8 +325,8 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
         return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
       case AdaptDslPackage.TYPE__NUMBER:
         return NUMBER_EDEFAULT == null ? number != null : !NUMBER_EDEFAULT.equals(number);
-      case AdaptDslPackage.TYPE__BOOL:
-        return BOOL_EDEFAULT == null ? bool != null : !BOOL_EDEFAULT.equals(bool);
+      case AdaptDslPackage.TYPE__BOOLEAN:
+        return BOOLEAN_EDEFAULT == null ? boolean_ != null : !BOOLEAN_EDEFAULT.equals(boolean_);
       case AdaptDslPackage.TYPE__DEFTYPE:
         return deftype != null;
     }
@@ -348,8 +348,8 @@ public class TYPEImpl extends MinimalEObjectImpl.Container implements TYPE
     result.append(string);
     result.append(", number: ");
     result.append(number);
-    result.append(", bool: ");
-    result.append(bool);
+    result.append(", boolean: ");
+    result.append(boolean_);
     result.append(')');
     return result.toString();
   }

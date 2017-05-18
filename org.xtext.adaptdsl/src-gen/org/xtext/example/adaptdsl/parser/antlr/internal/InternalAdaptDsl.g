@@ -139,56 +139,27 @@ ruleContextModel returns [EObject current=null]
 		}
 		(
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getContextModelAccess().getEntityEntityParserRuleCall_1_0_0());
+				{
+					newCompositeNode(grammarAccess.getContextModelAccess().getEntityEntityParserRuleCall_1_0());
+				}
+				lv_entity_1_0=ruleEntity
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getContextModelRule());
 					}
-					lv_entity_1_0=ruleEntity
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getContextModelRule());
-						}
-						add(
-							$current,
-							"entity",
-							lv_entity_1_0,
-							"org.xtext.example.adaptdsl.AdaptDsl.Entity");
-						afterParserOrEnumRuleCall();
-					}
-				)
+					add(
+						$current,
+						"entity",
+						lv_entity_1_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.Entity");
+					afterParserOrEnumRuleCall();
+				}
 			)
-			otherlv_2='{'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getContextModelAccess().getLeftCurlyBracketKeyword_1_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getContextModelAccess().getPropertyPropertyParserRuleCall_1_2_0());
-					}
-					lv_property_3_0=ruleProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getContextModelRule());
-						}
-						add(
-							$current,
-							"property",
-							lv_property_3_0,
-							"org.xtext.example.adaptdsl.AdaptDsl.Property");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)+
-			otherlv_4='};'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_1_3());
-			}
 		)+
 		(
-			otherlv_5='Services{'
+			otherlv_2='Providers{'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getContextModelAccess().getServicesKeyword_2_0());
+				newLeafNode(otherlv_2, grammarAccess.getContextModelAccess().getProvidersKeyword_2_0());
 			}
 			(
 				(
@@ -196,7 +167,7 @@ ruleContextModel returns [EObject current=null]
 						{
 							newCompositeNode(grammarAccess.getContextModelAccess().getProviderProviderParserRuleCall_2_1_0_0());
 						}
-						lv_provider_6_0=ruleProvider
+						lv_provider_3_0=ruleProvider
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getContextModelRule());
@@ -204,33 +175,33 @@ ruleContextModel returns [EObject current=null]
 							add(
 								$current,
 								"provider",
-								lv_provider_6_0,
+								lv_provider_3_0,
 								"org.xtext.example.adaptdsl.AdaptDsl.Provider");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_7=';'
+				otherlv_4=';'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getContextModelAccess().getSemicolonKeyword_2_1_1());
+					newLeafNode(otherlv_4, grammarAccess.getContextModelAccess().getSemicolonKeyword_2_1_1());
 				}
 			)*
-			otherlv_8='};'
+			otherlv_5='};'
 			{
-				newLeafNode(otherlv_8, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_2_2());
+				newLeafNode(otherlv_5, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_2_2());
 			}
 		)?
 		(
-			otherlv_9='Types{'
+			otherlv_6='DefTypes{'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getContextModelAccess().getTypesKeyword_3_0());
+				newLeafNode(otherlv_6, grammarAccess.getContextModelAccess().getDefTypesKeyword_3_0());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getContextModelAccess().getTypesDefTypesParserRuleCall_3_1_0());
 					}
-					lv_types_10_0=ruleDefTypes
+					lv_types_7_0=ruleDefTypes
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContextModelRule());
@@ -238,20 +209,20 @@ ruleContextModel returns [EObject current=null]
 						set(
 							$current,
 							"types",
-							lv_types_10_0,
+							lv_types_7_0,
 							"org.xtext.example.adaptdsl.AdaptDsl.DefTypes");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_11='};'
+			otherlv_8='};'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_3_2());
+				newLeafNode(otherlv_8, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_3_2());
 			}
 		)?
-		otherlv_12='};'
+		otherlv_9='};'
 		{
-			newLeafNode(otherlv_12, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_4());
+			newLeafNode(otherlv_9, grammarAccess.getContextModelAccess().getRightCurlyBracketSemicolonKeyword_4());
 		}
 	)
 ;
@@ -1337,14 +1308,19 @@ ruleFact returns [EObject current=null]
 		}
 		(
 			(
+				lv_propertyName_5_0=RULE_ID
+				{
+					newLeafNode(lv_propertyName_5_0, grammarAccess.getFactAccess().getPropertyNameIDTerminalRuleCall_5_0());
+				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getFactRule());
 					}
-				}
-				otherlv_5=RULE_ID
-				{
-					newLeafNode(otherlv_5, grammarAccess.getFactAccess().getPropertyNamePropertyCrossReference_5_0());
+					setWithLastConsumed(
+						$current,
+						"propertyName",
+						lv_propertyName_5_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -3725,6 +3701,33 @@ ruleEntity returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEntityAccess().getPropertyPropertyParserRuleCall_3_0());
+				}
+				lv_property_3_0=ruleProperty
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEntityRule());
+					}
+					add(
+						$current,
+						"property",
+						lv_property_3_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.Property");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_4='};'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getEntityAccess().getRightCurlyBracketSemicolonKeyword_4());
+		}
 	)
 ;
 
@@ -4142,15 +4145,15 @@ ruleTYPE returns [EObject current=null]
 		    |
 		(
 			(
-				lv_bool_2_0='bool'
+				lv_boolean_2_0='boolean'
 				{
-					newLeafNode(lv_bool_2_0, grammarAccess.getTYPEAccess().getBoolBoolKeyword_2_0());
+					newLeafNode(lv_boolean_2_0, grammarAccess.getTYPEAccess().getBooleanBooleanKeyword_2_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getTYPERule());
 					}
-					setWithLastConsumed($current, "bool", lv_bool_2_0, "bool");
+					setWithLastConsumed($current, "boolean", lv_boolean_2_0, "boolean");
 				}
 			)
 		)

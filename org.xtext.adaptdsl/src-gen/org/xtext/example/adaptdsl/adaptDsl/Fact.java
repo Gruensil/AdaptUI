@@ -78,29 +78,29 @@ public interface Fact extends EObject
   void setEntity(Entity value);
 
   /**
-   * Returns the value of the '<em><b>Property Name</b></em>' reference.
+   * Returns the value of the '<em><b>Property Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Property Name</em>' reference isn't clear,
+   * If the meaning of the '<em>Property Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Property Name</em>' reference.
-   * @see #setPropertyName(Property)
+   * @return the value of the '<em>Property Name</em>' attribute.
+   * @see #setPropertyName(String)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getFact_PropertyName()
    * @model
    * @generated
    */
-  Property getPropertyName();
+  String getPropertyName();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}' reference.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Property Name</em>' reference.
+   * @param value the new value of the '<em>Property Name</em>' attribute.
    * @see #getPropertyName()
    * @generated
    */
-  void setPropertyName(Property value);
+  void setPropertyName(String value);
 
 } // Fact

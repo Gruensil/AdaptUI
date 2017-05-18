@@ -29,9 +29,13 @@ import org.xtext.example.adaptdsl.adaptDsl.ClearNavOperation;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalAndExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalOrExpression;
 import org.xtext.example.adaptdsl.adaptDsl.ConditionalPrimary;
+import org.xtext.example.adaptdsl.adaptDsl.DefType;
+import org.xtext.example.adaptdsl.adaptDsl.DefTypes;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentOperation;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Entity;
+import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
@@ -39,6 +43,8 @@ import org.xtext.example.adaptdsl.adaptDsl.IntValue;
 import org.xtext.example.adaptdsl.adaptDsl.Model;
 import org.xtext.example.adaptdsl.adaptDsl.NumberCondition;
 import org.xtext.example.adaptdsl.adaptDsl.ParentOperation;
+import org.xtext.example.adaptdsl.adaptDsl.Property;
+import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.adaptDsl.RedirectNavLinkOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Service;
 import org.xtext.example.adaptdsl.adaptDsl.ServiceFunctionCallOperation;
@@ -46,12 +52,12 @@ import org.xtext.example.adaptdsl.adaptDsl.ServiceList;
 import org.xtext.example.adaptdsl.adaptDsl.SetDisplayPropertyOperation;
 import org.xtext.example.adaptdsl.adaptDsl.StringCondition;
 import org.xtext.example.adaptdsl.adaptDsl.StringValue;
+import org.xtext.example.adaptdsl.adaptDsl.TYPE;
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType;
 import org.xtext.example.adaptdsl.adaptDsl.impl.AddNavLinkOperationImpl;
 
 /**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
+ * Code is written here and then copied to AdaptDslGenerator.xtend without indentation
  */
 @SuppressWarnings("all")
 public class AdaptDslGenerator2 extends AbstractGenerator {
@@ -69,45 +75,263 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"ASCII\"?>");
     _builder.newLine();
-    _builder.append("<adaptModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
+    _builder.append("<adaptDSLModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<contextModel>");
     _builder.newLine();
     {
-      ServiceList _services = model.getAdaptationModel().getServices();
-      boolean _tripleNotEquals = (_services != null);
-      if (_tripleNotEquals) {
-        _builder.append("\t");
-        _builder.append("<services>");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        CharSequence _compile = this.compile(model.getAdaptationModel().getServices());
-        _builder.append(_compile, "\t\t");
+      EList<Entity> _entity = model.getContextModel().getEntity();
+      for(final Entity entity : _entity) {
+        _builder.append("\t\t\t");
+        CharSequence _compile = this.compile(entity);
+        _builder.append(_compile, "\t\t\t");
         _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EList<Provider> _provider = model.getContextModel().getProvider();
+      boolean _tripleNotEquals = (_provider != null);
+      if (_tripleNotEquals) {
+        _builder.append("\t\t\t");
+        _builder.append("<providers>");
+        _builder.newLine();
+        {
+          EList<Provider> _provider_1 = model.getContextModel().getProvider();
+          for(final Provider prov : _provider_1) {
+            _builder.append("\t\t\t");
+            _builder.append("\t");
+            CharSequence _compile_1 = this.compile(prov);
+            _builder.append(_compile_1, "\t\t\t\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t\t");
+        _builder.append("</providers>");
+        _builder.newLine();
+      }
+    }
+    {
+      DefTypes _types = model.getContextModel().getTypes();
+      boolean _tripleNotEquals_1 = (_types != null);
+      if (_tripleNotEquals_1) {
+        _builder.append("\t\t\t");
+        _builder.append("<defTypes>");
+        _builder.newLine();
+        _builder.append("\t\t\t");
         _builder.append("\t");
-        _builder.append("</services>");
+        CharSequence _compile_2 = this.compile(model.getContextModel().getTypes());
+        _builder.append(_compile_2, "\t\t\t\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
+        _builder.append("</defTypes>");
         _builder.newLine();
       }
     }
     _builder.append("\t");
+    _builder.append("</contextModel>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<adaptationModel>\t\t");
+    _builder.newLine();
+    {
+      ServiceList _services = model.getAdaptationModel().getServices();
+      boolean _tripleNotEquals_2 = (_services != null);
+      if (_tripleNotEquals_2) {
+        _builder.append("\t\t");
+        _builder.append("<services>");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("\t");
+        CharSequence _compile_3 = this.compile(model.getAdaptationModel().getServices());
+        _builder.append(_compile_3, "\t\t\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("</services>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
     _builder.append("<flow name=\"");
     String _flowName = model.getAdaptationModel().getFlowName();
-    _builder.append(_flowName, "\t");
+    _builder.append(_flowName, "\t\t");
     _builder.append("\">");
     _builder.newLineIfNotEmpty();
     {
       EList<AdaptationRule> _adaptationRules = model.getAdaptationModel().getAdaptationRules();
       for(final AdaptationRule rule : _adaptationRules) {
-        _builder.append("\t\t");
-        CharSequence _compile_1 = this.compile(rule);
-        _builder.append(_compile_1, "\t\t");
+        _builder.append("\t\t\t");
+        CharSequence _compile_4 = this.compile(rule);
+        _builder.append(_compile_4, "\t\t\t");
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("\t");
+    _builder.append("\t\t");
     _builder.append("</flow>");
     _builder.newLine();
-    _builder.append("</adaptModel>");
+    _builder.append("\t");
+    _builder.append("</adaptationModel>");
     _builder.newLine();
+    _builder.append("</adaptDSLModel>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final Entity entity) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<entity name=\"");
+    String _name = entity.getName();
+    _builder.append(_name);
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Property> _property = entity.getProperty();
+      for(final Property prop : _property) {
+        _builder.append("\t");
+        CharSequence _compile = this.compile(prop);
+        _builder.append(_compile, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("</entity>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final Property prop) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<property name=\"");
+    String _name = prop.getName();
+    _builder.append(_name);
+    _builder.append("\" type=\"");
+    String _type = this.getType(prop.getType());
+    _builder.append(_type);
+    _builder.append("\" provider=\"");
+    String _name_1 = prop.getProvider().getName();
+    _builder.append(_name_1);
+    _builder.append("\" update=\"");
+    String _updateType = this.getUpdateType(prop.getUpdate());
+    _builder.append(_updateType);
+    _builder.append("\"/>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public String getType(final TYPE type) {
+    String _string = type.getString();
+    boolean _tripleNotEquals = (_string != null);
+    if (_tripleNotEquals) {
+      return type.getString();
+    } else {
+      String _number = type.getNumber();
+      boolean _tripleNotEquals_1 = (_number != null);
+      if (_tripleNotEquals_1) {
+        return type.getNumber();
+      } else {
+        String _boolean = type.getBoolean();
+        boolean _tripleNotEquals_2 = (_boolean != null);
+        if (_tripleNotEquals_2) {
+          return type.getBoolean();
+        } else {
+          return type.getDeftype().getName();
+        }
+      }
+    }
+  }
+  
+  public String getUpdateType(final UpdateType update) {
+    String _event = update.getEvent();
+    boolean _tripleNotEquals = (_event != null);
+    if (_tripleNotEquals) {
+      return update.getEvent();
+    } else {
+      String _slow = update.getSlow();
+      boolean _tripleNotEquals_1 = (_slow != null);
+      if (_tripleNotEquals_1) {
+        return update.getSlow();
+      } else {
+        return update.getFast();
+      }
+    }
+  }
+  
+  public CharSequence compile(final Provider prov) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<provider name=\"");
+    String _name = prov.getName();
+    _builder.append(_name);
+    _builder.append("\"/>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence compile(final DefTypes dtypes) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      DefType _this = dtypes.getThis();
+      boolean _tripleNotEquals = (_this != null);
+      if (_tripleNotEquals) {
+        CharSequence _compile = this.compile(dtypes.getThis());
+        _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      DefTypes _next = dtypes.getNext();
+      boolean _tripleNotEquals_1 = (_next != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_1 = this.compile(dtypes.getNext());
+        _builder.append(_compile_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence compile(final DefType dtype) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<defType name=\"");
+    String _name = dtype.getName();
+    _builder.append(_name);
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    {
+      Enums _enums = dtype.getEnums();
+      boolean _tripleNotEquals = (_enums != null);
+      if (_tripleNotEquals) {
+        _builder.append("\t");
+        CharSequence _compile = this.compile(dtype.getEnums());
+        _builder.append(_compile, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("</defType>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compile(final Enums enus) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      org.xtext.example.adaptdsl.adaptDsl.Enum _this = enus.getThis();
+      boolean _tripleNotEquals = (_this != null);
+      if (_tripleNotEquals) {
+        _builder.append("<enum name=\"");
+        String _name = enus.getThis().getName();
+        _builder.append(_name);
+        _builder.append("\"/>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Enums _next = enus.getNext();
+      boolean _tripleNotEquals_1 = (_next != null);
+      if (_tripleNotEquals_1) {
+        Object _compile = this.compile(enus.getNext());
+        _builder.append(_compile);
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder;
   }
   
@@ -490,39 +714,29 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   public CharSequence compile(final ConditionalOrExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      ConditionalAndExpression _left = expr.getLeft();
-      boolean _tripleNotEquals = (_left != null);
-      if (_tripleNotEquals) {
-        {
-          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
-            _builder.append("<conditionGroup>");
-            _builder.newLine();
-            _builder.append("\t");
-            CharSequence _compile = this.compile(expr.getLeft());
-            _builder.append(_compile, "\t");
-            _builder.newLineIfNotEmpty();
-            _builder.append("</conditionGroup>");
-            _builder.newLine();
-          }
-        }
-        {
-          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
-            CharSequence _compile_1 = this.compile(expr.getLeft().getLeft());
-            _builder.append(_compile_1);
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    {
-      ConditionalOrExpression _right = expr.getRight();
-      boolean _tripleNotEquals_1 = (_right != null);
-      if (_tripleNotEquals_1) {
-        Object _compile_2 = this.compile(expr.getRight());
+      if (((expr.getLeft() != null) && (expr.getRight() != null))) {
+        _builder.append("<conditionGroup>");
+        _builder.newLine();
+        _builder.append("\t");
+        CharSequence _compile = this.compile(expr.getLeft());
+        _builder.append(_compile, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        Object _compile_1 = this.compile(expr.getRight());
+        _builder.append(_compile_1, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("</conditionGroup>");
+        _builder.newLine();
+      } else {
+        CharSequence _compile_2 = this.compile(expr.getLeft());
         _builder.append(_compile_2);
+        _builder.append("\t\t\t");
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.newLine();
     return _builder;
   }
   
@@ -585,8 +799,8 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   public CharSequence compile(final BooleanCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    Fact _fact = cond.getFact();
-    _builder.append(_fact);
+    CharSequence _compile = this.compile(cond.getFact());
+    _builder.append(_compile);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
@@ -616,8 +830,8 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   public CharSequence compile(final StringCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    Fact _fact = cond.getFact();
-    _builder.append(_fact);
+    CharSequence _compile = this.compile(cond.getFact());
+    _builder.append(_compile);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
@@ -647,8 +861,8 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   public CharSequence compile(final NumberCondition cond) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<condition fact=\"");
-    Fact _fact = cond.getFact();
-    _builder.append(_fact);
+    CharSequence _compile = this.compile(cond.getFact());
+    _builder.append(_compile);
     _builder.append("\" ");
     {
       String _op = cond.getOp();
@@ -664,6 +878,21 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
     int _val = cond.getVal();
     _builder.append(_val);
     _builder.append("\" type=\"number\"/>");
+    return _builder;
+  }
+  
+  public CharSequence compile(final Fact fact) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = fact.getFactName().getName();
+    _builder.append(_name);
+    _builder.append(".get");
+    String _name_1 = fact.getEntity().getName();
+    _builder.append(_name_1);
+    _builder.append("().get");
+    String _propertyName = fact.getPropertyName();
+    _builder.append(_propertyName);
+    _builder.append("()");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   

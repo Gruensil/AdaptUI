@@ -574,7 +574,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     ContextModel returns ContextModel
 	 *
 	 * Constraint:
-	 *     ((entity+=Entity property+=Property+)+ provider+=Provider* types=DefTypes?)
+	 *     (entity+=Entity+ provider+=Provider* types=DefTypes?)
 	 */
 	protected void sequence_ContextModel(ISerializationContext context, ContextModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -697,16 +697,10 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Entity returns Entity
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID property+=Property+)
 	 */
 	protected void sequence_Entity(ISerializationContext context, Entity semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.ENTITY__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.ENTITY__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -763,7 +757,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Fact returns Fact
 	 *
 	 * Constraint:
-	 *     (factName=[FactName|ID] entity=[Entity|ID] propertyName=[Property|ID])
+	 *     (factName=[FactName|ID] entity=[Entity|ID] propertyName=ID)
 	 */
 	protected void sequence_Fact(ISerializationContext context, Fact semanticObject) {
 		if (errorAcceptor != null) {
@@ -777,7 +771,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFactAccess().getFactNameFactNameIDTerminalRuleCall_0_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__FACT_NAME, false));
 		feeder.accept(grammarAccess.getFactAccess().getEntityEntityIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__ENTITY, false));
-		feeder.accept(grammarAccess.getFactAccess().getPropertyNamePropertyIDTerminalRuleCall_5_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT__PROPERTY_NAME, false));
+		feeder.accept(grammarAccess.getFactAccess().getPropertyNameIDTerminalRuleCall_5_0(), semanticObject.getPropertyName());
 		feeder.finish();
 	}
 	
@@ -1114,7 +1108,7 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     TYPE returns TYPE
 	 *
 	 * Constraint:
-	 *     (string='string' | number='number' | bool='bool' | deftype=[DefType|ID])
+	 *     (string='string' | number='number' | boolean='boolean' | deftype=[DefType|ID])
 	 */
 	protected void sequence_TYPE(ISerializationContext context, TYPE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

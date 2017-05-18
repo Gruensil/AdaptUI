@@ -14,7 +14,6 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.DefType;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
-import org.xtext.example.adaptdsl.adaptDsl.Property;
 import org.xtext.example.adaptdsl.adaptDsl.Provider;
 import org.xtext.example.adaptdsl.scoping.AbstractAdaptDslScopeProvider;
 
@@ -47,12 +46,6 @@ public class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
             final EObject rootElement_3 = EcoreUtil2.getRootContainer(context);
             final List<Entity> candidates_3 = EcoreUtil2.<Entity>getAllContentsOfType(rootElement_3, Entity.class);
             return Scopes.scopeFor(candidates_3);
-          } else {
-            if (((context instanceof Property) && Objects.equal(reference, AdaptDslPackage.Literals.FACT__PROPERTY_NAME))) {
-              final EObject rootElement_4 = EcoreUtil2.getRootContainer(context);
-              final List<Property> candidates_4 = EcoreUtil2.<Property>getAllContentsOfType(rootElement_4, Property.class);
-              return Scopes.scopeFor(candidates_4);
-            }
           }
         }
       }

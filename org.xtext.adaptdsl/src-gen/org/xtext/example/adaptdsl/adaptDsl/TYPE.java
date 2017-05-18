@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getString <em>String</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getNumber <em>Number</em>}</li>
- *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBoolean <em>Boolean</em>}</li>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype <em>Deftype</em>}</li>
  * </ul>
  *
@@ -79,30 +79,30 @@ public interface TYPE extends EObject
   void setNumber(String value);
 
   /**
-   * Returns the value of the '<em><b>Bool</b></em>' attribute.
+   * Returns the value of the '<em><b>Boolean</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Bool</em>' attribute isn't clear,
+   * If the meaning of the '<em>Boolean</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Bool</em>' attribute.
-   * @see #setBool(String)
-   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_Bool()
+   * @return the value of the '<em>Boolean</em>' attribute.
+   * @see #setBoolean(String)
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getTYPE_Boolean()
    * @model
    * @generated
    */
-  String getBool();
+  String getBoolean();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBoolean <em>Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Bool</em>' attribute.
-   * @see #getBool()
+   * @param value the new value of the '<em>Boolean</em>' attribute.
+   * @see #getBoolean()
    * @generated
    */
-  void setBool(String value);
+  void setBoolean(String value);
 
   /**
    * Returns the value of the '<em><b>Deftype</b></em>' reference.

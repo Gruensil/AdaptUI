@@ -15,7 +15,6 @@ import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
-import org.xtext.example.adaptdsl.adaptDsl.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,14 +54,24 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
   protected Entity entity;
 
   /**
-   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' reference.
+   * The default value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPropertyName()
    * @generated
    * @ordered
    */
-  protected Property propertyName;
+  protected static final String PROPERTY_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPropertyName()
+   * @generated
+   * @ordered
+   */
+  protected String propertyName = PROPERTY_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -176,27 +185,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property getPropertyName()
-  {
-    if (propertyName != null && propertyName.eIsProxy())
-    {
-      InternalEObject oldPropertyName = (InternalEObject)propertyName;
-      propertyName = (Property)eResolveProxy(oldPropertyName);
-      if (propertyName != oldPropertyName)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdaptDslPackage.FACT__PROPERTY_NAME, oldPropertyName, propertyName));
-      }
-    }
-    return propertyName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Property basicGetPropertyName()
+  public String getPropertyName()
   {
     return propertyName;
   }
@@ -206,9 +195,9 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPropertyName(Property newPropertyName)
+  public void setPropertyName(String newPropertyName)
   {
-    Property oldPropertyName = propertyName;
+    String oldPropertyName = propertyName;
     propertyName = newPropertyName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.FACT__PROPERTY_NAME, oldPropertyName, propertyName));
@@ -231,8 +220,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
         if (resolve) return getEntity();
         return basicGetEntity();
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        if (resolve) return getPropertyName();
-        return basicGetPropertyName();
+        return getPropertyName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -254,7 +242,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
         setEntity((Entity)newValue);
         return;
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        setPropertyName((Property)newValue);
+        setPropertyName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -277,7 +265,7 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
         setEntity((Entity)null);
         return;
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        setPropertyName((Property)null);
+        setPropertyName(PROPERTY_NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -298,9 +286,26 @@ public class FactImpl extends MinimalEObjectImpl.Container implements Fact
       case AdaptDslPackage.FACT__ENTITY:
         return entity != null;
       case AdaptDslPackage.FACT__PROPERTY_NAME:
-        return propertyName != null;
+        return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (propertyName: ");
+    result.append(propertyName);
+    result.append(')');
+    return result.toString();
   }
 
 } //FactImpl

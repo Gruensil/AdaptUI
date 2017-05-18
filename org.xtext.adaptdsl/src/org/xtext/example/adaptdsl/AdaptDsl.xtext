@@ -10,14 +10,11 @@ Model:
 
 ContextModel returns ContextModel:
 	'ContextModel{'
-		(entity += Entity
-		 '{'
-			(property += Property)+
-		'};')+
-		('Services{'
+		(entity += Entity)+
+		('Providers{'
 			(provider += Provider ';')*
 		'};')?
-		('Types{'
+		('DefTypes{'
 			types = DefTypes
 		'};')?
 	'};'
@@ -88,7 +85,7 @@ StringCondition returns StringCondition:
 
 Fact returns Fact:
 	//ID('()')?('.'ID('()')?)*
-	factName = [FactName] '.get' entity=[Entity]'()' '.get' propertyName=[Property]'()'
+	factName = [FactName] '.get' entity=[Entity]'()' '.get' propertyName=ID'()'
 ;
 
 FactName returns FactName:
@@ -265,7 +262,9 @@ Value:
 terminal BOOL: 'true'|'false';
 
 Entity returns Entity:
-	'Entity' name=ID
+	'Entity' name=ID '{'
+		(property += Property)+
+	'};'
 ;
 
 Property returns Property:
@@ -298,7 +297,7 @@ Enum returns Enum:
 TYPE: 
 	string  = 'string' |
 	number = 'number' |
-	bool = 'bool' |
+	boolean = 'boolean' |
 	deftype = [DefType]
 ;
 

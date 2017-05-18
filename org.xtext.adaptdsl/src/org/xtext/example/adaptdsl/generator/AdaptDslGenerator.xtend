@@ -43,10 +43,19 @@ import org.xtext.example.adaptdsl.adaptDsl.StringValue
 import org.xtext.example.adaptdsl.adaptDsl.IntValue
 import org.xtext.example.adaptdsl.adaptDsl.BoolValue
 import org.xtext.example.adaptdsl.adaptDsl.AdaptationRule
-import org.xtext.example.adaptdsl.adaptDsl.AddViewComponentButtonOperation
-import org.xtext.example.adaptdsl.adaptDsl.DeleteViewComponentButtonOperation
+import org.xtext.example.adaptdsl.adaptDsl.Entity
+import org.xtext.example.adaptdsl.adaptDsl.Property
+import org.xtext.example.adaptdsl.adaptDsl.Provider
+import org.xtext.example.adaptdsl.adaptDsl.DefTypes
+import org.xtext.example.adaptdsl.adaptDsl.DefType
+import org.xtext.example.adaptdsl.adaptDsl.Enums
+import org.xtext.example.adaptdsl.adaptDsl.UpdateType
+import org.xtext.example.adaptdsl.adaptDsl.TYPE
+import org.xtext.example.adaptdsl.adaptDsl.Fact
 
 /**
+ * Copy the code from AdaptDslGenerator2.xtend here without indentation
+ * 
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
@@ -60,15 +69,46 @@ class AdaptDslGenerator extends AbstractGenerator {
 	    }
 	}
 	
-	def compile(Model model) '''
-	<?xml version="1.0" encoding="ASCII"?>
-	<adaptModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">«IF model.adaptationModel.services != null»<services>«model.adaptationModel.services.compile»</services>«ENDIF»<flow name="«model.adaptationModel.flowName»">«FOR rule: model.adaptationModel.adaptationRules»«rule.compile»«ENDFOR»</flow></adaptModel>
-	'''
+	def compile(Model model)'''<?xml version="1.0" encoding="ASCII"?><adaptDSLModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><contextModel>«FOR entity: model.contextModel.entity»«entity.compile»«ENDFOR»«IF model.contextModel.provider !== null»<providers>«FOR prov: model.contextModel.provider»«prov.compile»«ENDFOR»</providers>«ENDIF»«IF model.contextModel.types !== null»<defTypes>«model.contextModel.types.compile»</defTypes>«ENDIF»</contextModel><adaptationModel>«IF model.adaptationModel.services !== null»<services>«model.adaptationModel.services.compile»</services>«ENDIF»<flow name="«model.adaptationModel.flowName»">«FOR rule: model.adaptationModel.adaptationRules»«rule.compile»«ENDFOR»</flow></adaptationModel></adaptDSLModel>'''
+	
+	def compile(Entity entity)'''<entity name="«entity.name»">«FOR prop: entity.property»«prop.compile»«ENDFOR»</entity>'''
+
+	def compile(Property prop)'''<property name="«prop.name»" type="«prop.type.getType»" provider="«prop.provider.name»" update="«prop.update.getUpdateType»"/>'''
+	
+	def getType(TYPE type){
+		if(type.string !== null){
+			return type.string;
+		}else if(type.number !== null){
+			return type.number;
+		}else if(type.boolean !== null){
+			return type.boolean;
+		}else {
+			return type.deftype.name;
+		}
+	}
+	
+	def getUpdateType(UpdateType update){
+		if(update.event !== null){
+			return update.event;
+		}else if(update.slow !== null){
+			return update.slow;
+		}else{
+			return update.fast;
+		}
+	}
+	
+	def compile(Provider prov)'''<provider name="«prov.name»"/>'''
+	
+	def compile(DefTypes dtypes)'''«IF dtypes.this !== null»«dtypes.this.compile»«ENDIF»«IF dtypes.next !== null»«dtypes.next.compile»«ENDIF»'''
+	
+	def compile(DefType dtype)'''<defType name="«dtype.name»">«IF dtype.enums !== null»«dtype.enums.compile»«ENDIF»</defType>'''
+	
+	def compile(Enums enus)'''«IF enus.this !== null»<enum name="«enus.this.name»"/>«ENDIF»«IF enus.next !== null»«enus.next.compile»«ENDIF»'''
 	
 	def compile(ServiceList slist)'''«IF slist.this !== null»«slist.this.compile»«ENDIF»«IF slist.next !== null»«slist.next.compile»«ENDIF»'''
-
+	
 	def compile(Service svc)'''<service id="«svc.id»" type="«svc.type»" location="«svc.loc»">«svc.functions.compile»</service>'''
-
+	
 	def compile(FunctionList flist)'''«IF flist.this !== null»«flist.this.compile»«ENDIF»«IF flist.next !== null»«flist.next.compile»«ENDIF»'''
 	
 	def compile(Function func)'''<function id="«func.id»" name="«func.name»" />'''
@@ -110,12 +150,6 @@ class AdaptDslGenerator extends AbstractGenerator {
 			DeleteViewComponentOperation: {
 				'''<deleteViewComponentOperation viewComponent="«(op as DeleteViewComponentOperation).viewComp»"/>'''
 			}
-			AddViewComponentButtonOperation: {
-				'''<addViewComponentButtonOperation id="«(op as AddViewComponentButtonOperation).id»" langKey="«(op as AddViewComponentButtonOperation).langKey»" action="«(op as AddViewComponentButtonOperation).action»"/>'''
-			}
-			DeleteViewComponentButtonOperation: {
-				'''<deleteViewComponentButtonOperation viewComponent="«(op as DeleteViewComponentButtonOperation).id»"/>'''
-			}
 			AddNavLinkOperationImpl: {
 				'''<addNavLinkOperation viewContainer="«(op as AddNavLinkOperation).viewComp»" langKey=«(op as AddNavLinkOperation).text»/>'''
 			}
@@ -150,19 +184,20 @@ class AdaptDslGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def compile(ConditionalOrExpression expr) '''«IF expr.left !== null»«/*Binding Group*/IF expr.left.left !== null && expr.left.right !== null»<conditionGroup>«expr.left.compile»</conditionGroup>«ENDIF»«/*OR*/IF expr.left.left !== null && expr.left.right === null»«expr.left.left.compile»«ENDIF»«ENDIF»«IF expr.right !== null»«expr.right.compile»«ENDIF»'''
+	def compile(ConditionalOrExpression expr) '''«IF expr.left !== null && expr.right !== null»<conditionGroup>«expr.left.compile»«expr.right.compile»</conditionGroup>«ELSE»«expr.left.compile»			«ENDIF»'''
 	
 	def compile(ConditionalAndExpression expr)'''«IF expr.left !== null»«expr.left.compile»«ENDIF»«IF expr.right !== null»«expr.right.compile»«ENDIF»'''
 
 	def compile(ConditionalPrimary expr)'''«IF expr.cond instanceof BooleanCondition»«(expr.cond as BooleanCondition).compile»«ENDIF»«IF expr.cond instanceof NumberCondition»«(expr.cond as NumberCondition).compile»«ENDIF»«IF expr.cond instanceof StringCondition»«(expr.cond as StringCondition).compile»«ENDIF»'''
 
-	def compile(BooleanCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
+	def compile(BooleanCondition cond)'''<condition fact="«cond.fact.compile»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="boolean"/>'''
 	
-	def compile(StringCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="string"/>'''
+	def compile(StringCondition cond)'''<condition fact="«cond.fact.compile»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» «IF cond.^val !== null»value="«cond.^val.replace("'","")»"«ENDIF» type="string"/>'''
 	
-	def compile(NumberCondition cond)'''<condition fact="«cond.fact»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» value="«cond.^val»" type="number"/>'''
+	def compile(NumberCondition cond)'''<condition fact="«cond.fact.compile»" «IF (cond.op !== null)»operator="«getOperator(cond.op)»"«ENDIF» value="«cond.^val»" type="number"/>'''
 
-//
+	def compile(Fact fact)'''«fact.factName.name».get«fact.entity.name»().get«fact.propertyName»()'''
+	
 	def getOperator(String op){
 		switch (op) {
 			case "<=": {

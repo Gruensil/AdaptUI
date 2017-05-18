@@ -47,12 +47,13 @@ class AdaptDslScopeProvider extends AbstractAdaptDslScopeProvider {
 	    	val rootElement = EcoreUtil2.getRootContainer(context)
 	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Entity)
 	        return Scopes.scopeFor(candidates)
-	    }else if(context instanceof Property
-	            && reference == AdaptDslPackage$Literals::FACT__PROPERTY_NAME){
-	    	val rootElement = EcoreUtil2.getRootContainer(context)
-	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Property)
-	        return Scopes.scopeFor(candidates)
 	    }
+//	    else if(context instanceof Property
+//	            && reference == AdaptDslPackage$Literals::FACT__PROPERTY_NAME){
+//	    	val rootElement = EcoreUtil2.getRootContainer(context)
+//	        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Property)
+//	        return Scopes.scopeFor(candidates)
+//	    }
 	    return super.getScope(context, reference);
 	}
 }

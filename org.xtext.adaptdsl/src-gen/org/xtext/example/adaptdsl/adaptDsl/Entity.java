@@ -3,6 +3,8 @@
  */
 package org.xtext.example.adaptdsl.adaptDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Entity#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.adaptdsl.adaptDsl.Entity#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getEntity()
@@ -48,5 +51,21 @@ public interface Entity extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Property</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.adaptdsl.adaptDsl.Property}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Property</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Property</em>' containment reference list.
+   * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getEntity_Property()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Property> getProperty();
 
 } // Entity

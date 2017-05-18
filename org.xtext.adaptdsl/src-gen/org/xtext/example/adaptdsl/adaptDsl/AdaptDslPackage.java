@@ -114,22 +114,13 @@ public interface AdaptDslPackage extends EPackage
   int CONTEXT_MODEL__ENTITY = 0;
 
   /**
-   * The feature id for the '<em><b>Property</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTEXT_MODEL__PROPERTY = 1;
-
-  /**
    * The feature id for the '<em><b>Provider</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL__PROVIDER = 2;
+  int CONTEXT_MODEL__PROVIDER = 1;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference.
@@ -138,7 +129,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL__TYPES = 3;
+  int CONTEXT_MODEL__TYPES = 2;
 
   /**
    * The number of structural features of the '<em>Context Model</em>' class.
@@ -147,7 +138,7 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTEXT_MODEL_FEATURE_COUNT = 4;
+  int CONTEXT_MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.AdaptationModelImpl <em>Adaptation Model</em>}' class.
@@ -703,7 +694,7 @@ public interface AdaptDslPackage extends EPackage
   int FACT__ENTITY = 1;
 
   /**
-   * The feature id for the '<em><b>Property Name</b></em>' reference.
+   * The feature id for the '<em><b>Property Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1520,13 +1511,22 @@ public interface AdaptDslPackage extends EPackage
   int ENTITY__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Property</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__PROPERTY = 1;
+
+  /**
    * The number of structural features of the '<em>Entity</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = 1;
+  int ENTITY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl <em>Property</em>}' class.
@@ -1779,13 +1779,13 @@ public interface AdaptDslPackage extends EPackage
   int TYPE__NUMBER = 1;
 
   /**
-   * The feature id for the '<em><b>Bool</b></em>' attribute.
+   * The feature id for the '<em><b>Boolean</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__BOOL = 2;
+  int TYPE__BOOLEAN = 2;
 
   /**
    * The feature id for the '<em><b>Deftype</b></em>' reference.
@@ -1904,17 +1904,6 @@ public interface AdaptDslPackage extends EPackage
    * @generated
    */
   EReference getContextModel_Entity();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getProperty <em>Property</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Property</em>'.
-   * @see org.xtext.example.adaptdsl.adaptDsl.ContextModel#getProperty()
-   * @see #getContextModel()
-   * @generated
-   */
-  EReference getContextModel_Property();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.xtext.example.adaptdsl.adaptDsl.ContextModel#getProvider <em>Provider</em>}'.
@@ -2454,15 +2443,15 @@ public interface AdaptDslPackage extends EPackage
   EReference getFact_Entity();
 
   /**
-   * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName <em>Property Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Property Name</em>'.
+   * @return the meta object for the attribute '<em>Property Name</em>'.
    * @see org.xtext.example.adaptdsl.adaptDsl.Fact#getPropertyName()
    * @see #getFact()
    * @generated
    */
-  EReference getFact_PropertyName();
+  EAttribute getFact_PropertyName();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.FactName <em>Fact Name</em>}'.
@@ -3122,6 +3111,17 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getEntity_Name();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.adaptdsl.adaptDsl.Entity#getProperty <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Property</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.Entity#getProperty()
+   * @see #getEntity()
+   * @generated
+   */
+  EReference getEntity_Property();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.adaptdsl.adaptDsl.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3346,15 +3346,15 @@ public interface AdaptDslPackage extends EPackage
   EAttribute getTYPE_Number();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool <em>Bool</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getBoolean <em>Boolean</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Bool</em>'.
-   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getBool()
+   * @return the meta object for the attribute '<em>Boolean</em>'.
+   * @see org.xtext.example.adaptdsl.adaptDsl.TYPE#getBoolean()
    * @see #getTYPE()
    * @generated
    */
-  EAttribute getTYPE_Bool();
+  EAttribute getTYPE_Boolean();
 
   /**
    * Returns the meta object for the reference '{@link org.xtext.example.adaptdsl.adaptDsl.TYPE#getDeftype <em>Deftype</em>}'.
@@ -3476,14 +3476,6 @@ public interface AdaptDslPackage extends EPackage
      * @generated
      */
     EReference CONTEXT_MODEL__ENTITY = eINSTANCE.getContextModel_Entity();
-
-    /**
-     * The meta object literal for the '<em><b>Property</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTEXT_MODEL__PROPERTY = eINSTANCE.getContextModel_Property();
 
     /**
      * The meta object literal for the '<em><b>Provider</b></em>' containment reference list feature.
@@ -3912,12 +3904,12 @@ public interface AdaptDslPackage extends EPackage
     EReference FACT__ENTITY = eINSTANCE.getFact_Entity();
 
     /**
-     * The meta object literal for the '<em><b>Property Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Property Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FACT__PROPERTY_NAME = eINSTANCE.getFact_PropertyName();
+    EAttribute FACT__PROPERTY_NAME = eINSTANCE.getFact_PropertyName();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.FactNameImpl <em>Fact Name</em>}' class.
@@ -4466,6 +4458,14 @@ public interface AdaptDslPackage extends EPackage
     EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
 
     /**
+     * The meta object literal for the '<em><b>Property</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__PROPERTY = eINSTANCE.getEntity_Property();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.adaptdsl.adaptDsl.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4648,12 +4648,12 @@ public interface AdaptDslPackage extends EPackage
     EAttribute TYPE__NUMBER = eINSTANCE.getTYPE_Number();
 
     /**
-     * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Boolean</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TYPE__BOOL = eINSTANCE.getTYPE_Bool();
+    EAttribute TYPE__BOOLEAN = eINSTANCE.getTYPE_Boolean();
 
     /**
      * The meta object literal for the '<em><b>Deftype</b></em>' reference feature.
