@@ -775,61 +775,75 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class FactPropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.FactProperty");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisRightParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final Keyword cLeftParenthesisRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
-		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final RuleCall cIDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cLeftParenthesisKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final RuleCall cValueParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cFactNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cFactNameFactNameCrossReference_0_0 = (CrossReference)cFactNameAssignment_0.eContents().get(0);
+		private final RuleCall cFactNameFactNameIDTerminalRuleCall_0_0_1 = (RuleCall)cFactNameFactNameCrossReference_0_0.eContents().get(1);
+		private final Keyword cGetKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cEntityAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cEntityEntityCrossReference_2_0 = (CrossReference)cEntityAssignment_2.eContents().get(0);
+		private final RuleCall cEntityEntityIDTerminalRuleCall_2_0_1 = (RuleCall)cEntityEntityCrossReference_2_0.eContents().get(1);
+		private final Keyword cLeftParenthesisRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cSetKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cPropertyNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cPropertyNameIDTerminalRuleCall_5_0 = (RuleCall)cPropertyNameAssignment_5.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cValueAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cValueValueParserRuleCall_7_0 = (RuleCall)cValueAssignment_7.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//FactProperty:
-		//	ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?;
+		//	factName=[FactName] '.get' entity=[Entity] '()' '.set' propertyName=ID '(' value=Value ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?
+		////	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
+		//factName=[FactName] '.get' entity=[Entity] '()' '.set' propertyName=ID '(' value=Value ')'
 		public Group getGroup() { return cGroup; }
 		
-		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		////	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
+		//factName=[FactName]
+		public Assignment getFactNameAssignment_0() { return cFactNameAssignment_0; }
 		
-		//'()'?
-		public Keyword getLeftParenthesisRightParenthesisKeyword_1() { return cLeftParenthesisRightParenthesisKeyword_1; }
-		
-		//('.' ID '()'?)*
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'.'
-		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+		//[FactName]
+		public CrossReference getFactNameFactNameCrossReference_0_0() { return cFactNameFactNameCrossReference_0_0; }
 		
 		//ID
-		public RuleCall getIDTerminalRuleCall_2_1() { return cIDTerminalRuleCall_2_1; }
+		public RuleCall getFactNameFactNameIDTerminalRuleCall_0_0_1() { return cFactNameFactNameIDTerminalRuleCall_0_0_1; }
 		
-		//'()'?
-		public Keyword getLeftParenthesisRightParenthesisKeyword_2_2() { return cLeftParenthesisRightParenthesisKeyword_2_2; }
+		//'.get'
+		public Keyword getGetKeyword_1() { return cGetKeyword_1; }
 		
-		//'.'
-		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+		//entity=[Entity]
+		public Assignment getEntityAssignment_2() { return cEntityAssignment_2; }
+		
+		//[Entity]
+		public CrossReference getEntityEntityCrossReference_2_0() { return cEntityEntityCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getIDTerminalRuleCall_4() { return cIDTerminalRuleCall_4; }
+		public RuleCall getEntityEntityIDTerminalRuleCall_2_0_1() { return cEntityEntityIDTerminalRuleCall_2_0_1; }
 		
-		//('(' Value ')')?
-		public Group getGroup_5() { return cGroup_5; }
+		//'()'
+		public Keyword getLeftParenthesisRightParenthesisKeyword_3() { return cLeftParenthesisRightParenthesisKeyword_3; }
+		
+		//'.set'
+		public Keyword getSetKeyword_4() { return cSetKeyword_4; }
+		
+		//propertyName=ID
+		public Assignment getPropertyNameAssignment_5() { return cPropertyNameAssignment_5; }
+		
+		//ID
+		public RuleCall getPropertyNameIDTerminalRuleCall_5_0() { return cPropertyNameIDTerminalRuleCall_5_0; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_5_0() { return cLeftParenthesisKeyword_5_0; }
+		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
+		
+		//value=Value
+		public Assignment getValueAssignment_7() { return cValueAssignment_7; }
 		
 		//Value
-		public RuleCall getValueParserRuleCall_5_1() { return cValueParserRuleCall_5_1; }
+		public RuleCall getValueValueParserRuleCall_7_0() { return cValueValueParserRuleCall_7_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
+		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 	}
 	public class NumberOperatorsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.adaptdsl.AdaptDsl.NumberOperators");
@@ -2746,7 +2760,7 @@ public class AdaptDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FactProperty:
-	//	ID '()'? ('.' ID '()'?)* '.' ID ('(' Value ')')?;
+	//	factName=[FactName] '.get' entity=[Entity] '()' '.set' propertyName=ID '(' value=Value ')';
 	public FactPropertyElements getFactPropertyAccess() {
 		return pFactProperty;
 	}

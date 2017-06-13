@@ -52,6 +52,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Enums
 import org.xtext.example.adaptdsl.adaptDsl.UpdateType
 import org.xtext.example.adaptdsl.adaptDsl.TYPE
 import org.xtext.example.adaptdsl.adaptDsl.Fact
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty
 
 /**
  * Code is written here and then copied to AdaptDslGenerator.xtend without indentation 
@@ -220,7 +221,7 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 				'''<functionCall service="«(op as ServiceFunctionCallOperation).service»" function="«(op as ServiceFunctionCallOperation).function»" value=«(op as ServiceFunctionCallOperation).^val»/>'''
 			}
 			EditFactOperation: {
-				'''<editFactOperation set="«(op as EditFactOperation).prop»" «IF (op as EditFactOperation).^val !== null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
+				'''<editFactOperation set="«(op as EditFactOperation).prop.compile»" «IF (op as EditFactOperation).^val !== null»value="«(op as EditFactOperation).^val»"«ENDIF»/>'''
 			}
 			SetDisplayPropertyOperation: {
 				switch ((op as SetDisplayPropertyOperation).propertyValue.propertyClass){
@@ -277,6 +278,11 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 			}
 		}
 	}
+	
+	def compile(FactProperty factProp)'''
+		«factProp.factName.name».get«factProp.entity.name»().set«factProp.propertyName»(«factProp.value»)
+	'''
+	
 	
 	def compile(ConditionalOrExpression expr) '''
 «««		«IF expr.left !== null && expr.right !== null»

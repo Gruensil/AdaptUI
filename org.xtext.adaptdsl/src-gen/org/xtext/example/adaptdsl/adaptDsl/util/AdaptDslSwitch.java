@@ -39,6 +39,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -229,6 +230,13 @@ public class AdaptDslSwitch<T> extends Switch<T>
       {
         FactName factName = (FactName)theEObject;
         T result = caseFactName(factName);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdaptDslPackage.FACT_PROPERTY:
+      {
+        FactProperty factProperty = (FactProperty)theEObject;
+        T result = caseFactProperty(factProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -712,6 +720,22 @@ public class AdaptDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFactName(FactName object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fact Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fact Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFactProperty(FactProperty object)
   {
     return null;
   }

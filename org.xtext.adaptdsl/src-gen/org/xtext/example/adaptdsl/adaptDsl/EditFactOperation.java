@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface EditFactOperation extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Prop</b></em>' attribute.
+   * Returns the value of the '<em><b>Prop</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Prop</em>' attribute isn't clear,
+   * If the meaning of the '<em>Prop</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Prop</em>' attribute.
-   * @see #setProp(String)
+   * @return the value of the '<em>Prop</em>' containment reference.
+   * @see #setProp(FactProperty)
    * @see org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage#getEditFactOperation_Prop()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getProp();
+  FactProperty getProp();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.EditFactOperation#getProp <em>Prop</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.adaptdsl.adaptDsl.EditFactOperation#getProp <em>Prop</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Prop</em>' attribute.
+   * @param value the new value of the '<em>Prop</em>' containment reference.
    * @see #getProp()
    * @generated
    */
-  void setProp(String value);
+  void setProp(FactProperty value);
 
   /**
    * Returns the value of the '<em><b>Val</b></em>' attribute.

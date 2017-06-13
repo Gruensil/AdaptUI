@@ -92,8 +92,9 @@ FactName returns FactName:
 	name = ID
 ;
 
-FactProperty:
-	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
+FactProperty returns FactProperty:
+//	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
+	factName = [FactName] '.get' entity=[Entity]'()' '.set' propertyName=ID'('value = Value')'
 ;
 
 NumberOperators:

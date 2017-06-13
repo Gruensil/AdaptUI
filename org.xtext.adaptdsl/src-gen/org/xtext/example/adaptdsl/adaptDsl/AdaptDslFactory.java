@@ -168,6 +168,15 @@ public interface AdaptDslFactory extends EFactory
   FactName createFactName();
 
   /**
+   * Returns a new object of class '<em>Fact Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fact Property</em>'.
+   * @generated
+   */
+  FactProperty createFactProperty();
+
+  /**
    * Returns a new object of class '<em>Actions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

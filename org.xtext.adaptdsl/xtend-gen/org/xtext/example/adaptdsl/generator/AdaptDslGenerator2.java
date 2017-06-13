@@ -37,6 +37,7 @@ import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -507,8 +508,8 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
           _matched=true;
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("<editFactOperation set=\"");
-          String _prop = ((EditFactOperation) op).getProp();
-          _builder.append(_prop);
+          CharSequence _compile = this.compile(((EditFactOperation) op).getProp());
+          _builder.append(_compile);
           _builder.append("\" ");
           {
             String _val = ((EditFactOperation) op).getVal();
@@ -709,6 +710,24 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
       _xblockexpression = _switchResult;
     }
     return _xblockexpression;
+  }
+  
+  public CharSequence compile(final FactProperty factProp) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = factProp.getFactName().getName();
+    _builder.append(_name);
+    _builder.append(".get");
+    String _name_1 = factProp.getEntity().getName();
+    _builder.append(_name_1);
+    _builder.append("().set");
+    String _propertyName = factProp.getPropertyName();
+    _builder.append(_propertyName);
+    _builder.append("(");
+    String _value = factProp.getValue();
+    _builder.append(_value);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
   
   public CharSequence compile(final ConditionalOrExpression expr) {

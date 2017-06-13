@@ -45,6 +45,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -170,6 +171,9 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				return; 
 			case AdaptDslPackage.FACT_NAME:
 				sequence_FactName(context, (FactName) semanticObject); 
+				return; 
+			case AdaptDslPackage.FACT_PROPERTY:
+				sequence_FactProperty(context, (FactProperty) semanticObject); 
 				return; 
 			case AdaptDslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
@@ -748,6 +752,33 @@ public class AdaptDslSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFactNameAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FactProperty returns FactProperty
+	 *
+	 * Constraint:
+	 *     (factName=[FactName|ID] entity=[Entity|ID] propertyName=ID value=Value)
+	 */
+	protected void sequence_FactProperty(ISerializationContext context, FactProperty semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__FACT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__FACT_NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__ENTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__ENTITY));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__PROPERTY_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__PROPERTY_NAME));
+			if (transientValues.isValueTransient(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdaptDslPackage.Literals.FACT_PROPERTY__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFactPropertyAccess().getFactNameFactNameIDTerminalRuleCall_0_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT_PROPERTY__FACT_NAME, false));
+		feeder.accept(grammarAccess.getFactPropertyAccess().getEntityEntityIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AdaptDslPackage.Literals.FACT_PROPERTY__ENTITY, false));
+		feeder.accept(grammarAccess.getFactPropertyAccess().getPropertyNameIDTerminalRuleCall_5_0(), semanticObject.getPropertyName());
+		feeder.accept(grammarAccess.getFactPropertyAccess().getValueValueParserRuleCall_7_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

@@ -4,14 +4,17 @@
 package org.xtext.example.adaptdsl.adaptDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.adaptdsl.adaptDsl.AdaptDslPackage;
 import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,24 +33,14 @@ import org.xtext.example.adaptdsl.adaptDsl.EditFactOperation;
 public class EditFactOperationImpl extends MinimalEObjectImpl.Container implements EditFactOperation
 {
   /**
-   * The default value of the '{@link #getProp() <em>Prop</em>}' attribute.
+   * The cached value of the '{@link #getProp() <em>Prop</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getProp()
    * @generated
    * @ordered
    */
-  protected static final String PROP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getProp() <em>Prop</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProp()
-   * @generated
-   * @ordered
-   */
-  protected String prop = PROP_EDEFAULT;
+  protected FactProperty prop;
 
   /**
    * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
@@ -95,7 +88,7 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getProp()
+  public FactProperty getProp()
   {
     return prop;
   }
@@ -105,12 +98,37 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProp(String newProp)
+  public NotificationChain basicSetProp(FactProperty newProp, NotificationChain msgs)
   {
-    String oldProp = prop;
+    FactProperty oldProp = prop;
     prop = newProp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.EDIT_FACT_OPERATION__PROP, oldProp, prop));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdaptDslPackage.EDIT_FACT_OPERATION__PROP, oldProp, newProp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProp(FactProperty newProp)
+  {
+    if (newProp != prop)
+    {
+      NotificationChain msgs = null;
+      if (prop != null)
+        msgs = ((InternalEObject)prop).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.EDIT_FACT_OPERATION__PROP, null, msgs);
+      if (newProp != null)
+        msgs = ((InternalEObject)newProp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdaptDslPackage.EDIT_FACT_OPERATION__PROP, null, msgs);
+      msgs = basicSetProp(newProp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdaptDslPackage.EDIT_FACT_OPERATION__PROP, newProp, newProp));
   }
 
   /**
@@ -142,6 +160,22 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdaptDslPackage.EDIT_FACT_OPERATION__PROP:
+        return basicSetProp(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -165,7 +199,7 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case AdaptDslPackage.EDIT_FACT_OPERATION__PROP:
-        setProp((String)newValue);
+        setProp((FactProperty)newValue);
         return;
       case AdaptDslPackage.EDIT_FACT_OPERATION__VAL:
         setVal((String)newValue);
@@ -185,7 +219,7 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case AdaptDslPackage.EDIT_FACT_OPERATION__PROP:
-        setProp(PROP_EDEFAULT);
+        setProp((FactProperty)null);
         return;
       case AdaptDslPackage.EDIT_FACT_OPERATION__VAL:
         setVal(VAL_EDEFAULT);
@@ -205,7 +239,7 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case AdaptDslPackage.EDIT_FACT_OPERATION__PROP:
-        return PROP_EDEFAULT == null ? prop != null : !PROP_EDEFAULT.equals(prop);
+        return prop != null;
       case AdaptDslPackage.EDIT_FACT_OPERATION__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
@@ -223,9 +257,7 @@ public class EditFactOperationImpl extends MinimalEObjectImpl.Container implemen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (prop: ");
-    result.append(prop);
-    result.append(", val: ");
+    result.append(" (val: ");
     result.append(val);
     result.append(')');
     return result.toString();

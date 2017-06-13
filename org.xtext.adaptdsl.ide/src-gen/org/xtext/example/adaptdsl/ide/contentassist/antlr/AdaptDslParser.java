@@ -65,8 +65,6 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringConditionAccess().getGroup(), "rule__StringCondition__Group__0");
 					put(grammarAccess.getFactAccess().getGroup(), "rule__Fact__Group__0");
 					put(grammarAccess.getFactPropertyAccess().getGroup(), "rule__FactProperty__Group__0");
-					put(grammarAccess.getFactPropertyAccess().getGroup_2(), "rule__FactProperty__Group_2__0");
-					put(grammarAccess.getFactPropertyAccess().getGroup_5(), "rule__FactProperty__Group_5__0");
 					put(grammarAccess.getActionsAccess().getGroup(), "rule__Actions__Group__0");
 					put(grammarAccess.getServiceFunctionCallOperationAccess().getGroup(), "rule__ServiceFunctionCallOperation__Group__0");
 					put(grammarAccess.getEditFactOperationAccess().getGroup(), "rule__EditFactOperation__Group__0");
@@ -136,6 +134,10 @@ public class AdaptDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFactAccess().getEntityAssignment_2(), "rule__Fact__EntityAssignment_2");
 					put(grammarAccess.getFactAccess().getPropertyNameAssignment_5(), "rule__Fact__PropertyNameAssignment_5");
 					put(grammarAccess.getFactNameAccess().getNameAssignment(), "rule__FactName__NameAssignment");
+					put(grammarAccess.getFactPropertyAccess().getFactNameAssignment_0(), "rule__FactProperty__FactNameAssignment_0");
+					put(grammarAccess.getFactPropertyAccess().getEntityAssignment_2(), "rule__FactProperty__EntityAssignment_2");
+					put(grammarAccess.getFactPropertyAccess().getPropertyNameAssignment_5(), "rule__FactProperty__PropertyNameAssignment_5");
+					put(grammarAccess.getFactPropertyAccess().getValueAssignment_7(), "rule__FactProperty__ValueAssignment_7");
 					put(grammarAccess.getActionsAccess().getActionAssignment_0(), "rule__Actions__ActionAssignment_0");
 					put(grammarAccess.getActionsAccess().getNextAssignment_1(), "rule__Actions__NextAssignment_1");
 					put(grammarAccess.getActionAccess().getActionCategoryAssignment_0(), "rule__Action__ActionCategoryAssignment_0");

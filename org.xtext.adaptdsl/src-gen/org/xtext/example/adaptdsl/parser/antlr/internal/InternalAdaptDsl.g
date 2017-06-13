@@ -1367,14 +1367,14 @@ ruleFactName returns [EObject current=null]
 ;
 
 // Entry rule entryRuleFactProperty
-entryRuleFactProperty returns [String current=null]:
+entryRuleFactProperty returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getFactPropertyRule()); }
 	iv_ruleFactProperty=ruleFactProperty
-	{ $current=$iv_ruleFactProperty.current.getText(); }
+	{ $current=$iv_ruleFactProperty.current; }
 	EOF;
 
 // Rule FactProperty
-ruleFactProperty returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+ruleFactProperty returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1382,75 +1382,89 @@ ruleFactProperty returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
 	leaveRule();
 }:
 	(
-		this_ID_0=RULE_ID
-		{
-			$current.merge(this_ID_0);
-		}
-		{
-			newLeafNode(this_ID_0, grammarAccess.getFactPropertyAccess().getIDTerminalRuleCall_0());
-		}
 		(
-			kw='()'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getFactPropertyAccess().getLeftParenthesisRightParenthesisKeyword_1());
-			}
-		)?
-		(
-			kw='.'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getFactPropertyAccess().getFullStopKeyword_2_0());
-			}
-			this_ID_3=RULE_ID
-			{
-				$current.merge(this_ID_3);
-			}
-			{
-				newLeafNode(this_ID_3, grammarAccess.getFactPropertyAccess().getIDTerminalRuleCall_2_1());
-			}
 			(
-				kw='()'
 				{
-					$current.merge(kw);
-					newLeafNode(kw, grammarAccess.getFactPropertyAccess().getLeftParenthesisRightParenthesisKeyword_2_2());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFactPropertyRule());
+					}
 				}
-			)?
-		)*
-		kw='.'
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFactPropertyAccess().getFactNameFactNameCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1='.get'
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getFactPropertyAccess().getFullStopKeyword_3());
-		}
-		this_ID_6=RULE_ID
-		{
-			$current.merge(this_ID_6);
-		}
-		{
-			newLeafNode(this_ID_6, grammarAccess.getFactPropertyAccess().getIDTerminalRuleCall_4());
+			newLeafNode(otherlv_1, grammarAccess.getFactPropertyAccess().getGetKeyword_1());
 		}
 		(
-			kw='('
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getFactPropertyAccess().getLeftParenthesisKeyword_5_0());
-			}
-			{
-				newCompositeNode(grammarAccess.getFactPropertyAccess().getValueParserRuleCall_5_1());
-			}
-			this_Value_8=ruleValue
-			{
-				$current.merge(this_Value_8);
-			}
-			{
-				afterParserOrEnumRuleCall();
-			}
-			kw=')'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getFactPropertyAccess().getRightParenthesisKeyword_5_2());
-			}
-		)?
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFactPropertyRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getFactPropertyAccess().getEntityEntityCrossReference_2_0());
+				}
+			)
+		)
+		otherlv_3='()'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getFactPropertyAccess().getLeftParenthesisRightParenthesisKeyword_3());
+		}
+		otherlv_4='.set'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFactPropertyAccess().getSetKeyword_4());
+		}
+		(
+			(
+				lv_propertyName_5_0=RULE_ID
+				{
+					newLeafNode(lv_propertyName_5_0, grammarAccess.getFactPropertyAccess().getPropertyNameIDTerminalRuleCall_5_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFactPropertyRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"propertyName",
+						lv_propertyName_5_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_6='('
+		{
+			newLeafNode(otherlv_6, grammarAccess.getFactPropertyAccess().getLeftParenthesisKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFactPropertyAccess().getValueValueParserRuleCall_7_0());
+				}
+				lv_value_7_0=ruleValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFactPropertyRule());
+					}
+					set(
+						$current,
+						"value",
+						lv_value_7_0,
+						"org.xtext.example.adaptdsl.AdaptDsl.Value");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getFactPropertyAccess().getRightParenthesisKeyword_8());
+		}
 	)
 ;
 

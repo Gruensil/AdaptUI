@@ -42,6 +42,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -178,6 +179,13 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * @generated
    */
   private EClass factNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass factPropertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1051,6 +1059,56 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getFactProperty()
+  {
+    return factPropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFactProperty_FactName()
+  {
+    return (EReference)factPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFactProperty_Entity()
+  {
+    return (EReference)factPropertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFactProperty_PropertyName()
+  {
+    return (EAttribute)factPropertyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFactProperty_Value()
+  {
+    return (EAttribute)factPropertyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getActions()
   {
     return actionsEClass;
@@ -1171,9 +1229,9 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEditFactOperation_Prop()
+  public EReference getEditFactOperation_Prop()
   {
-    return (EAttribute)editFactOperationEClass.getEStructuralFeatures().get(0);
+    return (EReference)editFactOperationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2030,6 +2088,12 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     factNameEClass = createEClass(FACT_NAME);
     createEAttribute(factNameEClass, FACT_NAME__NAME);
 
+    factPropertyEClass = createEClass(FACT_PROPERTY);
+    createEReference(factPropertyEClass, FACT_PROPERTY__FACT_NAME);
+    createEReference(factPropertyEClass, FACT_PROPERTY__ENTITY);
+    createEAttribute(factPropertyEClass, FACT_PROPERTY__PROPERTY_NAME);
+    createEAttribute(factPropertyEClass, FACT_PROPERTY__VALUE);
+
     actionsEClass = createEClass(ACTIONS);
     createEReference(actionsEClass, ACTIONS__ACTION);
     createEReference(actionsEClass, ACTIONS__NEXT);
@@ -2046,7 +2110,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     createEAttribute(serviceFunctionCallOperationEClass, SERVICE_FUNCTION_CALL_OPERATION__VAL);
 
     editFactOperationEClass = createEClass(EDIT_FACT_OPERATION);
-    createEAttribute(editFactOperationEClass, EDIT_FACT_OPERATION__PROP);
+    createEReference(editFactOperationEClass, EDIT_FACT_OPERATION__PROP);
     createEAttribute(editFactOperationEClass, EDIT_FACT_OPERATION__VAL);
 
     setDisplayPropertyOperationEClass = createEClass(SET_DISPLAY_PROPERTY_OPERATION);
@@ -2256,6 +2320,12 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEClass(factNameEClass, FactName.class, "FactName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFactName_Name(), ecorePackage.getEString(), "name", null, 0, 1, FactName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(factPropertyEClass, FactProperty.class, "FactProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFactProperty_FactName(), this.getFactName(), null, "factName", null, 0, 1, FactProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFactProperty_Entity(), this.getEntity(), null, "entity", null, 0, 1, FactProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFactProperty_PropertyName(), ecorePackage.getEString(), "propertyName", null, 0, 1, FactProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFactProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, FactProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(actionsEClass, Actions.class, "Actions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActions_Action(), this.getActionCategory(), null, "action", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActions_Next(), this.getActions(), null, "next", null, 0, 1, Actions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2272,7 +2342,7 @@ public class AdaptDslPackageImpl extends EPackageImpl implements AdaptDslPackage
     initEAttribute(getServiceFunctionCallOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, ServiceFunctionCallOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(editFactOperationEClass, EditFactOperation.class, "EditFactOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEditFactOperation_Prop(), ecorePackage.getEString(), "prop", null, 0, 1, EditFactOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEditFactOperation_Prop(), this.getFactProperty(), null, "prop", null, 0, 1, EditFactOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEditFactOperation_Val(), ecorePackage.getEString(), "val", null, 0, 1, EditFactOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(setDisplayPropertyOperationEClass, SetDisplayPropertyOperation.class, "SetDisplayPropertyOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

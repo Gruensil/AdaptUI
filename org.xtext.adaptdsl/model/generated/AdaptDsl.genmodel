@@ -80,6 +80,12 @@
     <genClasses ecoreClass="AdaptDsl.ecore#//FactName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//FactName/name"/>
     </genClasses>
+    <genClasses ecoreClass="AdaptDsl.ecore#//FactProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//FactProperty/factName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//FactProperty/entity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//FactProperty/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//FactProperty/value"/>
+    </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//Actions">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Actions/action"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//Actions/next"/>
@@ -96,7 +102,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//ServiceFunctionCallOperation/val"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//EditFactOperation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//EditFactOperation/prop"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AdaptDsl.ecore#//EditFactOperation/prop"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AdaptDsl.ecore#//EditFactOperation/val"/>
     </genClasses>
     <genClasses ecoreClass="AdaptDsl.ecore#//SetDisplayPropertyOperation">

@@ -43,6 +43,7 @@ import org.xtext.example.adaptdsl.adaptDsl.Entity;
 import org.xtext.example.adaptdsl.adaptDsl.Enums;
 import org.xtext.example.adaptdsl.adaptDsl.Fact;
 import org.xtext.example.adaptdsl.adaptDsl.FactName;
+import org.xtext.example.adaptdsl.adaptDsl.FactProperty;
 import org.xtext.example.adaptdsl.adaptDsl.Function;
 import org.xtext.example.adaptdsl.adaptDsl.FunctionList;
 import org.xtext.example.adaptdsl.adaptDsl.IntValue;
@@ -129,6 +130,7 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
       case AdaptDslPackage.STRING_CONDITION: return createStringCondition();
       case AdaptDslPackage.FACT: return createFact();
       case AdaptDslPackage.FACT_NAME: return createFactName();
+      case AdaptDslPackage.FACT_PROPERTY: return createFactProperty();
       case AdaptDslPackage.ACTIONS: return createActions();
       case AdaptDslPackage.ACTION_CATEGORY: return createActionCategory();
       case AdaptDslPackage.PARENT_OPERATION: return createParentOperation();
@@ -340,6 +342,17 @@ public class AdaptDslFactoryImpl extends EFactoryImpl implements AdaptDslFactory
   {
     FactNameImpl factName = new FactNameImpl();
     return factName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FactProperty createFactProperty()
+  {
+    FactPropertyImpl factProperty = new FactPropertyImpl();
+    return factProperty;
   }
 
   /**
