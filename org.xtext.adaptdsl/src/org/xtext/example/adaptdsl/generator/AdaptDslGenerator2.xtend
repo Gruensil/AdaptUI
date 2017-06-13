@@ -279,30 +279,31 @@ class AdaptDslGenerator2 extends AbstractGenerator {
 	}
 	
 	def compile(ConditionalOrExpression expr) '''
-		«IF expr.left !== null && expr.right !== null»
-			<conditionGroup>
-				«expr.left.compile»
-				«expr.right.compile»
-			</conditionGroup>
-		«ELSE»
-			«expr.left.compile»			
-		«ENDIF»
+«««		«IF expr.left !== null && expr.right !== null»
+«««			<conditionGroup>
+«««				«expr.left.compile»
+«««				«expr.right.compile»
+«««			</conditionGroup>
+«««		«ELSE»
+«««			«expr.left.compile»			
+«««		«ENDIF»
 	
 «««		Old buggy code below, i hope the new one is better ;)
+«««		UPDATE: Old code was complex, but mostly correct. Just one a little error.
 
-«««		«IF expr.left !== null»
-«««			«/*Binding Group*/IF expr.left.left !== null && expr.left.right !== null»
-«««				<conditionGroup>
-«««					«expr.left.compile»
-«««				</conditionGroup>
-«««			«ENDIF»
-«««			«/*OR*/IF expr.left.left !== null && expr.left.right !== null»
-«««				«expr.left.left.compile»
-«««			«ENDIF»
-«««		«ENDIF»
-«««		«IF expr.right !== null»
-«««			«expr.right.compile»
-«««		«ENDIF»
+		«IF expr.left !== null»
+			«/*Binding Group*/IF expr.left.left !== null && expr.left.right !== null»
+				<conditionGroup>
+					«expr.left.compile»
+				</conditionGroup>
+			«ENDIF»
+			«/*OR*/IF expr.left.left !== null && expr.left.right === null»
+				«expr.left.left.compile»
+			«ENDIF»
+		«ENDIF»
+		«IF expr.right !== null»
+			«expr.right.compile»
+		«ENDIF»
 	'''
 	
 	def compile(ConditionalAndExpression expr)'''

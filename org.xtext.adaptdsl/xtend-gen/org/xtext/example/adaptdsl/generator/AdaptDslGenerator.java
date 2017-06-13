@@ -631,17 +631,31 @@ public class AdaptDslGenerator extends AbstractGenerator {
   public CharSequence compile(final ConditionalOrExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      if (((expr.getLeft() != null) && (expr.getRight() != null))) {
-        _builder.append("<conditionGroup>");
-        CharSequence _compile = this.compile(expr.getLeft());
-        _builder.append(_compile);
-        Object _compile_1 = this.compile(expr.getRight());
-        _builder.append(_compile_1);
-        _builder.append("</conditionGroup>");
-      } else {
-        CharSequence _compile_2 = this.compile(expr.getLeft());
+      ConditionalAndExpression _left = expr.getLeft();
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
+        {
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
+            _builder.append("<conditionGroup>");
+            CharSequence _compile = this.compile(expr.getLeft());
+            _builder.append(_compile);
+            _builder.append("</conditionGroup>");
+          }
+        }
+        {
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() == null))) {
+            CharSequence _compile_1 = this.compile(expr.getLeft().getLeft());
+            _builder.append(_compile_1);
+          }
+        }
+      }
+    }
+    {
+      ConditionalOrExpression _right = expr.getRight();
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
+        Object _compile_2 = this.compile(expr.getRight());
         _builder.append(_compile_2);
-        _builder.append("\t\t\t");
       }
     }
     return _builder;

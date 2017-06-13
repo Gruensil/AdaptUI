@@ -713,30 +713,47 @@ public class AdaptDslGenerator2 extends AbstractGenerator {
   
   public CharSequence compile(final ConditionalOrExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.newLine();
+    _builder.newLine();
     {
-      if (((expr.getLeft() != null) && (expr.getRight() != null))) {
-        _builder.append("<conditionGroup>");
-        _builder.newLine();
+      ConditionalAndExpression _left = expr.getLeft();
+      boolean _tripleNotEquals = (_left != null);
+      if (_tripleNotEquals) {
+        {
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() != null))) {
+            _builder.append("\t");
+            _builder.append("<conditionGroup>");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            CharSequence _compile = this.compile(expr.getLeft());
+            _builder.append(_compile, "\t\t");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("</conditionGroup>");
+            _builder.newLine();
+          }
+        }
+        {
+          if (((expr.getLeft().getLeft() != null) && (expr.getLeft().getRight() == null))) {
+            _builder.append("\t");
+            CharSequence _compile_1 = this.compile(expr.getLeft().getLeft());
+            _builder.append(_compile_1, "\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      ConditionalOrExpression _right = expr.getRight();
+      boolean _tripleNotEquals_1 = (_right != null);
+      if (_tripleNotEquals_1) {
         _builder.append("\t");
-        CharSequence _compile = this.compile(expr.getLeft());
-        _builder.append(_compile, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        Object _compile_1 = this.compile(expr.getRight());
-        _builder.append(_compile_1, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("</conditionGroup>");
-        _builder.newLine();
-      } else {
-        CharSequence _compile_2 = this.compile(expr.getLeft());
-        _builder.append(_compile_2);
-        _builder.append("\t\t\t");
+        Object _compile_2 = this.compile(expr.getRight());
+        _builder.append(_compile_2, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.newLine();
     return _builder;
   }
   
