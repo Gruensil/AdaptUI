@@ -1,0 +1,309 @@
+grammar org.xtext.adaptui.AdaptUI with org.eclipse.xtext.common.Terminals
+
+generate adaptUI "http://www.xtext.org/adaptui/AdaptUI"
+
+
+Model:
+	contextModel=ContextModel
+	adaptationModel=AdaptationModel	
+;
+
+ContextModel returns ContextModel:
+	'ContextModel{'
+		(entity += Entity)+
+		('Providers{'
+			(provider += Provider ';')*
+		'};')?
+		('DefTypes{'
+			types = DefTypes
+		'};')?
+	'};'
+;
+
+AdaptationModel returns AdaptationModel:
+	'AdaptationModel{'
+		(services = Services)?
+		'flow' flowName = STRING '{'
+			adaptationRules += AdaptationRule+
+		'};'
+	'};'
+;
+
+Services returns ServiceList:
+	this=Service (next=Services)?
+;
+
+Service returns Service:
+	'service' type=ID 'from' loc=STRING 'as' id=STRING '{'
+		functions = Functions
+	'};'
+;
+
+Functions returns FunctionList:
+	this=Function (next=Functions)?
+;
+
+Function returns Function:
+	'function' name=ID 'as' id=STRING ';'
+;
+
+AdaptationRule:
+ 	'rule' name=STRING '{' 
+ 	'LEVEL' level=INT ';'
+ 	'FACT' factType=ID factName=FactName ';'
+	'IF''(' expr = ConditionalOR ')' 
+	'THEN''(' 
+		actionCollection = Actions 
+	')'';''}'
+;
+    
+ConditionalOR returns ConditionalOrExpression:
+    left = ConditionalAND ('||' right=ConditionalOR)?;
+    
+ConditionalAND returns ConditionalAndExpression:
+    left = ConditionalPrimary ( '&&' right=ConditionalAND)?;
+    
+ConditionalPrimary returns ConditionalPrimary:
+    cond = StringCondition
+    |	cond = NumberCondition
+    |	cond = BooleanCondition
+;
+
+BooleanCondition returns BooleanCondition:
+	( fact=Fact op=BoolOperators val=BOOL)
+	|( fact=Fact)	
+;
+
+NumberCondition returns NumberCondition:
+	( fact=Fact op=NumberOperators val=INT)
+;
+
+StringCondition returns StringCondition:
+	( fact=Fact op=StringOperators val=STRING)
+;
+
+
+Fact returns Fact:
+	//ID('()')?('.'ID('()')?)*
+	factName = [FactName] '.get' entity=[Entity]'()' '.get' propertyName=ID'()'
+;
+
+FactName returns FactName:
+	name = ID
+;
+
+FactProperty returns FactProperty:
+//	ID('()')?('.'ID('()')?)*'.'ID('('Value')')?
+	factName = [FactName] '.get' entity=[Entity]'()' '.set' propertyName=ID'('value = Value')'
+;
+
+NumberOperators:
+	'>' | '<' | '==' | '!=' | '>=' | '<=' | '==='
+;
+
+StringOperators:
+	'==' | '!=' | '==='
+;
+
+BoolOperators:
+	'==' | '!=' 
+;
+
+
+Actions returns Actions:
+	action = Action (next=Actions)?
+;
+
+Action returns ActionCategory:
+	actionCategory = ServiceOperation | actionCategory = TaskChangeOperation | actionCategory = NavigationChangeOperation | actionCategory = LayoutChangeOperation
+;
+
+ServiceOperation returns ParentOperation:
+	operation = ServiceFunctionCallOperation | operation = EditFactOperation | operation = SetDisplayPropertyOperation
+;
+
+ServiceFunctionCallOperation returns ServiceFunctionCallOperation:
+	'functionCall''('service=ID','function=ID','val=Value')'';'
+;
+
+EditFactOperation returns EditFactOperation:
+	// set FactProperty to Value
+	'editFact''('prop=FactProperty(','val=Value)?')'';'
+;
+
+SetDisplayPropertyOperation returns SetDisplayPropertyOperation:
+	'setDisplayProperty''('property=STRING','propertyValue=DisplayPropertyValue')'';'
+;
+
+DisplayPropertyValue returns DisplayPropertyValue:
+	propertyClass = IntValue | propertyClass = StringValue | propertyClass = BoolValue
+;
+
+IntValue returns IntValue:
+	value=INT
+;
+
+StringValue returns StringValue:
+	value=STRING
+;
+
+BoolValue returns BoolValue:
+	value=BOOL
+;
+
+TaskChangeOperation returns ParentOperation: 
+	operation = AddViewComponentOperation | operation = DeleteViewComponentOperation  | operation = AddViewComponentButtonOperation | operation = DeleteViewComponentButtonOperation
+;
+
+AddViewComponentOperation returns AddViewComponentOperation:
+	'addViewComponent''('viewComp=ViewComponent',' target=TargetContainer ')'';'
+;
+
+DeleteViewComponentOperation returns DeleteViewComponentOperation:
+	'deleteViewComponent''(' viewComp=ViewComponent ')'';'
+;
+
+AddViewComponentButtonOperation returns AddViewComponentButtonOperation:
+	'addViewComponentButton''(' id=STRING','langKey=STRING','action=STRING')'';'
+;
+
+DeleteViewComponentButtonOperation returns DeleteViewComponentButtonOperation:
+	'deleteViewComponentButton''(' id=STRING ')'';'
+;
+
+ViewComponent:
+	ID
+;
+
+TargetContainer:
+	ID
+;
+
+NavigationChangeOperation returns ParentOperation:
+	operation = AddNavLinkOperation | operation = DeleteNavLinkOperation | operation = RedirectNavLinkOperation | operation = ClearNavOperation
+;
+
+AddNavLinkOperation returns AddNavLinkOperation:
+	// add a navigation link to <ViewComponent> with link description <Text>
+	'addNavLink''('viewComp=ViewComponent','text=Text')'';'
+;
+
+DeleteNavLinkOperation returns DeleteNavLinkOperation:
+	// delete link to <ViewComponent> from navigation
+	'deleteNavLink''('viewComp=ViewComponent')'';'
+;
+
+RedirectNavLinkOperation returns RedirectNavLinkOperation:
+	// redirect to <ViewComponent>
+	'redirectNavLink''('viewComp=ViewComponent')'';'
+;
+
+ClearNavOperation returns ClearNavOperation:
+	// clear all navigation links
+	 {ClearNavOperation}'clearNavigation''()'';'
+;
+
+Text:
+	STRING
+;
+
+LayoutChangeOperation returns ParentOperation:
+	operation = ChangeFontOperation | operation = ChangeFontSizeOperation | operation = ChangeTableCssClassOperation | operation = AdaptCssClassOperation | operation = ChangeColorSchemeOperation
+;
+
+ChangeFontSizeOperation returns ChangeFontSizeOperation:
+	// Change primary and secondary font size
+	'changeFontSize''('sizePrimary=FontSize','sizeSecondary=FontSize')'';'
+;
+
+ChangeColorSchemeOperation returns ChangeColorSchemeOperation:
+	// define color schemes and attributes for color schemes
+	'changeColorScheme''('colorPrimary = Color','colorSecondary = Color')'';'
+;
+
+ChangeFontOperation returns ChangeFontOperation:
+	// change to font <Text>
+	'changeFont''('text=Text')'';'
+;
+
+ChangeTableCssClassOperation returns ChangeTableCssClassOperation:
+	// Define table css classes by <Text>
+	'changeTableCss''('text=Text')'';'
+;
+
+AdaptCssClassOperation returns AdaptCssClassOperation:
+	// basically JQuery changes the attribute of the given css class to attribute value
+	'adaptCssClass''('cssClass=CssClass','cssAttribute=Attribute','cssAttributeValue=AttributeValue')'';'
+;
+
+CssClass:
+	STRING
+;
+
+Attribute:
+	STRING
+;
+
+AttributeValue:
+	STRING
+;
+
+Color:
+	STRING
+;
+
+FontSize:
+	INT
+;
+
+Value:
+	INT | STRING | BOOL
+;
+
+terminal BOOL: 'true'|'false';
+
+Entity returns Entity:
+	'Entity' name=ID '{'
+		(property += Property)+
+	'};'
+;
+
+Property returns Property:
+	name=ID '{' 'type' type=TYPE ',' 'provider' provider=[Provider] ',' 'update' update=UpdateType '};'
+;
+
+Provider returns Provider:
+	name=ID
+;
+
+DefTypes returns DefTypes:
+	this=DefType
+	(next=DefTypes)?
+;
+
+DefType returns DefType:
+	name=ID ':' enums=Enums ';'
+;
+
+Enums returns Enums:
+	this=Enum
+	(',' next=Enums)?
+;
+
+Enum returns Enum:
+	name=STRING
+;
+
+
+TYPE: 
+	string  = 'string' |
+	number = 'number' |
+	boolean = 'boolean' |
+	deftype = [DefType]
+;
+
+UpdateType:
+	event = 'eventTriggered' |
+	slow = 'slow' |
+	fast = 'fast'
+;
